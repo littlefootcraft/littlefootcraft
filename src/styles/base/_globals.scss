@@ -1,0 +1,43 @@
+//_globals.scss
+@use "./variables" as *;
+@use "./../abstracts/mixins" as *;
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	// font-family:
+	// 	"Montserrat",
+	// 	system-ui,
+	// 	-apple-system,
+	// 	sans-serif;
+	line-height: 1.4;
+	margin: 0;
+}
+
+.page {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+.container {
+	max-width: 1280px;
+	margin: 0 auto;
+	padding-inline: 2rem;
+	width: 100%;
+}
+
+.main {
+	flex: 1;
+	// padding-top: $header-height;
+	display: flex;
+	flex-direction: column;
+}

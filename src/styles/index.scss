@@ -1,0 +1,24 @@
+//index.scss
+
+// Base
+@use "./base/reset";
+@use "./base/variables";
+@use "./base/globals";
+
+// Layout (header/footer/main frame)
+@use "../styles/layout/header";
+@use "../styles/layout/footer";
+@use "../styles/layout/mobile-menu";
+
+// Pages
+@use "../styles/pages/home-page";
+@use "../styles/pages/about-page";
+@use "../styles/pages/contact-page";
+@use "../styles/pages/faq-page";
+@use "../styles/pages/login-page";
+@use "../styles/pages/registration-page";
+@use "../styles/pages/shop-page";
+@use "../styles/pages/wishlist-page";
+@use "../styles/pages/workshops-page";
+
+//Components
