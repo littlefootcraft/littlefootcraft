@@ -1,0 +1,131 @@
+//_primary-btn.scss
+@use "./../../styles/base/variables" as *;
+@use "./../abstracts/mixins" as *;
+
+.primary-button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-transform: uppercase;
+
+	// border-radius: 12px;
+
+	// Typography
+	color: $white;
+	font-family: inherit;
+	font-weight: 300;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	text-align: center;
+	line-height: 1.2;
+
+	// The Base Gradient (Subtle vertical dip)
+	background: linear-gradient(
+		to bottom,
+		#c48d11 0%,
+		#e2b02e 45%,
+		#d4a017 55%,
+		#a67c00 100%
+	);
+
+	// Border & Inner Glow
+	border: 1px solid rgba(255, 255, 255, 0.4);
+	position: relative;
+	cursor: pointer;
+	overflow: hidden;
+
+	// Layered Shadows for 3D effect
+	box-shadow:
+		inset 0 1px 1px rgba(255, 255, 255, 0.6),
+		// Top inner highlight
+		inset 0 -2px 4px rgba(0, 0, 0, 0.3),
+		// Bottom inner depth
+		0 10px 20px rgba(0, 0, 0, 0.4); // Outer drop shadow
+
+	// The "Metallic Rim" Highlight
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		// border-radius: 12px;
+		padding: 2px; // Thickness of the gold rim
+		background: linear-gradient(
+			135deg,
+			$gold-light 0%,
+			$gold-dark 50%,
+			$gold-light 100%
+		);
+		-webkit-mask:
+			linear-gradient(#fff 0 0) content-box,
+			linear-gradient(#fff 0 0);
+		-webkit-mask-composite: xor;
+		mask-composite: exclude;
+		pointer-events: none;
+	}
+
+	// Subtle Shine Sparkle
+	&::after {
+		content: "";
+		position: absolute;
+		top: 5px;
+		left: 10%;
+		width: 6px;
+		height: 6px;
+		background: white;
+		filter: blur(4px);
+		border-radius: 50%;
+		opacity: 0.6;
+	}
+
+	&:hover {
+		filter: brightness(1.1);
+		transform: translateY(-1px);
+		transition: all 0.2s ease;
+	}
+
+	&:active {
+		transform: translateY(1px);
+		box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+	}
+
+	&--to-catalog {
+		border-radius: $border-radius;
+		padding: 12px 40px;
+		min-width: 280px;
+		gap: 14px;
+
+		&::before {
+			border-radius: $border-radius;
+		}
+
+		& svg {
+			font-size: 18px;
+		}
+	}
+
+	&--footer {
+		border-radius: $border-radius-sm;
+		padding: 10px 12px;
+		gap: 12px;
+		font-family: inherit;
+		font-size: 0.875rem;
+
+		&::before {
+			border-radius: $border-radius-sm;
+		}
+	}
+
+	&--subscription {
+		border-radius: $border-radius;
+		padding: 15px 24px;
+		gap: 14px;
+		font-size: 1rem;
+
+		&::before {
+			border-radius: $border-radius;
+		}
+	}
+}

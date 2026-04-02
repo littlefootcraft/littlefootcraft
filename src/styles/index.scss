@@ -4,6 +4,7 @@
 @use "./base/reset";
 @use "./base/variables";
 @use "./base/globals";
+@use "./base/fonts";
 
 // Layout (header/footer/main frame)
 @use "../styles/layout/header";
@@ -22,3 +23,7 @@
 @use "../styles/pages/workshops-page";
 
 //Components
+@use "../styles/components/badge";
+@use "../styles/components/primary-btn";
+@use "../styles/components/secondary-btn";
+@use "../styles/components/magic-badge";

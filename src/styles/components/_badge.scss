@@ -1,0 +1,19 @@
+//_badge.scss
+
+@use "./../../styles/base/variables" as *;
+@use "./../abstracts/mixins" as *;
+
+.badge {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 0.625rem;
+
+	&--dot {
+		width: 16px;
+		height: 16px;
+		border-radius: 50%;
+		background-color: $primary-text;
+		color: $white;
+	}
+}

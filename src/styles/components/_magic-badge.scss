@@ -1,0 +1,100 @@
+//_magic-badge.scss
+
+@use "./../../styles/base/variables" as *;
+@use "./../abstracts/mixins" as *;
+
+.magic-badge {
+	display: inline-block;
+	padding: 10px 28px;
+	border-radius: 999px;
+	position: relative;
+	overflow: hidden;
+
+	font-family: "CinzelDecorative";
+	font-size: 14px;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: $primary-text;
+
+	background: linear-gradient(
+		180deg,
+		rgba(255, 252, 246, 0.96) 0%,
+		rgba(248, 239, 222, 0.92) 52%,
+		rgba(255, 249, 239, 0.96) 100%
+	);
+
+	border: 1px solid rgba(212, 175, 55, 0.38);
+
+	box-shadow:
+		0 0 18px rgba(212, 175, 55, 0.16),
+		0 4px 12px rgba(212, 175, 55, 0.14),
+		inset 0 1px 0 rgba(255, 255, 255, 0.85),
+		inset 0 -2px 8px rgba(184, 150, 58, 0.12);
+
+	backdrop-filter: blur(6px);
+	-webkit-backdrop-filter: blur(6px);
+
+	&::before {
+		content: "";
+		position: absolute;
+		inset: 2px;
+		border-radius: inherit;
+		background: linear-gradient(
+			180deg,
+			rgba(255, 255, 255, 0.35) 0%,
+			rgba(255, 255, 255, 0.08) 45%,
+			rgba(255, 255, 255, 0.22) 100%
+		);
+		pointer-events: none;
+	}
+
+	&::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+		border-radius: inherit;
+		background:
+			radial-gradient(
+				circle at 12% 30%,
+				rgba(255, 223, 128, 0.55) 0,
+				rgba(255, 223, 128, 0) 12%
+			),
+			radial-gradient(
+				circle at 88% 72%,
+				rgba(255, 240, 196, 0.7) 0,
+				rgba(255, 240, 196, 0) 10%
+			),
+			linear-gradient(
+				90deg,
+				rgba(255, 255, 255, 0) 0%,
+				rgba(255, 255, 255, 0.18) 50%,
+				rgba(255, 255, 255, 0) 100%
+			);
+		pointer-events: none;
+	}
+
+	span {
+		position: relative;
+		z-index: 1;
+	}
+
+	.magic-star-left,
+	.magic-star-right {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		font-size: 10px;
+		color: #d4af37;
+		opacity: 0.9;
+		z-index: 1;
+		text-shadow: 0 0 8px rgba(212, 175, 55, 0.45);
+	}
+
+	.magic-star-left {
+		left: 12px;
+	}
+
+	.magic-star-right {
+		right: 12px;
+	}
+}

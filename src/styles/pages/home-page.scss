@@ -1,2 +1,337 @@
 @use "./../base/variables" as *;
 @use "./../abstracts/mixins" as *;
+
+.home-page {
+	letter-spacing: 0.025em;
+
+	&__top {
+		min-height: calc(100vh - $header-height);
+		background-image: url("/uploads/images/hero-image.jpeg");
+		background-size: cover;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+
+		position: relative;
+		isolation: isolate;
+
+		&:before {
+			content: "";
+			position: absolute;
+			inset: 0;
+			z-index: 0;
+			background: linear-gradient(
+				to bottom,
+				rgba(253, 251, 247, 0.45) 0%,
+				rgba(253, 251, 247, 0.28) 35%,
+				rgba(253, 251, 247, 0.22) 60%,
+				rgba(253, 251, 247, 0.55) 100%
+			);
+		}
+
+		&-content {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
+
+		&-title {
+			font-size: 4.5rem;
+			margin-top: 12px;
+			font-family: "CinzelDecorative";
+			font-weight: 700;
+			color: $misty-ivory;
+
+			& span {
+				color: $gold-accent;
+			}
+		}
+
+		&-info {
+			margin-bottom: 60px;
+			font-size: 1.375rem;
+			line-height: 1.5;
+			color: $primary-text;
+			font-family: "Outfit";
+			font-weight: 400;
+
+			position: relative;
+			display: inline-block;
+			padding: 10px 18px;
+			color: #2d3b59;
+			text-shadow:
+				0 1px 0 rgba(255, 251, 240, 0.9),
+				0 2px 4px rgba(255, 251, 240, 0.55),
+				0 0 14px rgba(255, 248, 232, 0.35);
+			z-index: 1;
+
+			&::before {
+				content: "";
+				position: absolute;
+				inset: -20px -34px;
+				border-radius: 999px;
+				background: radial-gradient(
+					ellipse at center,
+					rgba(253, 251, 247, 0.52) 0%,
+					rgba(253, 251, 247, 0.34) 36%,
+					rgba(253, 251, 247, 0.18) 60%,
+					rgba(253, 251, 247, 0.07) 80%,
+					rgba(253, 251, 247, 0) 100%
+				);
+				filter: blur(16px);
+				-webkit-filter: blur(16px);
+				z-index: -1;
+				pointer-events: none;
+			}
+		}
+	}
+
+	// Highlights Section
+	&__highlights {
+		padding-block: 48px;
+		background-color: $misty-ivory;
+
+		&-list {
+			display: flex;
+			justify-content: space-between;
+		}
+		&-item {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			gap: 12px;
+			text-transform: uppercase;
+			color: $light-gray-text;
+			font-size: 0.875rem;
+
+			& svg {
+				font-size: 24px;
+				color: $gold-accent;
+			}
+		}
+	}
+
+	// New Arrivals & Collections Section
+	&__new-arrivals,
+	&__new-collections {
+		padding-block: 80px;
+
+		&-top {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		&-title {
+			font-family: "CinzelDecorative";
+			color: $primary-text;
+			font-size: 2.25rem;
+			font-weight: 400;
+		}
+
+		&-info {
+			color: $light-gray-text;
+		}
+	}
+
+	&__new-collections {
+		padding-block: 80px;
+		background-color: $misty-ivory;
+		&-title {
+			text-align: center;
+			font-family: "CinzelDecorative";
+			color: $primary-text;
+			font-size: 2.25rem;
+			font-weight: 400;
+		}
+	}
+
+	&__to-catalog-btn {
+		border: none;
+		background: transparent;
+		color: $gold-accent;
+		font-family: inherit;
+		font-size: 1rem;
+		display: flex;
+		align-items: center;
+		gap: 10px;
+	}
+
+	//About Us Section
+	&__about {
+		padding-block: 80px;
+		background-color: $misty-ivory;
+
+		&-content {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: 48px;
+		}
+
+		&-image {
+			border-radius: $border-radius-sm;
+		}
+
+		&-info {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+
+			& span {
+				text-transform: uppercase;
+				color: $gold-accent;
+				font-size: 0.875rem;
+				letter-spacing: 0.25em;
+			}
+		}
+
+		&-title {
+			margin-top: 16px;
+			margin-bottom: 24px;
+			font-family: "CinzelDecorative";
+			color: $primary-text;
+			font-size: 2.25rem;
+			font-weight: 400;
+		}
+
+		&-text {
+			margin-bottom: 32px;
+			color: $light-gray-text;
+			line-height: 1.625;
+			font-size: 1rem;
+		}
+	}
+
+	// Process Section
+	&__process {
+		padding-block: 80px;
+
+		&-header {
+			text-align: center;
+		}
+
+		&-title {
+			margin-bottom: 16px;
+			font-family: "CinzelDecorative";
+			color: $primary-text;
+			font-size: 2.25rem;
+			font-weight: 400;
+		}
+
+		&-text {
+			margin-inline: 150px;
+			font-size: 1rem;
+			color: $light-gray-text;
+		}
+
+		&-steps {
+			margin-top: 64px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		&-step {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			gap: 12px;
+
+			&-title {
+				font-family: "CinzelDecorative";
+				color: $primary-text;
+				font-size: 1.25rem;
+				font-weight: 400;
+			}
+
+			&-text {
+				color: $light-gray-text;
+			}
+		}
+
+		&-number {
+			margin-bottom: 16px;
+			font-family: "CinzelDecorative";
+			color: $light-gold;
+			font-size: 3rem;
+			font-weight: 400;
+		}
+	}
+	// Subscription Section
+	&__subscription {
+		padding-block: 80px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 12px;
+
+		&-icon {
+			margin-bottom: 24px;
+			color: $gold-accent;
+			width: 40px;
+			height: 40px;
+		}
+
+		&-title {
+			font-family: "CinzelDecorative";
+			color: $primary-text;
+			font-size: 2.25rem;
+			font-weight: 400;
+		}
+
+		&-info {
+			color: $light-gray-text;
+		}
+
+		&-action {
+			margin-top: 24px;
+			display: flex;
+			align-items: center;
+			gap: 12px;
+		}
+
+		&-input {
+			width: 560px;
+			max-width: 100%;
+			padding: 12px 20px;
+			border: 1px solid rgba($gold-accent, 0.6);
+			border-radius: $border-radius;
+			background: rgba(255, 255, 255, 0.55);
+			backdrop-filter: blur(8px);
+			-webkit-backdrop-filter: blur(8px);
+
+			font-family: inherit;
+			font-size: 1.125rem;
+			font-weight: 300;
+			line-height: 1.4;
+			color: $primary-text;
+
+			box-shadow:
+				inset 0 1px 0 rgba(255, 255, 255, 0.7),
+				0 8px 24px rgba(26, 43, 76, 0.08);
+
+			transition:
+				border-color 0.25s ease,
+				box-shadow 0.25s ease,
+				background-color 0.25s ease;
+
+			&::placeholder {
+				color: rgba($light-gray-text, 0.9);
+			}
+
+			&:focus {
+				outline: none;
+				border-color: $gold-accent;
+				background: rgba(255, 255, 255, 0.72);
+				box-shadow:
+					0 0 0 4px rgba($gold-accent, 0.16),
+					inset 0 1px 0 rgba(255, 255, 255, 0.8),
+					0 12px 28px rgba(26, 43, 76, 0.1);
+			}
+		}
+	}
+}

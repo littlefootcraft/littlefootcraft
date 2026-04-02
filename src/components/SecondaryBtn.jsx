@@ -1,0 +1,81 @@
+// SecondaryBtn.jsx
+
+import { Link } from "react-router-dom";
+
+const BUTTON_CONFIG = {
+	// "to-cart": {
+	// 	icon: <LuShoppingBag size={20} />,
+	// 	iconPosition: "left",
+	// },
+	// order: {
+	// 	icon: <IoArrowForwardOutline size={20} />,
+	// 	iconPosition: "right",
+	// },
+	// login: {
+	// 	icon: <HiOutlineLogin size={20} />,
+	// 	iconPosition: "left",
+	// },
+	// register: {
+	// 	icon: <FiLogIn size={20} />,
+	// 	iconPosition: "left",
+	// },
+	// confirm: {
+	// 	iconPosition: "left",
+	// },
+
+	"to-other-page": {
+		// icon: <FaWandMagicSparkles />,
+		// iconPosition: "left",
+	},
+};
+
+export const SecondaryBtn = ({
+	children,
+	variant = "to-cart",
+	type = "button",
+	onClick,
+	disabled = false,
+	className = "",
+	to,
+}) => {
+	const config = BUTTON_CONFIG[variant];
+	const icon = config?.icon;
+	const iconPosition = config?.iconPosition ?? "left";
+
+	const classes = `secondary-button secondary-button--${variant} shared-shadow ${className}`;
+
+	const content = (
+		<>
+			{icon && iconPosition === "left" && (
+				<span className="secondary-button__icon">{icon}</span>
+			)}
+
+			<span className="secondary-button__label">{children}</span>
+
+			{icon && iconPosition === "right" && (
+				<span className="secondary-button__icon">{icon}</span>
+			)}
+		</>
+	);
+
+	if (to) {
+		return (
+			<Link
+				to={to}
+				className={classes}
+			>
+				{content}
+			</Link>
+		);
+	}
+	return (
+		<button
+			type={type}
+			className={classes}
+			onClick={onClick}
+			disabled={disabled}
+		>
+			{content}
+		</button>
+	);
+};
