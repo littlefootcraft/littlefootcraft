@@ -5,6 +5,7 @@ import { PrimaryBtn } from "../components/PrimaryBtn";
 
 import { Sparkles, ChevronRight, Star, Globe, Shield } from "lucide-react";
 import { SecondaryBtn } from "../components/SecondaryBtn";
+import { ProductCard } from "../components/ProductCard";
 
 const HomePage = () => {
 	return (
@@ -64,6 +65,9 @@ const HomePage = () => {
 							See all
 							<ChevronRight />
 						</button>
+					</div>
+					<div className="home-page__new-arrivals-cards">
+						<ProductCard />
 					</div>
 				</div>
 			</section>

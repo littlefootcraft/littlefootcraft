@@ -20,6 +20,7 @@ import {
 	IoCloseOutline,
 } from "react-icons/io5";
 // import { Globe } from "lucide-react";
+// import { Star } from "lucide-react";
 
 const Header = () => {
 	const { currentLang, setCurrentLang } = useLanguage();
