@@ -105,7 +105,7 @@ const Footer = () => {
 					href="mailto:info@littlefootcraft.art"
 				>
 					<FaRegEnvelope className="footer__metadata-icons" />
-					info@littlefootcraft.art
+					littlefootcraft@gmail.com
 				</a>
 				<a
 					className="footer__metadata-address"

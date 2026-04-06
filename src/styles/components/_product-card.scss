@@ -24,6 +24,7 @@
 	}
 
 	&__media {
+		min-height: 300px;
 		padding: 15px;
 		display: flex;
 		flex-direction: column;
@@ -40,7 +41,7 @@
 			background-position: center;
 			background-size: cover;
 			background-repeat: no-repeat;
-			background-image: inherit;
+			background-image: var(--card-image);
 			transition: transform 260ms cubic-bezier(0.2, 0.8, 0.2, 1);
 			transform: scale(1);
 			z-index: 0;

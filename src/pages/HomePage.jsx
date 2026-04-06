@@ -1,13 +1,31 @@
 //HomePage
-import HomeAboutImage from "../assets/images/home_about_image.jpeg";
+import HomeAboutImage from "./../../public/uploads/images/home_about_image.jpeg";
+import WorkshopsImage from "./../../public/uploads/images/home_workshop_image.jpeg";
 import MagicBadge from "../components/MagicBadge";
 import { PrimaryBtn } from "../components/PrimaryBtn";
 
 import { Sparkles, ChevronRight, Star, Globe, Shield } from "lucide-react";
 import { SecondaryBtn } from "../components/SecondaryBtn";
 import { ProductCard } from "../components/ProductCard";
+import { useProducts } from "../context/ProductsContext";
+import { useMemo } from "react";
 
 const HomePage = () => {
+	const products = useProducts();
+
+	// All products
+	const allProducts = useMemo(() => {
+		if (!Array.isArray(products)) {
+			return { new: [] };
+		}
+		return {
+			new: products.filter((product) => product.badges?.isNew === true),
+		};
+	}, [products]);
+
+	// New products only
+	const onlyFourNewProducts = allProducts.new.slice(0, 4);
+
 	return (
 		<section className="home-page">
 			<section className="home-page__top">
@@ -47,6 +65,7 @@ const HomePage = () => {
 					</li>
 				</ul>
 			</div>
+
 			{/* --- NEW ARRIVALS --- */}
 			<section className="home-page__new-arrivals">
 				<div className="container">
@@ -67,7 +86,12 @@ const HomePage = () => {
 						</button>
 					</div>
 					<div className="home-page__new-arrivals-cards">
-						<ProductCard />
+						{onlyFourNewProducts.map((p) => (
+							<ProductCard
+								key={p.sku}
+								product={p}
+							/>
+						))}
 					</div>
 				</div>
 			</section>
@@ -81,6 +105,37 @@ const HomePage = () => {
 					<div className="home-page__new-collections-cards"></div>
 				</div>
 			</section>
+
+			{/* --- ABOUT SECTION --- */}
+			<section className="home-page__about">
+				<div className="home-page__about-content container">
+					<img
+						className="home-page__about-image"
+						src={HomeAboutImage}
+						alt="Our story"
+					/>
+					<div className="home-page__about-info">
+						<span>Our Story</span>
+						<h2 className="home-page__about-title">
+							Where Magic Meets Craftsmanship
+						</h2>
+						<article className="home-page__about-text">
+							LittleFootCraft was born from a love of quiet beauty — of
+							forgotten materials, second chances, and stories waiting to be
+							told. Each brooch is handcrafted with care and intuition, becoming
+							a small, soulful piece meant to feel personal, rare, and full of
+							gentle magic.
+						</article>
+						<SecondaryBtn
+							variant="to-other-page"
+							to="/about"
+						>
+							Learn More
+						</SecondaryBtn>
+					</div>
+				</div>
+			</section>
+
 			{/* --- PROCESS SECTION --- */}
 			<section className="home-page__process">
 				<div className="container">
@@ -122,35 +177,46 @@ const HomePage = () => {
 				</div>
 			</section>
 
-			{/* --- ABOUT SECTION --- */}
-			<section className="home-page__about">
-				<div className="home-page__about-content container">
-					<img
-						className="home-page__about-image"
-						src={HomeAboutImage}
-						alt="Our story"
-					/>
-					<div className="home-page__about-info">
-						<span>Our Story</span>
-						<h2 className="home-page__about-title">
-							Where Magic Meets Craftsmanship
+			{/* --- WORKSHOPS --- */}
+			<div className="home-page__workshops">
+				<div className="home-page__workshops-content container">
+					<div className="home-page__workshops-info">
+						<span>Workshops</span>
+						<h2 className="home-page__workshops-title">
+							Introduction to Brooch Making
 						</h2>
-						<article className="home-page__about-text">
-							LittleFootCraft was born from a love of quiet beauty — of
-							forgotten materials, second chances, and stories waiting to be
-							told. Each brooch is handcrafted with care and intuition, becoming
-							a small, soulful piece meant to feel personal, rare, and full of
-							gentle magic.
+						<article className="home-page__workshops-text">
+							Learn the fundamentals of brooch crafting in this
+							beginner-friendly workshop.
 						</article>
+						<div className="home-page__workshops-details">
+							<div className="home-page__workshops-duration">
+								<h4>Duration</h4>
+								<span>3 hours</span>
+							</div>
+							<div className="home-page__workshops-group">
+								<h4>Group Size</h4>
+								<span>6 participants</span>
+							</div>
+							<div className="home-page__workshops-price">
+								<h4>Price</h4>
+								<span>€85</span>
+							</div>
+						</div>
 						<SecondaryBtn
 							variant="to-other-page"
 							to="/about"
 						>
-							Learn More
+							See all workshops
 						</SecondaryBtn>
 					</div>
+					<img
+						className="home-page__workshops-image"
+						src={WorkshopsImage}
+						alt="Workshop image"
+					/>
 				</div>
-			</section>
+			</div>
 
 			{/* --- SUBSCRIBE SECTION --- */}
 			<section className="home-page__subscription container">

@@ -1,0 +1,40 @@
+{
+	"sku": "BR0326-002",
+	"name": {
+		"en": "Brooch Jellyfish Ann Blue Lulworth",
+		"ua": "Брошка Медуза Анна Блю Лулворт"
+	},
+	"specifications": {
+		"category": "Brooch",
+		"design": {
+			"en": "Jellyfish",
+			"ua": "Медуза"
+		},
+		"size": {
+			"en": "3.5 cm x 3.5 cm",
+			"ua": "3.5 см x 3.5 см"
+		},
+		"color": ["blue"]
+	},
+	"description": {
+		"en": "This enchanting brooch shimmers in soft gray-blue hues, its iridescent “tentacles” shifting colors like a rainbow dancing in the light. Inspired by the mysterious depths of the Hogwarts Lake, its design combines delicate lightness with fluid movement, making the brooch seem almost alive. A perfect magical artifact for anyone wishing to add a touch of sorcery and elegance to any outfit.",
+		"ua": "Ця чарівна брошка мерехтить у м'яких сіро-блакитних тонах, її перламутрові «щупальця» переливаються цветами, словно радуга, танцующая на свету. Вдохновленная загадочными глубинами озера Хогвартс, ее дизайн сочетает в себе деликатную легкость и плавное движение, делая брошку почти живой. Идеальный магический артефакт для тех, кто хочет добавить нотку волшебства и элегантности в любой наряд."
+	},
+	"price": 100,
+	"oldPrice": null,
+	"currency": "EURO",
+	"badges": {
+		"isTop": false,
+		"isNew": true
+	},
+	"video": null,
+	"photo": [
+		{
+			"src": "/uploads/images/broches/BR0326-002-1.jpeg",
+			"alt": {
+				"en": "Jellyfish Ann Blue Lulworth Brooch - Front View",
+				"ua": "Брошка Медуза Анна Блю Лулворт - Вид спереди"
+			}
+		}
+	]
+}

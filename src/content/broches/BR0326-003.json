@@ -1,0 +1,40 @@
+{
+	"sku": "BR0326-003",
+	"name": {
+		"en": "Brooch Jellyfish Dahlia Lali",
+		"ua": "Брошка Медуза Жоржина Лалі"
+	},
+	"specifications": {
+		"category": "Brooch",
+		"design": {
+			"en": "Jellyfish",
+			"ua": "Медуза"
+		},
+		"size": {
+			"en": "3.5 cm x 3.5 cm",
+			"ua": "3.5 см x 3.5 см"
+		},
+		"color": ["blue", "red", "yellow", "pink"]
+	},
+	"description": {
+		"en": "This unique handmade brooch features a floral body in warm golden tones, with vibrant, iridescent tentacles that shimmer like a living kaleidoscope. Inspired by nature and art, the design combines lightness, fluidity, and movement, giving the impression that the brooch is almost alive. A bold and creative accessory for those who wish to express their individuality and add a touch of artistic flair to any outfit.",
+		"ua": "Ця унікальна ручна брошка має квіткову основу в теплих золотистих відтінках, доповнену яскравими переливчастими елементами, що мерехтять, немов живий калейдоскоп. Натхненна природою та мистецтвом, вона поєднує легкість, плавність і рух, створюючи враження, ніби брошка майже оживає. Це сміливий і креативний аксесуар для тих, хто хоче підкреслити свою індивідуальність і додати художнього акценту до будь-якого образу."
+	},
+	"price": 90,
+	"oldPrice": null,
+	"currency": "EURO",
+	"badges": {
+		"isTop": false,
+		"isNew": true
+	},
+	"video": null,
+	"photo": [
+		{
+			"src": "/uploads/images/broches/BR0326-003-1.jpeg",
+			"alt": {
+				"en": "Jellyfish Dahlia Lali Brooch - Front View",
+				"ua": "Брошка Медуза Жоржина Лалі - Вид спереди"
+			}
+		}
+	]
+}

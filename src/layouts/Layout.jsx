@@ -6,6 +6,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import NotFoundPage from "./../pages/NotFoundPage";
 import { supportedLanguages } from "../utils/localeConfig";
+import { ProductsProvider } from "../context/ProductsContext";
 
 export const Layout = () => {
 	const { lang } = useParams();
@@ -22,7 +23,9 @@ export const Layout = () => {
 			<div className="page">
 				<Header />
 				<main>
-					<Outlet />
+					<ProductsProvider>
+						<Outlet />
+					</ProductsProvider>
 				</main>
 				<Footer />
 			</div>

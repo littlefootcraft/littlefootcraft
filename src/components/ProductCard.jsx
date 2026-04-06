@@ -3,27 +3,30 @@
 import { Link } from "react-router-dom";
 import MagicBadge from "./MagicBadge";
 
-import image from "/uploads/images/broches/broche_1.png";
-
 import { Star } from "lucide-react";
 import { IoArrowForward } from "react-icons/io5";
+import { useProductCardState } from "../hooks/useProductCardState";
 
-export const ProductCard = () => {
+export const ProductCard = ({ product }) => {
+	const { name, price, badges, specifications } = product;
+	const { image, selectedSku } = useProductCardState(product);
+
 	// background image style
-	const imageStyle = {
-		backgroundImage: image ? `url(${image})` : undefined,
-	};
+	const imageStyle = image ? { "--card-image": `url(${image})` } : {};
+	console.log("product", product);
+	console.log("image", image);
 	return (
 		<div className="product-card">
-			<Link to="/product">
+			<Link to={`/shop/${product.sku}`}>
 				<div
 					className="product-card__media"
 					style={imageStyle}
-					alt="broche"
 				>
 					{/* overlay слой */}
 					<div className="product-card__media-top">
-						<MagicBadge className="product-card__badge">New</MagicBadge>
+						{badges?.isNew && (
+							<MagicBadge className="product-card__badge">New</MagicBadge>
+						)}
 						<button className="product-card__favorite-btn">
 							<Star />
 						</button>
@@ -46,10 +49,12 @@ export const ProductCard = () => {
 					</div>
 				</div>
 				<div className="product-card__footer">
-					<span className="product-card__category">Category</span>
-					<h3 className="product-card__title">Product Name</h3>
+					<span className="product-card__category">
+						{specifications?.category}
+					</span>
+					<h3 className="product-card__title">{name?.en}</h3>
 					<div className="product-card__price-container">
-						<p className="product-card__price">€99.99</p>
+						<p className="product-card__price">€{price}</p>
 						<span>
 							View Details <IoArrowForward />
 						</span>

@@ -42,3 +42,16 @@ main {
 	display: flex;
 	flex-direction: column;
 }
+
+.main-title {
+	font-family: "CinzelDecorative";
+	color: $primary-text;
+	font-size: 2.25rem;
+	font-weight: 400;
+}
+
+.text {
+	color: $light-gray-text;
+	line-height: 1.625;
+	font-size: 1rem;
+}
