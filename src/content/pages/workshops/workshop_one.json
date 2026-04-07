@@ -1,0 +1,57 @@
+{
+	"id": "intro-brooch-making",
+	"slug": {
+		"en": "introduction-to-brooch-making",
+		"ua": "vstup-do-stvorennia-broshky"
+	},
+	"title": {
+		"en": "Introduction to Brooch Making",
+		"ua": "Вступ до створення брошки"
+	},
+	"subtitle": {
+		"en": "Learn the fundamentals of brooch crafting in this beginner-friendly workshop.",
+		"ua": "Опануйте основи створення брошок на цьому воркшопі для початківців."
+	},
+	"category": "brooch-making",
+	"level": "beginner",
+	"duration": {
+		"value": 3,
+		"unit": "hours"
+	},
+	"participants": {
+		"min": 1,
+		"max": 6
+	},
+	"location": "Ireland, Galway",
+	"price": 85,
+	"currency": "EUR",
+	"includes": {
+		"en": [
+			"All materials",
+			"Tea & refreshments",
+			"Your finished brooch to take home"
+		],
+		"ua": [
+			"Усі матеріали",
+			"Чай та частування",
+			"Готова брошка, яку ви заберете додому"
+		]
+	},
+	"upcomingDates": ["2026-06-14", "2026-08-21", "2026-08-28"],
+	"description": {
+		"en": "A warm, creative introduction to brooch making where participants learn the basics of composition, materials, and finishing techniques.",
+		"ua": "Теплий творчий воркшоп, де учасники знайомляться з основами композиції, матеріалами та техніками завершення брошки."
+	},
+	"image": {
+		"src": "/uploads/images/workshops/introduction-to-brooch-making.png",
+		"alt": {
+			"en": "Introduction to Brooch Making workshop",
+			"ua": "Воркшоп Вступ до створення брошки"
+		}
+	},
+	"badges": {
+		"isFeatured": true,
+		"isNew": false
+	},
+	"isActive": true
+}

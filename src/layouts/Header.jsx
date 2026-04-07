@@ -4,7 +4,7 @@ import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 import { NavItems } from "../utils/navItems";
-import { useLanguage } from "../utils/LanguageContext";
+import { useLanguage } from "../context/LanguageContext";
 
 import { menuUA, menuEN } from "../translations/translation";
 import { Badge } from "../components/Badge";

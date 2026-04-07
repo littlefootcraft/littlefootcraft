@@ -1,12 +1,13 @@
 //Layout.jsx
 import { Outlet, useParams } from "react-router-dom";
-import { LanguageProvider } from "../utils/LanguageContext";
+import { LanguageProvider } from "../context/LanguageContext";
 
 import Header from "./Header";
 import Footer from "./Footer";
 import NotFoundPage from "./../pages/NotFoundPage";
 import { supportedLanguages } from "../utils/localeConfig";
 import { ProductsProvider } from "../context/ProductsContext";
+import { WorkshopsProvider } from "../context/WorkshopsContext";
 
 export const Layout = () => {
 	const { lang } = useParams();
@@ -24,7 +25,9 @@ export const Layout = () => {
 				<Header />
 				<main>
 					<ProductsProvider>
-						<Outlet />
+						<WorkshopsProvider>
+							<Outlet />
+						</WorkshopsProvider>
 					</ProductsProvider>
 				</main>
 				<Footer />

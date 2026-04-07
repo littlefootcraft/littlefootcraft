@@ -1,0 +1,39 @@
+//styles/abstracts/_mixins.scss
+@use "./../base/variables" as *;
+
+@mixin product-cards-grid($columns: 4, $gap: 24px) {
+	display: grid;
+	grid-template-columns: repeat($columns, minmax(0, 1fr));
+	gap: $gap;
+	row-gap: 60px;
+
+	// @include tablet-lg {
+	// 	grid-template-columns: repeat(2, minmax(0, 1fr));
+	// 	column-gap: 14px;
+	// 	row-gap: 44px;
+	// }
+
+	// @include tablet {
+	// 	grid-template-columns: repeat(2, minmax(0, 1fr));
+	// 	column-gap: 14px;
+	// 	row-gap: 44px;
+	// }
+
+	// @include tablet-sm {
+	// 	grid-template-columns: repeat(2, minmax(0, 1fr));
+	// 	column-gap: 14px;
+	// 	row-gap: 44px;
+	// }
+
+	// @include mobile {
+	// 	grid-template-columns: repeat(2, minmax(0, 1fr));
+	// 	column-gap: 14px;
+	// 	row-gap: 44px;
+	// }
+
+	// @include mobile-sm {
+	// 	grid-template-columns: repeat(2, minmax(0, 1fr));
+	// 	column-gap: 14px;
+	// 	row-gap: 44px;
+	// }
+}

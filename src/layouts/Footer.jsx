@@ -9,7 +9,7 @@ import { FaRegEnvelope } from "react-icons/fa6";
 
 import { IoLocationOutline } from "react-icons/io5";
 import { FaInstagram, FaTiktok } from "react-icons/fa6";
-import { useLanguage } from "../utils/LanguageContext";
+import { useLanguage } from "../context/LanguageContext";
 import { PrimaryBtn } from "../components/PrimaryBtn";
 
 const Footer = () => {

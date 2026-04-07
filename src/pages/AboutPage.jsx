@@ -2,9 +2,10 @@
 
 import { PrimaryBtn } from "../components/PrimaryBtn";
 // import { SecondaryBtn } from "../components/SecondaryBtn";
-import AboutPageTopImage from "./../../public/uploads/images/about_page_top.jpeg";
+// import AboutPageTopImage from "./../../public/uploads/images/about_page_top.jpeg";
 
 import { WandSparkles, Star, Heart, Gem, Sparkles } from "lucide-react";
+const AboutPageTopImage = "/uploads/images/about_page_top.jpeg";
 
 const AboutPage = () => {
 	return (

@@ -1,0 +1,84 @@
+@use "./../base/variables" as *;
+@use "./../abstracts/mixins" as *;
+
+.workshop-card {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 48px;
+	color: $secondary-text;
+	// border: 1px solid $card-borders;
+	// border-radius: $border-radius-sm;
+
+	&__image {
+		border-radius: $border-radius-sm;
+	}
+
+	&__content {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	&__subtitle {
+		margin-top: 16px;
+		margin-bottom: 24px;
+		font-size: 1.125rem;
+	}
+
+	&__meta {
+		display: flex;
+		align-items: center;
+		gap: 20px;
+
+		& span {
+			display: flex;
+			align-items: center;
+			gap: 5px;
+
+			& svg {
+				color: $gold-accent;
+			}
+		}
+	}
+
+	&__calendar {
+		margin-top: 24px;
+		display: flex;
+		gap: 20px;
+		flex-direction: column;
+
+		&-title {
+			text-transform: uppercase;
+			color: $gold-accent;
+			letter-spacing: 0.08em;
+		}
+
+		&-items {
+			display: flex;
+			flex-direction: row;
+			gap: 20px;
+		}
+
+		&-item {
+			padding: 2px 16px;
+			border: 1px solid $gold-accent;
+			color: $primary-text;
+			border-radius: $border-radius-sm;
+			font-size: 1.125rem;
+		}
+	}
+
+	&__footer {
+		display: flex;
+		align-items: flex-end;
+		justify-content: space-between;
+	}
+
+	&__price {
+		margin-top: 22px;
+		color: $gold-accent;
+		font-size: 2.25rem;
+		font-family: "CinzelDecorative";
+		font-weight: 700;
+	}
+}

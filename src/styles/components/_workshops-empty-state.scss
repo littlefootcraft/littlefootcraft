@@ -1,0 +1,29 @@
+@use "./../base/variables" as *;
+@use "./../abstracts/mixins" as *;
+
+.workshops-empty {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 48px;
+	color: $secondary-text;
+	// border: 1px solid $card-borders;
+	// border-radius: $border-radius-sm;
+
+	&__image {
+		border-radius: $border-radius-sm;
+	}
+
+	&__content {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	&__title {
+		margin-bottom: 40px;
+	}
+
+	&__info {
+		font-size: 1.25rem;
+	}
+}

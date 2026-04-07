@@ -29,6 +29,7 @@ const BUTTON_CONFIG = {
 	// confirm: {
 	// 	iconPosition: "left",
 	// },
+	booking: {},
 	subscription: { icon: <FaWandSparkles />, iconPosition: "right" },
 	footer: { icon: <FaWandSparkles />, iconPosition: "right" },
 

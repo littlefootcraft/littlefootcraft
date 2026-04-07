@@ -1,0 +1,42 @@
+@use "./../../styles/base/variables" as *;
+
+.pagination {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	// margin-top: 40px;
+	gap: 12px;
+	// padding: 24px 0;
+	color: $primary-text;
+
+	&__pages {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+	}
+
+	&__arrow,
+	&__page {
+		background: transparent;
+		border: none;
+		padding: 8px 10px;
+		border-radius: 10px;
+		cursor: pointer;
+		font-family: inherit;
+		font-size: 1rem;
+	}
+
+	&__arrow:disabled {
+		opacity: 0.35;
+		cursor: default;
+	}
+
+	&__page--active {
+		font-weight: 700;
+	}
+
+	&__dots {
+		padding: 0 6px;
+		opacity: 0.7;
+	}
+}

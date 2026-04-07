@@ -1,2 +1,30 @@
 @use "./../base/variables" as *;
 @use "./../abstracts/mixins" as *;
+
+.shop-page {
+	background-color: $misty-ivory;
+
+	&__content {
+		// border-top: 1px solid $card-borders;
+		// border-bottom: 1px solid $card-borders;
+	}
+
+	&__top {
+		padding-block: 40px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+
+		&-title {
+			font-size: 60px;
+			font-family: "CinzelDecorative";
+			color: $primary-text;
+			font-weight: 400;
+		}
+	}
+
+	&__cards {
+		@include product-cards-grid;
+	}
+}

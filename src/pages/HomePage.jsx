@@ -1,6 +1,6 @@
 //HomePage
-import HomeAboutImage from "./../../public/uploads/images/home_about_image.jpeg";
-import WorkshopsImage from "./../../public/uploads/images/home_workshop_image.jpeg";
+// import HomeAboutImage from "/public/uploads/images/home_about_image.jpeg";
+// import WorkshopsImage from "/public/uploads/images/home_workshop_image.jpeg";
 import MagicBadge from "../components/MagicBadge";
 import { PrimaryBtn } from "../components/PrimaryBtn";
 
@@ -9,6 +9,9 @@ import { SecondaryBtn } from "../components/SecondaryBtn";
 import { ProductCard } from "../components/ProductCard";
 import { useProducts } from "../context/ProductsContext";
 import { useMemo } from "react";
+
+const HomeAboutImage = "/uploads/images/home_about_image.jpeg";
+const WorkshopsImage = "/uploads/images/home_workshop_image.jpeg";
 
 const HomePage = () => {
 	const products = useProducts();
@@ -71,7 +74,9 @@ const HomePage = () => {
 				<div className="container">
 					<div className="home-page__new-arrivals-top">
 						<div>
-							<h2 className="home-page__new-arrivals-title">New Arrivals</h2>
+							<h2 className="home-page__new-arrivals-title main-title">
+								New Arrivals
+							</h2>
 							<p className="home-page__new-arrivals-info">
 								Discover our latest enchanted pieces
 							</p>
@@ -97,12 +102,12 @@ const HomePage = () => {
 			</section>
 
 			{/* --- COLLECTIONS --- */}
-			<section className="home-page__new-collections">
+			<section className="home-page__collections">
 				<div className="container">
-					<h2 className="home-page__new-collections-title">
+					<h2 className="home-page__collections-title main-title">
 						Explore Collections
 					</h2>
-					<div className="home-page__new-collections-cards"></div>
+					<div className="home-page__collections-cards"></div>
 				</div>
 			</section>
 
@@ -116,10 +121,10 @@ const HomePage = () => {
 					/>
 					<div className="home-page__about-info">
 						<span>Our Story</span>
-						<h2 className="home-page__about-title">
+						<h2 className="home-page__about-title main-title">
 							Where Magic Meets Craftsmanship
 						</h2>
-						<article className="home-page__about-text">
+						<article className="home-page__about-text text">
 							LittleFootCraft was born from a love of quiet beauty — of
 							forgotten materials, second chances, and stories waiting to be
 							told. Each brooch is handcrafted with care and intuition, becoming
@@ -140,7 +145,7 @@ const HomePage = () => {
 			<section className="home-page__process">
 				<div className="container">
 					<div className="home-page__process-header">
-						<h2 className="home-page__process-title">
+						<h2 className="home-page__process-title main-title">
 							Why Every Piece is Unique
 						</h2>
 						<p className="home-page__process-text">
@@ -182,10 +187,10 @@ const HomePage = () => {
 				<div className="home-page__workshops-content container">
 					<div className="home-page__workshops-info">
 						<span>Workshops</span>
-						<h2 className="home-page__workshops-title">
+						<h2 className="home-page__workshops-title main-title">
 							Introduction to Brooch Making
 						</h2>
-						<article className="home-page__workshops-text">
+						<article className="home-page__workshops-text text">
 							Learn the fundamentals of brooch crafting in this
 							beginner-friendly workshop.
 						</article>
@@ -221,7 +226,7 @@ const HomePage = () => {
 			{/* --- SUBSCRIBE SECTION --- */}
 			<section className="home-page__subscription container">
 				<Sparkles className="home-page__subscription-icon" />
-				<h1 className="home-page__subscription-title">
+				<h1 className="home-page__subscription-title main-title">
 					Join Our Enchanted Circle
 				</h1>
 				<p className="home-page__subscription-info">

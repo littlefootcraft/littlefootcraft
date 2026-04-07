@@ -1,2 +1,23 @@
 @use "./../base/variables" as *;
 @use "./../abstracts/mixins" as *;
+
+.workshops-page {
+	&__top {
+		background-color: $misty-ivory;
+		padding-block: 40px;
+		display: flex;
+		text-align: center;
+
+		&-title {
+			font-size: 60px;
+			font-family: "CinzelDecorative";
+			color: $primary-text;
+			font-weight: 400;
+		}
+	}
+
+	&__cards,
+	&__empty {
+		padding-block: 80px;
+	}
+}
