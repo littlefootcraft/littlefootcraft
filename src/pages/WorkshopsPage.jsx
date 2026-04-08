@@ -36,8 +36,8 @@ const WorkshopsPage = () => {
 				<div className="container">
 					<h1 className="workshops-page__top-title">Enchanted Treasures</h1>
 					<span className="workshops-page__top-text text">
-						Each piece is handcrafted with care and imbued with magic. Find your
-						perfect treasure.
+						Step into a warm creative space and make something beautiful with
+						your own hands.
 					</span>
 				</div>
 			</div>
