@@ -13,8 +13,7 @@ export const ProductCard = ({ product }) => {
 
 	// background image style
 	const imageStyle = image ? { "--card-image": `url(${image})` } : {};
-	console.log("product", product);
-	console.log("image", image);
+
 	return (
 		<div className="product-card">
 			<Link to={`/shop/${product.sku}`}>

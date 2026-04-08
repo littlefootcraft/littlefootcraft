@@ -9,7 +9,6 @@ export const WorkshopsProvider = ({ children }) => {
 	const modules = import.meta.glob("../content/pages/workshops/*.json", {
 		eager: true,
 	});
-	console.log("modules", modules);
 
 	const workshops = useMemo(() => {
 		return Object.values(modules).map((m) => m.default ?? m);

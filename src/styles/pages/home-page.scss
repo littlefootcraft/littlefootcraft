@@ -68,11 +68,15 @@
 
 		&-title {
 			font-size: 4.5rem;
+			font-size: 5rem;
 			margin-top: 60px;
-			font-family: "CinzelDecorative";
+			font-family: "CinzelDecorative", "Sweet-Mavka-Script";
 			font-weight: 700;
 			color: $misty-ivory;
 			line-height: 1.1;
+			text-align: center;
+			// letter-spacing: 0.1em;
+			// text-transform: uppercase;
 
 			//Gradient text effect
 			background: linear-gradient(
@@ -270,6 +274,7 @@
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
+			gap: 20px;
 		}
 
 		&-step {
@@ -288,6 +293,7 @@
 
 			&-text {
 				color: $light-gray-text;
+				text-align: center;
 			}
 		}
 

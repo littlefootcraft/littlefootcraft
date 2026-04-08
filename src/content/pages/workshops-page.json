@@ -1,0 +1,45 @@
+{
+	"slug": "workshops-page",
+	"seo": {
+		"title": {
+			"en": "Workshops | LittleFootCraft",
+			"ua": "Майстер-класи | LittleFootCraft"
+		},
+		"description": {
+			"en": "Join LittleFootCraft workshops and create something beautiful with your own hands.",
+			"ua": "Приєднуйтеся до майстер-класів LittleFootCraft і створюйте щось прекрасне власними руками."
+		}
+	},
+	"top": {
+		"title": {
+			"en": "Enchanted Workshops",
+			"ua": "Чарівні майстер-класи"
+		},
+		"text": {
+			"en": "Step into a warm creative space and make something beautiful with your own hands.",
+			"ua": "Пориньте у теплий творчий простір і створіть щось прекрасне власними руками."
+		}
+	},
+	"emptyState": {
+		"title": {
+			"en": "No Workshops Available Right Now",
+			"ua": "Наразі майстер-класів немає"
+		},
+		"info": {
+			"paragraphs": [
+				{
+					"en": "Join our mailing list to be the first to hear about new workshop dates.",
+					"ua": "Приєднуйтесь до нашої розсилки, щоб першими дізнаватися про нові дати майстер-класів."
+				},
+				{
+					"en": "We also offer custom private workshops for groups of friends or colleagues — a magical creative experience where each guest makes a unique handmade piece.",
+					"ua": "Ми також проводимо індивідуальні приватні майстер-класи для груп друзів або колег — це чарівний творчий досвід, де кожен гість створює унікальний виріб ручної роботи."
+				},
+				{
+					"en": "Please contact us to arrange a private workshop — we’ll create a magical experience tailored just for you.",
+					"ua": "Будь ласка, зв’яжіться з нами, щоб організувати приватний майстер-клас — ми створимо чарівний досвід, підібраний саме для вас."
+				}
+			]
+		}
+	}
+}

@@ -1,6 +1,8 @@
 //HomePage
-// import HomeAboutImage from "/public/uploads/images/home_about_image.jpeg";
-// import WorkshopsImage from "/public/uploads/images/home_workshop_image.jpeg";
+
+import { useLanguage } from "../context/LanguageContext";
+import HomePageContent from "../content/pages/home-page.json";
+import WorkshopsPageContent from "../content/pages/workshops-page.json";
 import MagicBadge from "../components/MagicBadge";
 import { PrimaryBtn } from "../components/PrimaryBtn";
 
@@ -9,12 +11,17 @@ import { SecondaryBtn } from "../components/SecondaryBtn";
 import { ProductCard } from "../components/ProductCard";
 import { useProducts } from "../context/ProductsContext";
 import { useMemo } from "react";
+import { useWorkshops } from "../context/WorkshopsContext";
 
-const HomeAboutImage = "/uploads/images/home_about_image.jpeg";
 const WorkshopsImage = "/uploads/images/home_workshop_image.jpeg";
 
-const HomePage = () => {
+const HomePage = ({ workshop }) => {
 	const products = useProducts();
+	const workshops = useWorkshops();
+
+	// For language switching
+	const { currentLang } = useLanguage();
+	const t = (field) => field?.[currentLang] ?? field?.en ?? "";
 
 	// All products
 	const allProducts = useMemo(() => {
@@ -29,21 +36,66 @@ const HomePage = () => {
 	// New products only
 	const onlyFourNewProducts = allProducts.new.slice(0, 4);
 
+	// To show only active workshops
+	const visibleWorkshops = useMemo(() => {
+		const today = new Date();
+		today.setHours(0, 0, 0, 0);
+
+		return workshops
+			.map((workshop) => {
+				const futureDates = (workshop.upcomingDates?.dates ?? []).filter(
+					(date) => {
+						const workshopDate = new Date(date);
+						return workshopDate >= today;
+					},
+				);
+
+				return {
+					...workshop,
+					upcomingDates: {
+						...workshop.upcomingDates,
+						dates: futureDates,
+					},
+				};
+			})
+			.filter((workshop) => {
+				return (
+					workshop.isActive !== false &&
+					workshop.upcomingDates?.dates?.length > 0
+				);
+			});
+	}, [workshops]);
+
+	// Torn date from "2026-02-14" to Feb 14 for Workshops
+	// const formatDate = (dateStr, lang = "en") => {
+	// 	return new Intl.DateTimeFormat(lang, {
+	// 		month: "short",
+	// 		day: "numeric",
+	// 	}).format(new Date(dateStr));
+	// };
+	const formatDate = (dateStr, lang = "en") => {
+		const locale = lang === "ua" ? "uk-UA" : "en-US";
+
+		return new Intl.DateTimeFormat(locale, {
+			day: "numeric",
+			month: "long",
+		}).format(new Date(dateStr));
+	};
+
 	return (
 		<section className="home-page">
 			<section className="home-page__top">
 				<div className="home-page__top-content container">
-					<MagicBadge>✦ Handcrafted with Magic ✦</MagicBadge>
-					<h1 className="home-page__top-title">Made to Tell Stories</h1>
-					<p className="home-page__top-info">
-						One-of-a-kind handcrafted pieces, each imbued with story, care, and
-						a touch of magic.
-					</p>
+					<MagicBadge>✦ {t(HomePageContent.hero.badge)} ✦</MagicBadge>
+					<h1 className="home-page__top-title">
+						{t(HomePageContent.hero.title)}
+					</h1>
+					<p className="home-page__top-info">{t(HomePageContent.hero.text)}</p>
 					<PrimaryBtn
 						variant="to-catalog"
 						to="/shop"
 					>
-						Discover collection
+						{t(HomePageContent.hero.button.label)}
 					</PrimaryBtn>
 				</div>
 			</section>
@@ -52,19 +104,19 @@ const HomePage = () => {
 				<ul className="home-page__highlights-list container">
 					<li className="home-page__highlights-item">
 						<Sparkles />
-						Handcrafted with Care
+						{t(HomePageContent.highlights[0]["text-sparkles"])}
 					</li>
 					<li className="home-page__highlights-item">
 						<Star />
-						One-of-a-Kind Pieces
+						{t(HomePageContent.highlights[1]["text-star"])}
 					</li>
 					<li className="home-page__highlights-item">
 						<Globe />
-						Worldwide Shipping
+						{t(HomePageContent.highlights[2]["text-globe"])}
 					</li>
 					<li className="home-page__highlights-item">
 						<Shield />
-						Secure Ordering
+						{t(HomePageContent.highlights[3]["text-shield"])}
 					</li>
 				</ul>
 			</div>
@@ -75,10 +127,10 @@ const HomePage = () => {
 					<div className="home-page__new-arrivals-top">
 						<div>
 							<h2 className="home-page__new-arrivals-title main-title">
-								New Arrivals
+								{t(HomePageContent.newArrivals.title)}
 							</h2>
 							<p className="home-page__new-arrivals-info">
-								Discover our latest enchanted pieces
+								{t(HomePageContent.newArrivals.text)}
 							</p>
 						</div>
 						<button
@@ -86,7 +138,7 @@ const HomePage = () => {
 							variant="to-catalog"
 							to="/shop"
 						>
-							See all
+							{t(HomePageContent.newArrivals.button.label)}
 							<ChevronRight />
 						</button>
 					</div>
@@ -105,7 +157,7 @@ const HomePage = () => {
 			<section className="home-page__collections">
 				<div className="container">
 					<h2 className="home-page__collections-title main-title">
-						Explore Collections
+						{t(HomePageContent.collections.title)}
 					</h2>
 					<div className="home-page__collections-cards"></div>
 				</div>
@@ -116,26 +168,22 @@ const HomePage = () => {
 				<div className="home-page__about-content container">
 					<img
 						className="home-page__about-image"
-						src={HomeAboutImage}
-						alt="Our story"
+						src={HomePageContent.about.image?.src || null}
+						alt={t(HomePageContent.about.image.alt)}
 					/>
 					<div className="home-page__about-info">
-						<span>Our Story</span>
+						<span>{t(HomePageContent.about.eyebrow)}</span>
 						<h2 className="home-page__about-title main-title">
-							Where Magic Meets Craftsmanship
+							{t(HomePageContent.about.title)}
 						</h2>
 						<article className="home-page__about-text text">
-							LittleFootCraft was born from a love of quiet beauty — of
-							forgotten materials, second chances, and stories waiting to be
-							told. Each brooch is handcrafted with care and intuition, becoming
-							a small, soulful piece meant to feel personal, rare, and full of
-							gentle magic.
+							{t(HomePageContent.about.text)}
 						</article>
 						<SecondaryBtn
 							variant="to-other-page"
 							to="/about"
 						>
-							Learn More
+							{t(HomePageContent.about.button.label)}
 						</SecondaryBtn>
 					</div>
 				</div>
@@ -146,36 +194,38 @@ const HomePage = () => {
 				<div className="container">
 					<div className="home-page__process-header">
 						<h2 className="home-page__process-title main-title">
-							Why Every Piece is Unique
+							{t(HomePageContent.process.title)}
 						</h2>
 						<p className="home-page__process-text">
-							Our order request system ensures that each handcrafted piece finds
-							its destined owner. No mass production, no duplicates — just
-							artisanal magic.
+							{t(HomePageContent.process.text)}
 						</p>
 					</div>
 					<ul className="home-page__process-steps">
 						<li className="home-page__process-step">
 							<span className="home-page__process-number">1</span>
 							<h3 className="home-page__process-step-title">
-								Request to Order
+								{t(HomePageContent.process.steps[0]["title-one"])}
 							</h3>
 							<p className="home-page__process-step-text">
-								Choose your piece and submit an order request
+								{t(HomePageContent.process.steps[0]["text-one"])}
 							</p>
 						</li>
 						<li className="home-page__process-step">
 							<span className="home-page__process-number">2</span>
-							<h3 className="home-page__process-step-title">We Confirm</h3>
+							<h3 className="home-page__process-step-title">
+								{t(HomePageContent.process.steps[1]["title-two"])}
+							</h3>
 							<p className="home-page__process-step-text">
-								We verify availability and reach out to you
+								{t(HomePageContent.process.steps[1]["text-two"])}
 							</p>
 						</li>
 						<li className="home-page__process-step">
 							<span className="home-page__process-number">3</span>
-							<h3 className="home-page__process-step-title">Secure Payment</h3>
+							<h3 className="home-page__process-step-title">
+								{t(HomePageContent.process.steps[2]["title-three"])}
+							</h3>
 							<p className="home-page__process-step-text">
-								Complete your purchase knowing your piece is reserved
+								{t(HomePageContent.process.steps[2]["text-three"])}
 							</p>
 						</li>
 					</ul>
@@ -186,28 +236,45 @@ const HomePage = () => {
 			<div className="home-page__workshops">
 				<div className="home-page__workshops-content container">
 					<div className="home-page__workshops-info">
-						<span>Workshops</span>
-						<h2 className="home-page__workshops-title main-title">
-							Introduction to Brooch Making
-						</h2>
-						<article className="home-page__workshops-text text">
-							Learn the fundamentals of brooch crafting in this
-							beginner-friendly workshop.
-						</article>
-						<div className="home-page__workshops-details">
-							<div className="home-page__workshops-duration">
-								<h4>Duration</h4>
-								<span>3 hours</span>
+						<span>{t(HomePageContent.workshops.eyebrow)}</span>
+
+						{visibleWorkshops.length === 0 ? (
+							<div className="home-page__workshops__empty">
+								{/* <WorkshopsEmptyState /> */}
 							</div>
-							<div className="home-page__workshops-group">
-								<h4>Group Size</h4>
-								<span>6 participants</span>
+						) : (
+							<div className="home-page__workshops__cards">
+								{visibleWorkshops.map((workshop) => (
+									<div
+										key={workshop.id}
+										className="home-page__workshops-card"
+									>
+										<h2 className="home-page__workshops-title main-title">
+											Introduction to Brooch Making
+										</h2>
+										<article className="home-page__workshops-text text">
+											Learn the fundamentals of brooch crafting in this
+											beginner-friendly workshop.
+										</article>
+										<div className="home-page__workshops-details">
+											<div className="home-page__workshops-duration">
+												<h4>Duration</h4>
+												<span>3 hours</span>
+											</div>
+											<div className="home-page__workshops-group">
+												<h4>Group Size</h4>
+												<span>6 participants</span>
+											</div>
+											<div className="home-page__workshops-price">
+												<h4>Price</h4>
+												<span>€85</span>
+											</div>
+										</div>
+									</div>
+								))}
 							</div>
-							<div className="home-page__workshops-price">
-								<h4>Price</h4>
-								<span>€85</span>
-							</div>
-						</div>
+						)}
+
 						<SecondaryBtn
 							variant="to-other-page"
 							to="/about"
@@ -227,23 +294,23 @@ const HomePage = () => {
 			<section className="home-page__subscription container">
 				<Sparkles className="home-page__subscription-icon" />
 				<h1 className="home-page__subscription-title main-title">
-					Join Our Enchanted Circle
+					{t(HomePageContent.subscription.title)}
 				</h1>
 				<p className="home-page__subscription-info">
-					Subscribe to receive updates about new pieces and workshops
+					{t(HomePageContent.subscription.text)}
 				</p>
 				<div className="home-page__subscription-action">
 					<input
 						className="home-page__subscription-input"
 						type="text"
-						// placeholder={dict.placeholder}
+						placeholder={t(HomePageContent.subscription.placeholder)}
 					/>
 
 					<PrimaryBtn
 						variant="subscription"
 						type="button"
 					>
-						Subscribe
+						{t(HomePageContent.subscription.buttonLabel)}
 					</PrimaryBtn>
 				</div>
 			</section>

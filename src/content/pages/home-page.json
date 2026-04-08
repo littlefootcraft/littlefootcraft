@@ -1,0 +1,178 @@
+{
+	"slug": "home-page",
+	"seo": {
+		"title": {
+			"en": "LittleFootCraft — Handcrafted Brooches",
+			"ua": "LittleFootCraft — Брошки ручної роботи"
+		},
+		"description": {
+			"en": "One-of-a-kind handcrafted brooches filled with story, care, and a touch of magic.",
+			"ua": "Унікальні брошки ручної роботи, наповнені історією, турботою та краплею магії."
+		}
+	},
+	"main-image": "/uploads/hero-image.jpeg",
+	"hero": {
+		"badge": {
+			"en": "Handcrafted with Magic",
+			"ua": "Створено вручну з магією"
+		},
+		"title": {
+			"en": "Made to Tell Stories",
+			"ua": "Створено, щоб розповідати історії"
+		},
+		"text": {
+			"en": "One-of-a-kind handcrafted pieces, each imbued with story, care, and a touch of magic.",
+			"ua": "Унікальні вироби ручної роботи, кожен з яких наповнений історією, турботою та краплею магії."
+		},
+		"button": {
+			"label": {
+				"en": "Discover collection",
+				"ua": "Відкрити колекцію"
+			}
+		}
+	},
+	"highlights": [
+		{
+			"text-sparkles": {
+				"en": "Handcrafted with Care",
+				"ua": "Створено вручну з турботою"
+			}
+		},
+		{
+			"text-star": {
+				"en": "One-of-a-Kind Pieces",
+				"ua": "Унікальні вироби"
+			}
+		},
+		{
+			"text-globe": {
+				"en": "Worldwide Shipping",
+				"ua": "Доставка по всьому світу"
+			}
+		},
+		{
+			"text-shield": {
+				"en": "Secure Ordering",
+				"ua": "Безпечне замовлення"
+			}
+		}
+	],
+	"newArrivals": {
+		"title": {
+			"en": "New Arrivals",
+			"ua": "Новинки"
+		},
+		"text": {
+			"en": "Discover our latest enchanted pieces",
+			"ua": "Відкрийте наші найновіші чарівні вироби"
+		},
+		"button": {
+			"label": {
+				"en": "See all",
+				"ua": "Дивитися всі"
+			}
+		}
+	},
+	"collections": {
+		"title": {
+			"en": "Explore Collections",
+			"ua": "Переглянути колекції"
+		}
+	},
+	"about": {
+		"eyebrow": {
+			"en": "Our Story",
+			"ua": "Наша історія"
+		},
+		"title": {
+			"en": "Where Magic Meets Craftsmanship",
+			"ua": "Де магія зустрічається з майстерністю"
+		},
+		"text": {
+			"en": "LittleFootCraft was born from a love of quiet beauty — of forgotten materials, second chances, and stories waiting to be told. Each brooch is handcrafted with care and intuition, becoming a small, soulful piece meant to feel personal, rare, and full of gentle magic.",
+			"ua": "LittleFootCraft народився з любові до тихої краси — до забутих матеріалів, другого шансу та історій, що чекають бути розказаними. Кожна брошка створюється вручну з турботою та інтуїцією, стаючи маленьким, душевним виробом, що відчувається особливим, рідкісним і наповненим ніжною магією."
+		},
+		"image": {
+			"src": "/uploads/images/home_about_image.jpeg",
+			"alt": {
+				"en": "Our story",
+				"ua": "Наша історія"
+			}
+		},
+		"button": {
+			"label": {
+				"en": "Learn More",
+				"ua": "Дізнатися більше"
+			}
+		}
+	},
+	"process": {
+		"title": {
+			"en": "Why Every Piece is Unique",
+			"ua": "Чому кожен виріб унікальний"
+		},
+		"text": {
+			"en": "Our order request system ensures that each handcrafted piece finds its destined owner. No mass production, no duplicates — just artisanal magic.",
+			"ua": "Наша система запиту на замовлення допомагає кожному виробу ручної роботи знайти свого власника. Жодного масового виробництва, жодних дублікатів — лише реміснича магія."
+		},
+		"steps": [
+			{
+				"number": "1",
+				"title-one": {
+					"en": "Request to Order",
+					"ua": "Запит на замовлення"
+				},
+				"text-one": {
+					"en": "Choose your piece and submit an order request",
+					"ua": "Оберіть виріб і залиште запит на замовлення"
+				}
+			},
+			{
+				"number": "2",
+				"title-two": {
+					"en": "We Confirm",
+					"ua": "Ми підтверджуємо"
+				},
+				"text-two": {
+					"en": "We verify availability and reach out to you",
+					"ua": "Ми перевіряємо наявність і зв’язуємося з вами"
+				}
+			},
+			{
+				"number": "3",
+				"title-three": {
+					"en": "Secure Payment",
+					"ua": "Безпечна оплата"
+				},
+				"text-three": {
+					"en": "Complete your purchase knowing your piece is reserved",
+					"ua": "Завершіть покупку, знаючи, що ваш виріб уже зарезервовано"
+				}
+			}
+		]
+	},
+	"workshops": {
+		"eyebrow": {
+			"en": "Workshops",
+			"ua": "Майстер-класи"
+		}
+	},
+	"subscription": {
+		"title": {
+			"en": "Join Our Enchanted Circle",
+			"ua": "Приєднуйтесь до нашого чарівного кола"
+		},
+		"text": {
+			"en": "Subscribe to receive updates about new pieces and workshops",
+			"ua": "Підпишіться, щоб отримувати новини про нові вироби та майстер-класи"
+		},
+		"placeholder": {
+			"en": "Enter your email",
+			"ua": "Введіть ваш email"
+		},
+		"buttonLabel": {
+			"en": "Subscribe",
+			"ua": "Підписатися"
+		}
+	}
+}

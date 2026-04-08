@@ -13,16 +13,19 @@
 		"ua": "Опануйте основи створення брошок на цьому воркшопі для початківців."
 	},
 	"category": "brooch-making",
-	"level": "beginner",
+
 	"duration": {
 		"value": 3,
-		"unit": "hours"
+		"unit": {
+			"en": "hours",
+			"ua": "години"
+		}
 	},
 	"participants": {
-		"min": 1,
-		"max": 6
+		"text": { "en": "participants", "ua": "людей" },
+		"amount-of-people": 6
 	},
-	"location": "Ireland, Galway",
+	"location": { "en": "Ireland, Galway", "ua": "Галвей, Ірландія" },
 	"price": 85,
 	"currency": "EUR",
 	"includes": {
@@ -37,7 +40,10 @@
 			"Готова брошка, яку ви заберете додому"
 		]
 	},
-	"upcomingDates": ["2026-06-14", "2026-08-21", "2026-08-28"],
+	"upcomingDates": {
+		"title": { "en": "Upcoming Dates", "ua": "Найближчі дати" },
+		"dates": ["2026-06-14", "2026-07-21", "2026-08-28"]
+	},
 	"description": {
 		"en": "A warm, creative introduction to brooch making where participants learn the basics of composition, materials, and finishing techniques.",
 		"ua": "Теплий творчий воркшоп, де учасники знайомляться з основами композиції, матеріалами та техніками завершення брошки."

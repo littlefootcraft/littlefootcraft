@@ -1,0 +1,123 @@
+{
+	"slug": "about-page",
+	"seo": {
+		"title": {
+			"en": "About LittleFootCraft",
+			"ua": "Про LittleFootCraft"
+		},
+		"description": {
+			"en": "Learn the story, values, and inspiration behind LittleFootCraft and its handcrafted magical creations.",
+			"ua": "Дізнайтеся історію, цінності та натхнення LittleFootCraft і його чарівних виробів ручної роботи."
+		}
+	},
+	"top": {
+		"eyebrow": {
+			"en": "Our story",
+			"ua": "Наша історія"
+		},
+		"title": {
+			"en": "The Artisan Behind the Magic",
+			"ua": "Майстриня, що стоїть за магією"
+		},
+		"text": {
+			"en": "Welcome to LittleFootCraft. It is where art lives in its smallest and most vibrant forms. It is a space where ordinary things transform into something more — into stories, emotions, and a way of self-expression.",
+			"ua": "Ласкаво просимо до LittleFootCraft. Це місце, де мистецтво живе у своїх найменших і найяскравіших формах. Це простір, де звичайні речі перетворюються на щось більше — на історії, емоції та спосіб самовираження."
+		},
+		"image": {
+			"src": "/uploads/images/about_page_top.jpeg",
+			"alt": {
+				"en": "About page top image",
+				"ua": "Верхнє зображення сторінки про нас"
+			}
+		}
+	},
+	"story": {
+		"title": {
+			"en": "The Story Behind the Magic",
+			"ua": "Історія, що стоїть за магією"
+		},
+		"paragraphs": [
+			{
+				"en": "Each piece is created with attention to detail, with love for textures, colors and feelings. We are inspired by the beauty of imperfection, the uniqueness of every element, and the magic of transformation. We believe that objects can have a soul — especially those made by hand and with intention.",
+				"ua": "Кожен виріб створюється з увагою до деталей, любов’ю до текстур, кольорів і відчуттів. Нас надихає краса недосконалості, унікальність кожного елемента та магія перетворення. Ми віримо, що речі можуть мати душу — особливо ті, що зроблені вручну та з наміром."
+			},
+			{
+				"en": "The name of the brand carries a special story. As a child, I deeply loved The Land Before Time. Its main character — a little dinosaur — was brave, curious, and able to see beauty in the world around him. That image stayed with me and became the inspiration behind the name, reflecting my creative approach — one of curiosity, sensitivity, and a quiet sense of adventure.",
+				"ua": "Назва бренду має особливу історію. У дитинстві я дуже любила «The Land Before Time». Його головний герой — маленький динозаврик — був сміливим, допитливим і вмів бачити красу у світі навколо себе. Цей образ залишився зі мною й став натхненням для назви, відображаючи мій творчий підхід — допитливість, чутливість і тихе відчуття пригоди."
+			},
+			{
+				"en": "Here you will find not just accessories or décor, but meaningful objects that help reveal your individuality. Choose what truly resonates with you. Style is not seen — it’s felt.",
+				"ua": "Тут ви знайдете не просто аксесуари чи декор, а значущі речі, що допомагають розкрити вашу індивідуальність. Обирайте те, що справді відгукується вам. Стиль не просто бачать — його відчувають."
+			}
+		]
+	},
+	"values": {
+		"title": {
+			"en": "Our Values",
+			"ua": "Наші цінності"
+		},
+		"text": {
+			"en": "The principles that guide every piece we create",
+			"ua": "Принципи, якими ми керуємося у створенні кожного виробу"
+		},
+		"items": [
+			{
+				"title-wand-sparkles": {
+					"en": "Handcrafted Magic",
+					"ua": "Магія ручної роботи"
+				},
+				"text-wand-sparkles": {
+					"en": "Every piece is meticulously crafted by hand, ensuring unique character and quality.",
+					"ua": "Кожен виріб ретельно створюється вручну, що забезпечує унікальний характер і якість."
+				}
+			},
+			{
+				"title-star": {
+					"en": "One of a Kind",
+					"ua": "Єдиний у своєму роді"
+				},
+				"text-star": {
+					"en": "No mass production. Each creation exists as a singular treasure in the world.",
+					"ua": "Жодного масового виробництва. Кожне творіння існує як унікальний скарб у світі."
+				}
+			},
+			{
+				"title-heart": {
+					"en": "Made with Love",
+					"ua": "Створено з любов’ю"
+				},
+				"text-heart": {
+					"en": "Passion and care infuse every stage of our creative process.",
+					"ua": "Пристрасть і турбота супроводжують кожен етап нашого творчого процесу."
+				}
+			},
+			{
+				"title-gem": {
+					"en": "Finest Materials",
+					"ua": "Найкращі матеріали"
+				},
+				"text-gem": {
+					"en": "We source only the most exceptional materials for our enchanted creations.",
+					"ua": "Ми обираємо лише найкращі матеріали для наших чарівних виробів."
+				}
+			}
+		]
+	},
+	"cta": {
+		"title": {
+			"en": "Ready to Find Your Treasure?",
+			"ua": "Готові знайти свій скарб?"
+		},
+		"text": {
+			"en": "Explore our collection and discover the piece that speaks to your soul.",
+			"ua": "Перегляньте нашу колекцію та знайдіть виріб, що відгукнеться вашій душі."
+		},
+		"button": {
+			"label": {
+				"en": "Explore Collection",
+				"ua": "Переглянути колекцію"
+			},
+			"to": "/shop"
+		}
+	}
+}

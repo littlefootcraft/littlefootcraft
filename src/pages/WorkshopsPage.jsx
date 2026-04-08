@@ -1,12 +1,18 @@
 //WorkshopsPage.jsx
 import { useMemo } from "react";
-import { WorkshopCard } from "../components/WorkshopCard";
+import WorkshopsPageContent from "../content/pages/workshops-page.json";
 import WorkshopsEmptyState from "../components/WorkshopsEmptyState";
+
+import { WorkshopCard } from "../components/WorkshopCard";
 import { useWorkshops } from "../context/WorkshopsContext";
-// import { useLanguage } from "../utils/LanguageContext";
+import { useLanguage } from "../context/LanguageContext";
 
 const WorkshopsPage = () => {
 	const workshops = useWorkshops();
+
+	// For language switching
+	const { currentLang } = useLanguage();
+	const t = (field) => field?.[currentLang] ?? field?.en ?? "";
 
 	// To show only active workshops
 	const visibleWorkshops = useMemo(() => {
@@ -15,18 +21,25 @@ const WorkshopsPage = () => {
 
 		return workshops
 			.map((workshop) => {
-				const futureDates = (workshop.upcomingDates ?? []).filter((date) => {
-					const workshopDate = new Date(date);
-					return workshopDate >= today;
-				});
+				const futureDates = (workshop.upcomingDates?.dates ?? []).filter(
+					(date) => {
+						const workshopDate = new Date(date);
+						return workshopDate >= today;
+					},
+				);
 
 				return {
 					...workshop,
-					upcomingDates: futureDates,
+					upcomingDates: {
+						...workshop.upcomingDates,
+						dates: futureDates,
+					},
 				};
 			})
 			.filter((workshop) => {
-				return workshop.isActive !== false && workshop.upcomingDates.length > 0;
+				return (
+					workshop.isActive !== false && workshop.upcomingDates.dates.length > 0
+				);
 			});
 	}, [workshops]);
 
@@ -34,10 +47,11 @@ const WorkshopsPage = () => {
 		<div className="workshops-page">
 			<div className="workshops-page__top ">
 				<div className="container">
-					<h1 className="workshops-page__top-title">Enchanted Treasures</h1>
+					<h1 className="workshops-page__top-title">
+						{t(WorkshopsPageContent.top.title)}
+					</h1>
 					<span className="workshops-page__top-text text">
-						Step into a warm creative space and make something beautiful with
-						your own hands.
+						{t(WorkshopsPageContent.top.text)}
 					</span>
 				</div>
 			</div>
