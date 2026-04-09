@@ -2,6 +2,40 @@
 @use "./variables" as *;
 @use "./../abstracts/mixins" as *;
 
+//Fonts
+:root {
+	--title-font: #{$title-font-en};
+	--title-size: clamp(0.875rem, 2.1vw, 4.5rem);
+	--hero-title-size: clamp(3rem, 4.8vw, 5rem);
+	--section-title-size: clamp(2rem, 3vw, 3.25rem);
+	--card-title-size: clamp(1.125rem, 1.6vw, 1.5rem);
+	--badge-text-size: clamp(0.8125rem, 0.9vw, 1.2rem);
+	--footer-title-size: clamp(0.875rem, 1vw, 4.5rem);
+	--subtitle-size: varclamp(1rem, 1vw, 4.5rem);
+
+	--text-font: #{$text-font-en};
+	--hero-text-size: clamp(1.5rem, 1vw, 1.375rem);
+	--regular-text-size: clamp(1rem, 0.9vw, 1.375rem);
+}
+
+.ua {
+	--title-font: #{$title-font-ua};
+	--title-size: clamp(3.2rem, 3vw, 5rem);
+	--hero-title-size: clamp(3.1rem, 4.5vw, 5rem);
+	--section-title-size: clamp(2.2rem, 3.3vw, 3.6rem);
+	--card-title-size: clamp(1.2rem, 1.8vw, 1.65rem);
+
+	--text-font: #{$text-font-ua};
+	--hero-text-size: clamp(1rem, 1.3vw, 1.375rem);
+	--regular-text-size: clamp(0.875rem, 0.9vw, 1.375rem);
+	--subtitle-size: varclamp(1rem, 1vw, 4.5rem);
+
+	--section-title-size: clamp(2rem, 3vw, 3.25rem);
+	--card-title-size: clamp(1.125rem, 1.6vw, 1.5rem);
+	--badge-text-size: clamp(0.8125rem, 0.9vw, 1.2rem);
+	--footer-title-size: clamp(0.875rem, 1.3vw, 4.5rem);
+}
+//var(--hero-title-size)
 *,
 *::before,
 *::after {
@@ -15,7 +49,7 @@ body,
 }
 body {
 	font-family:
-		"Outfit",
+		var(--text-font),
 		system-ui,
 		-apple-system,
 		sans-serif;
@@ -44,14 +78,14 @@ main {
 }
 
 .main-title {
-	font-family: "CinzelDecorative";
+	font-family: var(--title-font);
 	color: $primary-text;
-	font-size: 2.25rem;
+	font-size: var(--title-size);
 	font-weight: 400;
 }
 
 .text {
 	color: $light-gray-text;
 	line-height: 1.625;
-	font-size: 1rem;
+	font-size: var(--regular-text-size);
 }

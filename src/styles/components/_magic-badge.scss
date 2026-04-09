@@ -10,8 +10,8 @@
 	position: relative;
 	overflow: hidden;
 
-	font-family: "CinzelDecorative";
-	font-size: 14px;
+	font-family: var(--title-font);
+	font-size: var(--badge-text-size);
 	letter-spacing: 0.12em;
 	text-transform: uppercase;
 	color: $primary-text;

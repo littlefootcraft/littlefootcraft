@@ -4,6 +4,7 @@ import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import logo from "/uploads/images/logo.png";
 import { NavItems } from "../utils/navItems";
 import { menuUA, menuEN } from "../translations/translation";
+import footerContent from "../content/layout/footer.json";
 
 import { FaRegEnvelope } from "react-icons/fa6";
 
@@ -16,7 +17,8 @@ const Footer = () => {
 	const { currentLang, setCurrentLang } = useLanguage();
 	const navigate = useNavigate();
 	const location = useLocation();
-	const dict = currentLang === "en" ? menuEN : menuUA;
+	const menuDict = currentLang === "en" ? menuEN : menuUA;
+	// const footerDict = currentLang === "en" ? footerEN : footerUA;
 
 	function switchLang(lang) {
 		setCurrentLang(lang);
@@ -27,6 +29,11 @@ const Footer = () => {
 		navigate(`${newPath}${location.search}`);
 	}
 
+	//
+	// For language switching
+	// const { currentLang } = useLanguage();
+	const t = (field) => field?.[currentLang] ?? field?.en ?? "";
+
 	return (
 		<footer className="footer">
 			<div className="footer__content container">
@@ -36,17 +43,16 @@ const Footer = () => {
 						src={logo}
 						alt="Little foot creft logo"
 					/>
-					<p className="footer__brand-text">
-						Where magic meets craftsmanship. Each piece is handcrafted with love
-						and imbued with enchantment.
-					</p>
+					<p className="footer__brand-text">{t(footerContent.brandText)}</p>
 					<div className="footer__brand-social">
 						<FaInstagram />
 						<FaTiktok />
 					</div>
 				</div>
 				<div className="footer__nav">
-					<h3 className="footer__subtitle">Quick Links</h3>
+					<h3 className="footer__subtitle footer-title">
+						{t(footerContent.menu.title)}
+					</h3>
 					<ul className="footer__nav-items">
 						{NavItems.map(({ id, path }) => (
 							<li key={id}>
@@ -57,44 +63,48 @@ const Footer = () => {
 										`footer__nav-link ${isActive ? "footer__nav-link--active" : ""}`
 									}
 								>
-									{dict[id]}
+									{menuDict[id]}
 								</NavLink>
 							</li>
 						))}
 					</ul>
 				</div>
 				<div className="footer__support">
-					<h3 className="footer__subtitle">Support</h3>
+					<h3 className="footer__subtitle footer-title">
+						{t(footerContent.support.title)}
+					</h3>
 					<ul className="footer__support-items">
 						<li className="footer__support-item">
-							<Link to="/">Get in Touch</Link>
+							<Link to="/">{t(footerContent.support.contact)}</Link>
 						</li>
 						<li className="footer__support-item">
-							<Link to="/">Shipping Information</Link>
+							<Link to="/">{t(footerContent.support.shipping)}</Link>
 						</li>
 						<li className="footer__support-item">
-							<Link to="/">Returns & Exchanges</Link>
+							<Link to="/">{t(footerContent.support.returns)}</Link>
 						</li>
 						<li className="footer__support-item">
-							<Link to="/">Privacy Policy</Link>
+							<Link to="/">{t(footerContent.support.policy)}</Link>
 						</li>
 					</ul>
 				</div>
 				<div className="footer__subscription">
-					<h3 className="footer__subtitle">Newsletter</h3>
-					<p>Subscribe to receive updates about new pieces and workshops</p>
+					<h3 className="footer__subtitle footer-title">
+						{t(footerContent.subscription.title)}
+					</h3>
+					<p>{t(footerContent.subscription.text)}</p>
 					<div className="footer__subscription-action">
 						<input
 							className="footer__subscription-input"
 							type="text"
-							// placeholder={dict.placeholder}
+							placeholder={t(footerContent.subscription.placeholder)}
 						/>
 
 						<PrimaryBtn
 							variant="footer"
 							type="button"
 						>
-							Subscribe
+							{t(footerContent.subscription.button)}
 						</PrimaryBtn>
 					</div>
 				</div>
@@ -105,7 +115,7 @@ const Footer = () => {
 					href="mailto:info@littlefootcraft.art"
 				>
 					<FaRegEnvelope className="footer__metadata-icons" />
-					littlefootcraft@gmail.com
+					{footerContent.email}
 				</a>
 				<a
 					className="footer__metadata-address"
@@ -115,12 +125,13 @@ const Footer = () => {
 					aria-label="Open location on the Google Maps"
 				>
 					<IoLocationOutline className="footer__metadata-icons" />
-					Galway, Ireland
+					{t(footerContent.location)}
 				</a>
 			</div>
 			<div className="footer__signature">
 				<p className="footer__rights container">
-					© {new Date().getFullYear()} Little Foot Craft. All rights reserved.
+					© {new Date().getFullYear()} Little Foot Craft.{" "}
+					{t(footerContent.signature)}.
 				</p>
 			</div>
 		</footer>

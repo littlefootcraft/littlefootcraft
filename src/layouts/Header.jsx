@@ -21,6 +21,7 @@ import {
 } from "react-icons/io5";
 // import { Globe } from "lucide-react";
 // import { Star } from "lucide-react";
+import { Search, Globe, Star, ShoppingBag, User } from "lucide-react";
 
 const Header = () => {
 	const { currentLang, setCurrentLang } = useLanguage();
@@ -78,7 +79,7 @@ const Header = () => {
 						aria-label="Search button"
 						onClick={() => setIsSearchOpen(true)}
 					>
-						<IoSearchOutline />
+						<Search />
 					</button>
 
 					<div className="header__language">
@@ -88,7 +89,7 @@ const Header = () => {
 							// onClick={() => switchLang(currentLang === "en" ? "ua" : "en")}
 							onClick={() => setIsLangSwitcherOpen((prev) => !prev)}
 						>
-							<TbWorld />
+							<Globe />
 						</button>
 						{/* Language switcher*/}
 						{isLangSwitcherOpen && (
@@ -119,7 +120,7 @@ const Header = () => {
 						className="header__icon"
 						aria-label="Wishlist icon"
 					>
-						<IoHeartOutline />
+						<Star />
 						<Badge
 							className="header__icon-badge"
 							variant="top"
@@ -133,7 +134,7 @@ const Header = () => {
 						className="header__icon"
 						aria-label="Cart icon"
 					>
-						<IoBagOutline />
+						<ShoppingBag />
 						<Badge
 							className="header__icon-badge"
 							variant="top"
@@ -147,7 +148,7 @@ const Header = () => {
 						className="header__icon"
 						aria-label="Login icon"
 					>
-						<IoPersonOutline />
+						<User />
 					</Link>
 				</div>
 			</div>

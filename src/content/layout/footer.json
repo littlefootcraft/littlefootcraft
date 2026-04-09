@@ -1,0 +1,56 @@
+{
+	"brandText": {
+		"en": "Where magic meets craftsmanship. Each piece is handcrafted with love and imbued with enchantment.",
+		"ua": "Тут магія зустрічається з майстерністю. Кожен виріб створений вручну з любов’ю та наповнений чарами."
+	},
+	"menu": { "title": { "en": "Quick Links", "ua": "Швидкі посилання" } },
+	"support": {
+		"title": {
+			"en": "Support",
+			"ua": "Підтримка"
+		},
+		"contact": {
+			"en": "Get in Touch",
+			"ua": "Зв’язатися з нами"
+		},
+		"shipping": {
+			"en": "Shipping Information",
+			"ua": "Інформація про доставку"
+		},
+		"returns": {
+			"en": "Returns & Exchanges",
+			"ua": "Повернення та обмін"
+		},
+		"policy": {
+			"en": "Privacy Policy",
+			"ua": "Політика конфіденційності"
+		}
+	},
+	"subscription": {
+		"title": {
+			"en": "Newsletter",
+			"ua": "Розсилка"
+		},
+		"text": {
+			"en": "Subscribe to receive updates about new pieces and workshops",
+			"ua": "Підпишіться, щоб отримувати новини про нові вироби та майстер-класи"
+		},
+		"placeholder": {
+			"en": "Enter your email",
+			"ua": "Введіть ваш email"
+		},
+		"button": {
+			"en": "Subscribe",
+			"ua": "Підписатися"
+		}
+	},
+	"email": "littlefootcraft@gmail.com",
+	"location": {
+		"en": "Galway, Ireland",
+		"ua": "Галвей, Ірландія"
+	},
+	"signature": {
+		"en": "All rights reserved",
+		"ua": "Усі права захищені"
+	}
+}

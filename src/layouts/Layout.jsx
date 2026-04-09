@@ -21,7 +21,7 @@ export const Layout = () => {
 
 	return (
 		<LanguageProvider initialLang={lang}>
-			<div className="page">
+			<div className={`page ${lang === "ua" ? "ua" : ""}`}>
 				<Header />
 				<main>
 					<ProductsProvider>

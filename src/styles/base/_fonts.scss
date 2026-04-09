@@ -78,3 +78,37 @@
 	font-style: normal;
 	font-display: swap;
 }
+
+// Ukrainian Text
+
+@font-face {
+	font-family: "Rubik";
+	src: url(/fonts/Rubik/static/Rubik-Light.ttf) format("truetype");
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Rubik";
+	src: url(/fonts/Rubik/static/Rubik-Regular.ttf) format("truetype");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Rubik";
+	src: url(/fonts/Rubik/static/Rubik-SemiBold.ttf) format("truetype");
+	font-weight: 600;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Rubik";
+	src: url(/fonts/Rubik/static/Rubik-Bold.ttf) format("truetype");
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}

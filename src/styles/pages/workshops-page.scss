@@ -9,8 +9,8 @@
 		text-align: center;
 
 		&-title {
-			font-size: 60px;
-			font-family: "CinzelDecorative";
+			font-size: var(--title-size);
+			font-family: var(--title-font);
 			color: $primary-text;
 			font-weight: 400;
 		}

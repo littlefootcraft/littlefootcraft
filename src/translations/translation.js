@@ -7,7 +7,7 @@ export const menuUA = {
 	workshops: "Майстер-класи",
 	about: "Про нас",
 	faq: "Питання",
-	contact: "Контакти",
+	sale: "Sale",
 };
 
 export const menuEN = {
@@ -16,5 +16,5 @@ export const menuEN = {
 	workshops: "Workshops",
 	about: "About",
 	faq: "Faq",
-	contact: "Contact",
+	sale: "Акція",
 };

@@ -5,7 +5,7 @@
 	padding-top: 50px;
 	background-color: $primary-text;
 	color: gray;
-	font-size: 0.875rem;
+	font-size: var(--regular-text-size);
 	font-weight: 300;
 	color: $light-text;
 
@@ -15,6 +15,10 @@
 		border-bottom: 1px solid rgba($light-text, 0.1);
 		padding-bottom: 40px;
 		gap: 2rem;
+	}
+
+	&-title {
+		font-size: var(--footer-title-size);
 	}
 
 	&__brand {
@@ -47,7 +51,7 @@
 	}
 
 	&__subtitle {
-		font-family: "CinzelDecorative";
+		font-family: var(--title-font);
 		font-weight: 400;
 		color: $gold-accent;
 		margin-bottom: 24px;
