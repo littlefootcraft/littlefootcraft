@@ -77,7 +77,73 @@
 		"title": {
 			"en": "Explore Collections",
 			"ua": "Переглянути колекції"
-		}
+		},
+		"set": [
+			{
+				"group": { "en": "brooches", "ua": "броши" },
+				"name": {
+					"en": "Bloom Spell",
+					"ua": "Квіткове закляття"
+				},
+				"src": "/uploads/images/collections/bloom_spell.png"
+			},
+			{
+				"group": { "en": "brooches", "ua": "броши" },
+				"name": {
+					"en": "Forest Mood",
+					"ua": "Лісовий настрій"
+				},
+				"src": "/uploads/images/collections/Forest_mood.png"
+			},
+			{
+				"group": { "en": "brooches", "ua": "броши" },
+				"name": {
+					"en": "Shades of Ocean Blue",
+					"ua": "Відтінки океанічної синяви"
+				},
+				"src": "/uploads/images/collections/Shades_of_the_ocean_blue.png"
+			},
+			{
+				"group": { "en": "brooches", "ua": "броши" },
+				"name": {
+					"en": "Sky Whispers",
+					"ua": "Шепіт неба"
+				},
+				"src": "/uploads/images/collections/Sky_whispers.png"
+			},
+			{
+				"group": { "en": "brooches", "ua": "броши" },
+				"name": {
+					"en": "Thread Stories",
+					"ua": "Історії ниток"
+				},
+				"src": "/uploads/images/collections/Thread_stories.png"
+			},
+			{
+				"group": { "en": "brooches", "ua": "броши" },
+				"name": {
+					"en": "Stardust Charm",
+					"ua": "Чари зоряного пилу"
+				},
+				"src": "/uploads/images/collections/Stardust_charm.png"
+			},
+			{
+				"group": { "en": "brooches", "ua": "броши" },
+				"name": {
+					"en": "Mythical Companions",
+					"ua": "Міфічні супутники"
+				},
+				"src": "/uploads/images/collections/Mythical_companions.png"
+			},
+			{
+				"group": { "en": "brooches", "ua": "броши" },
+				"name": {
+					"en": "Cozy Purr Club",
+					"ua": "Затишний клуб муркотунів"
+				},
+				"src": "/uploads/images/collections/Cozy_purr_club_one.png"
+			}
+		]
 	},
 	"about": {
 		"eyebrow": {
@@ -155,6 +221,12 @@
 		"eyebrow": {
 			"en": "Workshops",
 			"ua": "Майстер-класи"
+		},
+		"button": {
+			"label": {
+				"en": "See all workshops",
+				"ua": "Усі майстер-класи"
+			}
 		}
 	},
 	"subscription": {

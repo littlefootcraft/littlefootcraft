@@ -2,7 +2,7 @@
 
 import { useLanguage } from "../context/LanguageContext";
 import HomePageContent from "../content/pages/home-page.json";
-import WorkshopsPageContent from "../content/pages/workshops-page.json";
+
 import MagicBadge from "../components/MagicBadge";
 import { PrimaryBtn } from "../components/PrimaryBtn";
 
@@ -12,6 +12,9 @@ import { ProductCard } from "../components/ProductCard";
 import { useProducts } from "../context/ProductsContext";
 import { useMemo } from "react";
 import { useWorkshops } from "../context/WorkshopsContext";
+import { getVisibleWorkshops } from "../hooks/useVisibleWorkshops";
+
+import WorkshopsPageContent from "../content/pages/workshops-page.json";
 
 const WorkshopsImage = "/uploads/images/home_workshop_image.jpeg";
 
@@ -38,49 +41,14 @@ const HomePage = ({ workshop }) => {
 
 	// To show only active workshops
 	const visibleWorkshops = useMemo(() => {
-		const today = new Date();
-		today.setHours(0, 0, 0, 0);
-
-		return workshops
-			.map((workshop) => {
-				const futureDates = (workshop.upcomingDates?.dates ?? []).filter(
-					(date) => {
-						const workshopDate = new Date(date);
-						return workshopDate >= today;
-					},
-				);
-
-				return {
-					...workshop,
-					upcomingDates: {
-						...workshop.upcomingDates,
-						dates: futureDates,
-					},
-				};
-			})
-			.filter((workshop) => {
-				return (
-					workshop.isActive !== false &&
-					workshop.upcomingDates?.dates?.length > 0
-				);
-			});
+		return getVisibleWorkshops(workshops);
 	}, [workshops]);
+	const featuredWorkshop = visibleWorkshops[0] || null;
 
-	// Torn date from "2026-02-14" to Feb 14 for Workshops
-	// const formatDate = (dateStr, lang = "en") => {
-	// 	return new Intl.DateTimeFormat(lang, {
-	// 		month: "short",
-	// 		day: "numeric",
-	// 	}).format(new Date(dateStr));
-	// };
-	const formatDate = (dateStr, lang = "en") => {
-		const locale = lang === "ua" ? "uk-UA" : "en-US";
-
-		return new Intl.DateTimeFormat(locale, {
-			day: "numeric",
-			month: "long",
-		}).format(new Date(dateStr));
-	};
+	// To show collection title images
+	const collections = useMemo(() => {
+		return HomePageContent.collections.set.slice(0, 4);
+	}, []);
 
 	return (
 		<section className="home-page">
@@ -90,7 +58,8 @@ const HomePage = ({ workshop }) => {
 					<h1 className="home-page__top-title">
 						{t(HomePageContent.hero.title)}
 					</h1>
-					<p className="home-page__top-info">{t(HomePageContent.hero.text)}</p>
+					<p className="home-page__top-text">{t(HomePageContent.hero.text)}</p>
+
 					<PrimaryBtn
 						variant="to-catalog"
 						to="/shop"
@@ -159,7 +128,44 @@ const HomePage = ({ workshop }) => {
 					<h2 className="home-page__collections-title main-title">
 						{t(HomePageContent.collections.title)}
 					</h2>
-					<div className="home-page__collections-cards"></div>
+					{/* <div className="home-page__collections-cards">
+						{collections.map((collection) => (
+							<div className="home-page__collections-card">
+								<img
+									key={collection.name.en}
+									src={collection.src}
+									alt={t(collection.name)}
+								/>{" "}
+								<span>{t(collection.group)}</span>
+								<h3>{t(collection.name)}</h3>
+							</div>
+						))}
+					</div> */}
+					<div className="home-page__collections-cards">
+						{collections.map((collection) => (
+							<div
+								key={collection.name}
+								className="home-page__collections-card"
+							>
+								<img
+									className="home-page__collections-card-image"
+									src={collection.src}
+									alt={t(collection.name)}
+								/>
+
+								<div className="home-page__collections-card-overlay"></div>
+
+								<div className="home-page__collections-card-text">
+									<span className="home-page__collections-card-group">
+										{t(collection.group)}
+									</span>
+									<h3 className="home-page__collections-card-title">
+										{t(collection.name)}
+									</h3>
+								</div>
+							</div>
+						))}
+					</div>
 				</div>
 			</section>
 
@@ -238,49 +244,68 @@ const HomePage = ({ workshop }) => {
 					<div className="home-page__workshops-info">
 						<span>{t(HomePageContent.workshops.eyebrow)}</span>
 
-						{visibleWorkshops.length === 0 ? (
+						{!featuredWorkshop ? (
 							<div className="home-page__workshops__empty">
-								{/* <WorkshopsEmptyState /> */}
+								<div className="workshops-empty__content">
+									<h2 className="workshops-empty__title main-title">
+										{t(WorkshopsPageContent.emptyState.title)}
+									</h2>
+									{WorkshopsPageContent.emptyState.info.paragraphs.map(
+										(paragraph, index) => (
+											<article
+												key={index}
+												className="workshops-empty__info text"
+											>
+												{t(paragraph)}
+											</article>
+										),
+									)}
+								</div>
 							</div>
 						) : (
-							<div className="home-page__workshops__cards">
-								{visibleWorkshops.map((workshop) => (
-									<div
-										key={workshop.id}
-										className="home-page__workshops-card"
-									>
-										<h2 className="home-page__workshops-title main-title">
-											Introduction to Brooch Making
-										</h2>
-										<article className="home-page__workshops-text text">
-											Learn the fundamentals of brooch crafting in this
-											beginner-friendly workshop.
-										</article>
-										<div className="home-page__workshops-details">
-											<div className="home-page__workshops-duration">
-												<h4>Duration</h4>
-												<span>3 hours</span>
-											</div>
-											<div className="home-page__workshops-group">
-												<h4>Group Size</h4>
-												<span>6 participants</span>
-											</div>
-											<div className="home-page__workshops-price">
-												<h4>Price</h4>
-												<span>€85</span>
-											</div>
-										</div>
+							<div className="home-page__workshops-card">
+								<h2 className="home-page__workshops-title main-title">
+									{t(featuredWorkshop.title)}
+								</h2>
+
+								<article className="home-page__workshops-text text">
+									{t(featuredWorkshop.description)}
+								</article>
+
+								<div className="home-page__workshops-details">
+									<div className="home-page__workshops-duration">
+										<h4>Duration</h4>
+										<span>
+											{featuredWorkshop.duration?.value}{" "}
+											{t(featuredWorkshop.duration?.unit)}
+										</span>
 									</div>
-								))}
+
+									<div className="home-page__workshops-group">
+										<h4>Group Size</h4>
+										<span>
+											{featuredWorkshop.participants["amount-of-people"]}{" "}
+										</span>
+									</div>
+
+									<div className="home-page__workshops-price">
+										<h4>Price</h4>
+										<span>
+											{featuredWorkshop.currency === "EUR"
+												? "€"
+												: workshop.currency}
+											{featuredWorkshop.price}
+										</span>
+									</div>
+								</div>
+								<SecondaryBtn
+									variant="to-other-page"
+									to="/about"
+								>
+									{t(HomePageContent.workshops.button.label)}
+								</SecondaryBtn>
 							</div>
 						)}
-
-						<SecondaryBtn
-							variant="to-other-page"
-							to="/about"
-						>
-							See all workshops
-						</SecondaryBtn>
 					</div>
 					<img
 						className="home-page__workshops-image"

@@ -6,6 +6,7 @@ import WorkshopsEmptyState from "../components/WorkshopsEmptyState";
 import { WorkshopCard } from "../components/WorkshopCard";
 import { useWorkshops } from "../context/WorkshopsContext";
 import { useLanguage } from "../context/LanguageContext";
+import { getVisibleWorkshops } from "../hooks/useVisibleWorkshops";
 
 const WorkshopsPage = () => {
 	const workshops = useWorkshops();
@@ -15,32 +16,9 @@ const WorkshopsPage = () => {
 	const t = (field) => field?.[currentLang] ?? field?.en ?? "";
 
 	// To show only active workshops
+
 	const visibleWorkshops = useMemo(() => {
-		const today = new Date();
-		today.setHours(0, 0, 0, 0);
-
-		return workshops
-			.map((workshop) => {
-				const futureDates = (workshop.upcomingDates?.dates ?? []).filter(
-					(date) => {
-						const workshopDate = new Date(date);
-						return workshopDate >= today;
-					},
-				);
-
-				return {
-					...workshop,
-					upcomingDates: {
-						...workshop.upcomingDates,
-						dates: futureDates,
-					},
-				};
-			})
-			.filter((workshop) => {
-				return (
-					workshop.isActive !== false && workshop.upcomingDates.dates.length > 0
-				);
-			});
+		return getVisibleWorkshops(workshops);
 	}, [workshops]);
 
 	return (
