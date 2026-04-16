@@ -7,6 +7,7 @@ import { WorkshopCard } from "../components/WorkshopCard";
 import { useWorkshops } from "../context/WorkshopsContext";
 import { useLanguage } from "../context/LanguageContext";
 import { getVisibleWorkshops } from "../hooks/useVisibleWorkshops";
+import { PageTopTitle } from "../components/PageTopTitle";
 
 const WorkshopsPage = () => {
 	const workshops = useWorkshops();
@@ -23,16 +24,10 @@ const WorkshopsPage = () => {
 
 	return (
 		<div className="workshops-page">
-			<div className="workshops-page__top ">
-				<div className="container">
-					<h1 className="workshops-page__top-title">
-						{t(WorkshopsPageContent.top.title)}
-					</h1>
-					<span className="workshops-page__top-text text">
-						{t(WorkshopsPageContent.top.text)}
-					</span>
-				</div>
-			</div>
+			<PageTopTitle
+				title={t(WorkshopsPageContent.top.title)}
+				subtitle={t(WorkshopsPageContent.top.text)}
+			/>
 
 			{visibleWorkshops.length === 0 ? (
 				<div className="workshops-page__empty container">

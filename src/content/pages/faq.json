@@ -1,0 +1,264 @@
+{
+	"title": {
+		"en": "Frequently Asked Questions",
+		"ua": "Поширені запитання"
+	},
+	"subtitle": {
+		"en": "Find answers to common questions about our handmade products, ordering process, shipping, and more.",
+		"ua": "Знайдіть відповіді на поширені запитання про наші вироби ручної роботи, процес замовлення, доставку та інше."
+	},
+	"sections": {
+		"about_handmade": {
+			"title": {
+				"en": "About Handmade",
+				"ua": "Про ручну роботу"
+			},
+			"items": [
+				{
+					"question": {
+						"en": "What does “handmade” mean in your products?",
+						"ua": "Що означає «ручна робота» у ваших виробах?"
+					},
+					"answer": {
+						"en": "All our items are carefully handmade with attention to detail. Each piece is unique and may have slight variations that add to its individual character.",
+						"ua": "Усі наші вироби створюються вручну з увагою до деталей. Кожен виріб унікальний і може мати незначні відмінності, що підкреслюють його індивідуальність."
+					}
+				},
+				{
+					"question": {
+						"en": "What materials do you use?",
+						"ua": "Які матеріали ви використовуєте?"
+					},
+					"answer": {
+						"en": "We use high-quality and safe materials depending on the type of product. We also value conscious consumption: some materials used for our brooches come from vintage jewelry sourced in charity shops. This gives items a second life and makes each piece even more special.",
+						"ua": "Ми використовуємо якісні та безпечні матеріали залежно від типу виробу. Також ми цінуємо усвідомлене споживання: деякі матеріали для наших брошок походять із вінтажних прикрас, знайдених у благодійних магазинах. Це дає речам друге життя і робить кожен виріб ще особливішим."
+					}
+				},
+				{
+					"question": {
+						"en": "Will the item look exactly like in the photos?",
+						"ua": "Чи виглядатиме виріб точно так, як на фото?"
+					},
+					"answer": {
+						"en": "We do our best to represent colors and details accurately, but slight differences may occur due to screen settings.",
+						"ua": "Ми намагаємося максимально точно передати кольори та деталі, але можливі незначні відмінності через налаштування екрану."
+					}
+				}
+			]
+		},
+
+		"order_and_payment": {
+			"title": {
+				"en": "Order and Payment",
+				"ua": "Замовлення та оплата"
+			},
+			"items": [
+				{
+					"question": {
+						"en": "How can I place an order?",
+						"ua": "Як оформити замовлення?"
+					},
+					"answer": {
+						"en": "Orders are placed through the website. Since most items are one of a kind (except for greeting cards), payment is requested only after availability is confirmed.",
+						"ua": "Замовлення оформлюються через сайт. Оскільки більшість виробів унікальні (крім листівок), оплата здійснюється лише після підтвердження наявності."
+					}
+				},
+				{
+					"question": {
+						"en": "What payment methods do you accept?",
+						"ua": "Які способи оплати ви приймаєте?"
+					},
+					"answer": {
+						"en": "We accept: online payment by bank card",
+						"ua": "Ми приймаємо: онлайн-оплату банківською карткою"
+					}
+				},
+				{
+					"question": {
+						"en": "Can I cancel my order?",
+						"ua": "Чи можу я скасувати замовлення?"
+					},
+					"answer": {
+						"en": "Orders can be cancelled before they are dispatched. Unfortunately, cancellations are not possible after shipping.",
+						"ua": "Замовлення можна скасувати до моменту відправки. Після відправлення скасування неможливе."
+					}
+				},
+				{
+					"question": {
+						"en": "Are your products suitable as gifts?",
+						"ua": "Чи підходять ваші вироби як подарунок?"
+					},
+					"answer": {
+						"en": "Absolutely! All items make wonderful gifts. We also offer gift wrapping and can include a personalized message.",
+						"ua": "Звичайно! Усі вироби чудово підходять як подарунок. Ми також пропонуємо подарункове пакування та можемо додати персоналізоване повідомлення."
+					}
+				}
+			]
+		},
+
+		"shipping": {
+			"title": {
+				"en": "Shipping",
+				"ua": "Доставка"
+			},
+			"items": [
+				{
+					"question": {
+						"en": "How does shipping work?",
+						"ua": "Як відбувається доставка?"
+					},
+					"answer": {
+						"en": "Orders are shipped from Ireland across Europe using trusted postal services. Delivery usually takes 3–7 business days after dispatch, depending on the destination country.",
+						"ua": "Замовлення відправляються з Ірландії по всій Європі за допомогою надійних поштових служб. Доставка зазвичай займає 3–7 робочих днів після відправки залежно від країни призначення."
+					}
+				},
+				{
+					"question": {
+						"en": "How much does shipping cost?",
+						"ua": "Скільки коштує доставка?"
+					},
+					"answer": {
+						"en": "Shipping costs are calculated automatically at checkout based on the destination and parcel weight.",
+						"ua": "Вартість доставки розраховується автоматично під час оформлення замовлення залежно від країни та ваги посилки."
+					}
+				},
+				{
+					"question": {
+						"en": "Will I receive a tracking number?",
+						"ua": "Чи отримаю я трек-номер?"
+					},
+					"answer": {
+						"en": "Yes, you will receive a tracking number once your order has been shipped.",
+						"ua": "Так, після відправлення замовлення ви отримаєте трек-номер."
+					}
+				},
+				{
+					"question": {
+						"en": "Will I need to pay customs fees or taxes?",
+						"ua": "Чи потрібно сплачувати митні збори або податки?"
+					},
+					"answer": {
+						"en": "Orders within the EU usually do not incur additional charges. For other countries, customs fees or taxes may apply according to local regulations and are the responsibility of the buyer.",
+						"ua": "Замовлення в межах ЄС зазвичай не потребують додаткових платежів. Для інших країн можуть застосовуватися митні збори або податки відповідно до місцевого законодавства — їх оплачує покупець."
+					}
+				}
+			]
+		},
+
+		"returns_and_care": {
+			"title": {
+				"en": "Returns and Care",
+				"ua": "Повернення та догляд"
+			},
+			"items": [
+				{
+					"question": {
+						"en": "Can I return or exchange an item?",
+						"ua": "Чи можу я повернути або обміняти виріб?"
+					},
+					"answer": {
+						"en": "As most items are unique and handmade, returns or exchanges are only accepted in case of defects or damage during delivery.",
+						"ua": "Оскільки більшість виробів унікальні та ручної роботи, повернення або обмін можливі лише у випадку дефекту або пошкодження під час доставки."
+					}
+				},
+				{
+					"question": {
+						"en": "What should I do if my item arrives damaged?",
+						"ua": "Що робити, якщо виріб прийшов пошкодженим?"
+					},
+					"answer": {
+						"en": "Please contact us within 48 hours of receiving your order and provide photos of the damage. We will do our best to resolve the issue.",
+						"ua": "Будь ласка, зв’яжіться з нами протягом 48 годин після отримання замовлення та надайте фото пошкодження. Ми зробимо все можливе, щоб вирішити проблему."
+					}
+				},
+				{
+					"question": {
+						"en": "How should I care for the products?",
+						"ua": "Як доглядати за виробами?"
+					},
+					"answer": [
+						{
+							"type": {
+								"en": "Jewellery (especially brooches):",
+								"ua": "Прикраси (особливо брошки):"
+							},
+							"care": [
+								{
+									"en": "handle with care — avoid pulling, bending, or dropping",
+									"ua": "обережно поводьтеся — уникайте тягнення, згинання або падіння"
+								},
+								{
+									"en": "keep away from water, perfumes, and cosmetics",
+									"ua": "тримайте подалі від води, парфумів і косметики"
+								},
+								{
+									"en": "store in a dry, clean place, preferably in a box or soft pouch",
+									"ua": "зберігайте в сухому чистому місці, бажано в коробці або мішечку"
+								},
+								{
+									"en": "do not wash or soak",
+									"ua": "не мийте і не замочуйте"
+								},
+								{
+									"en": "if needed, gently clean with a dry, soft cloth",
+									"ua": "за потреби обережно очищайте сухою м’якою тканиною"
+								},
+								{
+									"en": "avoid prolonged friction with clothing to preserve shape and details",
+									"ua": "уникайте тривалого тертя з одягом, щоб зберегти форму і деталі"
+								}
+							],
+							"additional": {
+								"en": "Each piece is made with love — gentle care will keep it beautiful for years.",
+								"ua": "Кожен виріб створений з любов’ю — дбайливий догляд збереже його красу на роки."
+							}
+						},
+						{
+							"type": {
+								"en": "Paintings:",
+								"ua": "Картини:"
+							},
+							"care": [
+								{
+									"en": "avoid direct sunlight",
+									"ua": "уникайте прямого сонячного світла"
+								}
+							]
+						},
+						{
+							"type": {
+								"en": "Greeting cards:",
+								"ua": "Листівки:"
+							},
+							"care": [
+								{
+									"en": "store in a dry place",
+									"ua": "зберігайте в сухому місці"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+
+		"other_questions": {
+			"title": {
+				"en": "Other Questions",
+				"ua": "Інші питання"
+			},
+			"items": [
+				{
+					"question": {
+						"en": "How can I contact you?",
+						"ua": "Як з вами зв’язатися?"
+					},
+					"answer": {
+						"en": "You can reach us via the contact form on the website or through social media. We usually respond within 24 hours.",
+						"ua": "Ви можете зв’язатися з нами через форму на сайті або в соціальних мережах. Ми зазвичай відповідаємо протягом 24 годин."
+					}
+				}
+			]
+		}
+	}
+}

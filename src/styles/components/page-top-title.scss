@@ -1,0 +1,18 @@
+//_badge.scss
+
+@use "./../../styles/base/variables" as *;
+@use "./../abstracts/mixins" as *;
+
+.page-top-title {
+	background-color: $misty-ivory;
+	padding-block: 40px;
+	display: flex;
+	text-align: center;
+
+	&__title {
+		font-size: var(--title-size);
+		font-family: var(--title-font);
+		color: $primary-text;
+		font-weight: 400;
+	}
+}
