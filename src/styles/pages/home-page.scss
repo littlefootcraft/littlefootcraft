@@ -11,13 +11,14 @@
 		justify-content: center;
 		position: relative;
 		isolation: isolate;
+		overflow: hidden;
 
 		&::before {
 			content: "";
 			position: absolute;
 			inset: 0;
-			inset: -20px;
-			background: url("/uploads/images/hero-image.jpeg") center / cover
+			inset: 38px;
+			background: url("/uploads/images/hero-image.jpeg") 50% 65% / cover
 				no-repeat;
 			filter: blur(6px);
 			transform: scale(1.05);
