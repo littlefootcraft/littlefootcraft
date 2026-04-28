@@ -16,6 +16,7 @@ import FAQPage from "./pages/FAQPage";
 import ProductPage from "./pages/ProductPage";
 // import ContactPage from "./pages/ContactPage";
 import WorkshopsPage from "./pages/WorkshopsPage";
+import ShopLayout from "./layouts/ShopLayout";
 
 const router = createBrowserRouter([
 	{
@@ -32,16 +33,26 @@ const router = createBrowserRouter([
 		element: <Layout />,
 		children: [
 			{ index: true, element: <HomePage /> },
-			{ path: "shop", element: <ShopPage /> },
+
+			{
+				path: "shop",
+				element: <ShopLayout />,
+				// ShopLayout - wraps all shop-related routes
+				children: [
+					{ index: true, element: <ShopPage /> },
+					{
+						path: ":sku",
+						element: <ProductPage />,
+						handle: { title: "Item" },
+					},
+					// { path: "promo", element: <PromoPage /> },
+				],
+			},
+
 			{ path: "workshops", element: <WorkshopsPage /> },
 			{ path: "about", element: <AboutPage /> },
 			{ path: "faq", element: <FAQPage /> },
 			// { path: "contact", element: <ContactPage /> },
-			{
-				path: "shop/:sku",
-				element: <ProductPage />,
-				handle: { title: "Item" },
-			},
 		],
 	},
 	{

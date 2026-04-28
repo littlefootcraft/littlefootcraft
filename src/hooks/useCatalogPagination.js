@@ -1,6 +1,10 @@
 import { useSearchParams } from "react-router-dom";
 
-export const useCatalogPagination = (items, itemsPerPage = 12) => {
+export const useCatalogPagination = (
+	items,
+	itemsPerPage = 12,
+	pageKey = "page",
+) => {
 	const [searchParams, setSearchParams] = useSearchParams();
 
 	// safe page (not exceeding max)
@@ -8,7 +12,7 @@ export const useCatalogPagination = (items, itemsPerPage = 12) => {
 
 	// Gets current page from URL
 	// const page = Number(searchParams.get("page")) || 1;
-	const rawPage = Number(searchParams.get("page")) || 1;
+	const rawPage = Number(searchParams.get(pageKey)) || 1;
 	const normalizedPage = Math.max(rawPage, 1);
 
 	// Calculates how many pages exist.
@@ -24,16 +28,23 @@ export const useCatalogPagination = (items, itemsPerPage = 12) => {
 	// Returns only items for current page
 	const paginatedItems = safeItems.slice(start, end);
 
-	const setParams = ({ page }) => {
+	const setParams = ({ page, ...filters }) => {
 		const params = new URLSearchParams(searchParams);
 
-		if (!page || page === 1) {
-			params.delete("page");
-		} else {
-			params.set("page", String(page));
+		// if filters changed, reset page
+		params.delete(pageKey);
+
+		if (page && page > 1) {
+			params.set(pageKey, String(page));
 		}
 		setSearchParams(params);
 	};
 
 	return { page: safePage, totalPages, paginatedItems, setParams };
 };
+
+// // ShopPage.jsx
+// useCatalogPagination(allProducts, 20, "page");
+
+// // SalePage.jsx
+// useCatalogPagination(saleProducts, 20, "salePage");

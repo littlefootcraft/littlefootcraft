@@ -1,0 +1,260 @@
+//_badge.scss
+
+@use "./../../styles/base/variables" as *;
+@use "./../abstracts/mixins" as *;
+
+.filters-drawer {
+	position: fixed;
+	top: 0;
+	right: 0;
+	height: 100vh;
+	width: 380px;
+	background-color: $cream;
+	z-index: 200;
+	display: flex;
+	flex-direction: column;
+	box-shadow: -4px 0 24px rgba(26, 43, 76, 0.1);
+
+	// Backdrop — darkens the page behind the drawer
+	&__backdrop {
+		position: fixed;
+		inset: 0;
+		background: rgba(26, 43, 76, 0.35);
+		z-index: 199; // just below the drawer
+		backdrop-filter: blur(2px);
+	}
+
+	// Header row — title + badge + close button
+	&__header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 24px 28px;
+		border-bottom: 1px solid $card-borders;
+	}
+
+	&__header-left {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+	}
+
+	&__title {
+		font-family: var(--title-font);
+		font-size: var(--card-title-size);
+		font-weight: 400;
+		color: $primary-text;
+		margin: 0;
+		line-height: 1;
+	}
+
+	// Red badge showing number of active filters
+	&__count {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 22px;
+		height: 22px;
+		border-radius: 50%;
+		background-color: $primary-text;
+		color: $white;
+		font-size: 0.8125rem;
+		font-weight: 600;
+		line-height: 1; // ← add this
+		flex-shrink: 0;
+	}
+
+	&__close {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 36px;
+		height: 36px;
+		border: none;
+		background: transparent;
+		color: $secondary-text;
+		cursor: pointer;
+		border-radius: $border-radius-sm;
+		transition: background-color 0.2s ease;
+
+		&:hover {
+			background-color: $parchment;
+			color: $primary-text;
+		}
+	}
+
+	// Scrollable middle area — all filter sections live here
+	&__sections {
+		flex: 1;
+		overflow-y: auto;
+		padding: 8px 0;
+
+		// Custom scrollbar to match the aesthetic
+		&::-webkit-scrollbar {
+			width: 4px;
+		}
+		&::-webkit-scrollbar-track {
+			background: transparent;
+		}
+		&::-webkit-scrollbar-thumb {
+			background: rgba($gold-accent, 0.3);
+			border-radius: 2px;
+		}
+	}
+
+	// Each collapsible section (Category, Collection, Color)
+	&__section {
+		border-bottom: 1px solid $card-borders;
+	}
+
+	&__section-header {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 18px 28px;
+		border: none;
+		background: transparent;
+		cursor: pointer;
+		text-align: left;
+		transition: background-color 0.2s ease;
+
+		&:hover {
+			background-color: $parchment;
+		}
+	}
+
+	&__section-title {
+		font-size: var(--regular-text-size);
+		font-weight: 500;
+		color: $primary-text;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		font-size: 13px;
+	}
+
+	&__chevron {
+		color: $light-gray-text;
+		transition: transform 0.25s ease;
+		flex-shrink: 0;
+
+		// Rotate when section is open
+		&--open {
+			transform: rotate(180deg);
+		}
+	}
+
+	&__section-body {
+		padding: 4px 28px 20px;
+	}
+
+	// Category and Collection — pill buttons
+	&__options {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+	}
+
+	&__option {
+		width: 100%;
+		padding: 10px 14px;
+		border: 1px solid transparent;
+		border-radius: $border-radius-sm;
+		background: transparent;
+		color: $secondary-text;
+		font-family: inherit;
+		font-size: var(--regular-text-size);
+		text-align: left;
+		cursor: pointer;
+		transition:
+			background-color 0.2s ease,
+			border-color 0.2s ease,
+			color 0.2s ease;
+
+		&:hover {
+			background-color: $parchment;
+			color: $primary-text;
+		}
+
+		// Active state — gold border like your input focus style
+		&--active {
+			background-color: rgba($gold-accent, 0.08);
+			border-color: rgba($gold-accent, 0.5);
+			color: $primary-text;
+			font-weight: 500;
+		}
+	}
+
+	// Color swatches — grid layout like the reference
+	&__colors {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 8px;
+	}
+
+	&__color-btn {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 6px;
+		padding: 10px 6px;
+		border: 1px solid transparent;
+		border-radius: $border-radius-sm;
+		background: transparent;
+		cursor: pointer;
+		transition:
+			background-color 0.2s ease,
+			border-color 0.2s ease;
+
+		&:hover {
+			background-color: $parchment;
+		}
+
+		&--active {
+			background-color: rgba($gold-accent, 0.08);
+			border-color: rgba($gold-accent, 0.5);
+		}
+	}
+
+	&__color-swatch {
+		display: block;
+		width: 32px;
+		height: 32px;
+		border-radius: 50%;
+		border: 1px solid rgba(26, 43, 76, 0.15);
+		flex-shrink: 0;
+	}
+
+	&__color-label {
+		font-size: 11px;
+		color: $secondary-text;
+		text-align: center;
+		line-height: 1.2;
+	}
+
+	// Footer — clear button, only rendered when filters are active
+	&__footer {
+		padding: 16px 28px;
+		border-top: 1px solid $card-borders;
+	}
+
+	&__clear {
+		width: 100%;
+		padding: 12px;
+		border: 1px solid rgba($gold-accent, 0.4);
+		border-radius: $border-radius;
+		background: transparent;
+		color: $primary-text;
+		font-family: inherit;
+		font-size: var(--regular-text-size);
+		cursor: pointer;
+		transition:
+			background-color 0.2s ease,
+			border-color 0.2s ease;
+
+		&:hover {
+			background-color: rgba($gold-accent, 0.08);
+			border-color: $gold-accent;
+		}
+	}
+}

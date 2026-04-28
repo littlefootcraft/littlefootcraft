@@ -1,0 +1,50 @@
+[
+	{
+		"id": "bloom-spell",
+		"name": { "en": "Bloom Spell", "ua": "Квіткове заклинання" },
+		"image": "/uploads/images/collections/bloom_spell.png"
+	},
+	{
+		"id": "forest-mood",
+		"name": { "en": "Forest Mood", "ua": "Лісовий настрій" },
+		"image": "/uploads/images/collections/Forest_mood.png"
+	},
+	{
+		"id": "ocean-blue",
+		"name": {
+			"en": "Shades of Ocean Blue",
+			"ua": "Відтінки океанської синяви"
+		},
+		"image": "/uploads/images/collections/Shades_of_the_ocean_blue.png"
+	},
+	{
+		"id": "sky-whispers",
+		"name": { "en": "Sky Whispers", "ua": "Шепіт неба" },
+		"image": "/uploads/images/collections/Sky_whispers.png"
+	},
+	{
+		"id": "thread-stories",
+		"name": { "en": "Thread Stories", "ua": "Нитяні історії" },
+		"image": "/uploads/images/collections/Thread_stories.png"
+	},
+	{
+		"id": "stardust-charm",
+		"name": { "en": "Stardust Charm", "ua": "Чари зоряного пилу" },
+		"image": "/uploads/images/collections/Stardust_charm.png"
+	},
+	{
+		"id": "mythical-companions",
+		"name": { "en": "Mythical Companions", "ua": "Міфічні супутники" },
+		"image": "/uploads/images/collections/Mythical_companions.png"
+	},
+	{
+		"id": "cozy-purr-club",
+		"name": { "en": "Cozy Purr Club", "ua": "Затишний котячий клуб" },
+		"image": "/uploads/images/collections/Cozy_purr_club_one.png"
+	},
+	{
+		"id": "other",
+		"name": { "en": "Other", "ua": "Інше" },
+		"image": null
+	}
+]

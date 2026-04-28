@@ -1,0 +1,147 @@
+//_shop-toolbar.scss
+@use "./../../styles/base/variables" as *;
+@use "./../abstracts/mixins" as *;
+
+.shop-toolbar {
+	padding-block: 20px;
+
+	margin-bottom: 30px;
+
+	&__switchers {
+		margin-block: 20px;
+		display: flex;
+		justify-content: space-between;
+		// border-bottom: 1px solid $card-borders;
+	}
+
+	&__count {
+		display: flex;
+
+		align-items: center;
+		line-height: 1.5;
+		margin-top: 12px;
+		font-family: var(--text-font);
+		font-size: var(--regular-text-size);
+		color: $secondary-text;
+	}
+
+	&__sort {
+		position: relative;
+
+		&-btn {
+			min-height: 56px;
+			min-width: 300px;
+			padding: 15px;
+			font-family: inherit;
+			font-size: 1rem;
+			color: $secondary-text;
+			background-color: white;
+			border: 1px solid $gold-accent;
+			border-radius: $border-radius;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+
+		&-arrow {
+			padding-left: 8px;
+			width: 26px;
+			height: 26px;
+		}
+
+		&-menu {
+			position: absolute;
+			top: calc(100% + 8px);
+			left: 0;
+			width: 100%;
+
+			background-color: white;
+			border-radius: $border-radius;
+			border: 1px solid $gold-accent;
+
+			box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+			padding: 8px 0;
+			z-index: 20;
+		}
+
+		&-option {
+			cursor: pointer;
+			padding: 8px 12px;
+			background: transparent;
+			font-family: inherit;
+			border: none;
+			color: $secondary-text;
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			font-size: 1rem;
+			line-height: 1.25rem;
+
+			&:hover {
+				background: rgba($gold-accent, 0.25);
+			}
+		}
+
+		&-check {
+			min-width: 24px;
+			text-align: right;
+			flex: 0 0 24px;
+		}
+	}
+
+	&__active-filters {
+		min-height: 55px;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 8px;
+		padding: 12px 0;
+		border-bottom: 1px solid $card-borders;
+	}
+
+	&__clear-all {
+		border: none;
+		background: transparent;
+		color: $gold-accent;
+		font-family: inherit;
+		font-size: var(--regular-text-size);
+		cursor: pointer;
+		text-decoration: underline;
+		padding: 4px 0;
+
+		&:hover {
+			color: $gold-dark;
+		}
+	}
+
+	&__filter-tag {
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+		padding: 4px 10px 4px 12px;
+		border: 1px solid rgba($gold-accent, 0.4);
+		border-radius: 999px;
+		background: rgba($gold-accent, 0.06);
+		font-size: 13px;
+		color: $primary-text;
+	}
+
+	&__filter-tag-remove {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border: none;
+		background: transparent;
+		color: $light-gray-text;
+		cursor: pointer;
+		font-size: 16px;
+		line-height: 1;
+		padding: 0;
+		transition: color 0.2s ease;
+
+		&:hover {
+			color: $primary-text;
+		}
+	}
+}

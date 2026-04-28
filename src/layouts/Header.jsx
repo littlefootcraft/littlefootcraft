@@ -10,17 +10,9 @@ import { menuUA, menuEN } from "../translations/translation";
 import { Badge } from "../components/Badge";
 
 import logo from "/uploads/images/logo.png";
-// import { CgClose } from "react-icons/cg";
-import { TbWorld } from "react-icons/tb";
-import {
-	IoBagOutline,
-	IoHeartOutline,
-	IoSearchOutline,
-	IoPersonOutline,
-	IoCloseOutline,
-} from "react-icons/io5";
-// import { Globe } from "lucide-react";
-// import { Star } from "lucide-react";
+
+import { IoSearchOutline, IoCloseOutline } from "react-icons/io5";
+
 import { Search, Globe, Star, ShoppingBag, User } from "lucide-react";
 
 const Header = () => {
@@ -30,11 +22,11 @@ const Header = () => {
 	const dict = currentLang === "en" ? menuEN : menuUA;
 
 	function switchLang(lang) {
-		setCurrentLang(lang);
+		// setCurrentLang(lang);
 
 		const segment = location.pathname.split("/");
 		segment[1] = lang;
-		const newPath = segment.join("/") || `$/${lang}`;
+		const newPath = segment.join("/") || `/${lang}`;
 		navigate(`${newPath}${location.search}`);
 	}
 	//Search

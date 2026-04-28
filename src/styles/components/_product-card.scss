@@ -8,11 +8,20 @@
 	border: 1px solid $card-borders;
 	border-radius: $border-radius;
 	overflow: hidden;
+	display: flex;
+	flex-direction: column;
 
 	transition:
 		transform 260ms cubic-bezier(0.2, 0.8, 0.2, 1),
 		box-shadow 260ms cubic-bezier(0.2, 0.8, 0.2, 1),
 		border-color 260ms cubic-bezier(0.2, 0.8, 0.2, 1);
+
+	& > a {
+		// ← the Link wraps everything, it needs flex too
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+	}
 
 	&:hover {
 		transform: translateY(-6px);
@@ -109,6 +118,9 @@
 	&__footer {
 		padding: 20px;
 		background-color: $white;
+		display: flex;
+		flex-direction: column;
+		flex: 1;
 	}
 	//Category
 	&__category {
@@ -125,6 +137,7 @@
 		font-size: 1.125rem;
 		font-weight: 500;
 		color: $primary-text;
+		flex: 1;
 	}
 	&:hover .product-card__title {
 		color: $gold-accent;
@@ -139,6 +152,7 @@
 	&__price-container {
 		display: flex;
 		justify-content: space-between;
+		margin-top: auto;
 
 		& span {
 			display: flex;

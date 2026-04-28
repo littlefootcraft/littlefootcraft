@@ -1,6 +1,7 @@
 // SecondaryBtn.jsx
 
 import { Link } from "react-router-dom";
+import { Filter } from "lucide-react";
 
 const BUTTON_CONFIG = {
 	// "to-cart": {
@@ -27,6 +28,7 @@ const BUTTON_CONFIG = {
 		// icon: <FaWandMagicSparkles />,
 		// iconPosition: "left",
 	},
+	filter: { icon: <Filter size={20} />, iconPosition: "left" },
 };
 
 export const SecondaryBtn = ({

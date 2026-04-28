@@ -1,4 +1,5 @@
 //HomePage
+import { useMemo } from "react";
 
 import { useLanguage } from "../context/LanguageContext";
 import HomePageContent from "../content/pages/home-page.json";
@@ -10,7 +11,7 @@ import { Sparkles, ChevronRight, Star, Globe, Shield } from "lucide-react";
 import { SecondaryBtn } from "../components/SecondaryBtn";
 import { ProductCard } from "../components/ProductCard";
 import { useProducts } from "../context/ProductsContext";
-import { useMemo } from "react";
+
 import { useWorkshops } from "../context/WorkshopsContext";
 import { getVisibleWorkshops } from "../hooks/useVisibleWorkshops";
 

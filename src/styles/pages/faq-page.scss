@@ -57,10 +57,44 @@
 		background-color: rgba(255, 255, 255, 0.42);
 		overflow: hidden;
 		transition:
+			transform 260ms ease,
 			border-color 260ms ease,
 			box-shadow 260ms ease,
 			background-color 260ms ease;
 
+		box-shadow:
+			0 2px 6px rgba(26, 43, 76, 0.05),
+			0 8px 20px rgba(26, 43, 76, 0.08),
+			0 0 0 1px rgba(212, 175, 55, 0.12);
+
+		&::after {
+			content: "";
+			position: absolute;
+			inset: 0;
+			border-radius: inherit;
+			background: radial-gradient(
+				ellipse at center,
+				rgba(212, 175, 55, 0.08) 0%,
+				transparent 70%
+			);
+			opacity: 0;
+			transition: opacity 260ms ease;
+			pointer-events: none;
+		}
+
+		&:hover {
+			transform: translateY(-2px);
+			border-color: rgba($gold-accent, 0.28);
+			background-color: rgba(255, 255, 255, 0.55);
+			box-shadow:
+				0 6px 14px rgba(26, 43, 76, 0.08),
+				0 16px 30px rgba(26, 43, 76, 0.12),
+				0 0 0 1px rgba($gold-accent, 0.18);
+
+			&::after {
+				opacity: 1;
+			}
+		}
 		&--open {
 			background-color: rgba(255, 255, 255, 0.65);
 			border-color: rgba($gold-accent, 0.34);
@@ -93,11 +127,14 @@
 			color: $secondary-text;
 			font-size: 1.25rem;
 			line-height: 1;
-			transition: transform 260ms ease;
+			transition:
+				transform 260ms ease,
+				color 260ms ease; //
 		}
 
 		&--open &-symbol {
 			transform: rotate(180deg);
+			color: $gold-accent;
 		}
 
 		&-answer {
@@ -105,6 +142,8 @@
 			color: $light-gray-text;
 			font-size: var(--regular-text-size);
 			line-height: 1.7;
+			position: relative; //
+			z-index: 1; //
 		}
 	}
 
@@ -134,16 +173,6 @@
 			li {
 				margin-bottom: 8px;
 				line-height: 1.7;
-
-				&::before {
-					content: "•";
-					position: absolute;
-					left: 0;
-					top: 0;
-					color: $gold-accent;
-					font-size: 1.2rem;
-					line-height: 1.2;
-				}
 			}
 		}
 

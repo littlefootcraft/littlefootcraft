@@ -1,30 +1,46 @@
 //ShopPage.jsx
 import { useOutletContext } from "react-router-dom";
-import { useCatalogPagination } from "../hooks/useCatalogPagination";
-import { PaginationBar } from "../components/Pagination";
+import { useEffect } from "react";
 import { ProductCard } from "../components/ProductCard";
-import { PageTopTitle } from "../components/PageTopTitle";
+import { useProducts } from "../context/ProductsContext";
+import { useLanguage } from "../context/LanguageContext";
+import shopPage from "../content/pages/shop-page.json";
 
 const ShopPage = () => {
-	// //For pagination
-	// const { page, totalPages, paginatedItems, setParams } = useCatalogPagination(
-	// 	// visibleProducts,
-	// 	20,
-	// ); // number is amount visible cards
-	return (
-		<section className="shop-page">
-			<PageTopTitle
-				title="Enchanted Treasures"
-				subtitle="Each piece is handcrafted with care and imbued with magic. Find your perfect treasure."
-			/>
-			<div className="shop-page__cards container"></div>
+	const { paginatedItems, setPageTitle } = useOutletContext();
 
-			<div className="shop-page__pagination-slot">
-				{/* <PaginationBar
-					page={page}
-					totalPages={totalPages}
-					setParams={setParams}
-				/> */}
+	// For language switching
+	const { currentLang } = useLanguage();
+	const t = (field) => field?.[currentLang] ?? field?.en ?? "";
+
+	// Tell ShopLayout what title to show
+	useEffect(() => {
+		setPageTitle({
+			title: t(shopPage.title),
+			subtitle: t(shopPage.subtitle),
+		});
+	}, [currentLang]); // ← needed to sync title up to ShopLayout on language change
+
+	// Empty state — filters returned nothing
+	if (paginatedItems.length === 0) {
+		return (
+			<section className="shop-page">
+				<div className="shop-page__empty">
+					<p>{t(shopPage.emptyState)}</p>
+				</div>
+			</section>
+		);
+	}
+
+	return (
+		<section className="shop-page container">
+			<div className="shop-page__cards">
+				{paginatedItems.map((product) => (
+					<ProductCard
+						key={product.sku}
+						product={product}
+					/>
+				))}
 			</div>
 		</section>
 	);

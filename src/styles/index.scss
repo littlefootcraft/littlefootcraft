@@ -10,6 +10,7 @@
 @use "../styles/layout/header";
 @use "../styles/layout/footer";
 @use "../styles/layout/mobile-menu";
+@use "../styles/layout/shop-layout";
 
 // Pages
 @use "../styles/pages/home-page";
@@ -32,3 +33,5 @@
 @use "../styles/components/workshop-card";
 @use "../styles/components/workshops-empty-state";
 @use "../styles/components/page-top-title";
+@use "../styles/components/shop-toolbar";
+@use "../styles/components/filters-drawer";

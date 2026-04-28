@@ -1,0 +1,7 @@
+[
+	{ "id": "brooch", "name": { "en": "Brooches", "ua": "Брошки" } },
+	{ "id": "painting", "name": { "en": "Paintings", "ua": "Картини" } },
+	{ "id": "bag", "name": { "en": "Bags", "ua": "Сумки" } },
+	{ "id": "postcard", "name": { "en": "Post Cards", "ua": "Листівки" } },
+	{ "id": "necklace", "name": { "en": "Necklaces", "ua": "Намиста" } }
+]
