@@ -1,16 +1,21 @@
 //ProductCard.jsx
 
 import { Link } from "react-router-dom";
+import { useProductCardState } from "../hooks/useProductCardState";
+import { useLanguage } from "../context/LanguageContext";
+import { useWishlist } from "../context/WishlistContext";
+
 import MagicBadge from "./MagicBadge";
 
 import { Star } from "lucide-react";
 import { IoArrowForward } from "react-icons/io5";
-import { useProductCardState } from "../hooks/useProductCardState";
-import { useLanguage } from "../context/LanguageContext";
 
 export const ProductCard = ({ product }) => {
 	const { name, price, badges, specifications } = product;
 	const { image, selectedSku } = useProductCardState(product);
+	const { toggleWishlist, isInWishlist } = useWishlist();
+	const inWish = isInWishlist(product.sku);
+
 	const { currentLang } = useLanguage();
 
 	// t() inline — same pattern you use everywhere else
@@ -31,25 +36,23 @@ export const ProductCard = ({ product }) => {
 						{badges?.isNew && (
 							<MagicBadge className="product-card__badge">New</MagicBadge>
 						)}
-						<button className="product-card__favorite-btn">
-							<Star />
-						</button>
-						{/* <button
+
+						<button
 							className={`product-card__favorite-btn ${inWish ? "product-card__favorite-btn--active" : ""}`}
-							aria-label={inWish ? "Прибрати з обраного" : "Додати в обране"}
+							aria-label={inWish ? "Remove from wishlist" : "Add to wishlist"}
 							aria-pressed={inWish}
 							onClick={(e) => {
-								e.preventDefault();
-								e.stopPropagation();
+								e.preventDefault(); // don't follow the Link
+								e.stopPropagation(); // don't bubble up to the card click
 								toggleWishlist(product.sku);
 							}}
 						>
-							{inWish ? (
-								<FaHeart className="product-card__heart-icon" />
-							) : (
-								<FaRegHeart className="product-card__heart-icon" />
-							)}
-						</button> */}
+							<Star
+								className="product-card__heart-icon"
+								fill={inWish ? "#d4af37" : "none"}
+								stroke="#d4af37"
+							/>
+						</button>
 					</div>
 				</div>
 				<div className="product-card__footer">

@@ -1,24 +1,67 @@
-import { useState } from "react";
+// src/hooks/useProductGallery.js
+import { useState, useMemo, useEffect } from "react";
 
 export function useProductGallery(product) {
-	// All photos for this product, or empty array if none
 	const photos = product?.photo ?? [];
+	const hasVideo = Boolean(product?.video);
 
-	// Which photo index is currently shown large
-	const [selectedPhotoIndex, setSelectedPhotoIndex] = useState(0);
+	// Build the full media list — video first (if exists), then photos
+	// Each item has a type so the gallery knows how to render it
+	const mediaItems = useMemo(() => {
+		const items = [];
 
-	// The current main image — whichever index is selected
-	// If somehow the index is out of range, fall back to first photo
-	const mainImage = photos[selectedIndex] ?? photos[0] ?? null;
+		if (hasVideo) {
+			items.push({
+				type: "video",
+				src: product.video,
+				alt: null,
+			});
+		}
 
-	// Thumbnails — all photos, we'll show them all in a strip
-	// useMemo so this array isn't recreated on every render
-	const thumbnails = useMemo(() => photos, [photos]);
+		photos.forEach((photo) => {
+			items.push({
+				type: "image",
+				src: photo.src,
+				alt: photo.alt, // { en, ua } object — use t() when rendering
+			});
+		});
+
+		return items;
+	}, [photos, hasVideo, product?.video]);
+
+	const [activeIndex, setActiveIndex] = useState(0);
+	const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+
+	// Reset to first item when product changes
+	useEffect(() => {
+		setActiveIndex(0);
+	}, [product?.sku]);
+
+	const activeItem = mediaItems[activeIndex] ?? null;
+
+	// When user clicks a thumbnail
+	const handleThumbClick = (index) => {
+		const item = mediaItems[index];
+		if (item?.type === "video") {
+			// Clicking video thumbnail opens modal, doesn't change main image
+			setIsVideoModalOpen(true);
+		} else {
+			setActiveIndex(index);
+		}
+	};
+
+	const goToPrev = () => setActiveIndex((i) => Math.max(i - 1, 0));
+	const goToNext = () =>
+		setActiveIndex((i) => Math.min(i + 1, mediaItems.length - 1));
 
 	return {
-		mainImage, // { src, alt: { en, ua } }
-		thumbnails, // array of { src, alt }
-		selectedIndex,
-		setSelectedIndex,
+		mediaItems,
+		activeIndex,
+		activeItem,
+		isVideoModalOpen,
+		setIsVideoModalOpen,
+		handleThumbClick,
+		goToPrev,
+		goToNext,
 	};
 }

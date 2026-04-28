@@ -1,2 +1,76 @@
 @use "./../base/variables" as *;
 @use "./../abstracts/mixins" as *;
+
+.wishlist {
+	padding-bottom: 40px;
+
+	&__count {
+		display: flex;
+		align-items: center;
+		margin-block: 40px;
+		color: $secondary-text;
+		font-size: 1.375rem;
+		gap: 10px;
+
+		& svg {
+			width: 30px;
+			height: 30px;
+			color: $gold-accent;
+		}
+	}
+
+	&-empty {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		padding: 80px 20px;
+		text-align: center;
+
+		&__icon {
+			font-size: 2.5rem;
+			color: $gold-accent;
+			margin-bottom: 24px;
+			display: block;
+		}
+
+		&__title {
+			font-family: var(--title-font);
+			font-size: var(--section-title-size);
+			font-weight: 400;
+			color: $primary-text;
+			margin-bottom: 16px;
+		}
+
+		&__text {
+			color: $secondary-text;
+			font-size: var(--regular-text-size);
+			margin-bottom: 40px;
+			max-width: 360px;
+		}
+
+		&__btn {
+			display: inline-flex;
+			align-items: center;
+			padding: 14px 32px;
+			border: 1px solid $gold-accent;
+			border-radius: $border-radius;
+			color: $primary-text;
+			font-family: inherit;
+			font-size: var(--regular-text-size);
+			letter-spacing: 0.05em;
+			transition:
+				background-color 0.25s ease,
+				color 0.25s ease;
+
+			&:hover {
+				background-color: $gold-accent;
+				color: $white;
+			}
+		}
+	}
+
+	&__cards {
+		@include product-cards-grid;
+	}
+}

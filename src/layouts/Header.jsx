@@ -5,6 +5,7 @@ import { useState } from "react";
 
 import { NavItems } from "../utils/navItems";
 import { useLanguage } from "../context/LanguageContext";
+import { useWishlist } from "../context/WishlistContext";
 
 import { menuUA, menuEN } from "../translations/translation";
 import { Badge } from "../components/Badge";
@@ -35,10 +36,13 @@ const Header = () => {
 	//Language switcher
 	const [isLangSwitcherOpen, setIsLangSwitcherOpen] = useState(false);
 
+	// Wishlist
+	const { wishlist } = useWishlist();
+
 	return (
 		<header className="header">
 			<div className="header__content container">
-				<Link to="/">
+				<Link to={`/${currentLang}`}>
 					<img
 						className="header__logo"
 						src={logo}
@@ -108,21 +112,23 @@ const Header = () => {
 						)}
 					</div>
 					<Link
-						to=""
-						className="header__icon"
+						to={`/${currentLang}/wishlist`}
+						className={`header__icon ${wishlist.length > 0 ? "header__icon--has-items" : ""}`}
 						aria-label="Wishlist icon"
 					>
 						<Star />
-						<Badge
-							className="header__icon-badge"
-							variant="top"
-							shape="dot"
-						>
-							1
-						</Badge>
+						{wishlist.length > 0 && (
+							<Badge
+								className="header__icon-badge"
+								variant="top"
+								shape="dot"
+							>
+								{wishlist.length}
+							</Badge>
+						)}
 					</Link>
 					<Link
-						to=""
+						// to={`/${currentLang}/cart`}
 						className="header__icon"
 						aria-label="Cart icon"
 					>
@@ -132,7 +138,7 @@ const Header = () => {
 							variant="top"
 							shape="dot"
 						>
-							1
+							0
 						</Badge>
 					</Link>
 					<Link

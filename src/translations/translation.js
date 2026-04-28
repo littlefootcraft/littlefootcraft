@@ -1,6 +1,16 @@
 //Translation.jsx
 
 //Menu
+
+export const menuEN = {
+	home: "Home",
+	shop: "Shop",
+	workshops: "Workshops",
+	about: "About",
+	faq: "Faq",
+	sale: "Sale",
+};
+
 export const menuUA = {
 	home: "ГОЛОВНА",
 	shop: "Магазин",
@@ -10,13 +20,67 @@ export const menuUA = {
 	sale: "Poзпродаж",
 };
 
-export const menuEN = {
-	home: "Home",
-	shop: "Shop",
-	workshops: "Workshops",
-	about: "About",
-	faq: "Faq",
-	sale: "Sale",
+// Wishlist page
+export const wishlistPageEN = {
+	title: "My Wishlist",
+	subtitle: "Pieces you've fallen in love with. Take your time — magic waits.",
+	items: "items",
+	itemsFound: (count) =>
+		`${count} treasure${count === 1 ? "" : "s"} in your wishlist`,
+	"empty-title": "Your wishlist is empty",
+	"empty-text": "Let's find something special for you",
+	"empty-btn": "Browse the shop",
+};
+
+export const wishlistPageUA = {
+	title: "Мій список бажань",
+	subtitle: "Вироби, які зачарували вас. Не поспішайте — магія чекає.",
+	items: "товарів",
+	itemsFound: (count) => {
+		const lastTwo = count % 100;
+		const lastOne = count % 10;
+
+		let form;
+		if (lastTwo >= 11 && lastTwo <= 19) {
+			form = "ів"; // 11-19 always "ів"
+		} else if (lastOne === 1) {
+			form = ""; // 1, 21, 31 → "товар"
+		} else if (lastOne >= 2 && lastOne <= 4) {
+			form = "и"; // 2-4, 22-24 → "товари"
+		} else {
+			form = "ів"; // 0, 5-9, 20 → "товарів"
+		}
+
+		return `${count} скарб${form} у вашому списку бажань`;
+	},
+	"empty-title": "Ваш список бажань порожній",
+	"empty-text": "Давайте знайдемо щось особливе для вас",
+	"empty-btn": "Перейти до магазину",
+};
+
+//Product card
+export const productPageEN = {
+	breadcrumbs: { home: "Home", catalog: "Catalog" },
+	specs: {
+		size: "Size",
+		collection: "Collection",
+		color: "Colors",
+		sku: "SKU",
+	},
+	addToCart: "Add to cart — coming soon",
+	related: "You may also like",
+};
+
+export const productPageUA = {
+	breadcrumbs: { home: "Головна", catalog: "Каталог" },
+	specs: {
+		size: "Розмір",
+		collection: "Колекція",
+		color: "Кольори",
+		sku: "Артикул",
+	},
+	addToCart: "Додати в кошик — незабаром",
+	related: "Вам також може сподобатись",
 };
 
 //Buttons
@@ -28,10 +92,23 @@ export const toolbarEN = {
 export const toolbarUA = {
 	filters: "Фільтри",
 	items: "товарів",
-	itemsFound: (count) =>
-		`Знайдено ${count} товар${
-			count === 1 ? "" : count >= 2 && count <= 4 ? "и" : "ів"
-		}`,
+	itemsFound: (count) => {
+		const lastTwo = count % 100;
+		const lastOne = count % 10;
+
+		let form;
+		if (lastTwo >= 11 && lastTwo <= 19) {
+			form = "ів"; // 11-19 always "ів"
+		} else if (lastOne === 1) {
+			form = ""; // 1, 21, 31 → "товар"
+		} else if (lastOne >= 2 && lastOne <= 4) {
+			form = "и"; // 2-4, 22-24 → "товари"
+		} else {
+			form = "ів"; // 0, 5-9, 20 → "товарів"
+		}
+
+		return `${count} товар${form} знайдено`;
+	},
 };
 
 //Sort options
