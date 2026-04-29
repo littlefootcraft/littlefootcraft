@@ -1,5 +1,5 @@
 // ProductPage.jsx
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { CgClose } from "react-icons/cg";
@@ -11,7 +11,26 @@ import { useProductGallery } from "../hooks/useProductGallery";
 import { ProductCard } from "../components/ProductCard";
 import NotFoundPage from "./NotFoundPage";
 import { productPageUA, productPageEN } from "../translations/translation";
-import { Star } from "lucide-react";
+
+import ProductPageContent from "../content/pages/product-page.json";
+
+//Icons
+import { Star, Sparkles } from "lucide-react";
+import { IoShareSocialOutline } from "react-icons/io5";
+import {
+	FaFacebookF,
+	FaTelegramPlane,
+	FaWhatsapp,
+	FaViber,
+} from "react-icons/fa";
+import { MdOutlineEmail } from "react-icons/md";
+import { FiLink } from "react-icons/fi";
+
+import { formatPrice } from "../utils/formatPrice";
+import { ProcessSection } from "../components/ProcessSection";
+
+const RECENTLY_VIEWED_KEY = "recently_viewed_skus";
+const MAX_RECENTLY_VIEWED = 8;
 
 const ProductPage = () => {
 	const { sku } = useParams();
@@ -27,6 +46,44 @@ const ProductPage = () => {
 	// Wishlist
 	const { toggleWishlist, isInWishlist } = useWishlist();
 	const inWish = isInWishlist(product.sku);
+
+	// Share link
+	const [isShareOpen, setIsShareOpen] = useState(false);
+	const shareRef = useRef(null);
+	const shareUrl = window.location.href;
+	const encodedUrl = encodeURIComponent(shareUrl);
+	const shareText = t(product.name);
+	const encodedText = encodeURIComponent(`${shareText} ${shareUrl}`);
+	const encodedSubject = encodeURIComponent(t(product.name));
+	const encodedBody = encodeURIComponent(`${shareText}\n\n${shareUrl}`);
+
+	const handleCopyLink = async () => {
+		try {
+			await navigator.clipboard.writeText(shareUrl);
+			setIsShareOpen(false);
+		} catch (error) {
+			console.error("Copy failed:", error);
+		}
+	};
+
+	// Close share menu when clicking outside
+	useEffect(() => {
+		if (!isShareOpen) return;
+		const handleClickOutside = (e) => {
+			if (shareRef.current && !shareRef.current.contains(e.target)) {
+				setIsShareOpen(false);
+			}
+		};
+		const handleEscape = (e) => {
+			if (e.key === "Escape") setIsShareOpen(false);
+		};
+		document.addEventListener("mousedown", handleClickOutside);
+		window.addEventListener("keydown", handleEscape);
+		return () => {
+			document.removeEventListener("mousedown", handleClickOutside);
+			window.removeEventListener("keydown", handleEscape);
+		};
+	}, [isShareOpen]);
 
 	// Gallery — all logic lives in the hook
 	const {
@@ -61,6 +118,43 @@ const ProductPage = () => {
 
 		return [...sameCollection, ...sameCategory].slice(0, 4);
 	}, [product, products]);
+
+	// Save current product to recently viewed
+	useEffect(() => {
+		if (!product?.sku) return;
+		const raw = localStorage.getItem(RECENTLY_VIEWED_KEY);
+		const prev = raw ? JSON.parse(raw) : [];
+		const next = [product.sku, ...prev.filter((s) => s !== product.sku)].slice(
+			0,
+			MAX_RECENTLY_VIEWED,
+		);
+		localStorage.setItem(RECENTLY_VIEWED_KEY, JSON.stringify(next));
+	}, [product?.sku]);
+
+	// Build recently viewed list — exclude current product
+	const recentlyViewed = useMemo(() => {
+		const raw = localStorage.getItem(RECENTLY_VIEWED_KEY);
+		const skus = raw ? JSON.parse(raw) : [];
+		return skus
+			.filter((s) => s !== product.sku)
+			.map((s) => products.find((p) => p.sku === s))
+			.filter(Boolean)
+			.slice(0, 4);
+	}, [product?.sku, products]);
+
+	// Lock body scroll when video modal is open
+	useEffect(() => {
+		if (isVideoModalOpen) {
+			document.body.style.overflow = "hidden";
+		} else {
+			document.body.style.overflow = "";
+		}
+
+		// Cleanup when component unmounts
+		return () => {
+			document.body.style.overflow = "";
+		};
+	}, [isVideoModalOpen]);
 
 	return (
 		<div className="product-page container">
@@ -110,7 +204,7 @@ const ProductPage = () => {
 								onClick={() => setIsVideoModalOpen(true)}
 							>
 								<video
-									src={product.video}
+									src={activeItem.src}
 									muted
 									playsInline
 									preload="metadata"
@@ -182,11 +276,11 @@ const ProductPage = () => {
 					{/* Price — shows old price if it exists */}
 					<div className="product-page__price">
 						<span className="product-page__price--current">
-							€{product.price}
+							{formatPrice(product.price)}
 						</span>
 						{product.oldPrice && (
 							<span className="product-page__price--old">
-								€{product.oldPrice}
+								{formatPrice(product.oldPrice)}
 							</span>
 						)}
 					</div>
@@ -238,10 +332,8 @@ const ProductPage = () => {
 
 					{/* Action buttons */}
 					<div className="product-page__btns">
-						<button
-							className="product-page__add-to-cart"
-							disabled
-						>
+						<button className="product-page__add-to-cart">
+							<Sparkles />
 							{dict.addToCart}
 						</button>
 						<button
@@ -255,6 +347,80 @@ const ProductPage = () => {
 								stroke="#d4af37"
 							/>
 						</button>
+
+						{/* Share button */}
+						<div
+							className="product-page__share-wrap"
+							ref={shareRef}
+						>
+							<button
+								className="product-page__share-btn"
+								onClick={() => setIsShareOpen((prev) => !prev)}
+								aria-expanded={isShareOpen}
+							>
+								<IoShareSocialOutline size={22} />
+							</button>
+							{isShareOpen && (
+								<div className="product-page__share-menu">
+									<a
+										className="product-page__share-item"
+										href={`mailto:?subject=${encodedSubject}&body=${encodedBody}`}
+										target="_blank"
+										rel="noreferrer"
+										onClick={() => setIsShareOpen(false)}
+									>
+										<MdOutlineEmail />
+										<span>Email</span>
+									</a>
+									<a
+										className="product-page__share-item"
+										href={`viber://forward?text=${encodedText}`}
+										onClick={() => setIsShareOpen(false)}
+									>
+										<FaViber />
+										<span>Viber</span>
+									</a>
+									<a
+										className="product-page__share-item"
+										href={`https://t.me/share/url?url=${encodedUrl}&text=${encodeURIComponent(shareText)}`}
+										target="_blank"
+										rel="noreferrer"
+										onClick={() => setIsShareOpen(false)}
+									>
+										<FaTelegramPlane />
+										<span>Telegram</span>
+									</a>
+									<a
+										className="product-page__share-item"
+										href={`https://wa.me/?text=${encodedText}`}
+										target="_blank"
+										rel="noreferrer"
+										onClick={() => setIsShareOpen(false)}
+									>
+										<FaWhatsapp />
+										<span>WhatsApp</span>
+									</a>
+									<a
+										className="product-page__share-item"
+										href={`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`}
+										target="_blank"
+										rel="noreferrer"
+										onClick={() => setIsShareOpen(false)}
+									>
+										<FaFacebookF />
+										<span>Facebook</span>
+									</a>
+									<button
+										type="button"
+										className="product-page__share-item product-page__share-item--button"
+										onClick={handleCopyLink}
+									>
+										<FiLink />
+										<span>Copy link</span>
+									</button>
+								</div>
+							)}
+						</div>
 					</div>
 				</div>
 			</div>
@@ -278,7 +444,7 @@ const ProductPage = () => {
 						</button>
 						<video
 							className="product-page__video-modal-player"
-							src={product.video}
+							src={product.video.src} // ← .src now, not just product.video
 							controls
 							autoPlay
 							playsInline
@@ -286,6 +452,18 @@ const ProductPage = () => {
 					</div>
 				</div>
 			)}
+			<div className="product-page__process-section">
+				<ProcessSection
+					title={t(ProductPageContent.process.title)}
+					text={t(ProductPageContent.process.text)}
+					titleOne={t(ProductPageContent.process.steps[0]["title-one"])}
+					textOne={t(ProductPageContent.process.steps[0]["text-one"])}
+					titleTwo={t(ProductPageContent.process.steps[1]["title-two"])}
+					textTwo={t(ProductPageContent.process.steps[1]["text-two"])}
+					titleThree={t(ProductPageContent.process.steps[2]["title-three"])}
+					textThree={t(ProductPageContent.process.steps[2]["text-three"])}
+				/>
+			</div>
 
 			{/* Related products */}
 			{relatedProducts.length > 0 && (
@@ -293,6 +471,23 @@ const ProductPage = () => {
 					<h2 className="product-page__related-title">{dict.related}</h2>
 					<div className="product-page__related-cards">
 						{relatedProducts.map((p) => (
+							<ProductCard
+								key={p.sku}
+								product={p}
+							/>
+						))}
+					</div>
+				</div>
+			)}
+
+			{/* Recently viewed */}
+			{recentlyViewed.length > 0 && (
+				<div className="product-page__recently-viewed">
+					<h2 className="product-page__recently-viewed-title">
+						{dict.recentlyViewed}
+					</h2>
+					<div className="product-page__recently-viewed-cards">
+						{recentlyViewed.map((p) => (
 							<ProductCard
 								key={p.sku}
 								product={p}

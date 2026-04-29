@@ -55,7 +55,7 @@ const WishlistPage = () => {
 								<Star />
 								{dict.itemsFound(wishlistProducts.length)}
 							</span>
-							<div className="wishlist-page__cards">
+							<div className="wishlist__cards">
 								{wishlistProducts.map((product) => (
 									<ProductCard
 										key={product.sku}

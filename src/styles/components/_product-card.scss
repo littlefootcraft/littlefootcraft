@@ -133,11 +133,11 @@
 		letter-spacing: 0.2em;
 	}
 
-	//Title
+	//Title---------------------------
 	&__title {
 		margin-block: 16px;
-		// font-family: $title-font;
-		font-size: 1.125rem;
+		font-family: var(--title-font);
+		font-size: var(--card-title-size);
 		font-weight: 500;
 		color: $primary-text;
 		flex: 1;
@@ -150,7 +150,14 @@
 		transform: translateX(0);
 	}
 
-	//Price
+	//Price----------------------
+
+	&__prices {
+		display: flex;
+		align-items: center;
+
+		gap: 10px;
+	}
 
 	&__price-container {
 		display: flex;
@@ -159,7 +166,7 @@
 
 		& span {
 			display: flex;
-			font-size: 0.875rem;
+			font-size: var(--badge-text-size);
 			color: $light-gray-text;
 			display: flex;
 			align-items: center;
@@ -172,12 +179,13 @@
 				transform 220ms ease;
 		}
 	}
+
 	&__price {
 		display: flex;
 		gap: 10px;
 		align-items: center;
 		font-weight: 700;
-		font-size: 1rem;
+		font-size: var(--card-price-size);
 		color: $gold-accent;
 
 		&--old,
@@ -185,6 +193,10 @@
 		}
 
 		&--old {
+			font-size: var(--regular-text-size);
+			color: $light-gray-text;
+			text-decoration: line-through;
+			font-weight: 400;
 		}
 
 		&--discount {

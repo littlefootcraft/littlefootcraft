@@ -13,6 +13,7 @@
 
 	--section-title-size: clamp(2rem, 0.8vw, 3.25rem);
 	--card-title-size: clamp(1.125rem, 1.6vw, 1.5rem);
+	--card-price-size: clamp(1rem, 1.3vw, 1.375rem);
 	--badge-text-size: clamp(0.8125rem, 0.9vw, 1.2rem);
 
 	--footer-title-size: clamp(0.875rem, 1vw, 4.5rem);
@@ -31,6 +32,7 @@
 
 	--section-title-size: clamp(2.2rem, 3.3vw, 3.6rem);
 	--card-title-size: clamp(1.2rem, 1.8vw, 1.65rem);
+	--card-price-size: clamp(1rem, 1.3vw, 1.375rem);
 	--badge-text-size: clamp(0.8125rem, 0.9vw, 1.2rem);
 	--text-font: #{$text-font-ua};
 

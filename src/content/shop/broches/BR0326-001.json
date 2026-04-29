@@ -15,7 +15,7 @@
 			"ua": "3.5 см x 3.5 см"
 		},
 		"color": ["gold", "pink", "brown"],
-		"collection": "other"
+		"collection": "Mixed Collection"
 	},
 	"description": {
 		"en": "This enchanting brooch shimmers in soft gray-blue hues, its iridescent “tentacles” shifting colors like a rainbow dancing in the light. Inspired by the mysterious depths of the Hogwarts Lake, its design combines delicate lightness with fluid movement, making the brooch seem almost alive. A perfect magical artifact for anyone wishing to add a touch of sorcery and elegance to any outfit.",
@@ -23,13 +23,33 @@
 	},
 	"price": 150,
 	"oldPrice": null,
-	"currency": "EURO",
+
 	"badges": {
 		"isTop": false,
 		"isNew": true
 	},
-	"video": null,
+	"video": {
+		"src": "/uploads/images/broches/video/SK0001_video.mp4",
+		"alt": {
+			"en": "Jellyfish Ann Blue Lulworth Brooch - Video",
+			"ua": "Брошка Медуза Анна Блю Лулворт - Вiдeo"
+		}
+	},
 	"photo": [
+		{
+			"src": "/uploads/images/broches/BR0326-001-1.jpeg",
+			"alt": {
+				"en": "Jellyfish Ann Blue Lulworth Brooch - Front View",
+				"ua": "Брошка Медуза Анна Блю Лулворт - Вид спереди"
+			}
+		},
+		{
+			"src": "/uploads/images/broches/BR0326-001-1.jpeg",
+			"alt": {
+				"en": "Jellyfish Ann Blue Lulworth Brooch - Front View",
+				"ua": "Брошка Медуза Анна Блю Лулворт - Вид спереди"
+			}
+		},
 		{
 			"src": "/uploads/images/broches/BR0326-001-1.jpeg",
 			"alt": {

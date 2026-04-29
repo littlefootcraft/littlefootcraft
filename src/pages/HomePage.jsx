@@ -16,6 +16,7 @@ import { useWorkshops } from "../context/WorkshopsContext";
 import { getVisibleWorkshops } from "../hooks/useVisibleWorkshops";
 
 import WorkshopsPageContent from "../content/pages/workshops-page.json";
+import { ProcessSection } from "../components/ProcessSection";
 
 const WorkshopsImage = "/uploads/images/home_workshop_image.jpeg";
 
@@ -197,7 +198,7 @@ const HomePage = ({ workshop }) => {
 			</section>
 
 			{/* --- PROCESS SECTION --- */}
-			<section className="home-page__process">
+			{/* <section className="home-page__process">
 				<div className="container">
 					<div className="home-page__process-header">
 						<h2 className="home-page__process-title main-title">
@@ -237,7 +238,17 @@ const HomePage = ({ workshop }) => {
 						</li>
 					</ul>
 				</div>
-			</section>
+			</section> */}
+			<ProcessSection
+				title={t(HomePageContent.process.title)}
+				text={t(HomePageContent.process.text)}
+				titleOne={t(HomePageContent.process.steps[0]["title-one"])}
+				textOne={t(HomePageContent.process.steps[0]["text-one"])}
+				titleTwo={t(HomePageContent.process.steps[1]["title-two"])}
+				textTwo={t(HomePageContent.process.steps[1]["text-two"])}
+				titleThree={t(HomePageContent.process.steps[2]["title-three"])}
+				textThree={t(HomePageContent.process.steps[2]["text-three"])}
+			/>
 
 			{/* --- WORKSHOPS --- */}
 			<div className="home-page__workshops">

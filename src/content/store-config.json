@@ -1,0 +1,19 @@
+{
+	"currency": {
+		"active": "EUR",
+		"options": {
+			"EUR": {
+				"code": "EUR",
+				"symbol": "€",
+				"position": "before",
+				"label": "Euro"
+			},
+			"UAH": {
+				"code": "UAH",
+				"symbol": "₴",
+				"position": "after",
+				"label": "Українська гривня"
+			}
+		}
+	}
+}

@@ -43,8 +43,8 @@
 		"image": "/uploads/images/collections/Cozy_purr_club_one.png"
 	},
 	{
-		"id": "other",
-		"name": { "en": "Other", "ua": "Інше" },
+		"id": "mixed-collection",
+		"name": { "en": "Mixed Collection", "ua": "Змішана колекція" },
 		"image": null
 	}
 ]

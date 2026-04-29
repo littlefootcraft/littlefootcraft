@@ -1,0 +1,44 @@
+{
+	"process": {
+		"title": {
+			"en": "How to acquirethis piece",
+			"ua": "Як придбати цей виріб"
+		},
+
+		"steps": [
+			{
+				"number": "1",
+				"title-one": {
+					"en": "Request",
+					"ua": "Замовити"
+				},
+				"text-one": {
+					"en": "Click the 'Click 'Request to Order' to express your interest in this piece.",
+					"ua": "Натисніть кнопку «Request to Order», щоб висловити зацікавленість у цьому виробі."
+				}
+			},
+			{
+				"number": "2",
+				"title-two": {
+					"en": "Сonfirm",
+					"ua": "Підтвердження"
+				},
+				"text-two": {
+					"en": "We verify availability and contact you with payment details.",
+					"ua": "Ми перевіримо наявність і зв’яжемося з вами з деталями оплати."
+				}
+			},
+			{
+				"number": "3",
+				"title-three": {
+					"en": "Receive",
+					"ua": "Отримання"
+				},
+				"text-three": {
+					"en": "Your enchanted piece is carefully packaged and shipped to you.",
+					"ua": "Ваш чарівний виріб буде ретельно запакований і відправлений вам."
+				}
+			}
+		]
+	}
+}

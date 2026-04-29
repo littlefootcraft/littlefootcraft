@@ -1,7 +1,6 @@
 //Translation.jsx
 
 //Menu
-
 export const menuEN = {
 	home: "Home",
 	shop: "Shop",
@@ -18,6 +17,21 @@ export const menuUA = {
 	about: "Про нас",
 	faq: "Питання",
 	sale: "Poзпродаж",
+};
+
+//Product Card
+export const productCardEN = {
+	new: "New",
+	addToWishlist: "Add to wishlist",
+	removeFromWishlist: "Remove from wishlist",
+	"details-btn": "View details",
+};
+
+export const productCardUA = {
+	new: "Новинка",
+	addToWishlist: "Додайте до списку бажань",
+	removeFromWishlist: "Видалити зі списку бажань",
+	"details-btn": "Детальніше",
 };
 
 // Wishlist page
@@ -58,7 +72,7 @@ export const wishlistPageUA = {
 	"empty-btn": "Перейти до магазину",
 };
 
-//Product card
+//Product page
 export const productPageEN = {
 	breadcrumbs: { home: "Home", catalog: "Catalog" },
 	specs: {
@@ -67,8 +81,9 @@ export const productPageEN = {
 		color: "Colors",
 		sku: "SKU",
 	},
-	addToCart: "Add to cart — coming soon",
+	addToCart: "Request to order",
 	related: "You may also like",
+	recentlyViewed: "Recently viewed",
 };
 
 export const productPageUA = {
@@ -79,8 +94,9 @@ export const productPageUA = {
 		color: "Кольори",
 		sku: "Артикул",
 	},
-	addToCart: "Додати в кошик — незабаром",
+	addToCart: "Замовити",
 	related: "Вам також може сподобатись",
+	recentlyViewed: "Раніше переглянуті товари",
 };
 
 //Buttons

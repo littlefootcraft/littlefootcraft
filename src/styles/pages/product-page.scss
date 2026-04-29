@@ -2,7 +2,10 @@
 @use "./../abstracts/mixins" as *;
 
 .product-page {
+	padding-bottom: 80px;
+
 	&__content {
+		padding-bottom: 60px;
 		display: grid;
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 		gap: 3rem;
@@ -52,7 +55,8 @@
 		border-radius: $border-radius;
 		overflow: hidden;
 		background-color: $parchment;
-		aspect-ratio: 1 / 1;
+		// aspect-ratio: 1 / 1;
+		aspect-ratio: 3 / 4;
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -215,17 +219,19 @@
 		gap: 12px;
 
 		&--current {
-			font-size: 1.5rem;
+			font-size: var(--card-price-size);
 			font-weight: 700;
 			color: $gold-accent;
 		}
 
 		&--old {
-			font-size: 1.125rem;
+			font-size: var(--regular-text-size);
 			color: $light-gray-text;
+			font-weight: 400;
 			text-decoration: line-through;
 		}
 	}
+
 	&__description {
 		font-size: var(--regular-text-size);
 		color: $secondary-text;
@@ -248,10 +254,14 @@
 		justify-content: space-between;
 		align-items: center;
 		font-size: var(--regular-text-size);
+
+		& span {
+			color: $light-gray-text;
+		}
 	}
 
 	&__spec-label {
-		color: $light-gray-text;
+		color: $secondary-text;
 		font-weight: 400;
 	}
 
@@ -287,9 +297,89 @@
 		font-family: inherit;
 		font-size: var(--regular-text-size);
 		font-weight: 500;
-		cursor: not-allowed;
-		opacity: 0.6;
+		cursor: pointer;
 		letter-spacing: 0.05em;
+		text-transform: uppercase;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 8px;
+		transition:
+			background-color 0.25s ease,
+			transform 0.2s ease;
+
+		&:hover {
+			background-color: $gold-dark;
+			transform: translateY(-1px);
+		}
+	}
+
+	&__share-wrap {
+		position: relative;
+	}
+
+	&__share-btn {
+		width: 52px;
+		height: 52px;
+		border: 1px solid rgba($gold-accent, 0.4);
+		border-radius: $border-radius;
+		background: transparent;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		color: $gold-accent;
+		transition:
+			border-color 0.2s ease,
+			background-color 0.2s ease;
+		flex-shrink: 0;
+
+		&:hover {
+			border-color: $gold-accent;
+			background-color: rgba($gold-accent, 0.06);
+			color: $gold-accent;
+		}
+	}
+
+	&__share-menu {
+		position: absolute;
+		bottom: calc(100% + 8px);
+		right: 0;
+		min-width: 180px;
+		background: $white;
+		border: 1px solid $card-borders;
+		border-radius: $border-radius;
+		box-shadow: 0 8px 24px rgba(26, 43, 76, 0.1);
+		padding: 8px 0;
+		z-index: 50;
+	}
+
+	&__share-item {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		padding: 10px 16px;
+		width: 100%;
+		text-decoration: none;
+		color: $secondary-text;
+		font-size: var(--regular-text-size);
+		font-family: inherit;
+		background: transparent;
+		border: none;
+		cursor: pointer;
+		transition:
+			background-color 0.2s ease,
+			color 0.2s ease;
+
+		svg {
+			font-size: 1.1rem;
+			flex-shrink: 0;
+		}
+
+		&:hover {
+			background-color: rgba($gold-accent, 0.06);
+			color: $primary-text;
+		}
 	}
 
 	&__wishlist-btn {
@@ -332,9 +422,10 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		padding: 24px;
+		padding: 40px 24px;
 
 		&-content {
+			max-width: 640px;
 			position: relative;
 			width: 100%;
 			max-width: 900px;
@@ -344,6 +435,7 @@
 		}
 
 		&-close {
+			top: -44px;
 			position: absolute;
 			top: 12px;
 			right: 12px;
@@ -368,12 +460,24 @@
 		&-player {
 			width: 100%;
 			display: block;
+			max-height: 70vh;
+			object-fit: contain;
 		}
 	}
 
 	// ── RELATED PRODUCTS ─────────────────────────────
+
+	&__process-section {
+		background-color: $cream;
+		width: 100vw;
+		position: relative;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+
+	// ── RELATED PRODUCTS ─────────────────────────────
 	&__related {
-		border-top: 1px solid $card-borders;
+		// border-top: 1px solid $card-borders;
 		padding-top: 60px;
 	}
 
@@ -388,5 +492,25 @@
 
 	&__related-cards {
 		@include product-cards-grid;
+	}
+
+	// ── RECENTLY VIEWED PRODUCTS ─────────────────────────────
+	&__recently-viewed {
+		border-top: 1px solid $card-borders;
+		padding-top: 60px;
+		margin-top: 60px;
+
+		&-title {
+			font-family: var(--title-font);
+			font-size: var(--section-title-size);
+			font-weight: 400;
+			color: $primary-text;
+			margin-bottom: 40px;
+			text-align: center;
+		}
+
+		&-cards {
+			@include product-cards-grid;
+		}
 	}
 }

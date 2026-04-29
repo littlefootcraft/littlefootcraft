@@ -299,58 +299,6 @@
 		}
 	}
 
-	// Process Section
-	&__process {
-		padding-block: 80px;
-
-		&-header {
-			text-align: center;
-		}
-
-		&-text {
-			margin-top: 16px;
-			margin-inline: 150px;
-			font-size: var(--regular-text-size);
-			color: $secondary-text;
-		}
-
-		&-steps {
-			margin-top: 64px;
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			gap: 20px;
-		}
-
-		&-step {
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-			gap: 12px;
-
-			&-title {
-				font-family: var(--title-font);
-				color: $primary-text;
-				font-size: var(--card-title-size);
-				font-weight: 400;
-			}
-
-			&-text {
-				color: $light-gray-text;
-				text-align: center;
-			}
-		}
-
-		&-number {
-			margin-bottom: 16px;
-			font-family: var(--title-font);
-			color: $light-gold;
-			font-size: var(--title-size);
-			font-weight: 400;
-		}
-	}
-
 	//Workshops section
 	&__workshops {
 		padding-block: 80px;
