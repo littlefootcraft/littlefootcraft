@@ -5,39 +5,37 @@
 //Fonts
 :root {
 	--title-font: #{$title-font-en};
+	--text-font: #{$text-font-en};
+
 	--hero-title-size: clamp(3rem, 4.8vw, 5rem);
 	--hero-text-size: clamp(1.5rem, 1vw, 1.375rem);
-
 	--title-size: clamp(0.875rem, 2.1vw, 4.5rem);
 	--subtitle-size: clamp(1rem, 1vw, 4.5rem);
-
 	--section-title-size: clamp(2rem, 0.8vw, 3.25rem);
 	--card-title-size: clamp(1.125rem, 1.6vw, 1.5rem);
 	--card-price-size: clamp(1rem, 1.3vw, 1.375rem);
 	--badge-text-size: clamp(0.8125rem, 0.9vw, 1.2rem);
-
+	--price-size: clamp(1.25rem, 2.5vw, 1.875rem);
+	--login-title-size: clamp(1.5rem, 2vw, 3rem);
 	--footer-title-size: clamp(0.875rem, 1vw, 4.5rem);
-
 	--regular-text-size: clamp(1rem, 0.9vw, 1.375rem);
-	--text-font: #{$text-font-en};
 }
 
 .ua {
 	--title-font: #{$title-font-ua};
+	--text-font: #{$text-font-ua};
+
 	--hero-title-size: clamp(3.1rem, 4.5vw, 5rem);
 	--hero-text-size: clamp(1rem, 1.3vw, 1.375rem);
-
 	--title-size: clamp(3.2rem, 3vw, 5rem);
 	--subtitle-size: clamp(1rem, 1vw, 4.5rem);
-
 	--section-title-size: clamp(2.2rem, 3.3vw, 3.6rem);
 	--card-title-size: clamp(1.2rem, 1.8vw, 1.65rem);
 	--card-price-size: clamp(1rem, 1.3vw, 1.375rem);
 	--badge-text-size: clamp(0.8125rem, 0.9vw, 1.2rem);
-	--text-font: #{$text-font-ua};
-
+	--login-title-size: clamp(1.5rem, 2vw, 3rem);
+	--price-size: clamp(1.25rem, 2.5vw, 1.875rem);
 	--footer-title-size: clamp(0.875rem, 1.3vw, 4.5rem);
-
 	--regular-text-size: clamp(0.875rem, 0.9vw, 1.375rem);
 }
 //var(--hero-title-size)

@@ -141,7 +141,9 @@
 	}
 
 	&--login,
-	&--register {
+	&--register,
+	&--add-to-cart {
+		width: 100%;
 		border-radius: $border-radius;
 		padding: 12px 24px;
 		gap: 14px;

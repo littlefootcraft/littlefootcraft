@@ -219,15 +219,17 @@
 		gap: 12px;
 
 		&--current {
-			font-size: var(--card-price-size);
+			font-family: var(--title-font);
+			font-size: var(--price-size);
 			font-weight: 700;
 			color: $gold-accent;
 		}
 
 		&--old {
-			font-size: var(--regular-text-size);
-			color: $light-gray-text;
-			font-weight: 400;
+			font-family: var(--text-font);
+			font-size: var(--price-size);
+			color: $discount-price;
+			font-weight: 300;
 			text-decoration: line-through;
 		}
 	}

@@ -28,6 +28,7 @@ import { FiLink } from "react-icons/fi";
 
 import { formatPrice } from "../utils/formatPrice";
 import { ProcessSection } from "../components/ProcessSection";
+import { PrimaryBtn } from "../components/PrimaryBtn";
 
 const RECENTLY_VIEWED_KEY = "recently_viewed_skus";
 const MAX_RECENTLY_VIEWED = 8;
@@ -332,10 +333,17 @@ const ProductPage = () => {
 
 					{/* Action buttons */}
 					<div className="product-page__btns">
-						<button className="product-page__add-to-cart">
+						{/* <button className="product-page__add-to-cart">
 							<Sparkles />
 							{dict.addToCart}
-						</button>
+						</button> */}
+						<PrimaryBtn
+							variant="add-to-cart"
+							to="/shop"
+						>
+							{dict.addToCart}
+						</PrimaryBtn>
+
 						<button
 							className={`product-page__wishlist-btn ${inWish ? "product-page__wishlist-btn--active" : ""}`}
 							onClick={() => toggleWishlist(product.sku)}

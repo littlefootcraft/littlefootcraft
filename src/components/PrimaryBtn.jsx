@@ -14,10 +14,15 @@ const BUTTON_CONFIG = {
 	// 	icon: <LuShoppingBag size={20} />,
 	// 	iconPosition: "left",
 	// },
-	// order: {
-	// 	icon: <IoArrowForwardOutline size={20} />,
-	// 	iconPosition: "right",
-	// },
+	order: {
+		icon: <IoArrowForwardOutline size={20} />,
+		iconPosition: "right",
+	},
+
+	"add-to-cart": {
+		// icon: <IoArrowForwardOutline size={20} />,
+		iconPosition: "right",
+	},
 	login: {
 		icon: <HiOutlineLogin size={20} />,
 		iconPosition: "left",

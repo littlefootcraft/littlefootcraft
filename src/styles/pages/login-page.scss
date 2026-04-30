@@ -48,7 +48,7 @@
 	&__title {
 		color: $primary-text;
 		font-family: var(--title-font);
-		font-size: 1.5rem;
+		font-size: var(--login-title-size);
 		line-height: 2rem;
 		font-weight: 700;
 	}
