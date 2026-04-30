@@ -18,14 +18,14 @@ const BUTTON_CONFIG = {
 	// 	icon: <IoArrowForwardOutline size={20} />,
 	// 	iconPosition: "right",
 	// },
-	// login: {
-	// 	icon: <HiOutlineLogin size={20} />,
-	// 	iconPosition: "left",
-	// },
-	// register: {
-	// 	icon: <FiLogIn size={20} />,
-	// 	iconPosition: "left",
-	// },
+	login: {
+		icon: <HiOutlineLogin size={20} />,
+		iconPosition: "left",
+	},
+	register: {
+		icon: <FiLogIn size={20} />,
+		iconPosition: "left",
+	},
 	// confirm: {
 	// 	iconPosition: "left",
 	// },

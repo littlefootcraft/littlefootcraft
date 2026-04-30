@@ -18,6 +18,8 @@ import ProductPage from "./pages/ProductPage";
 import WorkshopsPage from "./pages/WorkshopsPage";
 import ShopLayout from "./layouts/ShopLayout";
 import WishlistPage from "./pages/WishlistPage";
+import LoginPage from "./pages/LoginPage";
+import RegistrationPage from "./pages/RegistrationPage";
 
 const router = createBrowserRouter([
 	{
@@ -52,11 +54,11 @@ const router = createBrowserRouter([
 			},
 
 			{ path: "workshops", element: <WorkshopsPage /> },
-
 			{ path: "about", element: <AboutPage /> },
 			{ path: "faq", element: <FAQPage /> },
-
 			{ path: "wishlist", element: <WishlistPage /> },
+			{ path: "login", element: <LoginPage /> },
+			{ path: "registration", element: <RegistrationPage /> },
 		],
 	},
 	{

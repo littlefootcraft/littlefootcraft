@@ -139,4 +139,16 @@
 			border-radius: $border-radius;
 		}
 	}
+
+	&--login,
+	&--register {
+		border-radius: $border-radius;
+		padding: 12px 24px;
+		gap: 14px;
+		font-size: 1rem;
+
+		&::before {
+			border-radius: $border-radius;
+		}
+	}
 }

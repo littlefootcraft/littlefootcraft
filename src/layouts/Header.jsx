@@ -142,7 +142,7 @@ const Header = () => {
 						</Badge>
 					</Link>
 					<Link
-						to=""
+						to={`/${currentLang}/login`}
 						className="header__icon"
 						aria-label="Login icon"
 					>

@@ -139,3 +139,57 @@ export const sortOptionsEN = [
 	{ id: "price-asc", label: "Price: Low to High" },
 	{ id: "price-desc", label: "Price: High to Low" },
 ];
+
+// Login Page
+export const loginPageEN = {
+	title: "Login to your account",
+	subtitle: "Welcome back! Please enter your details to continue.",
+	emailLabel: "Email",
+	passwordLabel: "Password",
+	passwordPlaceholder: "Enter your password",
+	loginBtn: "Log In",
+	registerInvitation: "Don't have an account? Register",
+	continueWithoutAccount: "Continue without registration",
+};
+
+export const loginPageUA = {
+	title: "Вхід в акаунт",
+	subtitle: "Увійдіть, щоб відстежувати замовлення",
+	emailLabel: "Електронна пошта",
+	passwordLabel: "Пароль",
+	passwordPlaceholder: "Введіть пароль",
+	loginBtn: "Увійти",
+	registerInvitation: "Немає акаунту? Зареєструватися",
+	continueWithoutAccount: "Продовжити без реєстрації",
+};
+
+//Registration Page
+export const registrationPageEN = {
+	title: "Create an account",
+	subtitle: "Join us for a magical shopping experience!",
+	firstNameLabel: "First name",
+	firstNamePlaceholder: "Your first name",
+	lastNameLabel: "Last name",
+	lastNamePlaceholder: "Your last name",
+	emailLabel: "Email",
+	passwordLabel: "Password",
+	passwordPlaceholder: "Create a password",
+	passwordConfirmLabel: "Confirm password",
+	registerBtn: "Sign up", // more natural than "Register"
+	loginInvitation: "Already have an account? Log in",
+};
+
+export const registrationPageUA = {
+	title: "Створіть акаунт",
+	subtitle: "Приєднуйтесь до нас і насолоджуйтесь магічним шопінгом!",
+	firstNameLabel: "Ім’я",
+	firstNamePlaceholder: "Ваше ім’я",
+	lastNameLabel: "Прізвище",
+	lastNamePlaceholder: "Ваше прізвище",
+	emailLabel: "Електронна пошта",
+	passwordLabel: "Пароль",
+	passwordPlaceholder: "Створіть пароль",
+	passwordConfirmLabel: "Підтвердіть пароль",
+	registerBtn: "Зареєструватися",
+	loginInvitation: "Вже маєте акаунт? Увійти",
+};
