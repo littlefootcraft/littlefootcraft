@@ -10,10 +10,6 @@ import { FaWandMagicSparkles } from "react-icons/fa6";
 import { FaWandSparkles } from "react-icons/fa6";
 
 const BUTTON_CONFIG = {
-	// "to-cart": {
-	// 	icon: <LuShoppingBag size={20} />,
-	// 	iconPosition: "left",
-	// },
 	order: {
 		icon: <IoArrowForwardOutline size={20} />,
 		iconPosition: "right",

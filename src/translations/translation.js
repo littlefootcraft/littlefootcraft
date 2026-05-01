@@ -84,6 +84,10 @@ export const productPageEN = {
 	addToCart: "Request to order",
 	related: "You may also like",
 	recentlyViewed: "Recently viewed",
+	viewCart: "View Cart",
+	addedToCart: "Added to cart",
+	addToWishlistAria: "Add to wishlist",
+	removeWishlistAria: "Remove from wishlist",
 };
 
 export const productPageUA = {
@@ -97,6 +101,10 @@ export const productPageUA = {
 	addToCart: "Замовити",
 	related: "Вам також може сподобатись",
 	recentlyViewed: "Раніше переглянуті товари",
+	viewCart: "Перейти до кошика",
+	addedToCart: "Було додано до кошика",
+	addToWishlistAria: "Додати до списку бажань",
+	removeWishlistAria: "Видалити з списку бажань",
 };
 
 //Buttons
@@ -192,4 +200,21 @@ export const registrationPageUA = {
 	passwordConfirmLabel: "Підтвердіть пароль",
 	registerBtn: "Зареєструватися",
 	loginInvitation: "Вже маєте акаунт? Увійти",
+};
+
+//Cart Page
+export const cartPageEN = {
+	title: "Your Cart",
+	subtitle: "Review your selected treasures before sending an order.",
+	emptyTitle: "Your cart is empty",
+	emptyText: "Let's find something special for you",
+	emptyBtn: "Browse the shop",
+};
+
+export const cartPageUA = {
+	title: "Ваш кошик",
+	subtitle: "Перегляньте вибрані скарби перед відправкою замовлення.",
+	emptyTitle: "Ваш кошик порожній",
+	emptyText: "Давайте знайдемо щось особливе для вас",
+	emptyBtn: "Перейти до магазину",
 };

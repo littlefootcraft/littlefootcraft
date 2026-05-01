@@ -9,6 +9,7 @@ import { supportedLanguages } from "../utils/localeConfig";
 import { ProductsProvider } from "../context/ProductsContext";
 import { WorkshopsProvider } from "../context/WorkshopsContext";
 import { WishlistProvider } from "../context/WishlistContext";
+import { CartProvider } from "../context/CartContext";
 
 export const Layout = () => {
 	const { lang } = useParams();
@@ -23,17 +24,19 @@ export const Layout = () => {
 	return (
 		<LanguageProvider initialLang={lang}>
 			<WishlistProvider>
-				<div className={`page ${lang === "ua" ? "ua" : ""}`}>
-					<Header />
-					<main>
-						<ProductsProvider>
-							<WorkshopsProvider>
-								<Outlet />
-							</WorkshopsProvider>
-						</ProductsProvider>
-					</main>
-					<Footer />
-				</div>
+				<CartProvider>
+					<div className={`page ${lang === "ua" ? "ua" : ""}`}>
+						<Header />
+						<main>
+							<ProductsProvider>
+								<WorkshopsProvider>
+									<Outlet />
+								</WorkshopsProvider>
+							</ProductsProvider>
+						</main>
+						<Footer />
+					</div>
+				</CartProvider>
 			</WishlistProvider>
 		</LanguageProvider>
 	);

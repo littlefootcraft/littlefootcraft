@@ -11,11 +11,12 @@ import { useProductGallery } from "../hooks/useProductGallery";
 import { ProductCard } from "../components/ProductCard";
 import NotFoundPage from "./NotFoundPage";
 import { productPageUA, productPageEN } from "../translations/translation";
+import { SecondaryBtn } from "../components/SecondaryBtn";
 
 import ProductPageContent from "../content/pages/product-page.json";
 
 //Icons
-import { Star, Sparkles } from "lucide-react";
+import { Check, Star, Sparkles } from "lucide-react";
 import { IoShareSocialOutline } from "react-icons/io5";
 import {
 	FaFacebookF,
@@ -29,6 +30,7 @@ import { FiLink } from "react-icons/fi";
 import { formatPrice } from "../utils/formatPrice";
 import { ProcessSection } from "../components/ProcessSection";
 import { PrimaryBtn } from "../components/PrimaryBtn";
+import { useCart } from "../context/CartContext";
 
 const RECENTLY_VIEWED_KEY = "recently_viewed_skus";
 const MAX_RECENTLY_VIEWED = 8;
@@ -36,6 +38,7 @@ const MAX_RECENTLY_VIEWED = 8;
 const ProductPage = () => {
 	const { sku } = useParams();
 	const products = useProducts();
+	const { addToCart, cartList } = useCart();
 	const product = products.find((p) => p.sku === sku);
 
 	if (!product) return <NotFoundPage />;
@@ -156,6 +159,15 @@ const ProductPage = () => {
 			document.body.style.overflow = "";
 		};
 	}, [isVideoModalOpen]);
+
+	// Adding to cart
+
+	const [isAdded, setIsAdded] = useState(false);
+
+	const handleAddToCart = () => {
+		addToCart({ sku: product.sku });
+		setIsAdded(true);
+	};
 
 	return (
 		<div className="product-page container">
@@ -333,21 +345,39 @@ const ProductPage = () => {
 
 					{/* Action buttons */}
 					<div className="product-page__btns">
-						{/* <button className="product-page__add-to-cart">
-							<Sparkles />
-							{dict.addToCart}
-						</button> */}
-						<PrimaryBtn
-							variant="add-to-cart"
-							to="/shop"
-						>
-							{dict.addToCart}
-						</PrimaryBtn>
+						<div className="product-page__cart-actions">
+							<PrimaryBtn
+								variant="add-to-cart"
+								onClick={handleAddToCart}
+								className={isAdded ? "is-active" : ""}
+								disabled={isAdded}
+							>
+								{isAdded ? (
+									<>
+										<Check />
+										{dict.addedToCart}
+									</>
+								) : (
+									dict.addToCart
+								)}
+							</PrimaryBtn>
+							{/* View cart button — only appears after adding */}
+							{isAdded && (
+								<SecondaryBtn
+									variant="to-cart"
+									to={`/${currentLang}/cart`}
+								>
+									{dict.viewCart}
+								</SecondaryBtn>
+							)}
+						</div>
 
 						<button
 							className={`product-page__wishlist-btn ${inWish ? "product-page__wishlist-btn--active" : ""}`}
 							onClick={() => toggleWishlist(product.sku)}
-							aria-label={inWish ? "Remove from wishlist" : "Add to wishlist"}
+							aria-label={
+								inWish ? dict.removeWishlistAria : dict.addToWishlistAria
+							}
 							aria-pressed={inWish}
 						>
 							<Star

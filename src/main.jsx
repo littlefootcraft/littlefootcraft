@@ -20,6 +20,7 @@ import ShopLayout from "./layouts/ShopLayout";
 import WishlistPage from "./pages/WishlistPage";
 import LoginPage from "./pages/LoginPage";
 import RegistrationPage from "./pages/RegistrationPage";
+import CartPage from "./pages/CartPage";
 
 const router = createBrowserRouter([
 	{
@@ -59,6 +60,7 @@ const router = createBrowserRouter([
 			{ path: "wishlist", element: <WishlistPage /> },
 			{ path: "login", element: <LoginPage /> },
 			{ path: "registration", element: <RegistrationPage /> },
+			{ path: "cart", element: <CartPage /> },
 		],
 	},
 	{

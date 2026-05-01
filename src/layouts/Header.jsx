@@ -15,6 +15,7 @@ import logo from "/uploads/images/logo.png";
 import { IoSearchOutline, IoCloseOutline } from "react-icons/io5";
 
 import { Search, Globe, Star, ShoppingBag, User } from "lucide-react";
+import { useCart } from "../context/CartContext";
 
 const Header = () => {
 	const { currentLang, setCurrentLang } = useLanguage();
@@ -38,6 +39,10 @@ const Header = () => {
 
 	// Wishlist
 	const { wishlist } = useWishlist();
+
+	// Cart
+	const { cartCount } = useCart();
+	console.log("cart-count", cartCount);
 
 	return (
 		<header className="header">
@@ -128,18 +133,20 @@ const Header = () => {
 						)}
 					</Link>
 					<Link
-						// to={`/${currentLang}/cart`}
-						className="header__icon"
+						to={`/${currentLang}/cart`}
+						className={`header__icon ${cartCount > 0 ? "header__icon--has-items" : ""}`}
 						aria-label="Cart icon"
 					>
 						<ShoppingBag />
-						<Badge
-							className="header__icon-badge"
-							variant="top"
-							shape="dot"
-						>
-							0
-						</Badge>
+						{cartCount > 0 && (
+							<Badge
+								className="header__icon-badge"
+								variant="top"
+								shape="dot"
+							>
+								{cartCount}
+							</Badge>
+						)}
 					</Link>
 					<Link
 						to={`/${currentLang}/login`}

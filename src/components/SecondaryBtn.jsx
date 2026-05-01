@@ -1,13 +1,13 @@
 // SecondaryBtn.jsx
 
 import { Link } from "react-router-dom";
-import { Filter } from "lucide-react";
+import { Filter, ShoppingBag } from "lucide-react";
 
 const BUTTON_CONFIG = {
-	// "to-cart": {
-	// 	icon: <LuShoppingBag size={20} />,
-	// 	iconPosition: "left",
-	// },
+	"to-cart": {
+		icon: <ShoppingBag />,
+		iconPosition: "left",
+	},
 	// order: {
 	// 	icon: <IoArrowForwardOutline size={20} />,
 	// 	iconPosition: "right",
