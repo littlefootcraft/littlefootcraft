@@ -1,0 +1,14 @@
+{
+	"title": {
+		"en": "Special prices for Mother Day",
+		"ua": "Спеціальні ціни до Дня Матері"
+	},
+	"subtitle": {
+		"en": "Celebrate her with something truly special and handcrafted with love.",
+		"ua": "Подаруйте їй щось особливе — створене з любов’ю вручну."
+	},
+	"emptyState": {
+		"en": "Currently there is no items on sale",
+		"ua": "Наразі немає товарів зі знижкою"
+	}
+}

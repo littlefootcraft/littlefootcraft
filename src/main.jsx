@@ -21,6 +21,7 @@ import WishlistPage from "./pages/WishlistPage";
 import LoginPage from "./pages/LoginPage";
 import RegistrationPage from "./pages/RegistrationPage";
 import CartPage from "./pages/CartPage";
+import SalePage from "./pages/SalePage";
 
 const router = createBrowserRouter([
 	{
@@ -39,21 +40,22 @@ const router = createBrowserRouter([
 			{ index: true, element: <HomePage /> },
 
 			{
-				path: "shop",
+				// path: "shop",
 				element: <ShopLayout />,
 				// ShopLayout - wraps all shop-related routes
 				children: [
-					{ index: true, element: <ShopPage /> },
-
-					// { path: "promo", element: <PromoPage /> },
+					{ path: "shop", element: <ShopPage /> },
+					{
+						path: "sale",
+						element: <SalePage />,
+					},
 				],
 			},
-			{
-				path: "shop/:sku",
-				element: <ProductPage />,
-				handle: { title: "Item" },
-			},
 
+			{
+				path: ":sku",
+				element: <ProductPage />,
+			},
 			{ path: "workshops", element: <WorkshopsPage /> },
 			{ path: "about", element: <AboutPage /> },
 			{ path: "faq", element: <FAQPage /> },

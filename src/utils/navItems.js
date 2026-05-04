@@ -6,5 +6,5 @@ export const NavItems = [
 	{ id: "workshops", path: "/workshops" },
 	{ id: "about", path: "/about" },
 	{ id: "faq", path: "/faq" },
-	// { id: "contact", path: "/contact" },
+	{ id: "sale", path: "/sale" },
 ];

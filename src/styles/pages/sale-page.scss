@@ -1,0 +1,25 @@
+@use "./../base/variables" as *;
+@use "./../abstracts/mixins" as *;
+
+.sale-page {
+	padding-bottom: 80px;
+
+	&__top {
+		padding-block: 40px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+
+		&-title {
+			font-size: 60px;
+			// font-family: $title-font;
+			color: $primary-text;
+			font-weight: 400;
+		}
+	}
+
+	&__cards {
+		@include product-cards-grid;
+	}
+}

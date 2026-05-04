@@ -46,6 +46,9 @@ const ShopLayout = () => {
 	// 1. Raw products from context
 	const products = useProducts();
 
+	// Display count
+	const [displayCount, setDisplayCount] = useState(null);
+
 	const {
 		activeFilters,
 		toggleFilter,
@@ -123,7 +126,7 @@ const ShopLayout = () => {
 				sortKey={sortKey}
 				onSortChange={setSort}
 				onFiltersOpen={() => setIsFiltersOpen(true)}
-				count={sortedProducts.length}
+				count={displayCount ?? sortedProducts.length}
 				activeFilters={activeFilters}
 				toggleFilter={toggleFilter}
 				clearFilters={clearFilters}
@@ -143,8 +146,9 @@ const ShopLayout = () => {
 			{/* 3. cards */}
 			<Outlet
 				context={{
-					paginatedItems,
 					setPageTitle,
+					sortedProducts,
+					setDisplayCount,
 					// To let child pages read filter state if needed
 					activeFilters,
 					toggleFilter,
@@ -158,13 +162,13 @@ const ShopLayout = () => {
 			/>
 
 			{/* 3. pagination */}
-			<div className="shop-page__pagination-slot">
+			{/* <div className="shop-page__pagination-slot">
 				<PaginationBar
 					page={page}
 					totalPages={totalPages}
 					setParams={setParams}
 				/>
-			</div>
+			</div> */}
 		</div>
 	);
 };

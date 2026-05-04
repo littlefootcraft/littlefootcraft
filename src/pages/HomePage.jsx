@@ -146,7 +146,7 @@ const HomePage = ({ workshop }) => {
 					<div className="home-page__collections-cards">
 						{collections.map((collection) => (
 							<div
-								key={collection.name}
+								key={t(collection.name.en)}
 								className="home-page__collections-card"
 							>
 								<img

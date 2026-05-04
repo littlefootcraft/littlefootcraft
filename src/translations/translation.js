@@ -1,6 +1,6 @@
 //Translation.jsx
 
-//Menu
+// Menu --------------------------------
 export const menuEN = {
 	home: "Home",
 	shop: "Shop",
@@ -19,7 +19,7 @@ export const menuUA = {
 	sale: "Poзпродаж",
 };
 
-//Product Card
+// Product Card-----------------------
 export const productCardEN = {
 	new: "New",
 	addToWishlist: "Add to wishlist",
@@ -34,7 +34,7 @@ export const productCardUA = {
 	"details-btn": "Детальніше",
 };
 
-// Wishlist page
+// Wishlist page---------------------------------------
 export const wishlistPageEN = {
 	title: "My Wishlist",
 	subtitle: "Pieces you've fallen in love with. Take your time — magic waits.",
@@ -72,7 +72,7 @@ export const wishlistPageUA = {
 	"empty-btn": "Перейти до магазину",
 };
 
-//Product page
+// Product page----------------------------------
 export const productPageEN = {
 	breadcrumbs: { home: "Home", catalog: "Catalog" },
 	specs: {
@@ -107,7 +107,7 @@ export const productPageUA = {
 	removeWishlistAria: "Видалити з списку бажань",
 };
 
-//Buttons
+// Buttons--------------------------------------
 export const toolbarEN = {
 	filters: "Filters",
 	items: "items",
@@ -135,7 +135,7 @@ export const toolbarUA = {
 	},
 };
 
-//Sort options
+// Sort options-------------------------------
 export const sortOptionsUA = [
 	{ id: "newest", label: "Новинки" },
 	{ id: "price-asc", label: "Ціна: від низької до високої" },
@@ -148,7 +148,7 @@ export const sortOptionsEN = [
 	{ id: "price-desc", label: "Price: High to Low" },
 ];
 
-// Login Page
+// Login Page-----------------------------------
 export const loginPageEN = {
 	title: "Login to your account",
 	subtitle: "Welcome back! Please enter your details to continue.",
@@ -171,7 +171,7 @@ export const loginPageUA = {
 	continueWithoutAccount: "Продовжити без реєстрації",
 };
 
-//Registration Page
+// Registration Page---------------------------------------
 export const registrationPageEN = {
 	title: "Create an account",
 	subtitle: "Join us for a magical shopping experience!",
@@ -202,7 +202,7 @@ export const registrationPageUA = {
 	loginInvitation: "Вже маєте акаунт? Увійти",
 };
 
-//Cart Page
+// Cart Page----------------------------------
 export const cartPageEN = {
 	title: "Your Cart",
 	subtitle: "Review your selected treasures before sending an order.",

@@ -5,9 +5,10 @@ import { ProductCard } from "../components/ProductCard";
 import { useProducts } from "../context/ProductsContext";
 import { useLanguage } from "../context/LanguageContext";
 import shopPage from "../content/pages/shop-page.json";
+import { useCatalogPagination } from "../hooks/useCatalogPagination";
 
 const ShopPage = () => {
-	const { paginatedItems, setPageTitle } = useOutletContext();
+	const { sortedProducts, setPageTitle } = useOutletContext();
 
 	// For language switching
 	const { currentLang } = useLanguage();
@@ -20,6 +21,12 @@ const ShopPage = () => {
 			subtitle: t(shopPage.subtitle),
 		});
 	}, [currentLang]); // ← needed to sync title up to ShopLayout on language change
+
+	// Pagination
+	const { page, totalPages, paginatedItems, setParams } = useCatalogPagination(
+		sortedProducts,
+		20,
+	);
 
 	// Empty state — filters returned nothing
 	if (paginatedItems.length === 0) {
@@ -34,6 +41,7 @@ const ShopPage = () => {
 
 	return (
 		<section className="shop-page container">
+			{/* <span className="shop-page__count">{t(sortedProducts.length)}</span> */}
 			<div className="shop-page__cards">
 				{paginatedItems.map((product) => (
 					<ProductCard
