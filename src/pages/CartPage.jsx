@@ -3,27 +3,29 @@
 // import { CartItemCard } from "../components/CartItemCard";
 import { PrimaryBtn } from "../components/PrimaryBtn";
 import { SecondaryBtn } from "../components/SecondaryBtn";
-
+import { formatPrice } from "../utils/formatPrice";
 import { Link, useOutletContext } from "react-router-dom";
 import { useCartDetails } from "../hooks/useCartDetails";
 import { cartPageEN, cartPageUA } from "../translations/translation";
 
 //Icons
-import { ShoppingBag } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
+
 import { useLanguage } from "../context/LanguageContext";
-import { useEffect } from "react";
+
 import { PageTopTitle } from "../components/PageTopTitle";
 import { useCart } from "../context/CartContext";
+import { CartItem } from "../components/CartItem";
 
 const CartPage = () => {
 	const { currentLang } = useLanguage();
 	const { cartProducts, totalAmount, totalDiscount, originalTotal } =
 		useCartDetails();
-
+	const t = (field) => field?.[currentLang] ?? field?.en ?? "";
 	const dict = currentLang === "en" ? cartPageEN : cartPageUA;
 
 	return (
-		<div className="cart">
+		<div className="cart-page">
 			{/* 1. title */}
 			<PageTopTitle
 				title={dict.title}
@@ -46,71 +48,79 @@ const CartPage = () => {
 					</div>
 				) : (
 					<div className="cart-page__layout">
-						<div className="cart-page__cards shared-shadow">
-							{/* {cartProducts.map((item) => (
-								<CartItemCard
-									key={item.sku}
-									sku={item.sku}
-									productSku={item.productSku}
-									size={item.size}
-									qty={item.qty}
-									image={item.image}
-									name={item.name}
-									price={item.price}
-									oldPrice={item.oldPrice}
-								/>
-							))} */}
+						<div>
+							<Link
+								to={`/${currentLang}/shop`}
+								className="cart-page__back-btn"
+							>
+								<ArrowLeft />
+								{dict.backBtn}
+							</Link>
+							<div className="cart-page__cards shared-shadow">
+								{cartProducts.map((item) => (
+									<CartItem
+										key={item.sku}
+										sku={item.sku}
+										qty={item.qty}
+										image={item.image}
+										name={t(item.name)}
+										price={item.price}
+										oldPrice={item.oldPrice}
+										category={t(item.specifications.category)}
+									/>
+								))}
+							</div>
 						</div>
-						<div className="cart-page__summary shared-shadow">
-							<h2 className="cart-page__summary-title">Ваше замовлення</h2>
-							<ul className="cart-page__summary-items">
+						<div className="cart__summary shared-shadow">
+							<h2 className="cart__summary-title">{dict.orderTitle}</h2>
+							<ul className="cart__summary-items">
 								{cartProducts.map((item) => (
 									<li
-										className="cart-page__summary-item"
+										className="cart__summary-item"
 										key={item.sku}
 									>
-										<div>{`${item.name} (${item.size}) x ${item.qty}`}</div>
+										<span>{`${t(item.name) ?? item.name?.en} x ${item.qty}`}</span>
 
-										<div className="cart-page__summary-price">
+										<div className="cart__summary-price">
 											{item.lineOldTotal != null && (
-												<div className="cart-page__summary-price--old">
-													{item.lineOldTotal}
-													<span>₴</span>
+												<div className="cart__summary-price--old">
+													{formatPrice(item.lineOldTotal)}
 												</div>
 											)}
 
 											<div
-												className={`cart-page__summary-price--new ${
+												className={`cart__summary-price--new ${
 													item.oldPrice != null
-														? "cart-page__summary-price--discount"
+														? "cart__summary-price--discount"
 														: ""
 												}`}
 											>
-												{item.lineTotal}
-												<span>₴</span>
+												{formatPrice(item.lineTotal)}
 											</div>
 										</div>
 									</li>
 								))}
 							</ul>
 
-							<div className="cart-page__summary-delivery">
-								<span>Доставка</span>
-								<span>За тарифами перевізника</span>
+							<div className="cart__summary-delivery">
+								<span>{dict.deliveryTitle}</span>
+								<span>{dict.deliveryInfo}</span>
 							</div>
 							{/* {discount > 0 && (
-								<div className="cart-page__summary-discount">
+								<div className="cart__summary-discount">
 									<span>Ви зберігаєте</span>
 									<span>₴</span>
 								</div>
 							)} */}
-							<div className="cart-page__summary-total">
-								<span className="cart-page__summary-total-text">До сплати</span>
-								<span className="cart-page__summary-total-amount">
-									{/* {totalAmount}₴ */}
+							<div className="cart__summary-total">
+								<span className="cart__summary-total-title">
+									{dict.totalTitle}
+								</span>
+								<span className="cart__summary-total-amount">
+									{formatPrice(totalAmount)}
 								</span>
 							</div>
-							<div className="cart-page__summary-btns">
+							<div className="cart__summary-btns">
 								<PrimaryBtn
 									variant="order"
 									to="/order"
@@ -119,13 +129,13 @@ const CartPage = () => {
 										e.stopPropagation();
 									}}
 								>
-									Оформити замовлення
+									{dict.checkout}
 								</PrimaryBtn>
 								<SecondaryBtn
 									to="/catalog"
 									fullWidth
 								>
-									Продовжити покупки
+									{dict.continueShopping}
 								</SecondaryBtn>
 							</div>
 						</div>

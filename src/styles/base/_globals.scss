@@ -19,6 +19,7 @@
 	--login-title-size: clamp(1.5rem, 2vw, 3rem);
 	--footer-title-size: clamp(0.875rem, 1vw, 4.5rem);
 	--regular-text-size: clamp(1rem, 0.9vw, 1.375rem);
+	--category-font-size: clamp(0.75rem, 0.9vw, 0.8125rem);
 }
 
 .ua {
@@ -37,6 +38,7 @@
 	--price-size: clamp(1.25rem, 2.5vw, 1.875rem);
 	--footer-title-size: clamp(0.875rem, 1.3vw, 4.5rem);
 	--regular-text-size: clamp(0.875rem, 0.9vw, 1.375rem);
+	--category-font-size: clamp(0.75rem, 0.9vw, 0.8125rem);
 }
 //var(--hero-title-size)
 *,

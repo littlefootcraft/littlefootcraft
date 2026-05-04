@@ -25,15 +25,18 @@ function applyFilters(products, activeFilters) {
 			const productValues = product.specifications?.[key];
 			if (!productValues) return false;
 
-			// productValues might be a single string or an array
-			// We normalize to array so the check works either way
-			const normalized = Array.isArray(productValues)
-				? productValues
-				: [productValues];
+			// Normalize a value to array of lowercase strings
+			// handles: string, { en, ua } object, or array of those
+			const normalize = (val) => {
+				if (typeof val === "object" && val !== null && !Array.isArray(val)) {
+					return Object.values(val).map((v) => String(v).toLowerCase());
+				}
+				return [String(val).toLowerCase()];
+			};
 
 			// ← lowercase both sides so "Brooch" matches "brooch"
 			return values.some((v) =>
-				normalized.some((pv) => pv.toLowerCase() === v.toLowerCase()),
+				normalize.some((pv) => pv.toLowerCase() === v.toLowerCase()),
 			);
 		});
 	});

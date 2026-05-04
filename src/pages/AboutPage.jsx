@@ -108,7 +108,7 @@ const AboutPage = () => {
 					<PrimaryBtn
 						className="about__cta-button"
 						variant="to-catalog"
-						to="/shop"
+						to={`/${currentLang}/shop`}
 					>
 						{t(AboutPageContent.cta.button.label)}
 					</PrimaryBtn>

@@ -209,6 +209,13 @@ export const cartPageEN = {
 	emptyTitle: "Your cart is empty",
 	emptyText: "Let's find something special for you",
 	emptyBtn: "Browse the shop",
+	checkout: "Request to order",
+	continueShopping: "Continue shoping",
+	orderTitle: "Order summary",
+	deliveryTitle: "Shipping",
+	deliveryInfo: "Calculated at checkout",
+	totalTitle: "Total",
+	backBtn: "Continue Shopping",
 };
 
 export const cartPageUA = {
@@ -217,4 +224,11 @@ export const cartPageUA = {
 	emptyTitle: "Ваш кошик порожній",
 	emptyText: "Давайте знайдемо щось особливе для вас",
 	emptyBtn: "Перейти до магазину",
+	checkout: "Оформити замовлення",
+	continueShopping: "Продовжити покупки",
+	orderTitle: "Ваше замовлення",
+	deliveryTitle: "Доставка",
+	deliveryInfo: "Розраховується під час оформлення замовлення",
+	totalTitle: "До сплати",
+	backBtn: "Продовжити покупки",
 };

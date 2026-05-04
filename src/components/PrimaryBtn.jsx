@@ -1,17 +1,12 @@
 //PrimaryBtn.jsx
 
-import { LuShoppingBag } from "react-icons/lu";
-import { IoArrowForwardOutline } from "react-icons/io5";
-import { HiOutlineLogin } from "react-icons/hi";
-import { FiLogIn } from "react-icons/fi";
 import { Link } from "react-router-dom";
-import { FaArrowRight } from "react-icons/fa6";
-import { FaWandMagicSparkles } from "react-icons/fa6";
-import { FaWandSparkles } from "react-icons/fa6";
+
+import { ArrowRight, LogIn, WandSparkles } from "lucide-react";
 
 const BUTTON_CONFIG = {
 	order: {
-		icon: <IoArrowForwardOutline size={20} />,
+		icon: <ArrowRight size={20} />,
 		iconPosition: "right",
 	},
 
@@ -20,24 +15,24 @@ const BUTTON_CONFIG = {
 		iconPosition: "right",
 	},
 	login: {
-		icon: <HiOutlineLogin size={20} />,
+		icon: <LogIn size={20} />,
 		iconPosition: "left",
 	},
 	register: {
-		icon: <FiLogIn size={20} />,
+		icon: <LogIn size={20} />,
 		iconPosition: "left",
 	},
 	// confirm: {
 	// 	iconPosition: "left",
 	// },
-	booking: {},
-	subscription: { icon: <FaWandSparkles />, iconPosition: "right" },
-	footer: { icon: <FaWandSparkles />, iconPosition: "right" },
+	// booking: {},
+	// subscription: { icon: <WandSparkles />, iconPosition: "right" },
+	// footer: { icon: <WandSparkles />, iconPosition: "right" },
 
-	"to-catalog": {
-		icon: <FaWandMagicSparkles />,
-		iconPosition: "left",
-	},
+	// "to-catalog": {
+	// 	icon: <WandSparkles />,
+	// 	iconPosition: "left",
+	// },
 };
 
 export const PrimaryBtn = ({

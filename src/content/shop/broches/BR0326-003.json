@@ -5,7 +5,7 @@
 		"ua": "Брошка Медуза Жоржина Лалі"
 	},
 	"specifications": {
-		"category": "Brooch",
+		"category": { "en": "Brooch", "ua": "Брошка" },
 		"design": {
 			"en": "Jellyfish",
 			"ua": "Медуза"

@@ -1,7 +1,75 @@
 @use "./../base/variables" as *;
 @use "./../abstracts/mixins" as *;
 
+.cart-page {
+	background-color: $cream;
+	padding-bottom: 80px;
+
+	&__back-btn {
+		background: transparent;
+		border: none;
+		cursor: pointer;
+		margin-bottom: 24px;
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		color: $light-gray-text;
+		font-size: var(--regular-text-size);
+
+		& svg {
+			width: 22px;
+			height: 22px;
+		}
+
+		&:hover {
+			color: $gold-accent;
+		}
+	}
+
+	&__layout {
+		margin-top: 40px;
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) 454px;
+		gap: 40px;
+		align-items: start;
+	}
+
+	// Content -------------------------------
+
+	&__title {
+		font-size: 1.875rem;
+		font-weight: 700;
+		color: $primary-text;
+		line-height: 1;
+	}
+
+	&__cards {
+		padding: 1.5rem;
+		background-color: white;
+		border-radius: $border-radius;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: 16px;
+		border: 1px solid $input-borders;
+	}
+
+	&__cards > *:not(:last-child) {
+		border-bottom: 1px solid $input-borders;
+	}
+
+	&__cards,
+	&__summary {
+		min-width: 0;
+	}
+
+	&__continue-btn {
+		width: 100%;
+	}
+}
+
 .cart {
+	// Empty--------------------------
 	&-empty {
 		display: flex;
 		flex-direction: column;
@@ -50,6 +118,119 @@
 				background-color: $gold-accent;
 				color: $white;
 			}
+		}
+	}
+
+	// Summary-----------------------------------
+
+	&__summary {
+		padding: 24px;
+		// max-width: 454px;
+		max-height: fit-content;
+		background-color: $white;
+		border-radius: $border-radius;
+		font-size: 1rem;
+		border: 1px solid $input-borders;
+
+		&-title {
+			margin-bottom: 24px;
+			font-family: var(--title-font);
+			font-size: var(--card-title-size);
+			font-weight: 400;
+		}
+
+		&-items {
+			padding-bottom: 16px;
+			font-size: 0.875rem;
+			color: $discount-price;
+			border-bottom: 1px solid $input-borders;
+		}
+
+		&-item {
+			margin-bottom: 10px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+
+			& span {
+				color: $light-gray-text;
+			}
+		}
+
+		&-price {
+			display: flex;
+			gap: 10px;
+			align-items: center;
+			font-weight: 400;
+			font-size: 1rem;
+
+			&--old,
+			&--new {
+				display: flex;
+				align-items: center;
+			}
+
+			&--old {
+				text-decoration-line: line-through;
+			}
+
+			&--new {
+				color: $primary-text;
+			}
+
+			&--discount {
+				color: $gold-accent;
+			}
+		}
+
+		&-delivery {
+			padding-block: 16px;
+			color: $light-gray-text;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			border-bottom: 1px solid $input-borders;
+
+			& span:nth-child(2) {
+				color: $gold-dark;
+			}
+		}
+
+		&-total {
+			padding-block: 16px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+
+			&-title {
+				font-size: var(--card-title-size);
+				font-family: var(--title-font);
+				color: $primary-text;
+				font-weight: 300;
+			}
+
+			&-amount {
+				font-family: var(--title-font);
+				font-size: 1.5rem;
+				font-weight: 600;
+				color: $gold-accent;
+			}
+		}
+
+		&-btns {
+			display: flex;
+			flex-direction: column;
+			gap: 16px;
+		}
+
+		&-discount {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			width: 100%;
+			margin-top: 16px;
+			font-size: 0.875rem;
+			color: $gold-accent;
 		}
 	}
 }

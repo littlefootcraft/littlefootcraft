@@ -61,7 +61,7 @@ export const ProductCard = ({ product }) => {
 				</div>
 				<div className="product-card__footer">
 					<span className="product-card__category">
-						{specifications?.category}
+						{specifications?.category[currentLang]}
 					</span>
 					<h3 className="product-card__title">{t(name)}</h3>
 					<div className="product-card__price-container">

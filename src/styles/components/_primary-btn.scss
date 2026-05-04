@@ -184,7 +184,8 @@
 
 	&--login,
 	&--register,
-	&--add-to-cart {
+	&--add-to-cart,
+	&--order {
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -193,6 +194,7 @@
 		padding: 15px 24px;
 		gap: 14px;
 		font-size: 1rem;
+		color: white;
 
 		&::before {
 			border-radius: $border-radius;

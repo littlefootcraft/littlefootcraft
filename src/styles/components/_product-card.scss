@@ -130,7 +130,8 @@
 		font-size: 0.8125rem;
 		color: $light-gold;
 		text-transform: uppercase;
-		letter-spacing: 0.2em;
+		letter-spacing: $category-letter-spacing;
+		font-size: var(--category-font-size);
 	}
 
 	//Title---------------------------

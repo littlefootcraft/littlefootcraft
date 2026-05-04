@@ -115,8 +115,8 @@ const ProductPage = () => {
 		// fill remaining slots with same category
 		const sameCategory = others.filter(
 			(p) =>
-				p.specifications?.category?.toLowerCase() ===
-					product.specifications?.category?.toLowerCase() &&
+				p.specifications?.category?.en?.toLowerCase() ===
+					product.specifications?.category?.en?.toLowerCase() &&
 				!sameCollection.find((s) => s.sku === p.sku),
 		);
 
@@ -281,7 +281,7 @@ const ProductPage = () => {
 				{/* RIGHT — Product info */}
 				<div className="product-page__info">
 					<span className="product-page__category">
-						{product.specifications?.category}
+						{t(product.specifications?.category)}
 					</span>
 
 					<h1 className="product-page__name">{t(product.name)}</h1>
@@ -317,7 +317,7 @@ const ProductPage = () => {
 								<span className="product-page__spec-label">
 									{dict.specs.collection}
 								</span>
-								<span>{product.specifications.collection}</span>
+								<span>{t(product.specifications?.category)}</span>
 							</div>
 						)}
 						{product.specifications?.color && (

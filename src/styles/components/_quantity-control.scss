@@ -1,0 +1,43 @@
+//_quantityControl.scss
+
+@use "./../../styles/base/variables" as *;
+@use "./../abstracts/mixins" as *;
+
+.quantity-control {
+	// background-color: $misty-ivory;
+	// border: 0.5px solid $light-gold;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	align-items: center;
+
+	width: 120px;
+	height: 40px;
+	padding: 4px;
+	// border-radius: $border-radius;
+	font-size: 1rem;
+
+	&__decrease,
+	&__increase,
+	&__amount {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 100%;
+	}
+
+	&__decrease,
+	&__increase {
+		border: none;
+		background: transparent;
+		padding: 0;
+		cursor: pointer;
+		line-height: 1;
+		border: 0.5px solid $light-gold;
+		border-radius: $border-radius-sm;
+
+		&:hover {
+			color: $gold-dark;
+			border-color: $gold-dark;
+		}
+	}
+}
