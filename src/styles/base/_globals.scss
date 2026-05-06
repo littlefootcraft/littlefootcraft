@@ -71,8 +71,17 @@ body {
 .container {
 	max-width: 1400px;
 	margin: 0 auto;
-	padding-inline: 2rem;
+	padding-inline: 32px;
 	width: 100%;
+
+	// Mobile breakpoint
+	@include tablet {
+		padding-inline: 24px;
+	}
+
+	@include mobile {
+		padding-inline: 16px;
+	}
 }
 
 main {
@@ -80,6 +89,10 @@ main {
 	padding-top: $header-height;
 	display: flex;
 	flex-direction: column;
+
+	&:has(.header__search) .main {
+		padding-top: calc($header-height + 72px);
+	}
 }
 
 .main-title {

@@ -1,2 +1,222 @@
-@use "./../../styles/base/variables" as *;
+// styles/layout/_mobile-menu.scss
+@use "./../base/variables" as *;
 @use "./../abstracts/mixins" as *;
+
+.mobile-menu {
+	position: fixed;
+	top: $header-height;
+	left: 0;
+	right: 0;
+	z-index: 100;
+	background-color: $white;
+	border-bottom: 1px solid $card-borders;
+	padding: 16px 0 0px;
+
+	// Slide down animation
+	animation: slideDown 0.25s ease;
+
+	@keyframes slideDown {
+		from {
+			opacity: 0;
+			transform: translateY(-8px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	&__backdrop {
+		position: fixed;
+		top: $header-height;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		z-index: 98;
+		// Blur
+		background: rgba(26, 43, 76, 0.5);
+		backdrop-filter: blur(6px);
+		-webkit-backdrop-filter: blur(6px);
+	}
+
+	&__list {
+		display: flex;
+		flex-direction: column;
+	}
+
+	// &__item {
+	// 	// border-bottom: 1px solid $card-borders;
+
+	// 	&:first-child {
+	// 		border-top: 1px solid $card-borders;
+	// 	}
+	// }
+
+	&__link {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		padding: 16px 24px;
+		font-size: 1rem;
+		text-transform: uppercase;
+		color: $secondary-text;
+		text-decoration: none;
+		transition:
+			background-color 0.2s ease,
+			color 0.2s ease;
+
+		&:hover {
+			background-color: $parchment;
+			color: $primary-text;
+		}
+
+		&--active {
+			background-color: rgba($gold-accent, 0.06);
+			color: $gold-accent;
+		}
+	}
+
+	// Search----------------------------
+
+	&__search {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		margin: 0 16px 16px;
+		padding: 10px 16px;
+		border: 1px solid rgba($gold-accent, 0.3);
+		border-radius: $border-radius;
+		background-color: $parchment;
+
+		&-icon {
+			color: $gold-accent;
+			flex-shrink: 0;
+		}
+
+		&-input {
+			flex: 1;
+			border: none;
+			background: transparent;
+			font-family: inherit;
+			font-size: var(--regular-text-size);
+			color: $primary-text;
+			outline: none;
+
+			&::placeholder {
+				color: $light-gray-text;
+			}
+		}
+	}
+
+	&--search-open {
+		top: calc($header-height + 72px);
+	}
+
+	// Language and Login--------------------------
+
+	&__divider {
+		height: 1px;
+		background-color: $card-borders;
+		margin: 8px 0;
+	}
+
+	&__section {
+		display: flex;
+		flex-direction: column;
+
+		&-login {
+			margin-top: 80px;
+		}
+	}
+
+	&__link--toggle {
+		width: 100%;
+		background: transparent;
+		border: none;
+		cursor: pointer;
+		font-family: inherit;
+		font-size: 1rem;
+		text-align: left;
+		justify-content: flex-start; // override any center alignment
+	}
+
+	&__chevron {
+		margin-left: auto;
+		color: $light-gray-text;
+		display: flex;
+		align-items: center;
+		transition: transform 0.25s ease;
+
+		&--open {
+			transform: rotate(180deg);
+		}
+	}
+
+	&__icon {
+		color: $gold-accent;
+		flex-shrink: 0;
+	}
+
+	&__sublist {
+		display: flex;
+		flex-direction: column;
+		background-color: $parchment;
+
+		&-login {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+
+			border-top: 1px solid $card-borders;
+			// Vertical divider between login and register
+			li:first-child {
+				border-right: 1px solid $card-borders;
+			}
+		}
+	}
+
+	&__subitem {
+		&-login {
+			padding-block: 15px;
+		}
+	}
+
+	&__sublink {
+		display: block;
+		padding: 12px 24px 12px 52px; // ← indented to align with icon + gap
+		font-size: 0.9375rem;
+		color: $secondary-text;
+		text-decoration: none;
+		background: transparent;
+		border: none;
+		width: 100%;
+		text-align: left;
+		font-family: inherit;
+		cursor: pointer;
+		transition:
+			color 0.2s ease,
+			background-color 0.2s ease;
+
+		&-login {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			text-transform: uppercase;
+			letter-spacing: 0.1em;
+			font-size: 1.125rem;
+			color: $primary-text;
+
+			&:hover {
+				color: $gold-accent;
+			}
+		}
+
+		&:hover {
+			background-color: rgba($gold-accent, 0.06);
+			color: $primary-text;
+		}
+	}
+}
+
+.mobile-menu--search-open + .mobile-menu__backdrop {
+	top: calc($header-height + 72px);
+}

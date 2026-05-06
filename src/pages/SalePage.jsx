@@ -53,16 +53,18 @@ const SalePage = () => {
 		);
 	}
 	return (
-		<div className="sale-page container">
-			<div className="sale-page__cards">
-				{paginatedItems.map((product) => (
-					<ProductCard
-						key={product.sku}
-						product={product}
-					/>
-				))}
+		<section className="sale-page ">
+			<div className="container">
+				<div className="sale-page__cards">
+					{paginatedItems.map((product) => (
+						<ProductCard
+							key={product.sku}
+							product={product}
+						/>
+					))}
+				</div>
 			</div>
-		</div>
+		</section>
 	);
 };
 

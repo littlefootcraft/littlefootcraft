@@ -1,21 +1,24 @@
 //Header.jsx
 
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
-import { NavItems } from "../utils/navItems";
+// Contexts
 import { useLanguage } from "../context/LanguageContext";
 import { useWishlist } from "../context/WishlistContext";
+import { useCart } from "../context/CartContext";
 
+import { NavItems } from "../utils/navItems";
 import { menuUA, menuEN } from "../translations/translation";
-import { Badge } from "../components/Badge";
-
 import logo from "/uploads/images/logo.png";
 
-import { IoSearchOutline, IoCloseOutline } from "react-icons/io5";
+// Components
+import { Badge } from "../components/Badge";
 
-import { Search, Globe, Star, ShoppingBag, User } from "lucide-react";
-import { useCart } from "../context/CartContext";
+// Icons
+import { Search, Globe, Star, ShoppingBag, User, Menu, X } from "lucide-react";
+import { IoSearchOutline, IoCloseOutline } from "react-icons/io5";
+import { MobileMenu } from "./MobileMenu";
 
 const Header = () => {
 	const { currentLang, setCurrentLang } = useLanguage();
@@ -31,6 +34,7 @@ const Header = () => {
 		const newPath = segment.join("/") || `/${lang}`;
 		navigate(`${newPath}${location.search}`);
 	}
+
 	//Search
 	const [isSearchOpen, setIsSearchOpen] = useState(false);
 
@@ -44,9 +48,42 @@ const Header = () => {
 	const { cartCount } = useCart();
 	console.log("cart-count", cartCount);
 
+	// Mobile Menu
+	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+	// Prevent body scroll when Mobile menu opened
+	useEffect(() => {
+		if (isMobileMenuOpen) {
+			document.body.style.overflow = "hidden";
+		} else {
+			document.body.style.overflow = "";
+		}
+		return () => {
+			document.body.style.overflow = "";
+		};
+	}, [isMobileMenuOpen]);
+
+	// Off language swither on outside click
+	const langRef = useRef(null);
+
+	useEffect(() => {
+		function handleClickOutside(e) {
+			if (langRef.current && !langRef.current.contains(e.target)) {
+				setIsLangSwitcherOpen(false);
+			}
+		}
+
+		document.addEventListener("mousedown", handleClickOutside);
+
+		return () => {
+			document.removeEventListener("mousedown", handleClickOutside);
+		};
+	}, []);
+
 	return (
 		<header className="header">
 			<div className="header__content container">
+				{/* Logo */}
 				<Link to={`/${currentLang}`}>
 					<img
 						className="header__logo"
@@ -54,6 +91,8 @@ const Header = () => {
 						alt="Little foot creft logo"
 					/>
 				</Link>
+
+				{/* Desktop nav — hidden on mobile */}
 				<nav className="header__nav">
 					<ul className="header__nav-items">
 						{NavItems.map(({ id, path }) => (
@@ -74,16 +113,66 @@ const Header = () => {
 						))}
 					</ul>
 				</nav>
+
 				<div className="header__icons">
+					{/* Search Input trigger button*/}
 					<button
+						// ref={searchBtnRef}
 						className="header__input-btn"
 						aria-label="Search button"
-						onClick={() => setIsSearchOpen(true)}
+						onClick={() => setIsSearchOpen((prev) => !prev)}
 					>
 						<Search />
 					</button>
+					<div>
+						<Link
+							to={`/${currentLang}/wishlist`}
+							className={`header__icon ${wishlist.length > 0 ? "header__icon--has-items" : ""}`}
+							aria-label="Wishlist icon"
+						>
+							<Star />
+							{wishlist.length > 0 && (
+								<Badge
+									className="header__icon-badge"
+									variant="top"
+									shape="dot"
+								>
+									{wishlist.length}
+								</Badge>
+							)}
+						</Link>
+						<Link
+							to={`/${currentLang}/cart`}
+							className={`header__icon ${cartCount > 0 ? "header__icon--has-items" : ""}`}
+							aria-label="Cart icon"
+						>
+							<ShoppingBag />
+							{cartCount > 0 && (
+								<Badge
+									className="header__icon-badge"
+									variant="top"
+									shape="dot"
+								>
+									{cartCount}
+								</Badge>
+							)}
+						</Link>
+					</div>
 
-					<div className="header__language">
+					{/* Login */}
+					<Link
+						to={`/${currentLang}/login`}
+						className="header__icon header__icon-login"
+						aria-label="Login icon"
+					>
+						<User />
+					</Link>
+
+					{/* Language trigger button*/}
+					<div
+						className="header__language header__icon-language"
+						ref={langRef}
+					>
 						<button
 							className="header__language-btn"
 							aria-label="Language button"
@@ -116,59 +205,38 @@ const Header = () => {
 							</div>
 						)}
 					</div>
-					<Link
-						to={`/${currentLang}/wishlist`}
-						className={`header__icon ${wishlist.length > 0 ? "header__icon--has-items" : ""}`}
-						aria-label="Wishlist icon"
+
+					{/* Hamburger — visible only on mobile */}
+					<button
+						className="header__hamburger"
+						onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+						aria-label="Toggle menu"
 					>
-						<Star />
-						{wishlist.length > 0 && (
-							<Badge
-								className="header__icon-badge"
-								variant="top"
-								shape="dot"
-							>
-								{wishlist.length}
-							</Badge>
-						)}
-					</Link>
-					<Link
-						to={`/${currentLang}/cart`}
-						className={`header__icon ${cartCount > 0 ? "header__icon--has-items" : ""}`}
-						aria-label="Cart icon"
-					>
-						<ShoppingBag />
-						{cartCount > 0 && (
-							<Badge
-								className="header__icon-badge"
-								variant="top"
-								shape="dot"
-							>
-								{cartCount}
-							</Badge>
-						)}
-					</Link>
-					<Link
-						to={`/${currentLang}/login`}
-						className="header__icon"
-						aria-label="Login icon"
-					>
-						<User />
-					</Link>
+						{isMobileMenuOpen ? <X /> : <Menu />}
+					</button>
 				</div>
 			</div>
+
+			{/* Search input */}
 			{isSearchOpen && (
 				<div className="header__search">
-					<div className="header__search-row-inner container">
+					<div
+						className="header__search-row-inner container"
+						onClick={(e) => e.stopPropagation()}
+					>
 						<form
 							className="header__search-form"
 							// onSubmit={handleSubmit}
 						>
+							<IoSearchOutline
+								size={18}
+								className="header__search-form-icon"
+							/>
 							<input
 								id="search"
 								className="header__search-input"
 								type="text"
-								placeholder="Пошук"
+								// placeholder="Пошук"
 								// value={query}
 								// onChange={(e) => setQuery(e.target.value)}
 							/>
@@ -177,9 +245,7 @@ const Header = () => {
 								className="header__search-submit"
 								type="submit"
 								aria-label="Шукати"
-							>
-								<IoSearchOutline size={28} />
-							</button>
+							></button>
 						</form>
 
 						<button
@@ -197,6 +263,12 @@ const Header = () => {
 					</div>
 				</div>
 			)}
+			{/* Mobile menu */}
+			<MobileMenu
+				isOpen={isMobileMenuOpen}
+				isClose={() => setIsMobileMenuOpen(false)}
+				isSearchOpen={isSearchOpen}
+			/>
 		</header>
 	);
 };

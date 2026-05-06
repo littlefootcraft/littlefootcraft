@@ -14,7 +14,7 @@
 	flex-direction: column;
 	backdrop-filter: blur(20px);
 	-webkit-backdrop-filter: blur(20px);
-	background-color: rgba(253, 251, 247, 0.8);
+	background-color: rgba(253, 251, 247, 0.9);
 	border-bottom: 1px solid rgba(212, 175, 55, 0.2);
 
 	& svg {
@@ -173,43 +173,47 @@
 	}
 
 	//Search
+
 	&__search {
+		height: 72px;
 		width: 100%;
-		background-color: rgba(253, 251, 247, 0.4);
-		border-top: 1px solid $light-gold;
-		padding: 10px 0 5px 0;
+		background-color: rgba(253, 251, 247, 0.95);
+		// background-color: white;
+		border-top: 1px solid $card-borders;
+		padding: 12px 0;
+		z-index: 120;
 
 		&-row-inner {
 			display: flex;
 			align-items: center;
-			// gap: 20px;
-			justify-content: space-between;
+			gap: 12px;
 		}
 
 		&-form {
-			width: 100%;
+			flex: 1;
 			display: flex;
 			align-items: center;
-			justify-content: space-between;
-			border-bottom: 1px solid $primary-text;
-			padding-bottom: 4px;
-		}
+			gap: 10px;
+			padding: 10px 16px;
+			border: 1px solid rgba($gold-accent, 0.3); // ← pill border
+			border-radius: $border-radius; // ← rounded
+			background-color: $parchment; // ← same bg as mobile
+			// remove old border-bottom
 
-		// & svg {
-		// 	width: 22px;
-		// 	height: 22px;
-		// }
+			&-icon {
+				color: $gold-accent;
+				flex-shrink: 0;
+			}
+		}
 
 		&-input {
 			flex: 1;
 			border: none;
 			background: transparent;
-			padding: 0 24px;
-			font-size: 1.5rem;
-			color: $secondary-text;
 			font-family: inherit;
-			font-weight: 300;
-			// line-height: 1.4;
+			font-size: var(--regular-text-size); // ← smaller than before
+			color: $primary-text;
+			outline: none;
 
 			&:focus {
 				outline: none;
@@ -217,7 +221,7 @@
 			}
 
 			&::placeholder {
-				color: $secondary-text;
+				color: $light-gray-text;
 			}
 		}
 
@@ -228,39 +232,24 @@
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			color: $primary-text;
-		}
-
-		&__input {
-			flex: 1;
-			border: none;
-			background: transparent;
-			padding: 0 24px;
-			font-size: 1.5rem;
-			line-height: 1.4;
-			font-family: inherit;
-			color: $primary-text;
-
-			&:focus {
-				outline: none;
-				box-shadow: none;
-			}
-
-			&::placeholder {
-				color: $primary-text;
-			}
+			color: $gold-accent; // ← gold icon like mobile
+			flex-shrink: 0;
 		}
 
 		&-close {
 			border: none;
 			background: transparent;
 			cursor: pointer;
-			font-size: 2rem;
-			line-height: 1;
-			color: $primary-text;
+			color: $light-gray-text;
 			padding: 8px;
 			display: flex;
 			align-items: center;
+			flex-shrink: 0;
+			transition: color 0.2s ease;
+
+			&:hover {
+				color: $primary-text;
+			}
 		}
 	}
 
@@ -287,7 +276,7 @@
 			display: flex;
 			flex-direction: column;
 			gap: 4px;
-			z-index: 20;
+			z-index: 110;
 		}
 
 		&-option {
@@ -308,6 +297,53 @@
 				background-color: rgba(212, 175, 55, 0.08);
 				color: $gold-accent;
 			}
+		}
+	}
+
+	// Mobile Menu-------------------------------------
+
+	&__hamburger {
+		display: none; // hidden on desktop
+		background: transparent;
+		border: none;
+		cursor: pointer;
+		width: 40px;
+		height: 40px;
+		align-items: center;
+		justify-content: center;
+
+		svg {
+			width: 24px;
+			height: 24px;
+			color: $primary-text;
+		}
+	}
+
+	// Mobile breakpoint
+	@include tablet-sm {
+		&__nav {
+			display: none; // hide desktop nav
+		}
+
+		&__hamburger {
+			display: flex; // show hamburger
+		}
+
+		&__icon {
+			&-login,
+			&-language {
+				display: none;
+			}
+		}
+	}
+
+	@include mobile {
+		&__nav {
+			display: none; // hide desktop nav
+		}
+
+		&__hamburger {
+			display: flex; // show hamburger
 		}
 	}
 }

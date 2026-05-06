@@ -40,15 +40,17 @@ const ShopPage = () => {
 	}
 
 	return (
-		<section className="shop-page container">
-			{/* <span className="shop-page__count">{t(sortedProducts.length)}</span> */}
-			<div className="shop-page__cards">
-				{paginatedItems.map((product) => (
-					<ProductCard
-						key={product.sku}
-						product={product}
-					/>
-				))}
+		<section className="shop-page">
+			<div className="container">
+				{/* <span className="shop-page__count">{t(sortedProducts.length)}</span> */}
+				<div className="shop-page__cards">
+					{paginatedItems.map((product) => (
+						<ProductCard
+							key={product.sku}
+							product={product}
+						/>
+					))}
+				</div>
 			</div>
 		</section>
 	);

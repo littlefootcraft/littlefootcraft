@@ -55,97 +55,99 @@ export const ShopToolbar = ({
 	};
 
 	return (
-		<div className="shop-toolbar container">
-			<div className="shop-toolbar__switchers">
-				<SecondaryBtn
-					variant="filter"
-					onClick={onFiltersOpen}
-				>
-					{t.filters}
-				</SecondaryBtn>
-
-				<div className="shop-toolbar__sort">
-					<button
-						type="button"
-						className="shop-toolbar__sort-btn"
-						onClick={() => setIsSortOpen((v) => !v)}
-						aria-haspopup="listbox"
-						aria-expanded={isSortOpen}
+		<div className="shop-toolbar">
+			<div className="container">
+				<div className="shop-toolbar__switchers">
+					<SecondaryBtn
+						variant="filter"
+						onClick={onFiltersOpen}
 					>
-						{current.label}
-						<ChevronDown
-							size={14}
-							className={`shop-toolbar__sort-arrow ${isSortOpen ? "is-open" : ""}`}
-						/>
-					</button>
-					{isSortOpen && (
-						<ul
-							className="shop-toolbar__sort-menu"
-							role="listbox"
+						{t.filters}
+					</SecondaryBtn>
+
+					<div className="shop-toolbar__sort">
+						<button
+							type="button"
+							className="shop-toolbar__sort-btn"
+							onClick={() => setIsSortOpen((v) => !v)}
+							aria-haspopup="listbox"
+							aria-expanded={isSortOpen}
 						>
-							{SORT_OPTIONS.map((o) => (
-								<li
-									key={o.id}
-									className="shop-toolbar__sort-item"
-								>
-									<button
-										type="button"
-										className="shop-toolbar__sort-option"
-										onClick={() => {
-											onSortChange(o.id);
-											setIsSortOpen(false);
-										}}
-										aria-selected={o.id === sortId}
+							{current.label}
+							<ChevronDown
+								size={14}
+								className={`shop-toolbar__sort-arrow ${isSortOpen ? "is-open" : ""}`}
+							/>
+						</button>
+						{isSortOpen && (
+							<ul
+								className="shop-toolbar__sort-menu"
+								role="listbox"
+							>
+								{SORT_OPTIONS.map((o) => (
+									<li
+										key={o.id}
+										className="shop-toolbar__sort-item"
 									>
-										<span>{o.label}</span>
-										{o.id === sortId && (
-											<span className="shop-toolbar__sort-check">
-												{o.id === sortId ? "✓" : ""}
-											</span>
-										)}
-									</button>
-								</li>
-							))}
-						</ul>
+										<button
+											type="button"
+											className="shop-toolbar__sort-option"
+											onClick={() => {
+												onSortChange(o.id);
+												setIsSortOpen(false);
+											}}
+											aria-selected={o.id === sortId}
+										>
+											<span>{o.label}</span>
+											{o.id === sortId && (
+												<span className="shop-toolbar__sort-check">
+													{o.id === sortId ? "✓" : ""}
+												</span>
+											)}
+										</button>
+									</li>
+								))}
+							</ul>
+						)}
+					</div>
+				</div>
+
+				<div className="shop-toolbar__active-filters">
+					{hasActiveFilters && (
+						<>
+							{/* Clear all link */}
+							<button
+								className="shop-toolbar__clear-all"
+								onClick={clearFilters}
+								type="button"
+							>
+								{currentLang === "ua" ? "Видалити все" : "Clear all"}
+							</button>
+
+							{/* One tag per active filter value */}
+							{Object.entries(activeFilters).flatMap(([key, values]) =>
+								values.map((value) => (
+									<span
+										key={`${key}-${value}`}
+										className="shop-toolbar__filter-tag"
+									>
+										{getLabel(key, value)}
+										<button
+											className="shop-toolbar__filter-tag-remove"
+											onClick={() => toggleFilter(key, value)}
+											type="button"
+											aria-label={`Remove ${value} filter`}
+										>
+											×
+										</button>
+									</span>
+								)),
+							)}
+						</>
 					)}
 				</div>
+				<span className="shop-toolbar__count">{t.itemsFound(count)}</span>
 			</div>
-
-			<div className="shop-toolbar__active-filters">
-				{hasActiveFilters && (
-					<>
-						{/* Clear all link */}
-						<button
-							className="shop-toolbar__clear-all"
-							onClick={clearFilters}
-							type="button"
-						>
-							{currentLang === "ua" ? "Видалити все" : "Clear all"}
-						</button>
-
-						{/* One tag per active filter value */}
-						{Object.entries(activeFilters).flatMap(([key, values]) =>
-							values.map((value) => (
-								<span
-									key={`${key}-${value}`}
-									className="shop-toolbar__filter-tag"
-								>
-									{getLabel(key, value)}
-									<button
-										className="shop-toolbar__filter-tag-remove"
-										onClick={() => toggleFilter(key, value)}
-										type="button"
-										aria-label={`Remove ${value} filter`}
-									>
-										×
-									</button>
-								</span>
-							)),
-						)}
-					</>
-				)}
-			</div>
-			<span className="shop-toolbar__count">{t.itemsFound(count)}</span>
 		</div>
 	);
 };
