@@ -6,7 +6,7 @@ import { useCart } from "../context/CartContext";
 import { NavItems } from "../utils/navItems";
 import { menuEN, menuUA } from "../translations/translation";
 import { Globe, Search } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { ChevronDown } from "lucide-react";
 
@@ -28,6 +28,14 @@ export const MobileMenu = ({ isOpen, isClose, isSearchOpen }) => {
 		navigate(`${newPath}${location.search}`);
 		isClose();
 	};
+
+	// To close list of languages when menu closed
+
+	useEffect(() => {
+		if (!isOpen) {
+			setIsLangOpen(false);
+		}
+	}, [isOpen]);
 
 	if (!isOpen) return null;
 

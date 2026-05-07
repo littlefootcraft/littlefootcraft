@@ -3,6 +3,7 @@
 @use "./../abstracts/mixins" as *;
 
 .primary-button {
+	width: 100%;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;

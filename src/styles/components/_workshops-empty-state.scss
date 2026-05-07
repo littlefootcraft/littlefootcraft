@@ -20,7 +20,9 @@
 	}
 
 	&__title {
+		margin-top: 16px;
 		margin-bottom: 40px;
+		font-size: var(--section-title-size);
 	}
 
 	&__info {

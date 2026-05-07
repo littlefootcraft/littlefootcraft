@@ -25,13 +25,12 @@ const Footer = () => {
 
 		const segment = location.pathname.split("/");
 		segment[1] = lang;
-		const newPath = segment.join("/") || `$/${lang}`;
+		const newPath = segment.join("/") || `/${lang}`;
 		navigate(`${newPath}${location.search}`);
 	}
 
-	//
 	// For language switching
-	// const { currentLang } = useLanguage();
+
 	const t = (field) => field?.[currentLang] ?? field?.en ?? "";
 
 	return (

@@ -158,12 +158,12 @@
 	}
 
 	&__sublist {
-		min-height: 108px;
+		// min-height: 108px;
+		max-height: 0;
 		display: flex;
 		flex-direction: column;
 		background-color: $parchment;
 
-		max-height: 0;
 		overflow: hidden;
 		opacity: 0;
 		transition:
@@ -231,5 +231,36 @@
 
 	&--search-open + &__backdrop {
 		top: calc($header-height + 72px);
+	}
+
+	@include tablet {
+		top: $header-height-tablet;
+
+		&__backdrop {
+			top: $header-height-tablet;
+		}
+	}
+
+	@include tablet-sm {
+		top: $header-height-tablet;
+
+		&__backdrop {
+			top: $header-height-tablet;
+		}
+	}
+
+	@include mobile-sm {
+		top: $header-height-tablet;
+
+		&__backdrop {
+			top: $header-height-tablet;
+		}
+	}
+	@include mobile {
+		top: $header-height-tablet;
+
+		&__backdrop {
+			top: $header-height-tablet;
+		}
 	}
 }

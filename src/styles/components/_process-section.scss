@@ -10,18 +10,22 @@
 	}
 
 	&__text {
-		margin-top: 16px;
-		margin-inline: 150px;
+		max-width: 800px;
+		margin: 16px auto 0;
 		font-size: var(--regular-text-size);
-		color: $secondary-text;
+		color: $light-gray-text;
 	}
 
 	&__steps {
 		margin-top: 36px;
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
 		gap: 20px;
+	}
+
+	&__title {
+		// font-size: var(--section-title-size);
+		font-size: var(--section-title-size);
 	}
 
 	&__step {
@@ -34,7 +38,7 @@
 		&-title {
 			font-family: var(--title-font);
 			color: $primary-text;
-			font-size: var(--card-title-size);
+			font-size: var(--step-title-size);
 			font-weight: 400;
 		}
 
@@ -45,10 +49,22 @@
 	}
 
 	&__number {
-		margin-bottom: 16px;
 		font-family: var(--title-font);
 		color: $light-gold;
-		font-size: var(--title-size);
+		font-size: var(--section-title-size);
 		font-weight: 400;
+	}
+
+	@include tablet {
+		padding-block: 60px;
+	}
+
+	@include mobile {
+		&__steps {
+			grid-template-columns: repeat(1, minmax(0, 1fr));
+		}
+	}
+
+	@include mobile-sm {
 	}
 }

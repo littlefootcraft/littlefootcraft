@@ -62,12 +62,14 @@ const HomePage = ({ workshop }) => {
 					</h1>
 					<p className="home-page__top-text">{t(HomePageContent.hero.text)}</p>
 
-					<PrimaryBtn
-						variant="to-catalog"
-						to="/shop"
-					>
-						{t(HomePageContent.hero.button.label)}
-					</PrimaryBtn>
+					<div className="home-page__top-btn__wrap">
+						<PrimaryBtn
+							variant="to-catalog"
+							to="/shop"
+						>
+							{t(HomePageContent.hero.button.label)}
+						</PrimaryBtn>
+					</div>
 				</div>
 			</section>
 			{/* --- HIGHLIGHTS --- */}
@@ -109,7 +111,7 @@ const HomePage = ({ workshop }) => {
 							variant="to-catalog"
 							to="/shop"
 						>
-							{t(HomePageContent.newArrivals.button.label)}
+							<span>{t(HomePageContent.newArrivals.button.label)}</span>
 							<ChevronRight />
 						</button>
 					</div>
@@ -130,19 +132,7 @@ const HomePage = ({ workshop }) => {
 					<h2 className="home-page__collections-title main-title">
 						{t(HomePageContent.collections.title)}
 					</h2>
-					{/* <div className="home-page__collections-cards">
-						{collections.map((collection) => (
-							<div className="home-page__collections-card">
-								<img
-									key={collection.name.en}
-									src={collection.src}
-									alt={t(collection.name)}
-								/>{" "}
-								<span>{t(collection.group)}</span>
-								<h3>{t(collection.name)}</h3>
-							</div>
-						))}
-					</div> */}
+
 					<div className="home-page__collections-cards">
 						{collections.map((collection) => (
 							<div
@@ -198,47 +188,7 @@ const HomePage = ({ workshop }) => {
 			</section>
 
 			{/* --- PROCESS SECTION --- */}
-			{/* <section className="home-page__process">
-				<div className="container">
-					<div className="home-page__process-header">
-						<h2 className="home-page__process-title main-title">
-							{t(HomePageContent.process.title)}
-						</h2>
-						<p className="home-page__process-text">
-							{t(HomePageContent.process.text)}
-						</p>
-					</div>
-					<ul className="home-page__process-steps">
-						<li className="home-page__process-step">
-							<span className="home-page__process-number">1</span>
-							<h3 className="home-page__process-step-title">
-								{t(HomePageContent.process.steps[0]["title-one"])}
-							</h3>
-							<p className="home-page__process-step-text">
-								{t(HomePageContent.process.steps[0]["text-one"])}
-							</p>
-						</li>
-						<li className="home-page__process-step">
-							<span className="home-page__process-number">2</span>
-							<h3 className="home-page__process-step-title">
-								{t(HomePageContent.process.steps[1]["title-two"])}
-							</h3>
-							<p className="home-page__process-step-text">
-								{t(HomePageContent.process.steps[1]["text-two"])}
-							</p>
-						</li>
-						<li className="home-page__process-step">
-							<span className="home-page__process-number">3</span>
-							<h3 className="home-page__process-step-title">
-								{t(HomePageContent.process.steps[2]["title-three"])}
-							</h3>
-							<p className="home-page__process-step-text">
-								{t(HomePageContent.process.steps[2]["text-three"])}
-							</p>
-						</li>
-					</ul>
-				</div>
-			</section> */}
+
 			<ProcessSection
 				title={t(HomePageContent.process.title)}
 				text={t(HomePageContent.process.text)}
