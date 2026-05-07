@@ -17,10 +17,12 @@
 	--badge-text-size: clamp(0.8125rem, 0.9vw, 1.2rem);
 	--price-size: clamp(1.25rem, 2.5vw, 1.875rem);
 	--login-title-size: clamp(1.5rem, 2vw, 3rem);
-	--footer-title-size: clamp(0.875rem, 1vw, 4.5rem);
+
 	--regular-text-size: clamp(1rem, 0.9vw, 1.375rem);
 	--category-font-size: clamp(0.75rem, 0.9vw, 0.8125rem);
 	--step-title-size: clamp(1.3rem, 1.7vw, 1.5rem);
+
+	--footer-title-size: clamp(1rem, 1.2vw, 4.5rem);
 }
 
 .ua {
@@ -38,10 +40,12 @@
 	--badge-text-size: clamp(0.8125rem, 0.9vw, 1.2rem);
 	--login-title-size: clamp(1.5rem, 2vw, 3rem);
 	--price-size: clamp(1.25rem, 2.5vw, 1.875rem);
-	--footer-title-size: clamp(0.875rem, 1.3vw, 4.5rem);
+
 	--regular-text-size: clamp(0.875rem, 0.9vw, 1.375rem);
 	--category-font-size: clamp(0.75rem, 0.9vw, 0.8125rem);
 	--step-title-size: clamp(1.3rem, 1.6vw, 1.5rem);
+
+	--footer-title-size: clamp(1rem, 1.3vw, 4.5rem);
 }
 //var(--hero-title-size)
 *,

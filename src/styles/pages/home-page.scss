@@ -450,8 +450,30 @@
 	// Mobile breakpoint--------------------------
 
 	@include tablet {
+		&__highlights {
+			&-list {
+				grid-template-columns: repeat(2, minmax(0, 1fr));
+				gap: 24px;
+			}
+		}
+
+		&__new-arrivals,
+		&__collections {
+			padding-block: 60px;
+
+			&-cards {
+				grid-template-columns: repeat(2, minmax(0, 1fr));
+				gap: 24px;
+			}
+		}
+
 		&__top {
 			min-height: calc(100vh - $header-height-tablet);
+		}
+
+		&__workshops-content,
+		&__about-content {
+			gap: 24px;
 		}
 	}
 
@@ -491,6 +513,7 @@
 		}
 
 		&__subscription {
+			padding-block: 60px;
 			&-action {
 				grid-template-columns: 1fr;
 			}
@@ -514,6 +537,10 @@
 				grid-template-columns: repeat(1, minmax(0, 1fr));
 				gap: 24px;
 			}
+		}
+		&__new-arrivals,
+		&__collections {
+			padding-block: 32px;
 		}
 
 		&__subscription {
