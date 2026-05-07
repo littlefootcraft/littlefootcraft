@@ -124,40 +124,39 @@ const Header = () => {
 					>
 						<Search />
 					</button>
-					<div>
-						<Link
-							to={`/${currentLang}/wishlist`}
-							className={`header__icon ${wishlist.length > 0 ? "header__icon--has-items" : ""}`}
-							aria-label="Wishlist icon"
-						>
-							<Star />
-							{wishlist.length > 0 && (
-								<Badge
-									className="header__icon-badge"
-									variant="top"
-									shape="dot"
-								>
-									{wishlist.length}
-								</Badge>
-							)}
-						</Link>
-						<Link
-							to={`/${currentLang}/cart`}
-							className={`header__icon ${cartCount > 0 ? "header__icon--has-items" : ""}`}
-							aria-label="Cart icon"
-						>
-							<ShoppingBag />
-							{cartCount > 0 && (
-								<Badge
-									className="header__icon-badge"
-									variant="top"
-									shape="dot"
-								>
-									{cartCount}
-								</Badge>
-							)}
-						</Link>
-					</div>
+
+					<Link
+						to={`/${currentLang}/wishlist`}
+						className={`header__icon ${wishlist.length > 0 ? "header__icon--has-items" : ""}`}
+						aria-label="Wishlist icon"
+					>
+						<Star />
+						{wishlist.length > 0 && (
+							<Badge
+								className="header__icon-badge"
+								variant="top"
+								shape="dot"
+							>
+								{wishlist.length}
+							</Badge>
+						)}
+					</Link>
+					<Link
+						to={`/${currentLang}/cart`}
+						className={`header__icon ${cartCount > 0 ? "header__icon--has-items" : ""}`}
+						aria-label="Cart icon"
+					>
+						<ShoppingBag />
+						{cartCount > 0 && (
+							<Badge
+								className="header__icon-badge"
+								variant="top"
+								shape="dot"
+							>
+								{cartCount}
+							</Badge>
+						)}
+					</Link>
 
 					{/* Login */}
 					<Link

@@ -88,27 +88,28 @@ export const MobileMenu = ({ isOpen, isClose, isSearchOpen }) => {
 							<ChevronDown size={16} />
 						</span>
 					</button>
-					{isLangOpen && (
-						<ul className="mobile-menu__sublist">
-							<li className="mobile-menu__subitem">
-								<button
-									className="mobile-menu__sublink"
-									onClick={() => switchLang("en")}
-								>
-									English
-								</button>
-							</li>
 
-							<li className="mobile-menu__subitem">
-								<button
-									className="mobile-menu__sublink"
-									onClick={() => switchLang("ua")}
-								>
-									Українська
-								</button>
-							</li>
-						</ul>
-					)}
+					<ul
+						className={`mobile-menu__sublist ${isLangOpen ? "mobile-menu__sublist--open" : ""}`}
+					>
+						<li className="mobile-menu__subitem">
+							<button
+								className="mobile-menu__sublink"
+								onClick={() => switchLang("en")}
+							>
+								English
+							</button>
+						</li>
+
+						<li className="mobile-menu__subitem">
+							<button
+								className="mobile-menu__sublink"
+								onClick={() => switchLang("ua")}
+							>
+								Українська
+							</button>
+						</li>
+					</ul>
 				</section>
 
 				<section className="mobile-menu__section-login">

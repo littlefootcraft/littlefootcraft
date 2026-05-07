@@ -31,7 +31,7 @@
 	}
 
 	&__logo {
-		width: 150px;
+		width: 130px;
 	}
 
 	&__nav {
@@ -320,6 +320,26 @@
 	}
 
 	// Mobile breakpoint
+	@include tablet-lg {
+		&__nav {
+			display: none; // hide desktop nav
+		}
+
+		&__hamburger {
+			display: flex; // show hamburger
+		}
+	}
+
+	@include tablet {
+		&__nav {
+			display: none; // hide desktop nav
+		}
+
+		&__hamburger {
+			display: flex; // show hamburger
+		}
+	}
+
 	@include tablet-sm {
 		min-height: $header-height-tablet;
 

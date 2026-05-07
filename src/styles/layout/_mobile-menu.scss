@@ -125,7 +125,7 @@
 		flex-direction: column;
 
 		&-login {
-			margin-top: 80px;
+			// margin-top: 80px;
 		}
 	}
 
@@ -158,9 +158,22 @@
 	}
 
 	&__sublist {
+		min-height: 108px;
 		display: flex;
 		flex-direction: column;
 		background-color: $parchment;
+
+		max-height: 0;
+		overflow: hidden;
+		opacity: 0;
+		transition:
+			max-height 0.3s ease,
+			opacity 0.2s ease;
+
+		&--open {
+			max-height: 120px;
+			opacity: 1;
+		}
 
 		&-login {
 			display: grid;
