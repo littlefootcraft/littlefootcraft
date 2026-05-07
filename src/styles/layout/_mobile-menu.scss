@@ -215,8 +215,8 @@
 			color: $primary-text;
 		}
 	}
-}
 
-.mobile-menu--search-open + .mobile-menu__backdrop {
-	top: calc($header-height + 72px);
+	&--search-open + &__backdrop {
+		top: calc($header-height + 72px);
+	}
 }
