@@ -1,4 +1,19 @@
 {
+	"seo": {
+		"title": {
+			"en": "Sale | Handmade Gifts & Brooches | LittleFootCraft",
+			"ua": "Знижки | Брошки та подарунки ручної роботи | LittleFootCraft"
+		},
+		"description": {
+			"en": "Discover special offers on handcrafted brooches, accessories, and magical treasures at LittleFootCraft.",
+			"ua": "Відкрийте для себе спеціальні пропозиції на брошки, аксесуари та магічні вироби ручної роботи від LittleFootCraft."
+		},
+		"image": "/uploads/images/seo/main_seo.png",
+		"imageAlt": {
+			"en": "LittleFootCraft handmade magical treasures",
+			"ua": "Магічні вироби ручної роботи LittleFootCraft"
+		}
+	},
 	"title": {
 		"en": "Special prices for Mother Day",
 		"ua": "Спеціальні ціни до Дня Матері"

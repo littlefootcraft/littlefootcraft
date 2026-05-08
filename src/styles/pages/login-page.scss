@@ -51,6 +51,7 @@
 		font-size: var(--login-title-size);
 		line-height: 2rem;
 		font-weight: 700;
+		text-align: center;
 	}
 
 	&__coment {
@@ -130,6 +131,13 @@
 			text-decoration: underline;
 			text-underline-offset: 4px;
 			text-decoration-thickness: 1px;
+		}
+	}
+
+	@include mobile {
+		&__block {
+			margin-block: 44px;
+			padding: 32px 22px;
 		}
 	}
 }

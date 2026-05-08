@@ -7,6 +7,7 @@ import { useOutletContext } from "react-router-dom";
 import { ProductCard } from "../components/ProductCard";
 import salePage from "../content/pages/sale-page.json";
 import { useCatalogPagination } from "../hooks/useCatalogPagination";
+import Seo from "../components/Seo";
 
 const SalePage = () => {
 	const { sortedProducts, setPageTitle, setDisplayCount } = useOutletContext();
@@ -54,6 +55,13 @@ const SalePage = () => {
 	}
 	return (
 		<section className="sale-page ">
+			<Seo
+				title={t(salePage.seo.title)}
+				description={t(salePage.seo.description)}
+				image={salePage.seo.image}
+				imageAlt={t(salePage.seo.imageAlt)}
+				url={`/${currentLang}/faq`}
+			/>
 			<div className="container">
 				<div className="sale-page__cards">
 					{paginatedItems.map((product) => (

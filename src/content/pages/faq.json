@@ -1,4 +1,19 @@
 {
+	"seo": {
+		"title": {
+			"en": "FAQ | LittleFootCraft",
+			"ua": "Поширені запитання | LittleFootCraft"
+		},
+		"description": {
+			"en": "Find answers about handmade products, ordering, payment, shipping, returns, and product care at LittleFootCraft.",
+			"ua": "Знайдіть відповіді про вироби ручної роботи, замовлення, оплату, доставку, повернення та догляд за виробами LittleFootCraft."
+		},
+		"image": "/uploads/images/seo/main_seo.png",
+		"imageAlt": {
+			"en": "LittleFootCraft handmade magical treasures",
+			"ua": "Магічні вироби ручної роботи LittleFootCraft"
+		}
+	},
 	"title": {
 		"en": "Frequently Asked Questions",
 		"ua": "Поширені запитання"

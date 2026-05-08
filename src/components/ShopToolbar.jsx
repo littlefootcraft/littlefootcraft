@@ -18,7 +18,7 @@ import { useLanguage } from "../context/LanguageContext";
 export const ShopToolbar = ({
 	query,
 	onQueryChange,
-	sortId,
+	sortKey,
 	onSortChange,
 	onFiltersOpen,
 	count,
@@ -34,7 +34,7 @@ export const ShopToolbar = ({
 	const tField = (field) => field?.[currentLang] ?? field?.en ?? "";
 	//Dropdown sort menu
 	const [isSortOpen, setIsSortOpen] = useState(false);
-	const current = SORT_OPTIONS.find((o) => o.id === sortId) || SORT_OPTIONS[0];
+	const current = SORT_OPTIONS.find((o) => o.id === sortKey) || SORT_OPTIONS[0];
 
 	// Turns { key: "color", value: "pink" } → "Pink"
 	// Turns { key: "collection", value: "bloom-spell" } → "Bloom Spell"
@@ -68,7 +68,9 @@ export const ShopToolbar = ({
 					<div className="shop-toolbar__sort">
 						<button
 							type="button"
-							className="shop-toolbar__sort-btn"
+							className={`shop-toolbar__sort-btn ${
+								isSortOpen ? "shop-toolbar__sort-btn--open" : ""
+							}`}
 							onClick={() => setIsSortOpen((v) => !v)}
 							aria-haspopup="listbox"
 							aria-expanded={isSortOpen}
@@ -76,7 +78,7 @@ export const ShopToolbar = ({
 							{current.label}
 							<ChevronDown
 								size={14}
-								className={`shop-toolbar__sort-arrow ${isSortOpen ? "is-open" : ""}`}
+								className="shop-toolbar__sort-arrow"
 							/>
 						</button>
 						{isSortOpen && (
@@ -96,12 +98,12 @@ export const ShopToolbar = ({
 												onSortChange(o.id);
 												setIsSortOpen(false);
 											}}
-											aria-selected={o.id === sortId}
+											aria-selected={o.id === sortKey}
 										>
 											<span>{o.label}</span>
-											{o.id === sortId && (
+											{o.id === sortKey && (
 												<span className="shop-toolbar__sort-check">
-													{o.id === sortId ? "✓" : ""}
+													{o.id === sortKey ? "✓" : ""}
 												</span>
 											)}
 										</button>

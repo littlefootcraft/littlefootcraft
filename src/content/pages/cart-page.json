@@ -1,0 +1,15 @@
+"seo": {
+	"title": {
+		"en": "Shopping Cart | LittleFootCraft",
+		"ua": "Кошик | LittleFootCraft"
+	},
+	"description": {
+		"en": "Review your selected handmade treasures and prepare your order at LittleFootCraft.",
+		"ua": "Перегляньте обрані магічні вироби ручної роботи та підготуйте своє замовлення в LittleFootCraft."
+	},
+	"image": "/uploads/images/seo/main_seo.png",
+	"imageAlt": {
+		"en": "LittleFootCraft handmade magical treasures",
+		"ua": "Магічні вироби ручної роботи LittleFootCraft"
+	}
+}

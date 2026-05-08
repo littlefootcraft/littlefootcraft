@@ -12,10 +12,14 @@ import {
 import { useLanguage } from "../context/LanguageContext";
 
 import { User } from "lucide-react";
+import Seo from "../components/Seo";
+
+import RegistrationPageContent from "../content/pages/registration-page.json";
 
 const RegistrationPage = () => {
 	const { currentLang } = useLanguage();
 	const dict = currentLang === "en" ? registrationPageEN : registrationPageUA;
+	const t = (field) => field?.[currentLang] ?? field?.en ?? "";
 
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
@@ -27,6 +31,13 @@ const RegistrationPage = () => {
 
 	return (
 		<div className="registration-page">
+			<Seo
+				title={t(RegistrationPageContent.seo.title)}
+				description={t(RegistrationPageContent.seo.description)}
+				image={RegistrationPageContent.seo.image}
+				imageAlt={t(RegistrationPageContent.seo.imageAlt)}
+				url={`/${currentLang}/shop`}
+			/>
 			<div className="registration-page__block-wrap container">
 				<div className="registration-page__block ">
 					<div className="registration-page__icon">

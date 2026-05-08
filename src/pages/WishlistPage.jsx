@@ -6,9 +6,11 @@ import { useProducts } from "../context/ProductsContext";
 import { ProductCard } from "../components/ProductCard";
 import { PageTopTitle } from "../components/PageTopTitle";
 import { wishlistPageUA, wishlistPageEN } from "../translations/translation";
+import WishlistPageContent from "../content/pages/wishlist-page.json";
 
 import { Star } from "lucide-react";
 import { PrimaryBtn } from "../components/PrimaryBtn";
+import Seo from "../components/Seo";
 
 const WishlistPage = () => {
 	const { wishlist } = useWishlist();
@@ -18,12 +20,20 @@ const WishlistPage = () => {
 	const { currentLang } = useLanguage();
 	// Pick the right translation object based on language
 	const dict = currentLang === "ua" ? wishlistPageUA : wishlistPageEN;
+	const t = (field) => field?.[currentLang] ?? field?.en ?? "";
 
 	// wishlist is SKUs → find the full product objects
 	const wishlistProducts = products.filter((p) => wishlist.includes(p.sku));
 
 	return (
 		<div className="wishlist">
+			<Seo
+				title={t(WishlistPageContent.seo.title)}
+				description={t(WishlistPageContent.seo.description)}
+				image={WishlistPageContent.seo.image}
+				imageAlt={t(WishlistPageContent.seo.imageAlt)}
+				url={`/${currentLang}/shop`}
+			/>
 			{/* 1. title */}
 			<PageTopTitle
 				title={dict.title}

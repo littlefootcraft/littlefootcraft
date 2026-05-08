@@ -17,6 +17,7 @@ import { getVisibleWorkshops } from "../hooks/useVisibleWorkshops";
 
 import WorkshopsPageContent from "../content/pages/workshops-page.json";
 import { ProcessSection } from "../components/ProcessSection";
+import Seo from "../components/Seo";
 
 const WorkshopsImage = "/uploads/images/home_workshop_image.jpeg";
 
@@ -54,6 +55,13 @@ const HomePage = ({ workshop }) => {
 
 	return (
 		<section className="home-page">
+			<Seo
+				title={t(HomePageContent.seo.title)}
+				description={t(HomePageContent.seo.description)}
+				image={HomePageContent.seo.image}
+				imageAlt={t(HomePageContent.seo.imageAlt)}
+				url={`/${currentLang}`}
+			/>
 			<section className="home-page__top">
 				<div className="home-page__top-content container">
 					<MagicBadge>✦ {t(HomePageContent.hero.badge)} ✦</MagicBadge>
@@ -177,6 +185,7 @@ const HomePage = ({ workshop }) => {
 						<article className="home-page__about-text text">
 							{t(HomePageContent.about.text)}
 						</article>
+
 						<SecondaryBtn
 							variant="to-other-page"
 							to="/about"

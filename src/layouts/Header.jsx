@@ -80,6 +80,11 @@ const Header = () => {
 		};
 	}, []);
 
+	// Close Mobile menu when icons clicked
+	const closeMobileMenu = () => {
+		setIsMenuOpen(false);
+	};
+
 	return (
 		<header className="header">
 			<div className="header__content container">
@@ -129,6 +134,7 @@ const Header = () => {
 						to={`/${currentLang}/wishlist`}
 						className={`header__icon ${wishlist.length > 0 ? "header__icon--has-items" : ""}`}
 						aria-label="Wishlist icon"
+						onClick={closeMobileMenu}
 					>
 						<Star />
 						{wishlist.length > 0 && (
@@ -145,6 +151,7 @@ const Header = () => {
 						to={`/${currentLang}/cart`}
 						className={`header__icon ${cartCount > 0 ? "header__icon--has-items" : ""}`}
 						aria-label="Cart icon"
+						onClick={closeMobileMenu}
 					>
 						<ShoppingBag />
 						{cartCount > 0 && (
@@ -163,6 +170,7 @@ const Header = () => {
 						to={`/${currentLang}/login`}
 						className="header__icon header__icon-login"
 						aria-label="Login icon"
+						onClick={closeMobileMenu}
 					>
 						<User />
 					</Link>

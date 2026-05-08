@@ -1,0 +1,17 @@
+{
+	"seo": {
+		"title": {
+			"en": "Login | LittleFootCraft",
+			"ua": "Вхід | LittleFootCraft"
+		},
+		"description": {
+			"en": "Log in to your LittleFootCraft account to manage your wishlist and orders.",
+			"ua": "Увійдіть до свого акаунта LittleFootCraft, щоб керувати списком бажань і замовленнями."
+		},
+		"image": "/uploads/images/seo/main_seo.png",
+		"imageAlt": {
+			"en": "LittleFootCraft handmade magical treasures",
+			"ua": "Магічні вироби ручної роботи LittleFootCraft"
+		}
+	}
+}

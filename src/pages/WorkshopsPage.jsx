@@ -8,6 +8,7 @@ import { useWorkshops } from "../context/WorkshopsContext";
 import { useLanguage } from "../context/LanguageContext";
 import { getVisibleWorkshops } from "../hooks/useVisibleWorkshops";
 import { PageTopTitle } from "../components/PageTopTitle";
+import Seo from "../components/Seo";
 
 const WorkshopsPage = () => {
 	const workshops = useWorkshops();
@@ -24,6 +25,13 @@ const WorkshopsPage = () => {
 
 	return (
 		<div className="workshops-page">
+			<Seo
+				title={t(WorkshopsPageContent.seo.title)}
+				description={t(WorkshopsPageContent.seo.description)}
+				image={WorkshopsPageContent.seo.image}
+				imageAlt={t(WorkshopsPageContent.seo.imageAlt)}
+				url={`/${currentLang}/workshops`}
+			/>
 			<PageTopTitle
 				title={t(WorkshopsPageContent.top.title)}
 				subtitle={t(WorkshopsPageContent.top.text)}

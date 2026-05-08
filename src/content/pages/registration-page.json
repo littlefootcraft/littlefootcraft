@@ -1,0 +1,17 @@
+{
+	"seo": {
+		"title": {
+			"en": "Create Account | LittleFootCraft",
+			"ua": "Створити акаунт | LittleFootCraft"
+		},
+		"description": {
+			"en": "Create your LittleFootCraft account to save your favorite magical treasures and manage your orders.",
+			"ua": "Створіть акаунт LittleFootCraft, щоб зберігати улюблені магічні вироби та керувати замовленнями."
+		},
+		"image": "/uploads/images/seo/main_seo.png",
+		"imageAlt": {
+			"en": "LittleFootCraft handmade magical treasures",
+			"ua": "Магічні вироби ручної роботи LittleFootCraft"
+		}
+	}
+}

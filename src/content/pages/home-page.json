@@ -8,6 +8,11 @@
 		"description": {
 			"en": "One-of-a-kind handcrafted brooches filled with story, care, and a touch of magic.",
 			"ua": "Унікальні брошки ручної роботи, наповнені історією, турботою та краплею магії."
+		},
+		"image": "/uploads/images/seo/main_seo.png",
+		"imageAlt": {
+			"en": "LittleFootCraft handmade magical treasures",
+			"ua": "Магічні вироби ручної роботи LittleFootCraft"
 		}
 	},
 	"main-image": "/uploads/hero-image.jpeg",

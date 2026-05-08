@@ -72,6 +72,7 @@
 	}
 
 	&__label {
+		color: $primary-text;
 		font-size: 0.875rem;
 	}
 
@@ -133,34 +134,14 @@
 			text-decoration-thickness: 1px;
 		}
 	}
-}
 
-@include tablet {
-	.registration-page {
+	@include tablet {
 		&__block {
 			padding: 32px 22px;
 		}
 	}
-}
 
-@include tablet-sm {
-	.registration-page {
-		&__block {
-			padding: 32px 22px;
-		}
-	}
-}
-
-@include mobile {
-	.registration-page {
-		&__block {
-			padding: 32px 22px;
-		}
-	}
-}
-
-@include mobile-sm {
-	.registration-page {
+	@include mobile-sm {
 		&__block {
 			min-width: 100%;
 			padding: 32px 16px;

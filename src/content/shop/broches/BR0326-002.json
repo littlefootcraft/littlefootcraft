@@ -1,5 +1,19 @@
 {
 	"sku": "BR0326-002",
+	"seo": {
+		"title": {
+			"en": "Blue Jellyfish Brooch | LittleFootCraft",
+			"ua": "Блакитна брошка Медуза | LittleFootCraft"
+		},
+		"description": {
+			"en": "Handcrafted blue jellyfish brooch with shimmering details, inspired by magical underwater worlds.",
+			"ua": "Блакитна брошка-медуза ручної роботи з мерехтливими деталями, натхненна магічним підводним світом."
+		},
+		"imageAlt": {
+			"en": "Blue Jellyfish brooch by LittleFootCraft",
+			"ua": "Блакитна брошка Медуза від LittleFootCraft"
+		}
+	},
 	"name": {
 		"en": "Brooch Jellyfish Ann Blue Lulworth",
 		"ua": "Брошка Медуза Анна Блю Лулворт"

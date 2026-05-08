@@ -31,6 +31,7 @@ import { formatPrice } from "../utils/formatPrice";
 import { ProcessSection } from "../components/ProcessSection";
 import { PrimaryBtn } from "../components/PrimaryBtn";
 import { useCart } from "../context/CartContext";
+import Seo from "../components/Seo";
 
 const RECENTLY_VIEWED_KEY = "recently_viewed_skus";
 const MAX_RECENTLY_VIEWED = 8;
@@ -171,6 +172,17 @@ const ProductPage = () => {
 
 	return (
 		<div className="product-page container">
+			<Seo
+				title={t(product.seo?.title) || `${t(product.name)} | LittleFootCraft`}
+				description={
+					t(product.seo?.description) ||
+					t(product.description) ||
+					"Handcrafted magical treasure created with care and imagination."
+				}
+				image={product.photo?.[0]?.src}
+				imageAlt={t(product.seo?.imageAlt) || t(product.name)}
+				url={`/${currentLang}/shop/${product.sku}`}
+			/>
 			{/* Breadcrumbs */}
 			<nav
 				className="product-page__breadcrumbs"

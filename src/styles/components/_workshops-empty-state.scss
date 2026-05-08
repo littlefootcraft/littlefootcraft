@@ -29,4 +29,8 @@
 		font-size: 1.1rem;
 		margin-bottom: 20px;
 	}
+
+	@include tablet-sm {
+		grid-template-columns: repeat(1, minmax(0, 1fr));
+	}
 }

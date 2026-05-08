@@ -3,12 +3,10 @@
 
 .workshop-card {
 	display: grid;
-	// grid-template-columns: repeat(2, minmax(0, 1fr));
 	grid-template-columns: 1fr 1fr;
-	gap: 48px;
+	gap: 32px;
 	color: $secondary-text;
-	// border: 1px solid $card-borders;
-	// border-radius: $border-radius-sm;
+
 	align-items: stretch;
 
 	&__image {
@@ -23,6 +21,10 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
+	}
+
+	&__title {
+		font-size: var(--section-title-size);
 	}
 
 	&__subtitle {
@@ -60,8 +62,8 @@
 		}
 
 		&-items {
-			display: flex;
-			flex-direction: row;
+			display: grid;
+			grid-template-columns: repeat(3, minmax(0, 1fr));
 			gap: 20px;
 		}
 
@@ -71,10 +73,12 @@
 			color: $primary-text;
 			border-radius: $border-radius-sm;
 			font-size: 1.125rem;
+			text-align: center;
 		}
 	}
 
 	&__footer {
+		margin-top: 20px;
 		display: flex;
 		align-items: flex-end;
 		justify-content: space-between;
@@ -83,8 +87,33 @@
 	&__price {
 		margin-top: 22px;
 		color: $gold-accent;
-		font-size: var(--title-size);
+		font-size: var(--section-title-size);
 		font-family: var(--title-font);
 		font-weight: 700;
+	}
+
+	@include tablet-lg {
+		gap: 24px;
+	}
+	@include tablet {
+		grid-template-columns: 1fr;
+		gap: 32px;
+
+		&__calendar {
+			margin-top: 32px;
+		}
+	}
+
+	@include mobile-sm {
+		&__meta {
+			flex-direction: column;
+			align-items: baseline;
+		}
+
+		&__calendar {
+			&-items {
+				grid-template-columns: repeat(2, minmax(0, 1fr));
+			}
+		}
 	}
 }

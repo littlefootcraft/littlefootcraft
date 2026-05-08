@@ -1,0 +1,17 @@
+{
+	"seo": {
+		"title": {
+			"en": "Wishlist | LittleFootCraft",
+			"ua": "Список бажань | LittleFootCraft"
+		},
+		"description": {
+			"en": "Save your favorite handcrafted treasures and magical creations to revisit later.",
+			"ua": "Зберігайте улюблені вироби ручної роботи та магічні творіння, щоб повернутися до них пізніше."
+		},
+		"image": "/uploads/images/seo/main_seo.png",
+		"imageAlt": {
+			"en": "LittleFootCraft handmade magical treasures",
+			"ua": "Магічні вироби ручної роботи LittleFootCraft"
+		}
+	}
+}

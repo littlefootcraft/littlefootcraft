@@ -2,12 +2,17 @@
 	"slug": "about-page",
 	"seo": {
 		"title": {
-			"en": "About LittleFootCraft",
-			"ua": "Про LittleFootCraft"
+			"en": "About | LittleFootCraft",
+			"ua": "Про нас | LittleFootCraft"
 		},
 		"description": {
 			"en": "Learn the story, values, and inspiration behind LittleFootCraft and its handcrafted magical creations.",
 			"ua": "Дізнайтеся історію, цінності та натхнення LittleFootCraft і його чарівних виробів ручної роботи."
+		},
+		"image": "/uploads/images/seo/main_seo.png",
+		"imageAlt": {
+			"en": "LittleFootCraft handmade magical treasures",
+			"ua": "Магічні вироби ручної роботи LittleFootCraft"
 		}
 	},
 	"top": {

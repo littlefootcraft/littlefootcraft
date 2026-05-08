@@ -6,6 +6,7 @@ import faqQuestions from "../content/pages/faq.json";
 import { PageTopTitle } from "../components/PageTopTitle";
 // import { Accordion } from "../components/Accordion";
 import { Heart, Truck, RefreshCw, Package, ChevronDown } from "lucide-react";
+import Seo from "../components/Seo";
 
 const SECTION_ICONS = {
 	about_handmade: Heart,
@@ -32,6 +33,13 @@ const FAQPage = () => {
 
 	return (
 		<div className="faq-page">
+			<Seo
+				title={t(faqQuestions.seo.title)}
+				description={t(faqQuestions.seo.description)}
+				image={faqQuestions.seo.image}
+				imageAlt={t(faqQuestions.seo.imageAlt)}
+				url={`/${currentLang}/faq`}
+			/>
 			<PageTopTitle
 				title={t(faqQuestions.title)}
 				subtitle={t(faqQuestions.subtitle)}

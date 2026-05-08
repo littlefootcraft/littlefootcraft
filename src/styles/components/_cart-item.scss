@@ -109,4 +109,50 @@
 			color: $light-gray-text;
 		}
 	}
+
+	&__remove-btn {
+		display: none;
+	}
+
+	@include mobile-sm {
+		display: grid;
+		grid-template-columns: 120px 1fr;
+		grid-template-areas:
+			"remove remove"
+			"image info";
+		gap: 12px 20px;
+		max-height: none;
+		gap: 10px;
+
+		&__img-wrap {
+			grid-area: image;
+		}
+
+		&__info {
+			grid-area: info;
+			min-width: 0;
+
+			&-footer {
+				margin-top: 20px;
+				flex-direction: column;
+				align-items: baseline;
+				gap: 12px;
+			}
+		}
+
+		&__close-btn {
+			display: none;
+		}
+
+		&__remove-btn {
+			grid-area: remove;
+			display: block;
+			justify-self: end;
+			width: auto;
+
+			border: none;
+			background: transparent;
+			color: $primary-text;
+		}
+	}
 }

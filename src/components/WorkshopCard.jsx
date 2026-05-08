@@ -80,12 +80,14 @@ export const WorkshopCard = ({ workshop }) => {
 						{workshop.currency === "EUR" ? "€" : workshop.currency}
 						{workshop.price}
 					</p>
-					<PrimaryBtn
-						variant="booking"
-						to="/shop"
-					>
-						Book now
-					</PrimaryBtn>
+					<div>
+						<PrimaryBtn
+							variant="booking"
+							to="/shop"
+						>
+							Book now
+						</PrimaryBtn>
+					</div>
 				</div>
 			</div>
 		</div>

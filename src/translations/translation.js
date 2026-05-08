@@ -138,8 +138,8 @@ export const toolbarUA = {
 // Sort options-------------------------------
 export const sortOptionsUA = [
 	{ id: "newest", label: "Новинки" },
-	{ id: "price-asc", label: "Ціна: від низької до високої" },
-	{ id: "price-desc", label: "Ціна: від високої до низької" },
+	{ id: "price-asc", label: "Ціна: дешевші" },
+	{ id: "price-desc", label: "Ціна: дорожчі" },
 ];
 
 export const sortOptionsEN = [
@@ -210,7 +210,7 @@ export const cartPageEN = {
 	emptyText: "Let's find something special for you",
 	emptyBtn: "Browse the shop",
 	checkout: "Request to order",
-	continueShopping: "Continue shoping",
+	continueShopping: "Continue shopping",
 	orderTitle: "Order summary",
 	deliveryTitle: "Shipping",
 	deliveryInfo: "Calculated at checkout",

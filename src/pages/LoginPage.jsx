@@ -1,6 +1,5 @@
 //LoginPage.jsx
 
-import { IoPersonOutline } from "react-icons/io5";
 import { PrimaryBtn } from "../components/PrimaryBtn";
 import { useState } from "react";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
@@ -9,11 +8,15 @@ import { Link } from "react-router-dom";
 import { User } from "lucide-react";
 import { loginPageEN, loginPageUA } from "../translations/translation";
 import { useLanguage } from "../context/LanguageContext";
+import Seo from "../components/Seo";
+import LoginPageContent from "../content/pages/login-page.json";
+import { useCart } from "../context/CartContext";
 
 const LoginPage = () => {
-	// const { cartList } = useCart();
+	const { cartList } = useCart();
 	const { currentLang } = useLanguage();
 	const dict = currentLang === "en" ? loginPageEN : loginPageUA;
+	const t = (field) => field?.[currentLang] ?? field?.en ?? "";
 
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
@@ -21,6 +24,13 @@ const LoginPage = () => {
 
 	return (
 		<div className="login-page">
+			<Seo
+				title={t(LoginPageContent.seo.title)}
+				description={t(LoginPageContent.seo.description)}
+				image={LoginPageContent.seo.image}
+				imageAlt={t(LoginPageContent.seo.imageAlt)}
+				url={`/${currentLang}/shop`}
+			/>
 			<div className="login-page__block-wrap container">
 				<div className="login-page__block">
 					<div className="login-page__icon">
@@ -89,7 +99,11 @@ const LoginPage = () => {
 						{dict.registerInvitation}
 					</Link>
 					<Link
-						// to={cartList.length > 0 ? "/order" : "/catalog"}
+						to={
+							cartList.length > 0
+								? `/${currentLang}/cart`
+								: `/${currentLang}/shop`
+						}
 						className="login-page__continue-link"
 					>
 						{dict.continueWithoutAccount}

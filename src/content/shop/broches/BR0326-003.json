@@ -1,5 +1,19 @@
 {
 	"sku": "BR0326-003",
+	"seo": {
+		"title": {
+			"en": "Jellyfish Dahlia Lali Brooch | LittleFootCraft",
+			"ua": "Брошка Медуза Жоржина Лалі | LittleFootCraft"
+		},
+		"description": {
+			"en": "Handcrafted jellyfish brooch with golden floral details and shimmering multicolored accents inspired by magical underwater worlds.",
+			"ua": "Брошка-медуза ручної роботи із золотистими квітковими деталями та мерехтливими різнокольоровими акцентами, натхненна магічним підводним світом."
+		},
+		"imageAlt": {
+			"en": "Jellyfish Dahlia Lali brooch by LittleFootCraft",
+			"ua": "Брошка Медуза Жоржина Лалі від LittleFootCraft"
+		}
+	},
 	"name": {
 		"en": "Brooch Jellyfish Dahlia Lali",
 		"ua": "Брошка Медуза Жоржина Лалі"

@@ -1,11 +1,25 @@
 {
 	"sku": "BR0326-001",
+	"seo": {
+		"title": {
+			"en": "Brooch Jellyfish Ann Blue Lulworth | LittleFootCraft",
+			"ua": "Брошка Медуза Анна Блю Лулворт | LittleFootCraft"
+		},
+		"description": {
+			"en": "Handcrafted jellyfish brooch in soft gray-blue tones with shimmering details, inspired by magical underwater worlds.",
+			"ua": "Брошка-медуза ручної роботи в ніжних сіро-блакитних тонах із мерехтливими деталями, натхненна магічним підводним світом."
+		},
+		"imageAlt": {
+			"en": "Brooch Jellyfish Ann Blue Lulworth by LittleFootCraft",
+			"ua": "Брошка Медуза Анна Блю Лулворт від LittleFootCraft"
+		}
+	},
 	"name": {
 		"en": "Brooch Jellyfish Ann Blue Lulworth",
 		"ua": "Брошка Медуза Анна Блю Лулворт"
 	},
 	"specifications": {
-		"category": { "en": "Brooches", "ua": "Броши" },
+		"category": { "en": "Brooches", "ua": "Брошки" },
 		"design": {
 			"en": "Jellyfish",
 			"ua": "Медуза"
@@ -15,7 +29,7 @@
 			"ua": "3.5 см x 3.5 см"
 		},
 		"color": ["gold", "pink", "brown"],
-		"collection": { "en": "Mixed Collection", "ua": "Змішана коллекція" }
+		"collection": { "en": "Mixed Collection", "ua": "Змішана колекція" }
 	},
 	"description": {
 		"en": "This enchanting brooch shimmers in soft gray-blue hues, its iridescent “tentacles” shifting colors like a rainbow dancing in the light. Inspired by the mysterious depths of the Hogwarts Lake, its design combines delicate lightness with fluid movement, making the brooch seem almost alive. A perfect magical artifact for anyone wishing to add a touch of sorcery and elegance to any outfit.",

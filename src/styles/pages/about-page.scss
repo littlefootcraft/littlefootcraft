@@ -12,7 +12,7 @@
 		&-content {
 			display: grid;
 			grid-template-columns: repeat(2, minmax(0, 1fr));
-			gap: 48px;
+			gap: 32px;
 		}
 
 		&-image {
@@ -35,6 +35,7 @@
 		&-title {
 			margin-top: 16px;
 			margin-bottom: 24px;
+			font-size: var(--section-title-size);
 		}
 
 		&-text {
@@ -49,13 +50,14 @@
 		padding-block: 80px;
 
 		&-content {
-			padding-inline: 180px;
+			max-width: 1000px;
 			text-align: center;
 		}
 
 		&-title {
 			margin-top: 16px;
 			margin-bottom: 24px;
+			font-size: var(--section-title-size);
 		}
 
 		&-text {
@@ -68,6 +70,10 @@
 	&__values {
 		padding-block: 80px;
 		// background-color: $misty-ivory;
+
+		&-title {
+			font-size: var(--section-title-size);
+		}
 
 		&-text {
 			color: $secondary-text;
@@ -102,6 +108,7 @@
 				color: $primary-text;
 				font-size: var(--card-title-size);
 				font-weight: 400;
+				text-align: center;
 			}
 
 			&-text {
@@ -117,6 +124,11 @@
 		padding-block: 80px;
 		background-color: $misty-ivory;
 
+		&-title {
+			font-size: var(--section-title-size);
+			text-align: center;
+		}
+
 		&-icon {
 			margin-bottom: 24px;
 			width: 32px;
@@ -125,7 +137,7 @@
 		}
 
 		&-title {
-			margin-bottom: 36px;
+			margin-bottom: 18px;
 		}
 
 		&-content {
@@ -139,6 +151,43 @@
 			color: $secondary-text;
 			margin-bottom: 32px;
 			font-size: var(--regular-text-size);
+			text-align: center;
+		}
+	}
+
+	@include tablet-lg {
+		&__story {
+			&-content {
+			}
+		}
+
+		&__top,
+		&__story,
+		&__values,
+		&__cta {
+			padding-block: 60px;
+		}
+	}
+
+	@include tablet {
+		&__values {
+			&-items {
+				grid-template-columns: repeat(2, minmax(0, 1fr));
+			}
+		}
+	}
+
+	@include mobile {
+		&__values {
+			&-items {
+				grid-template-columns: 1fr;
+			}
+		}
+
+		&__top {
+			&-content {
+				grid-template-columns: 1fr;
+			}
 		}
 	}
 }

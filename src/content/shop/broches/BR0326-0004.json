@@ -1,5 +1,19 @@
 {
 	"sku": "BR0326-004",
+	"seo": {
+		"title": {
+			"en": "Jellyfish MALINDA Brooch | LittleFootCraft",
+			"ua": "Брошка Медуза Малінда | LittleFootCraft"
+		},
+		"description": {
+			"en": "Handcrafted jellyfish brooch in rich red and purple tones with flowing movable details and magical elegance.",
+			"ua": "Брошка-медуза ручної роботи в насичених червоних і фіолетових тонах із плавними рухомими деталями та магічною елегантністю."
+		},
+		"imageAlt": {
+			"en": "Jellyfish MALINDA brooch by LittleFootCraft",
+			"ua": "Брошка Медуза Малінда від LittleFootCraft"
+		}
+	},
 	"name": {
 		"en": "Brooch Jellyfish MALINDA",
 		"ua": "Брошка Медуза Малінда"

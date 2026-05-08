@@ -329,6 +329,12 @@
 		&__hamburger {
 			display: flex; // show hamburger
 		}
+
+		&__icon {
+			&-language {
+				display: none;
+			}
+		}
 	}
 
 	@include tablet {

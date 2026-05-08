@@ -1,4 +1,19 @@
 {
+	"seo": {
+		"title": {
+			"en": "Shop Magical Handmade Brooches & Gifts | LittleFootCraft",
+			"ua": "Магічні брошки та подарунки ручної роботи | LittleFootCraft"
+		},
+		"description": {
+			"en": "Explore handcrafted brooches, accessories, and fantasy-inspired treasures made with care and a touch of magic.",
+			"ua": "Перегляньте брошки, аксесуари та фантазійні скарби ручної роботи, створені з турботою та краплинкою магії."
+		},
+		"image": "/uploads/images/seo/main_seo.png",
+		"imageAlt": {
+			"en": "LittleFootCraft handmade magical treasures",
+			"ua": "Магічні вироби ручної роботи LittleFootCraft"
+		}
+	},
 	"title": {
 		"en": "Enchanted Treasures",
 		"ua": "Зачаровані скарби"
@@ -8,7 +23,7 @@
 		"ua": "Кожен виріб створений вручну з турботою та наповнений магією. Знайдіть свій ідеальний скарб."
 	},
 	"emptyState": {
-		"en": "Currently there is no items in or store",
-		"ua": "Наразі немає товарів в нашому магазині"
+		"en": "Currently there are no items in our store",
+		"ua": "Наразі немає товарів у нашому магазині"
 	}
 }

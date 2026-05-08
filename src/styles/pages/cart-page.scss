@@ -44,7 +44,7 @@
 	}
 
 	&__cards {
-		padding: 1.5rem;
+		padding: 24px;
 		background-color: white;
 		border-radius: $border-radius;
 		display: flex;
@@ -65,6 +65,18 @@
 
 	&__continue-btn {
 		width: 100%;
+	}
+
+	@include tablet-lg {
+		&__layout {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	@include mobile {
+		&__cards {
+			padding: 16px;
+		}
 	}
 }
 
@@ -151,6 +163,7 @@
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
+			gap: 10px;
 
 			& span {
 				color: $light-gray-text;
@@ -175,7 +188,7 @@
 			}
 
 			&--new {
-				color: $primary-text;
+				color: $secondary-text;
 			}
 
 			&--discount {
@@ -231,6 +244,12 @@
 			margin-top: 16px;
 			font-size: 0.875rem;
 			color: $gold-accent;
+		}
+	}
+
+	@include mobile {
+		&__summary {
+			padding: 16px;
 		}
 	}
 }

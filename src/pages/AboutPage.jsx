@@ -4,6 +4,7 @@ import { PrimaryBtn } from "../components/PrimaryBtn";
 
 import { WandSparkles, Star, Heart, Gem, Sparkles } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
+import Seo from "../components/Seo";
 
 const AboutPage = () => {
 	// For language switching
@@ -11,6 +12,14 @@ const AboutPage = () => {
 	const t = (field) => field?.[currentLang] ?? field?.en ?? "";
 	return (
 		<section className="about">
+			<Seo
+				title={t(AboutPageContent.seo.title)}
+				description={t(AboutPageContent.seo.description)}
+				image={AboutPageContent.seo.image}
+				imageAlt={t(AboutPageContent.seo.imageAlt)}
+				url={`/${currentLang}/about`}
+			/>
+
 			<section className="about__top">
 				<div className="about__top-content container">
 					<div className="about__top-info">
@@ -105,13 +114,15 @@ const AboutPage = () => {
 
 					<p className="about__cta-text">{t(AboutPageContent.cta.text)}</p>
 
-					<PrimaryBtn
-						className="about__cta-button"
-						variant="to-catalog"
-						to={`/${currentLang}/shop`}
-					>
-						{t(AboutPageContent.cta.button.label)}
-					</PrimaryBtn>
+					<div>
+						<PrimaryBtn
+							className="about__cta-button"
+							variant="to-catalog"
+							to={`/${currentLang}${AboutPageContent.cta.button.to}`}
+						>
+							{t(AboutPageContent.cta.button.label)}
+						</PrimaryBtn>
+					</div>
 				</div>
 			</section>
 		</section>

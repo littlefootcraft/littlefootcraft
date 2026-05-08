@@ -8,10 +8,10 @@
 	padding-bottom: 30px;
 
 	&__switchers {
-		margin-block: 20px;
 		display: flex;
 		justify-content: space-between;
-		// border-bottom: 1px solid $card-borders;
+		align-items: center;
+		gap: 12px;
 	}
 
 	&__count {
@@ -21,7 +21,7 @@
 		line-height: 1.5;
 		margin-top: 12px;
 		font-family: var(--text-font);
-		font-size: var(--regular-text-size);
+		font-size: var(--subtitle-size);
 		color: $secondary-text;
 	}
 
@@ -29,9 +29,8 @@
 		position: relative;
 
 		&-btn {
-			min-height: 56px;
 			min-width: 300px;
-			padding: 15px;
+			padding: 10px;
 			font-family: inherit;
 			font-size: 1rem;
 			color: $secondary-text;
@@ -41,10 +40,15 @@
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
+
+			&--open {
+				.shop-toolbar__sort-arrow {
+					transform: rotate(180deg);
+				}
+			}
 		}
 
 		&-arrow {
-			padding-left: 8px;
 			width: 26px;
 			height: 26px;
 		}
@@ -77,6 +81,8 @@
 			align-items: center;
 			font-size: 1rem;
 			line-height: 1.25rem;
+
+			white-space: nowrap; // ← prevent wrapping
 
 			&:hover {
 				background: rgba($gold-accent, 0.25);
@@ -142,6 +148,26 @@
 
 		&:hover {
 			color: $primary-text;
+		}
+	}
+
+	@include mobile-sm {
+		&__switchers {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 18px;
+			align-items: center;
+		}
+
+		&__sort {
+			width: 100%;
+			// max-width: 450px;
+		}
+
+		&__sort-btn {
+			width: 100%;
+			// max-width: 450px;
+			min-width: 0;
 		}
 	}
 }

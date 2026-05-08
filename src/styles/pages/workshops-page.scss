@@ -6,4 +6,11 @@
 	&__empty {
 		padding-block: 80px;
 	}
+
+	@include tablet-sm {
+		&__cards,
+		&__empty {
+			padding-block: 60px;
+		}
+	}
 }

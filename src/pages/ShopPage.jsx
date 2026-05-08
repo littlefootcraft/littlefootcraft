@@ -6,6 +6,7 @@ import { useProducts } from "../context/ProductsContext";
 import { useLanguage } from "../context/LanguageContext";
 import shopPage from "../content/pages/shop-page.json";
 import { useCatalogPagination } from "../hooks/useCatalogPagination";
+import Seo from "../components/Seo";
 
 const ShopPage = () => {
 	const { sortedProducts, setPageTitle } = useOutletContext();
@@ -28,30 +29,43 @@ const ShopPage = () => {
 		20,
 	);
 
-	// Empty state — filters returned nothing
-	if (paginatedItems.length === 0) {
-		return (
-			<section className="shop-page">
-				<div className="shop-page__empty">
-					<p>{t(shopPage.emptyState)}</p>
-				</div>
-			</section>
-		);
-	}
+	// // Empty state — filters returned nothing
+	// if (paginatedItems.length === 0) {
+	// 	return (
+	// 		<section className="shop-page">
+	// 			<div className="shop-page__empty">
+	// 				<p>{t(shopPage.emptyState)}</p>
+	// 			</div>
+	// 		</section>
+	// 	);
+	// }
 
 	return (
 		<section className="shop-page">
-			<div className="container">
-				{/* <span className="shop-page__count">{t(sortedProducts.length)}</span> */}
-				<div className="shop-page__cards">
-					{paginatedItems.map((product) => (
-						<ProductCard
-							key={product.sku}
-							product={product}
-						/>
-					))}
+			<Seo
+				title={t(shopPage.seo.title)}
+				description={t(shopPage.seo.description)}
+				image={shopPage.seo.image}
+				imageAlt={t(shopPage.seo.imageAlt)}
+				url={`/${currentLang}/shop`}
+			/>
+
+			{paginatedItems.length === 0 ? (
+				<div className="shop-page__empty">
+					<p>{t(shopPage.emptyState)}</p>
 				</div>
-			</div>
+			) : (
+				<div className="container">
+					<div className="shop-page__cards">
+						{paginatedItems.map((product) => (
+							<ProductCard
+								key={product.sku}
+								product={product}
+							/>
+						))}
+					</div>
+				</div>
+			)}
 		</section>
 	);
 };
