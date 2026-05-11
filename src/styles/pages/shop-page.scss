@@ -23,4 +23,20 @@
 	&__cards {
 		@include product-cards-grid;
 	}
+
+	&__empty {
+		min-height: 320px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		padding-block: 60px;
+
+		p {
+			max-width: 420px;
+			color: $secondary-text;
+			font-size: var(--regular-text-size);
+			line-height: 1.6;
+		}
+	}
 }

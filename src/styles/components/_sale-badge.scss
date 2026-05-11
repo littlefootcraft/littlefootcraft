@@ -1,0 +1,54 @@
+//_sale-badge.scss
+
+@use "./../../styles/base/variables" as *;
+@use "./../abstracts/mixins" as *;
+
+.sale-badge {
+	position: absolute;
+	top: 22px;
+	left: -32px;
+	z-index: 3;
+
+	width: 130px;
+	height: 30px;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	transform: rotate(-45deg);
+
+	background: linear-gradient(
+		to bottom,
+		$light-gold 0%,
+		$gold-accent 55%,
+		$gold-primary 100%
+	);
+
+	color: $primary-text;
+	font-size: 1rem;
+	font-weight: 700;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+
+	// &::before,
+	// &::after {
+	// 	content: "";
+	// 	position: absolute;
+	// 	bottom: -8px;
+
+	// 	border-top: 8px solid $gold-dark;
+	// 	border-left: 8px solid transparent;
+	// 	border-right: 8px solid transparent;
+	// }
+
+	// &::before {
+	// 	left: 0;
+	// }
+
+	// &::after {
+	// 	right: 0;
+	// }
+}

@@ -46,7 +46,7 @@ const SalePage = () => {
 	// Empty state — filters returned nothing
 	if (paginatedItems.length === 0) {
 		return (
-			<section className="sale-page">
+			<section className="sale-page container">
 				<div className="sale-page__empty">
 					<p>{t(salePage.emptyState)}</p>
 				</div>
@@ -60,7 +60,7 @@ const SalePage = () => {
 				description={t(salePage.seo.description)}
 				image={salePage.seo.image}
 				imageAlt={t(salePage.seo.imageAlt)}
-				url={`/${currentLang}/faq`}
+				url={`/${currentLang}/sale`}
 			/>
 			<div className="container">
 				<div className="sale-page__cards">

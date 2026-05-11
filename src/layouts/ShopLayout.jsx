@@ -36,7 +36,9 @@ function applyFilters(products, activeFilters) {
 
 			// ← lowercase both sides so "Brooch" matches "brooch"
 			return values.some((v) =>
-				normalize.some((pv) => pv.toLowerCase() === v.toLowerCase()),
+				normalize(productValues).some(
+					(pv) => pv.toLowerCase() === v.toLowerCase(),
+				),
 			);
 		});
 	});

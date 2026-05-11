@@ -40,5 +40,28 @@
 				}
 			}
 		]
-	}
+	},
+	"highlights": [
+		{
+			"icon": "shield",
+			"text": {
+				"en": "Authenticity guaranteed",
+				"ua": "Гарантована автентичність"
+			}
+		},
+		{
+			"icon": "package",
+			"text": {
+				"en": "Handcrafted with care",
+				"ua": "Створено вручну з турботою"
+			}
+		},
+		{
+			"icon": "truck",
+			"text": {
+				"en": "Worldwide shipping available",
+				"ua": "Доставка по всьому світу"
+			}
+		}
+	]
 }

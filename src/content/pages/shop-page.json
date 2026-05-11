@@ -22,8 +22,22 @@
 		"en": "Each piece is handcrafted with care and imbued with magic. Find your perfect treasure.",
 		"ua": "Кожен виріб створений вручну з турботою та наповнений магією. Знайдіть свій ідеальний скарб."
 	},
+	"highlights": [
+		{
+			"en": "Authenticity guaranteed",
+			"ua": "Гарантована автентичність"
+		},
+		{
+			"en": "Handcrafted with care",
+			"ua": "Створено вручну з турботою"
+		},
+		{
+			"en": "Worldwide shipping available",
+			"ua": "Доставка по всьому світу"
+		}
+	],
 	"emptyState": {
-		"en": "Currently there are no items in our store",
-		"ua": "Наразі немає товарів у нашому магазині"
+		"en": "No treasures match your selected filters.",
+		"ua": "Жоден скарб не відповідає обраним фільтрам."
 	}
 }

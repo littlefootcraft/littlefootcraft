@@ -51,7 +51,7 @@ const ShopPage = () => {
 			/>
 
 			{paginatedItems.length === 0 ? (
-				<div className="shop-page__empty">
+				<div className="shop-page__empty container">
 					<p>{t(shopPage.emptyState)}</p>
 				</div>
 			) : (

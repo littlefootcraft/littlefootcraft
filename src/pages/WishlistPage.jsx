@@ -54,7 +54,7 @@ const WishlistPage = () => {
 
 							<PrimaryBtn
 								variant="to-catalog"
-								to="/shop"
+								to={`/${currentLang}/shop`}
 							>
 								{dict["empty-btn"]}
 							</PrimaryBtn>

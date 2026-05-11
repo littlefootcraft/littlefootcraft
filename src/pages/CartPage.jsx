@@ -39,12 +39,14 @@ const CartPage = () => {
 						<h2 className="cart-empty__title">{dict.emptyTitle}</h2>
 						<p className="cart-empty__text">{dict.emptyText}</p>
 
-						<PrimaryBtn
-							variant="to-catalog"
-							to="/shop"
-						>
-							{dict.emptyBtn}
-						</PrimaryBtn>
+						<div>
+							<PrimaryBtn
+								variant="to-catalog"
+								to={`/${currentLang}/shop`}
+							>
+								{dict.emptyBtn}
+							</PrimaryBtn>
+						</div>
 					</div>
 				) : (
 					<div className="cart-page__layout">

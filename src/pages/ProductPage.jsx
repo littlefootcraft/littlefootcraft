@@ -33,8 +33,16 @@ import { PrimaryBtn } from "../components/PrimaryBtn";
 import { useCart } from "../context/CartContext";
 import Seo from "../components/Seo";
 
+import { ShieldCheck, PackageCheck, Truck } from "lucide-react";
+
 const RECENTLY_VIEWED_KEY = "recently_viewed_skus";
 const MAX_RECENTLY_VIEWED = 8;
+
+const ICONS = {
+	shield: ShieldCheck,
+	package: PackageCheck,
+	truck: Truck,
+};
 
 const ProductPage = () => {
 	const { sku } = useParams();
@@ -106,19 +114,20 @@ const ProductPage = () => {
 	const relatedProducts = useMemo(() => {
 		const others = products.filter((p) => p.sku !== product.sku);
 
+		const currentCollection = product.specifications?.collection?.en;
+		const currentCategory = product.specifications?.category?.en;
+
 		const sameCollection = others.filter(
 			(p) =>
-				p.specifications?.collection === product.specifications?.collection,
+				p.specifications?.collection?.en?.toLowerCase() ===
+				currentCollection?.toLowerCase(),
 		);
 
-		if (sameCollection.length >= 4) return sameCollection.slice(0, 4);
-
-		// fill remaining slots with same category
 		const sameCategory = others.filter(
 			(p) =>
 				p.specifications?.category?.en?.toLowerCase() ===
-					product.specifications?.category?.en?.toLowerCase() &&
-				!sameCollection.find((s) => s.sku === p.sku),
+					currentCategory?.toLowerCase() &&
+				!sameCollection.some((item) => item.sku === p.sku),
 		);
 
 		return [...sameCollection, ...sameCategory].slice(0, 4);
@@ -329,7 +338,7 @@ const ProductPage = () => {
 								<span className="product-page__spec-label">
 									{dict.specs.collection}
 								</span>
-								<span>{t(product.specifications?.category)}</span>
+								<span>{t(product.specifications?.collection)}</span>
 							</div>
 						)}
 						{product.specifications?.color && (
@@ -373,15 +382,19 @@ const ProductPage = () => {
 									dict.addToCart
 								)}
 							</PrimaryBtn>
+
 							{/* View cart button — only appears after adding */}
-							{isAdded && (
-								<SecondaryBtn
-									variant="to-cart"
-									to={`/${currentLang}/cart`}
-								>
-									{dict.viewCart}
-								</SecondaryBtn>
-							)}
+							<SecondaryBtn
+								variant="to-cart"
+								to={`/${currentLang}/cart`}
+								className={`product-page__cart-btn ${
+									isAdded
+										? "product-page__cart-btn--visible"
+										: "product-page__cart-btn--hidden"
+								}`}
+							>
+								{dict.viewCart}
+							</SecondaryBtn>
 						</div>
 
 						<button
@@ -472,6 +485,24 @@ const ProductPage = () => {
 							)}
 						</div>
 					</div>
+
+					{/* Highlights */}
+					<ul className="product-page__highlights">
+						{ProductPageContent.highlights.map((item) => {
+							const Icon = ICONS[item.icon];
+
+							return (
+								<li
+									key={item.icon}
+									className="product-page__highlight"
+								>
+									<Icon />
+
+									<span>{t(item.text)}</span>
+								</li>
+							);
+						})}
+					</ul>
 				</div>
 			</div>
 
@@ -529,6 +560,7 @@ const ProductPage = () => {
 					</div>
 				</div>
 			)}
+			{console.log("relatedProducts", relatedProducts)}
 
 			{/* Recently viewed */}
 			{recentlyViewed.length > 0 && (

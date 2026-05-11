@@ -151,12 +151,11 @@
 		transform: translateX(0);
 	}
 
-	//Price----------------------
+	// Price----------------------
 
 	&__prices {
 		display: flex;
 		align-items: center;
-
 		gap: 10px;
 	}
 
@@ -188,19 +187,13 @@
 		font-weight: 700;
 		font-size: var(--card-price-size);
 		color: $gold-accent;
-
-		&--old,
-		&--new {
-		}
+		font-family: var(--title-font);
 
 		&--old {
 			font-size: var(--regular-text-size);
 			color: $light-gray-text;
 			text-decoration: line-through;
 			font-weight: 400;
-		}
-
-		&--discount {
 		}
 	}
 }

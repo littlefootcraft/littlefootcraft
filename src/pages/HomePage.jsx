@@ -18,6 +18,7 @@ import { getVisibleWorkshops } from "../hooks/useVisibleWorkshops";
 import WorkshopsPageContent from "../content/pages/workshops-page.json";
 import { ProcessSection } from "../components/ProcessSection";
 import Seo from "../components/Seo";
+import { Link } from "react-router-dom";
 
 const WorkshopsImage = "/uploads/images/home_workshop_image.jpeg";
 
@@ -73,7 +74,7 @@ const HomePage = ({ workshop }) => {
 					<div className="home-page__top-btn__wrap">
 						<PrimaryBtn
 							variant="to-catalog"
-							to="/shop"
+							to={`/${currentLang}/shop`}
 						>
 							{t(HomePageContent.hero.button.label)}
 						</PrimaryBtn>
@@ -114,14 +115,14 @@ const HomePage = ({ workshop }) => {
 								{t(HomePageContent.newArrivals.text)}
 							</p>
 						</div>
-						<button
+						<Link
 							className="home-page__to-catalog-btn"
 							variant="to-catalog"
-							to="/shop"
+							to={`/${currentLang}/shop`}
 						>
 							<span>{t(HomePageContent.newArrivals.button.label)}</span>
 							<ChevronRight />
-						</button>
+						</Link>
 					</div>
 					<div className="home-page__new-arrivals-cards">
 						{onlyFourNewProducts.map((p) => (
@@ -143,8 +144,9 @@ const HomePage = ({ workshop }) => {
 
 					<div className="home-page__collections-cards">
 						{collections.map((collection) => (
-							<div
-								key={t(collection.name.en)}
+							<Link
+								key={`${collection.group?.en}-${collection.name.en}`}
+								to={`/${currentLang}/shop?collection=${encodeURIComponent(collection.name.en)}`}
 								className="home-page__collections-card"
 							>
 								<img
@@ -163,7 +165,7 @@ const HomePage = ({ workshop }) => {
 										{t(collection.name)}
 									</h3>
 								</div>
-							</div>
+							</Link>
 						))}
 					</div>
 				</div>
@@ -188,7 +190,7 @@ const HomePage = ({ workshop }) => {
 
 						<SecondaryBtn
 							variant="to-other-page"
-							to="/about"
+							to={`/${currentLang}/about`}
 						>
 							{t(HomePageContent.about.button.label)}
 						</SecondaryBtn>
@@ -271,7 +273,7 @@ const HomePage = ({ workshop }) => {
 								</div>
 								<SecondaryBtn
 									variant="to-other-page"
-									to="/about"
+									to={`/${currentLang}/workshops`}
 								>
 									{t(HomePageContent.workshops.button.label)}
 								</SecondaryBtn>

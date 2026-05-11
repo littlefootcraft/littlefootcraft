@@ -28,7 +28,11 @@
 			"en": "3.5 cm x 3.5 cm",
 			"ua": "3.5 см x 3.5 см"
 		},
-		"color": ["blue"]
+		"color": ["blue"],
+		"collection": {
+			"en": "Shades of Ocean Blue",
+			"ua": "Відтінки океанської синяви"
+		}
 	},
 	"description": {
 		"en": "This enchanting brooch shimmers in soft gray-blue hues, its iridescent “tentacles” shifting colors like a rainbow dancing in the light. Inspired by the mysterious depths of the Hogwarts Lake, its design combines delicate lightness with fluid movement, making the brooch seem almost alive. A perfect magical artifact for anyone wishing to add a touch of sorcery and elegance to any outfit.",

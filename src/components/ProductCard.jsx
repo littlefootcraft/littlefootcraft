@@ -10,6 +10,7 @@ import MagicBadge from "./MagicBadge";
 import { Star } from "lucide-react";
 import { IoArrowForward } from "react-icons/io5";
 import { formatPrice } from "../utils/formatPrice";
+import SaleBadge from "./SaleBadge";
 
 export const ProductCard = ({ product }) => {
 	const { name, price, badges, specifications } = product;
@@ -40,6 +41,14 @@ export const ProductCard = ({ product }) => {
 								{dict.new}
 							</MagicBadge>
 						)}
+						{product.oldPrice && (
+							<SaleBadge
+								className="product-card__badge-sale"
+								variant="sale"
+							>
+								{currentLang === "ua" ? "Знижка" : "Sale"}
+							</SaleBadge>
+						)}
 
 						<button
 							className={`product-card__favorite-btn ${inWish ? "product-card__favorite-btn--active" : ""}`}
@@ -61,7 +70,7 @@ export const ProductCard = ({ product }) => {
 				</div>
 				<div className="product-card__footer">
 					<span className="product-card__category">
-						{specifications?.category[currentLang]}
+						{t(specifications?.category)}
 					</span>
 					<h3 className="product-card__title">{t(name)}</h3>
 					<div className="product-card__price-container">

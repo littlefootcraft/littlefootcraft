@@ -45,15 +45,15 @@ const router = createBrowserRouter([
 				// ShopLayout - wraps all shop-related routes
 				children: [
 					{ path: "shop", element: <ShopPage /> },
+
 					{
 						path: "sale",
 						element: <SalePage />,
 					},
 				],
 			},
-
 			{
-				path: ":sku",
+				path: "shop/:sku",
 				element: <ProductPage />,
 			},
 			{ path: "workshops", element: <WorkshopsPage /> },

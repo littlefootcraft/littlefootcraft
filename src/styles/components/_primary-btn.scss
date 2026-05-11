@@ -201,4 +201,10 @@
 			border-radius: $border-radius;
 		}
 	}
+
+	@include mobile {
+		&__label {
+			gap: 2px;
+		}
+	}
 }

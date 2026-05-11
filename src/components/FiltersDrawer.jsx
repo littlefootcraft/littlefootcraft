@@ -1,5 +1,5 @@
 // components/FiltersDrawer.jsx
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ChevronDown, X } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 import { COLORS } from "../constants/filterOptions";
@@ -49,6 +49,18 @@ export const FiltersDrawer = ({
 
 	// Count total active filters for the badge
 	const activeCount = Object.values(activeFilters).flat().length;
+
+	// Prevent scroll when filters are open
+	useEffect(() => {
+		if (!isOpen) return;
+
+		const originalOverflow = document.body.style.overflow;
+		document.body.style.overflow = "hidden";
+
+		return () => {
+			document.body.style.overflow = originalOverflow;
+		};
+	}, [isOpen]);
 
 	return (
 		<>

@@ -10,6 +10,7 @@ import { ProductsProvider } from "../context/ProductsContext";
 import { WorkshopsProvider } from "../context/WorkshopsContext";
 import { WishlistProvider } from "../context/WishlistContext";
 import { CartProvider } from "../context/CartContext";
+import { ScrollToTop } from "../components/ScrollToTop";
 
 export const Layout = () => {
 	const { lang } = useParams();
@@ -26,6 +27,7 @@ export const Layout = () => {
 			<WishlistProvider>
 				<CartProvider>
 					<div className={`page ${lang === "ua" ? "ua" : ""}`}>
+						<ScrollToTop />
 						<Header />
 						<main>
 							<ProductsProvider>

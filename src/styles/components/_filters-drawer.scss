@@ -257,4 +257,25 @@
 			border-color: $gold-accent;
 		}
 	}
+
+	@include mobile {
+		width: 100%;
+		max-width: 100%;
+
+		&__header {
+			padding-inline: 20px;
+		}
+
+		&__section-header {
+			padding-inline: 20px;
+		}
+
+		&__section-body {
+			padding-inline: 20px;
+		}
+
+		&__footer {
+			padding-inline: 20px;
+		}
+	}
 }
