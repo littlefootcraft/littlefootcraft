@@ -39,28 +39,28 @@
 	"highlights": [
 		{
 			"icon": "sparkles",
-			"text-sparkles": {
+			"text": {
 				"en": "Handcrafted with Care",
 				"ua": "Створено вручну з турботою"
 			}
 		},
 		{
 			"icon": "star",
-			"text-star": {
+			"text": {
 				"en": "One-of-a-Kind Pieces",
 				"ua": "Унікальні вироби"
 			}
 		},
 		{
 			"icon": "globe",
-			"text-globe": {
+			"text": {
 				"en": "Worldwide Shipping",
 				"ua": "Доставка по всьому світу"
 			}
 		},
 		{
 			"icon": "shield",
-			"text-shield": {
+			"text": {
 				"en": "Secure Ordering",
 				"ua": "Безпечне замовлення"
 			}
