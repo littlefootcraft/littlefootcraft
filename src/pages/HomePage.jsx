@@ -1,24 +1,30 @@
 //HomePage
 import { useMemo } from "react";
+import { Link } from "react-router-dom";
 
-import { useLanguage } from "../context/LanguageContext";
-import HomePageContent from "../content/pages/home-page.json";
-
-import MagicBadge from "../components/MagicBadge";
-import { PrimaryBtn } from "../components/PrimaryBtn";
-
-import { Sparkles, ChevronRight, Star, Globe, Shield } from "lucide-react";
-import { SecondaryBtn } from "../components/SecondaryBtn";
-import { ProductCard } from "../components/ProductCard";
-import { useProducts } from "../context/ProductsContext";
-
+// CONTEXTS
 import { useWorkshops } from "../context/WorkshopsContext";
+import { useProducts } from "../context/ProductsContext";
+import WorkshopsPageContent from "../content/pages/workshops-page.json";
+import { useLanguage } from "../context/LanguageContext";
+
 import { getVisibleWorkshops } from "../hooks/useVisibleWorkshops";
 
-import WorkshopsPageContent from "../content/pages/workshops-page.json";
+// HOOKS
+import HomePageContent from "../content/pages/home-page.json";
+
+// COMPONENTS
+import { PrimaryBtn } from "../components/PrimaryBtn";
+import MagicBadge from "../components/MagicBadge";
+import { SecondaryBtn } from "../components/SecondaryBtn";
+import { ProductCard } from "../components/ProductCard";
 import { ProcessSection } from "../components/ProcessSection";
+
+// ICONS
+import { Sparkles, ChevronRight, Star, Globe, Shield } from "lucide-react";
+
+// SEO
 import Seo from "../components/Seo";
-import { Link } from "react-router-dom";
 
 const WorkshopsImage = "/uploads/images/home_workshop_image.jpeg";
 

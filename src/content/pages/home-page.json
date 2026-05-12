@@ -15,7 +15,7 @@
 			"ua": "Магічні вироби ручної роботи LittleFootCraft"
 		}
 	},
-	"main-image": "/uploads/hero-image.jpeg",
+	"main-image": "/uploads/images/hero-image.jpeg",
 	"hero": {
 		"badge": {
 			"en": "Handcrafted with Magic",
@@ -38,24 +38,28 @@
 	},
 	"highlights": [
 		{
+			"icon": "sparkles",
 			"text-sparkles": {
 				"en": "Handcrafted with Care",
 				"ua": "Створено вручну з турботою"
 			}
 		},
 		{
+			"icon": "star",
 			"text-star": {
 				"en": "One-of-a-Kind Pieces",
 				"ua": "Унікальні вироби"
 			}
 		},
 		{
+			"icon": "globe",
 			"text-globe": {
 				"en": "Worldwide Shipping",
 				"ua": "Доставка по всьому світу"
 			}
 		},
 		{
+			"icon": "shield",
 			"text-shield": {
 				"en": "Secure Ordering",
 				"ua": "Безпечне замовлення"

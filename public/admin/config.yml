@@ -91,61 +91,18 @@ collections:
             name: "highlights"
             widget: "list"
             fields:
-              - label: "Sparkles Text"
-                name: "text-sparkles"
+              - label: "Icon"
+                name: "icon"
+                widget: "select"
+                options:
+                  - { label: "Sparkles", value: "sparkles" }
+                  - { label: "Star", value: "star" }
+                  - { label: "Globe", value: "globe" }
+                  - { label: "Shield", value: "shield" }
+
+              - label: "Text"
+                name: "text"
                 widget: "object"
-                required: false
-                fields:
-                  - {
-                      label: "English",
-                      name: "en",
-                      widget: "string",
-                      required: false,
-                    }
-                  - {
-                      label: "Ukrainian",
-                      name: "ua",
-                      widget: "string",
-                      required: false,
-                    }
-              - label: "Star Text"
-                name: "text-star"
-                widget: "object"
-                required: false
-                fields:
-                  - {
-                      label: "English",
-                      name: "en",
-                      widget: "string",
-                      required: false,
-                    }
-                  - {
-                      label: "Ukrainian",
-                      name: "ua",
-                      widget: "string",
-                      required: false,
-                    }
-              - label: "Globe Text"
-                name: "text-globe"
-                widget: "object"
-                required: false
-                fields:
-                  - {
-                      label: "English",
-                      name: "en",
-                      widget: "string",
-                      required: false,
-                    }
-                  - {
-                      label: "Ukrainian",
-                      name: "ua",
-                      widget: "string",
-                      required: false,
-                    }
-              - label: "Shield Text"
-                name: "text-shield"
-                widget: "object"
-                required: false
                 fields:
                   - {
                       label: "English",
