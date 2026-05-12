@@ -67,37 +67,37 @@ const AboutPage = () => {
 						<div className="about__values-item">
 							<WandSparkles className="about__values-item-icon" />
 							<h4 className="about__values-item-title">
-								{t(AboutPageContent.values.items[0]["title-wand-sparkles"])}
+								{t(AboutPageContent.values.items[0]["title"])}
 							</h4>
 							<p className="about__values-item-text">
-								{t(AboutPageContent.values.items[0]["text-wand-sparkles"])}
+								{t(AboutPageContent.values.items[0]["text"])}
 							</p>
 						</div>
 						<div className="about__values-item">
 							<Star className="about__values-item-icon" />
 							<h4 className="about__values-item-title">
-								{t(AboutPageContent.values.items[1]["title-star"])}
+								{t(AboutPageContent.values.items[1]["title"])}
 							</h4>
 							<p className="about__values-item-text">
-								{t(AboutPageContent.values.items[1]["text-star"])}
+								{t(AboutPageContent.values.items[1]["text"])}
 							</p>
 						</div>
 						<div className="about__values-item">
 							<Heart className="about__values-item-icon" />
 							<h4 className="about__values-item-title">
-								{t(AboutPageContent.values.items[2]["title-heart"])}
+								{t(AboutPageContent.values.items[2]["title"])}
 							</h4>
 							<p className="about__values-item-text">
-								{t(AboutPageContent.values.items[2]["text-heart"])}
+								{t(AboutPageContent.values.items[2]["text"])}
 							</p>
 						</div>
 						<div className="about__values-item">
 							<Gem className="about__values-item-icon" />
 							<h4 className="about__values-item-title">
-								{t(AboutPageContent.values.items[3]["title-gem"])}
+								{t(AboutPageContent.values.items[3]["title"])}
 							</h4>
 							<p className="about__values-item-text">
-								{t(AboutPageContent.values.items[3]["text-gem"])}
+								{t(AboutPageContent.values.items[3]["text"])}
 							</p>
 						</div>
 					</div>

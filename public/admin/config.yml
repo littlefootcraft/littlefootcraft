@@ -12,6 +12,7 @@ collections:
       - name: "navigation"
         label: "Navigation Settings"
         file: "src/content/settings/navigation.json"
+        format: "json"
         fields:
           - label: "Show Sale Page"
             name: "showSalePage"
@@ -38,13 +39,16 @@ collections:
                 fields:
                   - { label: "English", name: "en", widget: "string" }
                   - { label: "Ukrainian", name: "ua", widget: "string" }
+
               - label: "Description"
                 name: "description"
                 widget: "object"
                 fields:
                   - { label: "English", name: "en", widget: "text" }
                   - { label: "Ukrainian", name: "ua", widget: "text" }
+
               - { label: "SEO Image", name: "image", widget: "image" }
+
               - label: "Image Alt"
                 name: "imageAlt"
                 widget: "object"
@@ -64,18 +68,21 @@ collections:
                 fields:
                   - { label: "English", name: "en", widget: "string" }
                   - { label: "Ukrainian", name: "ua", widget: "string" }
+
               - label: "Title"
                 name: "title"
                 widget: "object"
                 fields:
                   - { label: "English", name: "en", widget: "string" }
                   - { label: "Ukrainian", name: "ua", widget: "string" }
+
               - label: "Text"
                 name: "text"
                 widget: "object"
                 fields:
                   - { label: "English", name: "en", widget: "text" }
                   - { label: "Ukrainian", name: "ua", widget: "text" }
+
               - label: "Button"
                 name: "button"
                 widget: "object"
@@ -104,18 +111,303 @@ collections:
                 name: "text"
                 widget: "object"
                 fields:
-                  - {
-                      label: "English",
-                      name: "en",
-                      widget: "string",
-                      required: false,
-                    }
-                  - {
-                      label: "Ukrainian",
-                      name: "ua",
-                      widget: "string",
-                      required: false,
-                    }
+                  - { label: "English", name: "en", widget: "string" }
+                  - { label: "Ukrainian", name: "ua", widget: "string" }
+
+          - label: "New Arrivals"
+            name: "newArrivals"
+            widget: "object"
+            fields:
+              - label: "Title"
+                name: "title"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "string" }
+                  - { label: "Ukrainian", name: "ua", widget: "string" }
+
+              - label: "Text"
+                name: "text"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "text" }
+                  - { label: "Ukrainian", name: "ua", widget: "text" }
+
+              - label: "Button"
+                name: "button"
+                widget: "object"
+                fields:
+                  - label: "Label"
+                    name: "label"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Ukrainian", name: "ua", widget: "string" }
+
+          - label: "Collections"
+            name: "collections"
+            widget: "object"
+            fields:
+              - label: "Title"
+                name: "title"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "string" }
+                  - { label: "Ukrainian", name: "ua", widget: "string" }
+
+              - label: "Collection Cards"
+                name: "set"
+                widget: "list"
+                fields:
+                  - label: "Group"
+                    name: "group"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Ukrainian", name: "ua", widget: "string" }
+
+                  - label: "Name"
+                    name: "name"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Ukrainian", name: "ua", widget: "string" }
+
+                  - { label: "Image", name: "src", widget: "image" }
+
+          - label: "About Section"
+            name: "about"
+            widget: "object"
+            fields:
+              - label: "Eyebrow"
+                name: "eyebrow"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "string" }
+                  - { label: "Ukrainian", name: "ua", widget: "string" }
+
+              - label: "Title"
+                name: "title"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "string" }
+                  - { label: "Ukrainian", name: "ua", widget: "string" }
+
+              - label: "Text"
+                name: "text"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "text" }
+                  - { label: "Ukrainian", name: "ua", widget: "text" }
+
+              - label: "Image"
+                name: "image"
+                widget: "object"
+                fields:
+                  - { label: "Image", name: "src", widget: "image" }
+                  - label: "Alt"
+                    name: "alt"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Ukrainian", name: "ua", widget: "string" }
+
+              - label: "Button"
+                name: "button"
+                widget: "object"
+                fields:
+                  - label: "Label"
+                    name: "label"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Ukrainian", name: "ua", widget: "string" }
+
+          - label: "Process Section"
+            name: "process"
+            widget: "object"
+            fields:
+              - label: "Title"
+                name: "title"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "string" }
+                  - { label: "Ukrainian", name: "ua", widget: "string" }
+
+              - label: "Text"
+                name: "text"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "text" }
+                  - { label: "Ukrainian", name: "ua", widget: "text" }
+
+              - label: "Steps"
+                name: "steps"
+                widget: "list"
+                fields:
+                  - { label: "Number", name: "number", widget: "string" }
+
+                  - label: "Title One"
+                    name: "title-one"
+                    widget: "object"
+                    required: false
+                    fields:
+                      - {
+                          label: "English",
+                          name: "en",
+                          widget: "string",
+                          required: false,
+                        }
+                      - {
+                          label: "Ukrainian",
+                          name: "ua",
+                          widget: "string",
+                          required: false,
+                        }
+
+                  - label: "Text One"
+                    name: "text-one"
+                    widget: "object"
+                    required: false
+                    fields:
+                      - {
+                          label: "English",
+                          name: "en",
+                          widget: "text",
+                          required: false,
+                        }
+                      - {
+                          label: "Ukrainian",
+                          name: "ua",
+                          widget: "text",
+                          required: false,
+                        }
+
+                  - label: "Title Two"
+                    name: "title-two"
+                    widget: "object"
+                    required: false
+                    fields:
+                      - {
+                          label: "English",
+                          name: "en",
+                          widget: "string",
+                          required: false,
+                        }
+                      - {
+                          label: "Ukrainian",
+                          name: "ua",
+                          widget: "string",
+                          required: false,
+                        }
+
+                  - label: "Text Two"
+                    name: "text-two"
+                    widget: "object"
+                    required: false
+                    fields:
+                      - {
+                          label: "English",
+                          name: "en",
+                          widget: "text",
+                          required: false,
+                        }
+                      - {
+                          label: "Ukrainian",
+                          name: "ua",
+                          widget: "text",
+                          required: false,
+                        }
+
+                  - label: "Title Three"
+                    name: "title-three"
+                    widget: "object"
+                    required: false
+                    fields:
+                      - {
+                          label: "English",
+                          name: "en",
+                          widget: "string",
+                          required: false,
+                        }
+                      - {
+                          label: "Ukrainian",
+                          name: "ua",
+                          widget: "string",
+                          required: false,
+                        }
+
+                  - label: "Text Three"
+                    name: "text-three"
+                    widget: "object"
+                    required: false
+                    fields:
+                      - {
+                          label: "English",
+                          name: "en",
+                          widget: "text",
+                          required: false,
+                        }
+                      - {
+                          label: "Ukrainian",
+                          name: "ua",
+                          widget: "text",
+                          required: false,
+                        }
+
+          - label: "Workshops Section"
+            name: "workshops"
+            widget: "object"
+            fields:
+              - label: "Eyebrow"
+                name: "eyebrow"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "string" }
+                  - { label: "Ukrainian", name: "ua", widget: "string" }
+
+              - label: "Button"
+                name: "button"
+                widget: "object"
+                fields:
+                  - label: "Label"
+                    name: "label"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Ukrainian", name: "ua", widget: "string" }
+
+          - label: "Subscription"
+            name: "subscription"
+            widget: "object"
+            fields:
+              - label: "Title"
+                name: "title"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "string" }
+                  - { label: "Ukrainian", name: "ua", widget: "string" }
+
+              - label: "Text"
+                name: "text"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "text" }
+                  - { label: "Ukrainian", name: "ua", widget: "text" }
+
+              - label: "Placeholder"
+                name: "placeholder"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "string" }
+                  - { label: "Ukrainian", name: "ua", widget: "string" }
+
+              - label: "Button Label"
+                name: "buttonLabel"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "string" }
+                  - { label: "Ukrainian", name: "ua", widget: "string" }
+
       - name: "shop_page"
         label: "Shop Page"
         file: "src/content/pages/shop-page.json"
@@ -175,6 +467,7 @@ collections:
             fields:
               - { label: "English", name: "en", widget: "string" }
               - { label: "Ukrainian", name: "ua", widget: "string" }
+
       - name: "workshops_page"
         label: "Workshops Page"
         file: "src/content/pages/workshops-page.json"
@@ -248,7 +541,177 @@ collections:
                     fields:
                       - { label: "English", name: "en", widget: "text" }
                       - { label: "Ukrainian", name: "ua", widget: "text" }
-        - name: "workshops"
+
+      - name: "about_page"
+          label: "About Page"
+          file: "src/content/pages/about-page.json"
+          format: "json"
+
+          fields:
+            - { label: "Slug", name: "slug", widget: "string" }
+
+            # SEO
+            - label: "SEO"
+              name: "seo"
+              widget: "object"
+              fields:
+                - label: "Title"
+                  name: "title"
+                  widget: "object"
+                  fields:
+                    - { label: "English", name: "en", widget: "string" }
+                    - { label: "Ukrainian", name: "ua", widget: "string" }
+                - label: "Description"
+                  name: "description"
+                  widget: "object"
+                  fields:
+                    - { label: "English", name: "en", widget: "text" }
+                    - { label: "Ukrainian", name: "ua", widget: "text" }
+                - { label: "SEO Image", name: "image", widget: "image" }
+                - label: "SEO Image Alt"
+                  name: "imageAlt"
+                  widget: "object"
+                  fields:
+                    - { label: "English", name: "en", widget: "string" }
+                    - { label: "Ukrainian", name: "ua", widget: "string" }
+
+            # Top Section
+            - label: "Top Section"
+              name: "top"
+              widget: "object"
+              fields:
+                - label: "Eyebrow"
+                  name: "eyebrow"
+                  widget: "object"
+                  fields:
+                    - { label: "English", name: "en", widget: "string" }
+                    - { label: "Ukrainian", name: "ua", widget: "string" }
+                - label: "Title"
+                  name: "title"
+                  widget: "object"
+                  fields:
+                    - { label: "English", name: "en", widget: "string" }
+                    - { label: "Ukrainian", name: "ua", widget: "string" }
+                - label: "Text"
+                  name: "text"
+                  widget: "object"
+                  fields:
+                    - { label: "English", name: "en", widget: "text" }
+                    - { label: "Ukrainian", name: "ua", widget: "text" }
+            - label: "Image"
+              name: "image"
+              widget: "object"
+              fields:
+                - { label: "Image", name: "src", widget: "image" }
+                - label: "Image Alt"
+                  name: "alt"
+                  widget: "object"
+                  fields:
+                    - { label: "English", name: "en", widget: "string" }
+                    - { label: "Ukrainian", name: "ua", widget: "string" }
+            # Story Section
+            - label: "Story Section"
+              name: "story"
+              widget: "object"
+              fields:
+                - label: "Title"
+                  name: "title"
+                  widget: "object"
+                  fields:
+                    - { label: "English", name: "en", widget: "string" }
+                    - { label: "Ukrainian", name: "ua", widget: "string" }
+
+                - label: "Paragraphs"
+                  name: "paragraphs"
+                  widget: "list"
+                  fields:
+                    - { label: "English", name: "en", widget: "text" }
+                    - { label: "Ukrainian", name: "ua", widget: "text" }
+
+            # Values Section
+            - label: "Values Section"
+              name: "values"
+              widget: "object"
+              fields:
+                - label: "Title"
+                  name: "title"
+                  widget: "object"
+                  fields:
+                    - { label: "English", name: "en", widget: "string" }
+                    - { label: "Ukrainian", name: "ua", widget: "string" }
+
+                - label: "Text"
+                  name: "text"
+                  widget: "object"
+                  fields:
+                    - { label: "English", name: "en", widget: "text" }
+                    - { label: "Ukrainian", name: "ua", widget: "text" }
+
+                - label: "Items"
+                  name: "items"
+                  widget: "list"
+                  fields:
+                    - label: "Icon"
+                      name: "icon"
+                      widget: "select"
+                      options:
+                        - { label: "Wand Sparkles", value: "wand-sparkles" }
+                        - { label: "Star", value: "star" }
+                        - { label: "Heart", value: "heart" }
+                        - { label: "Gem", value: "gem" }
+
+                - label: "Title"
+                  name: "title"
+                  widget: "object"
+                  fields:
+                    - { label: "English", name: "en", widget: "string" }
+                    - { label: "Ukrainian", name: "ua", widget: "string" }
+
+                - label: "Text"
+                  name: "text"
+                  widget: "object"
+                  fields:
+                    - { label: "English", name: "en", widget: "text" }
+                    - { label: "Ukrainian", name: "ua", widget: "text" }
+
+            # CTA Section
+            - label: "CTA Section"
+              name: "cta"
+              widget: "object"
+              fields:
+                - label: "Title"
+                  name: "title"
+                  widget: "object"
+                  fields:
+                    - { label: "English", name: "en", widget: "string" }
+                    - { label: "Ukrainian", name: "ua", widget: "string" }
+
+                - label: "Text"
+                  name: "text"
+                  widget: "object"
+                  fields:
+                    - { label: "English", name: "en", widget: "text" }
+                    - { label: "Ukrainian", name: "ua", widget: "text" }
+
+                - label: "Button"
+                  name: "button"
+                  widget: "object"
+                  fields:
+                    - label: "Label"
+                      name: "label"
+                      widget: "object"
+                      fields:
+                        - { label: "English", name: "en", widget: "string" }
+                        - { label: "Ukrainian", name: "ua", widget: "string" }
+
+                 - { label: "Link", name: "to", widget: "string" }
+
+
+
+
+
+
+  - name: "workshops"
     label: "Workshops"
     folder: "src/content/pages/workshops"
     create: true
@@ -290,7 +753,13 @@ collections:
         name: "duration"
         widget: "object"
         fields:
-          - { label: "Value", name: "value", widget: "number", value_type: "int" }
+          - {
+              label: "Value",
+              name: "value",
+              widget: "number",
+              value_type: "int",
+            }
+
           - label: "Unit"
             name: "unit"
             widget: "object"
@@ -308,7 +777,13 @@ collections:
             fields:
               - { label: "English", name: "en", widget: "string" }
               - { label: "Ukrainian", name: "ua", widget: "string" }
-          - { label: "Amount of People", name: "amount-of-people", widget: "number", value_type: "int" }
+
+          - {
+              label: "Amount of People",
+              name: "amount-of-people",
+              widget: "number",
+              value_type: "int",
+            }
 
       - label: "Location"
         name: "location"
@@ -322,7 +797,10 @@ collections:
       - label: "Currency"
         name: "currency"
         widget: "select"
-        options: ["EUR", "USD", "GBP"]
+        options:
+          - "EUR"
+          - "USD"
+          - "GBP"
 
       - label: "Includes"
         name: "includes"
@@ -332,6 +810,7 @@ collections:
             name: "en"
             widget: "list"
             field: { label: "Item", name: "item", widget: "string" }
+
           - label: "Ukrainian"
             name: "ua"
             widget: "list"
@@ -347,6 +826,7 @@ collections:
             fields:
               - { label: "English", name: "en", widget: "string" }
               - { label: "Ukrainian", name: "ua", widget: "string" }
+
           - label: "Dates"
             name: "dates"
             widget: "list"
@@ -370,6 +850,7 @@ collections:
         widget: "object"
         fields:
           - { label: "Image", name: "src", widget: "image" }
+
           - label: "Alt"
             name: "alt"
             widget: "object"
@@ -381,7 +862,12 @@ collections:
         name: "badges"
         widget: "object"
         fields:
-          - { label: "Featured", name: "isFeatured", widget: "boolean", default: false }
+          - {
+              label: "Featured",
+              name: "isFeatured",
+              widget: "boolean",
+              default: false,
+            }
           - { label: "New", name: "isNew", widget: "boolean", default: false }
 
       - { label: "Active", name: "isActive", widget: "boolean", default: true }

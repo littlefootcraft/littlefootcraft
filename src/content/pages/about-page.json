@@ -9,11 +9,7 @@
 			"en": "Learn the story, values, and inspiration behind LittleFootCraft and its handcrafted magical creations.",
 			"ua": "Дізнайтеся історію, цінності та натхнення LittleFootCraft і його чарівних виробів ручної роботи."
 		},
-		"image": "/uploads/images/seo/main_seo.png",
-		"imageAlt": {
-			"en": "LittleFootCraft handmade magical treasures",
-			"ua": "Магічні вироби ручної роботи LittleFootCraft"
-		}
+		"image": "/uploads/images/seo/main_seo.png"
 	},
 	"top": {
 		"eyebrow": {
@@ -67,41 +63,46 @@
 		},
 		"items": [
 			{
-				"title-wand-sparkles": {
+				"icon": "wand-sparkles",
+				"title": {
 					"en": "Handcrafted Magic",
 					"ua": "Магія ручної роботи"
 				},
-				"text-wand-sparkles": {
+				"text": {
 					"en": "Every piece is meticulously crafted by hand, ensuring unique character and quality.",
 					"ua": "Кожен виріб ретельно створюється вручну, що забезпечує унікальний характер і якість."
 				}
 			},
 			{
-				"title-star": {
+				"icon": "star",
+				"title": {
 					"en": "One of a Kind",
 					"ua": "Єдиний у своєму роді"
 				},
-				"text-star": {
+				"text": {
 					"en": "No mass production. Each creation exists as a singular treasure in the world.",
 					"ua": "Жодного масового виробництва. Кожне творіння існує як унікальний скарб у світі."
 				}
 			},
+
 			{
-				"title-heart": {
+				"icon": "heart",
+				"title": {
 					"en": "Made with Love",
 					"ua": "Створено з любов’ю"
 				},
-				"text-heart": {
+				"text": {
 					"en": "Passion and care infuse every stage of our creative process.",
 					"ua": "Пристрасть і турбота супроводжують кожен етап нашого творчого процесу."
 				}
 			},
 			{
-				"title-gem": {
+				"icon": "gem",
+				"title": {
 					"en": "Finest Materials",
 					"ua": "Найкращі матеріали"
 				},
-				"text-gem": {
+				"text": {
 					"en": "We source only the most exceptional materials for our enchanted creations.",
 					"ua": "Ми обираємо лише найкращі матеріали для наших чарівних виробів."
 				}
