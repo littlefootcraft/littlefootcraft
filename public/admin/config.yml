@@ -22,6 +22,7 @@ collections:
   - name: "pages"
     label: "Pages"
     files:
+      # HOME PAGE
       - name: "home_page"
         label: "Home Page"
         file: "src/content/pages/home-page.json"
@@ -407,7 +408,7 @@ collections:
                 fields:
                   - { label: "English", name: "en", widget: "string" }
                   - { label: "Ukrainian", name: "ua", widget: "string" }
-
+      # SHOP PAGE
       - name: "shop_page"
         label: "Shop Page"
         file: "src/content/pages/shop-page.json"
@@ -467,7 +468,7 @@ collections:
             fields:
               - { label: "English", name: "en", widget: "string" }
               - { label: "Ukrainian", name: "ua", widget: "string" }
-
+      # WORKSHOP PAGE
       - name: "workshops_page"
         label: "Workshops Page"
         file: "src/content/pages/workshops-page.json"
@@ -541,7 +542,7 @@ collections:
                     fields:
                       - { label: "English", name: "en", widget: "text" }
                       - { label: "Ukrainian", name: "ua", widget: "text" }
-
+      # ABOUT PAGE
       - name: "about_page"
         label: "About Page"
         file: "src/content/pages/about-page.json"
@@ -700,6 +701,116 @@ collections:
                       - { label: "Ukrainian", name: "ua", widget: "string" }
 
                   - { label: "Link", name: "to", widget: "string" }
+      # SALE PAGE
+      - name: "sale_page"
+        label: "Sale Page"
+        file: "src/content/pages/sale-page.json"
+        format: "json"
+        fields:
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            fields:
+              - label: "Title"
+                name: "title"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "string" }
+                  - { label: "Ukrainian", name: "ua", widget: "string" }
+              - label: "Description"
+                name: "description"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "text" }
+                  - { label: "Ukrainian", name: "ua", widget: "text" }
+              - { label: "SEO Image", name: "image", widget: "image" }
+              - label: "Image Alt"
+                name: "imageAlt"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "string" }
+                  - { label: "Ukrainian", name: "ua", widget: "string" }
+
+          - label: "Title"
+            name: "title"
+            widget: "object"
+            fields:
+              - { label: "English", name: "en", widget: "string" }
+              - { label: "Ukrainian", name: "ua", widget: "string" }
+
+          - label: "Subtitle"
+            name: "subtitle"
+            widget: "object"
+            fields:
+              - { label: "English", name: "en", widget: "text" }
+              - { label: "Ukrainian", name: "ua", widget: "text" }
+
+          - label: "Empty State"
+            name: "emptyState"
+            widget: "object"
+            fields:
+              - { label: "English", name: "en", widget: "string" }
+              - { label: "Ukrainian", name: "ua", widget: "string" }
+
+      # LOGIN PAGE
+      - name: "login_page"
+        label: "Login Page"
+        file: "src/content/pages/login-page.json"
+        format: "json"
+        fields:
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            fields:
+              - label: "Title"
+                name: "title"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "string" }
+                  - { label: "Ukrainian", name: "ua", widget: "string" }
+              - label: "Description"
+                name: "description"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "text" }
+                  - { label: "Ukrainian", name: "ua", widget: "text" }
+              - { label: "SEO Image", name: "image", widget: "image" }
+              - label: "Image Alt"
+                name: "imageAlt"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "string" }
+                  - { label: "Ukrainian", name: "ua", widget: "string" }
+
+      # WISHLIST PAGE
+      - name: "wishlist_page"
+        label: "Wishlist Page"
+        file: "src/content/pages/wishlist-page.json"
+        format: "json"
+        fields:
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            fields:
+              - label: "Title"
+                name: "title"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "string" }
+                  - { label: "Ukrainian", name: "ua", widget: "string" }
+              - label: "Description"
+                name: "description"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "text" }
+                  - { label: "Ukrainian", name: "ua", widget: "text" }
+              - { label: "SEO Image", name: "image", widget: "image" }
+              - label: "Image Alt"
+                name: "imageAlt"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "string" }
+                  - { label: "Ukrainian", name: "ua", widget: "string" }
 
   - name: "workshops"
     label: "Workshops"
@@ -708,16 +819,12 @@ collections:
     extension: "json"
     format: "json"
     identifier_field: "title.en"
-    slug: "{{fields.slug.en}}"
+    slug: "{{fields.title.en}}"
+    hint:
+      "Use lowercase words with hyphens, for example:
+      introduction-to-brooch-making"
     fields:
       - { label: "ID", name: "id", widget: "string" }
-
-      - label: "Slug"
-        name: "slug"
-        widget: "object"
-        fields:
-          - { label: "English", name: "en", widget: "string" }
-          - { label: "Ukrainian", name: "ua", widget: "string" }
 
       - label: "Title"
         name: "title"

@@ -3,19 +3,15 @@
 import { useLanguage } from "../context/LanguageContext";
 import { Clock3, Users, MapPin } from "lucide-react";
 import { PrimaryBtn } from "./PrimaryBtn";
+import { formatPrice } from "../utils/formatPrice";
+import { buttonsEN, buttonsUA } from "../translations/translation";
 
 export const WorkshopCard = ({ workshop }) => {
 	// For language switching
 	const { currentLang } = useLanguage();
 	const t = (field) => field?.[currentLang] ?? field?.en ?? "";
+	const dict = currentLang === "en" ? buttonsEN : buttonsUA;
 
-	// Torn date from "2026-02-14" to Feb 14
-	// const formatDate = (dateStr, lang = "en") => {
-	// 	return new Intl.DateTimeFormat(lang, {
-	// 		month: "short",
-	// 		day: "numeric",
-	// 	}).format(new Date(dateStr));
-	// };
 	const formatDate = (dateStr, lang = "en") => {
 		const locale = lang === "ua" ? "uk-UA" : "en-US";
 
@@ -76,16 +72,13 @@ export const WorkshopCard = ({ workshop }) => {
 				</div>
 
 				<div className="workshop-card__footer">
-					<p className="workshop-card__price">
-						{workshop.currency === "EUR" ? "€" : workshop.currency}
-						{workshop.price}
-					</p>
+					<p className="workshop-card__price">{formatPrice(workshop.price)}</p>
 					<div>
 						<PrimaryBtn
 							variant="booking"
 							to="/shop"
 						>
-							Book now
+							{dict.bookNow}
 						</PrimaryBtn>
 					</div>
 				</div>

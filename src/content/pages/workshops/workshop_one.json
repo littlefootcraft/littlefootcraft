@@ -1,9 +1,4 @@
 {
-	"id": "intro-brooch-making",
-	"slug": {
-		"en": "introduction-to-brooch-making",
-		"ua": "vstup-do-stvorennia-broshky"
-	},
 	"title": {
 		"en": "Introduction to Brooch Making",
 		"ua": "Вступ до створення брошки"
@@ -54,10 +49,5 @@
 			"en": "Introduction to Brooch Making workshop",
 			"ua": "Воркшоп Вступ до створення брошки"
 		}
-	},
-	"badges": {
-		"isFeatured": true,
-		"isNew": false
-	},
-	"isActive": true
+	}
 }

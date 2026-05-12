@@ -107,7 +107,7 @@ export const productPageUA = {
 	removeWishlistAria: "Видалити з списку бажань",
 };
 
-// Buttons--------------------------------------
+// Toolbar--------------------------------------
 export const toolbarEN = {
 	filters: "Filters",
 	items: "items",
@@ -231,4 +231,13 @@ export const cartPageUA = {
 	deliveryInfo: "Розраховується під час оформлення замовлення",
 	totalTitle: "До сплати",
 	backBtn: "Продовжити покупки",
+};
+
+// Buttons
+export const buttonsEN = {
+	bookNow: "Book now",
+};
+
+export const buttonsUA = {
+	bookNow: "Забронювати",
 };
