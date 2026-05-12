@@ -143,7 +143,7 @@ collections:
                       - { label: "English", name: "en", widget: "string" }
                       - { label: "Ukrainian", name: "ua", widget: "string" }
 
-          - label: "Collections"
+          - label: "List of Collections"
             name: "collections"
             widget: "object"
             fields:
