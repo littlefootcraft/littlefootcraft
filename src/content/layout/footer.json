@@ -13,9 +13,9 @@
 			"en": "Get in Touch",
 			"ua": "Зв’язатися з нами"
 		},
-		"shipping": {
-			"en": "Shipping Information",
-			"ua": "Інформація про доставку"
+		"faq": {
+			"en": "FAQ",
+			"ua": "Часті запитання"
 		},
 		"returns": {
 			"en": "Returns & Exchanges",

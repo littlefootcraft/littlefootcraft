@@ -68,6 +68,9 @@
 
 	&__nav {
 		&-link {
+			background: transparent;
+			color: $light-text;
+
 			&:hover {
 				color: $gold-accent;
 			}
@@ -87,8 +90,17 @@
 				color: $gold-accent;
 			}
 		}
+
+		&-link {
+			padding-left: 0;
+			background: transparent;
+			color: inherit;
+			border: none;
+			font-size: inherit;
+		}
 	}
 
+	// SUBSCRIPTION
 	&__subscription {
 		&-input {
 			padding: 10px 12px;

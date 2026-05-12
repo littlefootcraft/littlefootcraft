@@ -1,0 +1,181 @@
+@use "./../../styles/base/variables" as *;
+@use "./../abstracts/mixins" as *;
+
+.contact-modal {
+	position: fixed;
+	inset: 0;
+	z-index: 400;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	padding: 24px;
+
+	background: rgba($primary-text, 0.55);
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+
+	overflow-y: auto;
+
+	&__content {
+		position: relative;
+		width: min(100%, 540px);
+		padding: 40px;
+		border-radius: $border-radius;
+		background:
+			linear-gradient(rgba($cream, 0.96), rgba($cream, 0.96)),
+			radial-gradient(circle at top, rgba($gold-accent, 0.16), transparent 45%);
+		border: 1px solid rgba($gold-accent, 0.35);
+		box-shadow: 0 24px 70px rgba($primary-text, 0.28);
+		animation: contactModalIn 0.25s ease;
+	}
+
+	&__close {
+		position: absolute;
+		top: 16px;
+		right: 16px;
+		width: 40px;
+		height: 40px;
+		border: none;
+		border-radius: 50%;
+		background: rgba($gold-accent, 0.08);
+		color: $primary-text;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+
+		&:hover {
+			background: rgba($gold-accent, 0.16);
+		}
+	}
+
+	&__icon {
+		width: 52px;
+		height: 52px;
+		margin: 0 auto 18px;
+		border-radius: 50%;
+		background: rgba($gold-accent, 0.1);
+		color: $gold-accent;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		svg {
+			width: 24px;
+			height: 24px;
+		}
+	}
+
+	&__title {
+		margin-bottom: 12px;
+		font-family: var(--title-font);
+		font-size: var(--card-title-size);
+		font-weight: 400;
+		color: $primary-text;
+		text-align: center;
+	}
+
+	&__text {
+		max-width: 420px;
+		margin: 0 auto 28px;
+		color: $secondary-text;
+		font-size: var(--regular-text-size);
+		line-height: 1.6;
+		text-align: center;
+	}
+
+	&__form {
+		display: flex;
+		flex-direction: column;
+		gap: 14px;
+	}
+
+	&__input,
+	&__textarea {
+		width: 100%;
+		padding: 14px 16px;
+		border: 1px solid $input-borders;
+		border-radius: $border-radius;
+		background: rgba($white, 0.75);
+		color: $primary-text;
+		font-family: var(--text-font);
+		font-size: var(--regular-text-size);
+		outline: none;
+
+		&:focus {
+			border-color: $gold-accent;
+			box-shadow: 0 0 0 3px rgba($gold-accent, 0.12);
+		}
+
+		&::placeholder {
+			color: $light-gray-text;
+		}
+	}
+
+	&__textarea {
+		resize: vertical;
+		min-height: 130px;
+	}
+
+	&__submit {
+		margin-top: 8px;
+		width: 100%;
+	}
+
+	&__email {
+		margin-top: 24px;
+		padding-top: 20px;
+		border-top: 1px solid $card-borders;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		gap: 8px;
+		color: $secondary-text;
+		font-size: 0.9375rem;
+
+		svg {
+			width: 18px;
+			height: 18px;
+			color: $gold-accent;
+		}
+
+		a {
+			color: $gold-accent;
+			text-decoration: underline;
+		}
+	}
+
+	@include mobile {
+		align-items: flex-start;
+		padding: 90px 16px 24px;
+
+		&__content {
+			padding: 32px 20px 24px;
+		}
+	}
+
+	@include mobile {
+		.contact-modal {
+			padding: 40px 16px 24px;
+		}
+
+		.contact-modal__content {
+			padding: 32px 20px 24px;
+		}
+	}
+}
+
+@keyframes contactModalIn {
+	from {
+		opacity: 0;
+		transform: translateY(12px) scale(0.98);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}

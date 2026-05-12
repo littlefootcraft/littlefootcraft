@@ -1,0 +1,56 @@
+{
+	"title": {
+		"en": "Privacy Policy",
+		"ua": "Політика конфіденційності"
+	},
+	"intro": {
+		"en": "We respect your privacy and only collect the information needed to communicate with you, process requests, and improve your experience with LittleFootCraft.",
+		"ua": "Ми поважаємо вашу приватність і збираємо лише ту інформацію, яка потрібна для спілкування з вами, обробки запитів і покращення вашого досвіду з LittleFootCraft."
+	},
+	"sections": [
+		{
+			"title": {
+				"en": "Information We Collect",
+				"ua": "Яку інформацію ми збираємо"
+			},
+			"text": {
+				"en": "When you contact us, we may collect your name, email address, and the message you send through the contact form.",
+				"ua": "Коли ви зв’язуєтесь із нами, ми можемо збирати ваше ім’я, електронну адресу та повідомлення, яке ви надсилаєте через контактну форму."
+			}
+		},
+		{
+			"title": {
+				"en": "How We Use Your Information",
+				"ua": "Як ми використовуємо вашу інформацію"
+			},
+			"text": {
+				"en": "We use your information to reply to your questions, discuss orders, provide customer support, and improve our website.",
+				"ua": "Ми використовуємо вашу інформацію, щоб відповідати на запитання, обговорювати замовлення, надавати підтримку та покращувати сайт."
+			}
+		},
+		{
+			"title": {
+				"en": "Data Sharing",
+				"ua": "Передача даних"
+			},
+			"text": {
+				"en": "We do not sell or share your personal information with third parties, except when needed to provide services such as website hosting, form processing, or payment processing.",
+				"ua": "Ми не продаємо та не передаємо вашу особисту інформацію третім сторонам, окрім випадків, коли це потрібно для роботи сайту, обробки форм або платежів."
+			}
+		},
+		{
+			"title": {
+				"en": "Contact",
+				"ua": "Контакти"
+			},
+			"text": {
+				"en": "If you have questions about this Privacy Policy, please contact us at littlefootcraft@gmail.com.",
+				"ua": "Якщо у вас є запитання щодо цієї Політики конфіденційності, напишіть нам на littlefootcraft@gmail.com."
+			}
+		}
+	],
+	"updated": {
+		"en": "Last updated: May 2026",
+		"ua": "Останнє оновлення: травень 2026"
+	}
+}

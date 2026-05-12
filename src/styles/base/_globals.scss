@@ -16,7 +16,7 @@
 	--section-title-size: clamp(2rem, 0.8vw, 3.25rem);
 	--card-title-size: clamp(1.125rem, 1.6vw, 1.5rem);
 
-	--card-price-size: clamp(1rem, 2.4vw, 1.25rem);
+	--card-price-size: clamp(1.25rem, 3vw, 1.75rem);
 	--badge-text-size: clamp(0.8125rem, 0.9vw, 1.2rem);
 	--price-size: clamp(1.25rem, 2.5vw, 1.875rem);
 	--login-title-size: clamp(1.5rem, 2vw, 3rem);
@@ -26,6 +26,7 @@
 	--step-title-size: clamp(1.3rem, 1.7vw, 1.5rem);
 
 	--footer-title-size: clamp(1rem, 1.2vw, 4.5rem);
+	// --footer-text-size: clamp(0.875rem, 1.2vw, 1rem);
 }
 
 .ua {
@@ -41,7 +42,7 @@
 	--subtitle-size: clamp(1rem, 1vw, 4.5rem);
 	--section-title-size: clamp(2.2rem, 3.3vw, 3.6rem);
 	--card-title-size: clamp(1.2rem, 1.8vw, 1.65rem);
-	--card-price-size: clamp(1rem, 2.4vw, 1.25rem);
+	--card-price-size: clamp(1.25rem, 3vw, 1.75rem);
 	--badge-text-size: clamp(0.8125rem, 0.9vw, 1.2rem);
 	--login-title-size: clamp(1.5rem, 2vw, 3rem);
 	--price-size: clamp(1.25rem, 2.5vw, 1.875rem);
@@ -51,8 +52,9 @@
 	--step-title-size: clamp(1.3rem, 1.6vw, 1.5rem);
 
 	--footer-title-size: clamp(1rem, 1.3vw, 4.5rem);
+	// --footer-text-size: clamp(0.875rem, 1.2vw, 1rem);
 }
-//var(--hero-title-size)
+
 *,
 *::before,
 *::after {

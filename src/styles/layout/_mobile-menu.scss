@@ -44,14 +44,6 @@
 		flex-direction: column;
 	}
 
-	// &__item {
-	// 	// border-bottom: 1px solid $card-borders;
-
-	// 	&:first-child {
-	// 		border-top: 1px solid $card-borders;
-	// 	}
-	// }
-
 	&__link {
 		display: flex;
 		align-items: center;
@@ -229,35 +221,12 @@
 		}
 	}
 
-	&--search-open + &__backdrop {
-		top: calc($header-height + 72px);
-	}
-
 	@include tablet {
 		top: $header-height-tablet;
 
-		&__backdrop {
-			top: $header-height-tablet;
+		&--search-open {
+			top: calc($header-height-tablet + 72px);
 		}
-	}
-
-	@include tablet-sm {
-		top: $header-height-tablet;
-
-		&__backdrop {
-			top: $header-height-tablet;
-		}
-	}
-
-	@include mobile-sm {
-		top: $header-height-tablet;
-
-		&__backdrop {
-			top: $header-height-tablet;
-		}
-	}
-	@include mobile {
-		top: $header-height-tablet;
 
 		&__backdrop {
 			top: $header-height-tablet;

@@ -1,0 +1,150 @@
+@use "./../../styles/base/variables" as *;
+@use "./../abstracts/mixins" as *;
+
+.privacy-modal {
+	position: fixed;
+	inset: 0;
+	z-index: 400;
+
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+
+	padding: 80px 24px 40px;
+	overflow-y: auto;
+
+	background: rgba($primary-text, 0.55);
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+
+	&__content {
+		position: relative;
+		width: min(100%, 620px);
+		padding: 40px;
+		border-radius: $border-radius;
+
+		background:
+			linear-gradient(rgba($cream, 0.97), rgba($cream, 0.97)),
+			radial-gradient(circle at top, rgba($gold-accent, 0.14), transparent 45%);
+
+		border: 1px solid rgba($gold-accent, 0.35);
+		box-shadow: 0 24px 70px rgba($primary-text, 0.28);
+
+		animation: privacyModalIn 0.25s ease;
+	}
+
+	&__close {
+		position: absolute;
+		top: 16px;
+		right: 16px;
+
+		width: 40px;
+		height: 40px;
+
+		border: none;
+		border-radius: 50%;
+		background: rgba($gold-accent, 0.08);
+		color: $primary-text;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		cursor: pointer;
+
+		&:hover {
+			background: rgba($gold-accent, 0.16);
+		}
+	}
+
+	&__icon {
+		width: 52px;
+		height: 52px;
+		margin: 0 auto 18px;
+
+		border-radius: 50%;
+		background: rgba($gold-accent, 0.1);
+		color: $gold-accent;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		svg {
+			width: 24px;
+			height: 24px;
+		}
+	}
+
+	&__title {
+		margin-bottom: 16px;
+		font-family: var(--title-font);
+		font-size: var(--card-title-size);
+		font-weight: 400;
+		color: $primary-text;
+		text-align: center;
+	}
+
+	&__intro {
+		margin: 0 auto 28px;
+		max-width: 500px;
+
+		color: $secondary-text;
+		font-size: var(--regular-text-size);
+		line-height: 1.7;
+		text-align: center;
+	}
+
+	&__sections {
+		display: flex;
+		flex-direction: column;
+		gap: 22px;
+		padding-top: 24px;
+		border-top: 1px solid $card-borders;
+	}
+
+	&__section-title {
+		margin-bottom: 8px;
+		color: $gold-accent;
+		font-size: 0.875rem;
+		font-weight: 600;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+	}
+
+	&__section-text {
+		color: $secondary-text;
+		font-size: var(--regular-text-size);
+		line-height: 1.7;
+	}
+
+	&__updated {
+		margin-top: 28px;
+		padding-top: 20px;
+		border-top: 1px solid $card-borders;
+
+		color: $light-gray-text;
+		font-size: 0.875rem;
+		text-align: center;
+	}
+
+	@include mobile {
+		padding: 40px 16px 24px;
+
+		&__content {
+			padding: 32px 20px 24px;
+		}
+	}
+}
+
+@keyframes privacyModalIn {
+	from {
+		opacity: 0;
+		transform: translateY(12px) scale(0.98);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}

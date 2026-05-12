@@ -234,7 +234,8 @@
 
 	// Footer — clear button, only rendered when filters are active
 	&__footer {
-		padding: 16px 28px;
+		padding: 16px 28px 60px 28px;
+
 		border-top: 1px solid $card-borders;
 	}
 

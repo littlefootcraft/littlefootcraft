@@ -12,6 +12,9 @@ import { IoLocationOutline } from "react-icons/io5";
 import { FaInstagram, FaTiktok } from "react-icons/fa6";
 import { useLanguage } from "../context/LanguageContext";
 import { PrimaryBtn } from "../components/PrimaryBtn";
+import { useState } from "react";
+import { ContactModal } from "../components/ContactModal";
+import { PrivacyPolicyModal } from "../components/PrivacyPolicyModal";
 
 const Footer = () => {
 	const { currentLang, setCurrentLang } = useLanguage();
@@ -32,6 +35,12 @@ const Footer = () => {
 	// For language switching
 
 	const t = (field) => field?.[currentLang] ?? field?.en ?? "";
+
+	// For Get in Touch
+	const [isContactOpen, setIsContactOpen] = useState(false);
+
+	// Privacy and Policy
+	const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
 
 	return (
 		<footer className="footer">
@@ -74,16 +83,37 @@ const Footer = () => {
 					</h3>
 					<ul className="footer__support-items">
 						<li className="footer__support-item">
-							<Link to="/">{t(footerContent.support.contact)}</Link>
+							<button
+								type="button"
+								className="footer__support-link"
+								onClick={() => setIsContactOpen(true)}
+							>
+								{t(footerContent.support.contact)}
+								<ContactModal
+									isOpen={isContactOpen}
+									onClose={() => setIsContactOpen(false)}
+									currentLang={currentLang}
+								/>
+							</button>
 						</li>
 						<li className="footer__support-item">
-							<Link to="/">{t(footerContent.support.shipping)}</Link>
+							<Link to={`/${currentLang}/faq`}>
+								{t(footerContent.support.faq)}
+							</Link>
 						</li>
+
 						<li className="footer__support-item">
-							<Link to="/">{t(footerContent.support.returns)}</Link>
-						</li>
-						<li className="footer__support-item">
-							<Link to="/">{t(footerContent.support.policy)}</Link>
+							<button
+								type="button"
+								onClick={() => setIsPrivacyOpen(true)}
+								className="footer__support-link"
+							>
+								{t(footerContent.support.policy)}
+								<PrivacyPolicyModal
+									isOpen={isPrivacyOpen}
+									onClose={() => setIsPrivacyOpen(false)}
+								/>
+							</button>
 						</li>
 					</ul>
 				</div>
