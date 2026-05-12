@@ -1,18 +1,220 @@
 backend:
   name: git-gateway
   branch: develop
-media_folder: "public/uploads"
-public_folder: "/uploads"
+
+media_folder: "public/uploads/images"
+public_folder: "/uploads/images"
 
 collections:
-- name: "settings"
+  - name: "settings"
     label: "Site Settings"
     files:
       - name: "navigation"
         label: "Navigation Settings"
-        file: "public/content/settings/navigation.json"
+        file: "src/content/settings/navigation.json"
         fields:
           - label: "Show Sale Page"
             name: "showSalePage"
             widget: "boolean"
             default: true
+
+  - name: "pages"
+    label: "Pages"
+    files:
+      - name: "home_page"
+        label: "Home Page"
+        file: "src/content/pages/home-page.json"
+        format: "json"
+        fields:
+          - { label: "Slug", name: "slug", widget: "string" }
+
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            fields:
+              - label: "Title"
+                name: "title"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "string" }
+                  - { label: "Ukrainian", name: "ua", widget: "string" }
+              - label: "Description"
+                name: "description"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "text" }
+                  - { label: "Ukrainian", name: "ua", widget: "text" }
+              - { label: "SEO Image", name: "image", widget: "image" }
+              - label: "Image Alt"
+                name: "imageAlt"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "string" }
+                  - { label: "Ukrainian", name: "ua", widget: "string" }
+
+          - { label: "Main Image", name: "main-image", widget: "image" }
+
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - label: "Badge"
+                name: "badge"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "string" }
+                  - { label: "Ukrainian", name: "ua", widget: "string" }
+              - label: "Title"
+                name: "title"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "string" }
+                  - { label: "Ukrainian", name: "ua", widget: "string" }
+              - label: "Text"
+                name: "text"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "text" }
+                  - { label: "Ukrainian", name: "ua", widget: "text" }
+              - label: "Button"
+                name: "button"
+                widget: "object"
+                fields:
+                  - label: "Label"
+                    name: "label"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Ukrainian", name: "ua", widget: "string" }
+
+          - label: "Highlights"
+            name: "highlights"
+            widget: "list"
+            fields:
+              - label: "Sparkles Text"
+                name: "text-sparkles"
+                widget: "object"
+                required: false
+                fields:
+                  - {
+                      label: "English",
+                      name: "en",
+                      widget: "string",
+                      required: false,
+                    }
+                  - {
+                      label: "Ukrainian",
+                      name: "ua",
+                      widget: "string",
+                      required: false,
+                    }
+              - label: "Star Text"
+                name: "text-star"
+                widget: "object"
+                required: false
+                fields:
+                  - {
+                      label: "English",
+                      name: "en",
+                      widget: "string",
+                      required: false,
+                    }
+                  - {
+                      label: "Ukrainian",
+                      name: "ua",
+                      widget: "string",
+                      required: false,
+                    }
+              - label: "Globe Text"
+                name: "text-globe"
+                widget: "object"
+                required: false
+                fields:
+                  - {
+                      label: "English",
+                      name: "en",
+                      widget: "string",
+                      required: false,
+                    }
+                  - {
+                      label: "Ukrainian",
+                      name: "ua",
+                      widget: "string",
+                      required: false,
+                    }
+              - label: "Shield Text"
+                name: "text-shield"
+                widget: "object"
+                required: false
+                fields:
+                  - {
+                      label: "English",
+                      name: "en",
+                      widget: "string",
+                      required: false,
+                    }
+                  - {
+                      label: "Ukrainian",
+                      name: "ua",
+                      widget: "string",
+                      required: false,
+                    }
+      - name: "shop_page"
+        label: "Shop Page"
+        file: "src/content/pages/shop-page.json"
+        format: "json"
+        fields:
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            fields:
+              - label: "Title"
+                name: "title"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "string" }
+                  - { label: "Ukrainian", name: "ua", widget: "string" }
+
+              - label: "Description"
+                name: "description"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "text" }
+                  - { label: "Ukrainian", name: "ua", widget: "text" }
+
+              - { label: "SEO Image", name: "image", widget: "image" }
+
+              - label: "Image Alt"
+                name: "imageAlt"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "string" }
+                  - { label: "Ukrainian", name: "ua", widget: "string" }
+
+          - label: "Title"
+            name: "title"
+            widget: "object"
+            fields:
+              - { label: "English", name: "en", widget: "string" }
+              - { label: "Ukrainian", name: "ua", widget: "string" }
+
+          - label: "Subtitle"
+            name: "subtitle"
+            widget: "object"
+            fields:
+              - { label: "English", name: "en", widget: "text" }
+              - { label: "Ukrainian", name: "ua", widget: "text" }
+
+          - label: "Highlights"
+            name: "highlights"
+            widget: "list"
+            fields:
+              - { label: "English", name: "en", widget: "string" }
+              - { label: "Ukrainian", name: "ua", widget: "string" }
+
+          - label: "Empty State"
+            name: "emptyState"
+            widget: "object"
+            fields:
+              - { label: "English", name: "en", widget: "string" }
+              - { label: "Ukrainian", name: "ua", widget: "string" }
