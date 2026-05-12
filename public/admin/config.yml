@@ -546,11 +546,9 @@ collections:
         label: "About Page"
         file: "src/content/pages/about-page.json"
         format: "json"
-
         fields:
           - { label: "Slug", name: "slug", widget: "string" }
 
-          # SEO
           - label: "SEO"
             name: "seo"
             widget: "object"
@@ -561,15 +559,16 @@ collections:
                 fields:
                   - { label: "English", name: "en", widget: "string" }
                   - { label: "Ukrainian", name: "ua", widget: "string" }
+
               - label: "Description"
                 name: "description"
                 widget: "object"
                 fields:
                   - { label: "English", name: "en", widget: "text" }
                   - { label: "Ukrainian", name: "ua", widget: "text" }
+
               - { label: "SEO Image", name: "image", widget: "image" }
 
-            # Top Section
           - label: "Top Section"
             name: "top"
             widget: "object"
@@ -580,30 +579,34 @@ collections:
                 fields:
                   - { label: "English", name: "en", widget: "string" }
                   - { label: "Ukrainian", name: "ua", widget: "string" }
+
               - label: "Title"
                 name: "title"
                 widget: "object"
                 fields:
                   - { label: "English", name: "en", widget: "string" }
                   - { label: "Ukrainian", name: "ua", widget: "string" }
+
               - label: "Text"
                 name: "text"
                 widget: "object"
                 fields:
                   - { label: "English", name: "en", widget: "text" }
                   - { label: "Ukrainian", name: "ua", widget: "text" }
-          - label: "Image"
-            name: "image"
-            widget: "object"
-            fields:
-              - { label: "Image", name: "src", widget: "image" }
-              - label: "Image Alt"
-                name: "alt"
+
+              - label: "Image"
+                name: "image"
                 widget: "object"
                 fields:
-                  - { label: "English", name: "en", widget: "string" }
-                  - { label: "Ukrainian", name: "ua", widget: "string" }
-            # Story Section
+                  - { label: "Image", name: "src", widget: "image" }
+
+                  - label: "Alt"
+                    name: "alt"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Ukrainian", name: "ua", widget: "string" }
+
           - label: "Story Section"
             name: "story"
             widget: "object"
@@ -614,30 +617,33 @@ collections:
                 fields:
                   - { label: "English", name: "en", widget: "string" }
                   - { label: "Ukrainian", name: "ua", widget: "string" }
+
               - label: "Paragraphs"
                 name: "paragraphs"
                 widget: "list"
                 fields:
                   - { label: "English", name: "en", widget: "text" }
                   - { label: "Ukrainian", name: "ua", widget: "text" }
-            # Values Section
+
           - label: "Values Section"
             name: "values"
             widget: "object"
             fields:
-              - label: "Title"
+              - label: "Section Title"
                 name: "title"
                 widget: "object"
                 fields:
                   - { label: "English", name: "en", widget: "string" }
                   - { label: "Ukrainian", name: "ua", widget: "string" }
-              - label: "Text"
+
+              - label: "Section Text"
                 name: "text"
                 widget: "object"
                 fields:
                   - { label: "English", name: "en", widget: "text" }
                   - { label: "Ukrainian", name: "ua", widget: "text" }
-              - label: "Items"
+
+              - label: "Value Items"
                 name: "items"
                 widget: "list"
                 fields:
@@ -649,20 +655,21 @@ collections:
                       - { label: "Star", value: "star" }
                       - { label: "Heart", value: "heart" }
                       - { label: "Gem", value: "gem" }
-              - label: "Title"
-                name: "title"
-                widget: "object"
-                fields:
-                  - { label: "English", name: "en", widget: "string" }
-                  - { label: "Ukrainian", name: "ua", widget: "string" }
-              - label: "Text"
-                name: "text"
-                widget: "object"
-                fields:
-                  - { label: "English", name: "en", widget: "text" }
-                  - { label: "Ukrainian", name: "ua", widget: "text" }
 
-            # CTA Section
+                  - label: "Item Title"
+                    name: "title"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Ukrainian", name: "ua", widget: "string" }
+
+                  - label: "Item Text"
+                    name: "text"
+                    widget: "object"
+                    fields:
+                      - { label: "English", name: "en", widget: "text" }
+                      - { label: "Ukrainian", name: "ua", widget: "text" }
+
           - label: "CTA Section"
             name: "cta"
             widget: "object"
