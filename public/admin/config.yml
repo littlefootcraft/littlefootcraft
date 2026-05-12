@@ -645,7 +645,7 @@ collections:
                 widget: "object"
                 fields:
                   - { label: "English", name: "en", widget: "text" }
-                    - { label: "Ukrainian", name: "ua", widget: "text" }
+                  - { label: "Ukrainian", name: "ua", widget: "text" }
 
               - label: "Items"
                 name: "items"
@@ -705,11 +705,6 @@ collections:
                       - { label: "Ukrainian", name: "ua", widget: "string" }
 
                   - { label: "Link", name: "to", widget: "string" }
-
-
-
-
-
 
   - name: "workshops"
     label: "Workshops"
