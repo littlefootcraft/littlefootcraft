@@ -1,9 +1,15 @@
 //AboutPage.jsx
 import AboutPageContent from "../content/pages/about-page.json";
+
+// CONTEXTS
+import { useLanguage } from "../context/LanguageContext";
+
+// COMPONENTS
 import { PrimaryBtn } from "../components/PrimaryBtn";
 
+// ICONS
 import { WandSparkles, Star, Heart, Gem, Sparkles } from "lucide-react";
-import { useLanguage } from "../context/LanguageContext";
+
 import Seo from "../components/Seo";
 
 const AboutPage = () => {
