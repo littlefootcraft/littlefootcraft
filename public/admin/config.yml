@@ -964,13 +964,727 @@ collections:
                   - { label: "Ukrainian", name: "ua", widget: "string" }
 
   # PRODUCTS
-  - name: "products"
-    label: "Products"
-    folder: "src/content/shop/broches"
+  # BROOCHES
+  - name: "brooches"
+    label: "Brooches"
+    folder: "src/content/shop/brooches"
     create: true
     extension: "json"
     format: "json"
     identifier_field: "name.en"
+    slug: "{{fields.sku}}"
+
+    fields:
+      - { label: "SKU", name: "sku", widget: "string" }
+
+      - label: "SEO"
+        name: "seo"
+        widget: "object"
+        fields:
+          - label: "Title"
+            name: "title"
+            widget: "object"
+            fields:
+              - { label: "English", name: "en", widget: "string" }
+              - { label: "Ukrainian", name: "ua", widget: "string" }
+
+          - label: "Description"
+            name: "description"
+            widget: "object"
+            fields:
+              - { label: "English", name: "en", widget: "text" }
+              - { label: "Ukrainian", name: "ua", widget: "text" }
+
+          - label: "Image Alt"
+            name: "imageAlt"
+            widget: "object"
+            fields:
+              - { label: "English", name: "en", widget: "string" }
+              - { label: "Ukrainian", name: "ua", widget: "string" }
+
+      - label: "Name"
+        name: "name"
+        widget: "object"
+        fields:
+          - { label: "English", name: "en", widget: "string" }
+          - { label: "Ukrainian", name: "ua", widget: "string" }
+
+      - label: "Specifications"
+        name: "specifications"
+        widget: "object"
+        fields:
+          - label: "Category"
+            name: "category"
+            widget: "object"
+            fields:
+              - {
+                  label: "English",
+                  name: "en",
+                  widget: "string",
+                  default: "Brooch",
+                }
+              - {
+                  label: "Ukrainian",
+                  name: "ua",
+                  widget: "string",
+                  default: "Брошка",
+                }
+
+          - label: "Design"
+            name: "design"
+            widget: "object"
+            fields:
+              - { label: "English", name: "en", widget: "string" }
+              - { label: "Ukrainian", name: "ua", widget: "string" }
+
+          - label: "Size"
+            name: "size"
+            widget: "object"
+            fields:
+              - { label: "English", name: "en", widget: "string" }
+              - { label: "Ukrainian", name: "ua", widget: "string" }
+
+          - label: "Colors"
+            name: "color"
+            widget: "select"
+            multiple: true
+            options:
+              - gold
+              - pink
+              - brown
+              - blue
+              - red
+              - yellow
+              - green
+              - black
+              - white
+              - purple
+              - multicolor
+
+          - label: "Collection"
+            name: "collection"
+            widget: "object"
+            required: false
+            fields:
+              - {
+                  label: "English",
+                  name: "en",
+                  widget: "string",
+                  required: false,
+                }
+              - {
+                  label: "Ukrainian",
+                  name: "ua",
+                  widget: "string",
+                  required: false,
+                }
+
+      - label: "Description"
+        name: "description"
+        widget: "object"
+        fields:
+          - { label: "English", name: "en", widget: "text" }
+          - { label: "Ukrainian", name: "ua", widget: "text" }
+
+      - { label: "Price", name: "price", widget: "number", value_type: "int" }
+
+      - label: "Old Price"
+        name: "oldPrice"
+        widget: "number"
+        value_type: "int"
+        required: false
+
+      - label: "Badges"
+        name: "badges"
+        widget: "object"
+        fields:
+          - { label: "Top", name: "isTop", widget: "boolean", default: false }
+          - { label: "New", name: "isNew", widget: "boolean", default: false }
+
+      - label: "Video"
+        name: "video"
+        widget: "object"
+        required: false
+        fields:
+          - {
+              label: "Video File",
+              name: "src",
+              widget: "file",
+              required: false,
+            }
+          - label: "Alt"
+            name: "alt"
+            widget: "object"
+            required: false
+            fields:
+              - {
+                  label: "English",
+                  name: "en",
+                  widget: "string",
+                  required: false,
+                }
+              - {
+                  label: "Ukrainian",
+                  name: "ua",
+                  widget: "string",
+                  required: false,
+                }
+
+      - label: "Photos"
+        name: "photo"
+        widget: "list"
+        fields:
+          - { label: "Image", name: "src", widget: "image" }
+          - label: "Alt"
+            name: "alt"
+            widget: "object"
+            fields:
+              - { label: "English", name: "en", widget: "string" }
+              - { label: "Ukrainian", name: "ua", widget: "string" }
+
+  # PAINTINGS
+  - name: "paintings"
+    label: "Paintings"
+    folder: "src/content/shop/paintings"
+    create: true
+    extension: "json"
+    format: "json"
+    identifier_field: "name.en"
+    slug: "{{fields.sku}}"
+
+    fields:
+      - { label: "SKU", name: "sku", widget: "string" }
+
+      - label: "SEO"
+        name: "seo"
+        widget: "object"
+        fields:
+          - label: "Title"
+            name: "title"
+            widget: "object"
+            fields:
+              - { label: "English", name: "en", widget: "string" }
+              - { label: "Ukrainian", name: "ua", widget: "string" }
+
+          - label: "Description"
+            name: "description"
+            widget: "object"
+            fields:
+              - { label: "English", name: "en", widget: "text" }
+              - { label: "Ukrainian", name: "ua", widget: "text" }
+
+          - label: "Image Alt"
+            name: "imageAlt"
+            widget: "object"
+            fields:
+              - { label: "English", name: "en", widget: "string" }
+              - { label: "Ukrainian", name: "ua", widget: "string" }
+
+      - label: "Name"
+        name: "name"
+        widget: "object"
+        fields:
+          - { label: "English", name: "en", widget: "string" }
+          - { label: "Ukrainian", name: "ua", widget: "string" }
+
+      - label: "Specifications"
+        name: "specifications"
+        widget: "object"
+        fields:
+          - label: "Category"
+            name: "category"
+            widget: "object"
+            fields:
+              - {
+                  label: "English",
+                  name: "en",
+                  widget: "string",
+                  default: "Brooch",
+                }
+              - {
+                  label: "Ukrainian",
+                  name: "ua",
+                  widget: "string",
+                  default: "Брошка",
+                }
+
+          - label: "Design"
+            name: "design"
+            widget: "object"
+            fields:
+              - { label: "English", name: "en", widget: "string" }
+              - { label: "Ukrainian", name: "ua", widget: "string" }
+
+          - label: "Size"
+            name: "size"
+            widget: "object"
+            fields:
+              - { label: "English", name: "en", widget: "string" }
+              - { label: "Ukrainian", name: "ua", widget: "string" }
+
+          - label: "Colors"
+            name: "color"
+            widget: "select"
+            multiple: true
+            options:
+              - gold
+              - pink
+              - brown
+              - blue
+              - red
+              - yellow
+              - green
+              - black
+              - white
+              - purple
+              - multicolor
+
+          - label: "Collection"
+            name: "collection"
+            widget: "object"
+            required: false
+            fields:
+              - {
+                  label: "English",
+                  name: "en",
+                  widget: "string",
+                  required: false,
+                }
+              - {
+                  label: "Ukrainian",
+                  name: "ua",
+                  widget: "string",
+                  required: false,
+                }
+
+      - label: "Description"
+        name: "description"
+        widget: "object"
+        fields:
+          - { label: "English", name: "en", widget: "text" }
+          - { label: "Ukrainian", name: "ua", widget: "text" }
+
+      - { label: "Price", name: "price", widget: "number", value_type: "int" }
+
+      - label: "Old Price"
+        name: "oldPrice"
+        widget: "number"
+        value_type: "int"
+        required: false
+
+      - label: "Badges"
+        name: "badges"
+        widget: "object"
+        fields:
+          - { label: "Top", name: "isTop", widget: "boolean", default: false }
+          - { label: "New", name: "isNew", widget: "boolean", default: false }
+
+      - label: "Video"
+        name: "video"
+        widget: "object"
+        required: false
+        fields:
+          - {
+              label: "Video File",
+              name: "src",
+              widget: "file",
+              required: false,
+            }
+          - label: "Alt"
+            name: "alt"
+            widget: "object"
+            required: false
+            fields:
+              - {
+                  label: "English",
+                  name: "en",
+                  widget: "string",
+                  required: false,
+                }
+              - {
+                  label: "Ukrainian",
+                  name: "ua",
+                  widget: "string",
+                  required: false,
+                }
+
+      - label: "Photos"
+        name: "photo"
+        widget: "list"
+        fields:
+          - { label: "Image", name: "src", widget: "image" }
+          - label: "Alt"
+            name: "alt"
+            widget: "object"
+            fields:
+              - { label: "English", name: "en", widget: "string" }
+              - { label: "Ukrainian", name: "ua", widget: "string" }
+
+  # NEKLACES
+  - name: "necklaces"
+    label: "Necklaces"
+    folder: "src/content/shop/necklaces"
+    create: true
+    extension: "json"
+    format: "json"
+    identifier_field: "name.en"
+    slug: "{{fields.sku}}"
+
+    fields:
+      - { label: "SKU", name: "sku", widget: "string" }
+
+      - label: "SEO"
+        name: "seo"
+        widget: "object"
+        fields:
+          - label: "Title"
+            name: "title"
+            widget: "object"
+            fields:
+              - { label: "English", name: "en", widget: "string" }
+              - { label: "Ukrainian", name: "ua", widget: "string" }
+
+          - label: "Description"
+            name: "description"
+            widget: "object"
+            fields:
+              - { label: "English", name: "en", widget: "text" }
+              - { label: "Ukrainian", name: "ua", widget: "text" }
+
+          - label: "Image Alt"
+            name: "imageAlt"
+            widget: "object"
+            fields:
+              - { label: "English", name: "en", widget: "string" }
+              - { label: "Ukrainian", name: "ua", widget: "string" }
+
+      - label: "Name"
+        name: "name"
+        widget: "object"
+        fields:
+          - { label: "English", name: "en", widget: "string" }
+          - { label: "Ukrainian", name: "ua", widget: "string" }
+
+      - label: "Specifications"
+        name: "specifications"
+        widget: "object"
+        fields:
+          - label: "Category"
+            name: "category"
+            widget: "object"
+            fields:
+              - {
+                  label: "English",
+                  name: "en",
+                  widget: "string",
+                  default: "Brooch",
+                }
+              - {
+                  label: "Ukrainian",
+                  name: "ua",
+                  widget: "string",
+                  default: "Брошка",
+                }
+
+          - label: "Design"
+            name: "design"
+            widget: "object"
+            fields:
+              - { label: "English", name: "en", widget: "string" }
+              - { label: "Ukrainian", name: "ua", widget: "string" }
+
+          - label: "Size"
+            name: "size"
+            widget: "object"
+            fields:
+              - { label: "English", name: "en", widget: "string" }
+              - { label: "Ukrainian", name: "ua", widget: "string" }
+
+          - label: "Colors"
+            name: "color"
+            widget: "select"
+            multiple: true
+            options:
+              - gold
+              - pink
+              - brown
+              - blue
+              - red
+              - yellow
+              - green
+              - black
+              - white
+              - purple
+              - multicolor
+
+          - label: "Collection"
+            name: "collection"
+            widget: "object"
+            required: false
+            fields:
+              - {
+                  label: "English",
+                  name: "en",
+                  widget: "string",
+                  required: false,
+                }
+              - {
+                  label: "Ukrainian",
+                  name: "ua",
+                  widget: "string",
+                  required: false,
+                }
+
+      - label: "Description"
+        name: "description"
+        widget: "object"
+        fields:
+          - { label: "English", name: "en", widget: "text" }
+          - { label: "Ukrainian", name: "ua", widget: "text" }
+
+      - { label: "Price", name: "price", widget: "number", value_type: "int" }
+
+      - label: "Old Price"
+        name: "oldPrice"
+        widget: "number"
+        value_type: "int"
+        required: false
+
+      - label: "Badges"
+        name: "badges"
+        widget: "object"
+        fields:
+          - { label: "Top", name: "isTop", widget: "boolean", default: false }
+          - { label: "New", name: "isNew", widget: "boolean", default: false }
+
+      - label: "Video"
+        name: "video"
+        widget: "object"
+        required: false
+        fields:
+          - {
+              label: "Video File",
+              name: "src",
+              widget: "file",
+              required: false,
+            }
+          - label: "Alt"
+            name: "alt"
+            widget: "object"
+            required: false
+            fields:
+              - {
+                  label: "English",
+                  name: "en",
+                  widget: "string",
+                  required: false,
+                }
+              - {
+                  label: "Ukrainian",
+                  name: "ua",
+                  widget: "string",
+                  required: false,
+                }
+
+      - label: "Photos"
+        name: "photo"
+        widget: "list"
+        fields:
+          - { label: "Image", name: "src", widget: "image" }
+          - label: "Alt"
+            name: "alt"
+            widget: "object"
+            fields:
+              - { label: "English", name: "en", widget: "string" }
+              - { label: "Ukrainian", name: "ua", widget: "string" }
+
+  # POSTCARDS
+  - name: "postcards"
+    label: "Postcards"
+    folder: "src/content/shop/postcards"
+    create: true
+    extension: "json"
+    format: "json"
+    identifier_field: "name.en"
+    slug: "{{fields.sku}}"
+
+    fields:
+      - { label: "SKU", name: "sku", widget: "string" }
+
+      - label: "SEO"
+        name: "seo"
+        widget: "object"
+        fields:
+          - label: "Title"
+            name: "title"
+            widget: "object"
+            fields:
+              - { label: "English", name: "en", widget: "string" }
+              - { label: "Ukrainian", name: "ua", widget: "string" }
+
+          - label: "Description"
+            name: "description"
+            widget: "object"
+            fields:
+              - { label: "English", name: "en", widget: "text" }
+              - { label: "Ukrainian", name: "ua", widget: "text" }
+
+          - label: "Image Alt"
+            name: "imageAlt"
+            widget: "object"
+            fields:
+              - { label: "English", name: "en", widget: "string" }
+              - { label: "Ukrainian", name: "ua", widget: "string" }
+
+      - label: "Name"
+        name: "name"
+        widget: "object"
+        fields:
+          - { label: "English", name: "en", widget: "string" }
+          - { label: "Ukrainian", name: "ua", widget: "string" }
+
+      - label: "Specifications"
+        name: "specifications"
+        widget: "object"
+        fields:
+          - label: "Category"
+            name: "category"
+            widget: "object"
+            fields:
+              - {
+                  label: "English",
+                  name: "en",
+                  widget: "string",
+                  default: "Brooch",
+                }
+              - {
+                  label: "Ukrainian",
+                  name: "ua",
+                  widget: "string",
+                  default: "Брошка",
+                }
+
+          - label: "Design"
+            name: "design"
+            widget: "object"
+            fields:
+              - { label: "English", name: "en", widget: "string" }
+              - { label: "Ukrainian", name: "ua", widget: "string" }
+
+          - label: "Size"
+            name: "size"
+            widget: "object"
+            fields:
+              - { label: "English", name: "en", widget: "string" }
+              - { label: "Ukrainian", name: "ua", widget: "string" }
+
+          - label: "Colors"
+            name: "color"
+            widget: "select"
+            multiple: true
+            options:
+              - gold
+              - pink
+              - brown
+              - blue
+              - red
+              - yellow
+              - green
+              - black
+              - white
+              - purple
+              - multicolor
+
+          - label: "Collection"
+            name: "collection"
+            widget: "object"
+            required: false
+            fields:
+              - {
+                  label: "English",
+                  name: "en",
+                  widget: "string",
+                  required: false,
+                }
+              - {
+                  label: "Ukrainian",
+                  name: "ua",
+                  widget: "string",
+                  required: false,
+                }
+
+      - label: "Description"
+        name: "description"
+        widget: "object"
+        fields:
+          - { label: "English", name: "en", widget: "text" }
+          - { label: "Ukrainian", name: "ua", widget: "text" }
+
+      - { label: "Price", name: "price", widget: "number", value_type: "int" }
+
+      - label: "Old Price"
+        name: "oldPrice"
+        widget: "number"
+        value_type: "int"
+        required: false
+
+      - label: "Badges"
+        name: "badges"
+        widget: "object"
+        fields:
+          - { label: "Top", name: "isTop", widget: "boolean", default: false }
+          - { label: "New", name: "isNew", widget: "boolean", default: false }
+
+      - label: "Video"
+        name: "video"
+        widget: "object"
+        required: false
+        fields:
+          - {
+              label: "Video File",
+              name: "src",
+              widget: "file",
+              required: false,
+            }
+          - label: "Alt"
+            name: "alt"
+            widget: "object"
+            required: false
+            fields:
+              - {
+                  label: "English",
+                  name: "en",
+                  widget: "string",
+                  required: false,
+                }
+              - {
+                  label: "Ukrainian",
+                  name: "ua",
+                  widget: "string",
+                  required: false,
+                }
+
+      - label: "Photos"
+        name: "photo"
+        widget: "list"
+        fields:
+          - { label: "Image", name: "src", widget: "image" }
+          - label: "Alt"
+            name: "alt"
+            widget: "object"
+            fields:
+              - { label: "English", name: "en", widget: "string" }
+              - { label: "Ukrainian", name: "ua", widget: "string" }
+
+  # BAGS
+  - name: "bags"
+    label: "Bags"
+    folder: "src/content/shop/bags"
+    create: true
+    extension: "json"
+    format: "json"
+    identifier_field: "name.en"
+    slug: "{{fields.sku}}"
 
     fields:
       - { label: "SKU", name: "sku", widget: "string" }
@@ -1293,3 +2007,49 @@ collections:
           - { label: "New", name: "isNew", widget: "boolean", default: false }
 
       - { label: "Active", name: "isActive", widget: "boolean", default: true }
+
+  # MODALS
+  - name: "privacy-policy"
+    label: "Privacy Policy"
+    file: "src/content/pages/privacy-policy.json"
+
+    fields:
+      - label: "Title"
+        name: "title"
+        widget: "object"
+        fields:
+          - { label: "English", name: "en", widget: "string" }
+          - { label: "Ukrainian", name: "ua", widget: "string" }
+
+      - label: "Introduction"
+        name: "intro"
+        widget: "object"
+        fields:
+          - { label: "English", name: "en", widget: "text" }
+          - { label: "Ukrainian", name: "ua", widget: "text" }
+
+      - label: "Sections"
+        name: "sections"
+        widget: "list"
+
+        fields:
+          - label: "Title"
+            name: "title"
+            widget: "object"
+            fields:
+              - { label: "English", name: "en", widget: "string" }
+              - { label: "Ukrainian", name: "ua", widget: "string" }
+
+          - label: "Text"
+            name: "text"
+            widget: "object"
+            fields:
+              - { label: "English", name: "en", widget: "text" }
+              - { label: "Ukrainian", name: "ua", widget: "text" }
+
+      - label: "Updated"
+        name: "updated"
+        widget: "object"
+        fields:
+          - { label: "English", name: "en", widget: "string" }
+          - { label: "Ukrainian", name: "ua", widget: "string" }
