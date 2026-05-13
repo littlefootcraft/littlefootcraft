@@ -1,6 +1,8 @@
 //HomePage
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+
+import HomePageContent from "../content/pages/home-page.json";
 
 // CONTEXTS
 import { useWorkshops } from "../context/WorkshopsContext";
@@ -8,10 +10,9 @@ import { useProducts } from "../context/ProductsContext";
 import WorkshopsPageContent from "../content/pages/workshops-page.json";
 import { useLanguage } from "../context/LanguageContext";
 
-import { getVisibleWorkshops } from "../hooks/useVisibleWorkshops";
-
 // HOOKS
-import HomePageContent from "../content/pages/home-page.json";
+import { getVisibleWorkshops } from "../hooks/useVisibleWorkshops";
+import { useSubscribe } from "../hooks/useSubscribe";
 
 // COMPONENTS
 import { PrimaryBtn } from "../components/PrimaryBtn";
@@ -26,6 +27,8 @@ import { Sparkles, ChevronRight, Star, Globe, Shield } from "lucide-react";
 // SEO
 import Seo from "../components/Seo";
 
+import { subscriptiopnEN, subscriptiopnUA } from "../translations/translation";
+
 const WorkshopsImage = "/uploads/images/home_workshop_image.jpeg";
 
 const HomePage = ({ workshop }) => {
@@ -35,6 +38,7 @@ const HomePage = ({ workshop }) => {
 	// For language switching
 	const { currentLang } = useLanguage();
 	const t = (field) => field?.[currentLang] ?? field?.en ?? "";
+	const dict = currentLang === "en" ? subscriptiopnEN : subscriptiopnUA;
 
 	// All products
 	const allProducts = useMemo(() => {
@@ -59,6 +63,20 @@ const HomePage = ({ workshop }) => {
 	const collections = useMemo(() => {
 		return HomePageContent.collections.set.slice(0, 4);
 	}, []);
+
+	// Subscription
+	const {
+		email,
+		setEmail,
+		status,
+		message,
+		subscribe,
+		clearMessage,
+		interests,
+		toggleInterest,
+	} = useSubscribe(dict);
+
+	const [showTopics, setShowTopics] = useState(false);
 
 	return (
 		<section className="home-page">
@@ -297,25 +315,71 @@ const HomePage = ({ workshop }) => {
 			{/* --- SUBSCRIBE SECTION --- */}
 			<section className="home-page__subscription container">
 				<Sparkles className="home-page__subscription-icon" />
-				<h1 className="home-page__subscription-title main-title">
+				<h2 className="home-page__subscription-title main-title">
 					{t(HomePageContent.subscription.title)}
-				</h1>
+				</h2>
 				<p className="home-page__subscription-info">
 					{t(HomePageContent.subscription.text)}
 				</p>
+
+				<div className="home-page__subscription-topics">
+					<label className="home-page__subscription-topic">
+						<input
+							type="checkbox"
+							checked={interests.includes("workshops")}
+							onChange={() => toggleInterest("workshops")}
+						/>
+						<span>{dict.workshopsLabel}</span>
+					</label>
+
+					<label className="home-page__subscription-topic">
+						<input
+							type="checkbox"
+							checked={interests.includes("master-classes")}
+							onChange={() => toggleInterest("master-classes")}
+						/>
+						<span>{dict.masterClassesLabel}</span>
+					</label>
+
+					<label className="home-page__subscription-topic">
+						<input
+							type="checkbox"
+							checked={interests.includes("sales")}
+							onChange={() => toggleInterest("sales")}
+						/>
+						<span>{dict.salesLabel}</span>
+					</label>
+				</div>
+
 				<div className="home-page__subscription-action">
 					<input
+						type="email"
 						className="home-page__subscription-input"
-						type="text"
-						placeholder={t(HomePageContent.subscription.placeholder)}
+						value={email}
+						placeholder={dict.placeholder}
+						onChange={(event) => {
+							setEmail(event.target.value);
+							clearMessage();
+						}}
+						aria-label={dict.ariaLabel}
+						onFocus={() => setShowTopics(true)}
 					/>
 
 					<PrimaryBtn
 						variant="subscription"
 						type="button"
+						onClick={subscribe}
+						disabled={status === "loading"}
 					>
-						{t(HomePageContent.subscription.buttonLabel)}
+						{dict.buttonLabel}
 					</PrimaryBtn>
+					<p
+						className={`home-page__subscription-message ${
+							message ? `home-page__subscription-message--${status}` : ""
+						}`}
+					>
+						{message}
+					</p>
 				</div>
 			</section>
 		</section>

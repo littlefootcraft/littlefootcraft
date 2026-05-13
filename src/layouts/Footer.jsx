@@ -1,20 +1,35 @@
 //Footer.jsx
-
+import { useState } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
+
 import logo from "/uploads/images/logo.png";
-import { NavItems } from "../utils/navItems";
-import { menuUA, menuEN } from "../translations/translation";
 import footerContent from "../content/layout/footer.json";
 
-import { FaRegEnvelope } from "react-icons/fa6";
+// UTILS
+import { NavItems } from "../utils/navItems";
 
-import { IoLocationOutline } from "react-icons/io5";
-import { FaInstagram, FaTiktok } from "react-icons/fa6";
+// CONTEXTS
 import { useLanguage } from "../context/LanguageContext";
-import { PrimaryBtn } from "../components/PrimaryBtn";
-import { useState } from "react";
+
+// HOOKS
+import { useSubscribe } from "../hooks/useSubscribe";
+
+// COMPONENTS
 import { ContactModal } from "../components/ContactModal";
 import { PrivacyPolicyModal } from "../components/PrivacyPolicyModal";
+import { PrimaryBtn } from "../components/PrimaryBtn";
+
+// ICONS
+import { FaRegEnvelope } from "react-icons/fa6";
+import { IoLocationOutline } from "react-icons/io5";
+import { FaInstagram, FaTiktok } from "react-icons/fa6";
+
+import {
+	menuUA,
+	menuEN,
+	subscriptiopnEN,
+	subscriptiopnUA,
+} from "../translations/translation";
 
 const Footer = () => {
 	const { currentLang, setCurrentLang } = useLanguage();
@@ -32,15 +47,29 @@ const Footer = () => {
 		navigate(`${newPath}${location.search}`);
 	}
 
-	// For language switching
-
+	// LANGUAGE SWITCHING
 	const t = (field) => field?.[currentLang] ?? field?.en ?? "";
+	const dict = currentLang === "en" ? subscriptiopnEN : subscriptiopnUA;
 
-	// For Get in Touch
+	// GET IN TOUCH
 	const [isContactOpen, setIsContactOpen] = useState(false);
 
-	// Privacy and Policy
+	// PRIVACY AND POLICY
 	const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
+
+	// SUBSCRIBTION
+	const {
+		email,
+		setEmail,
+		status,
+		message,
+		subscribe,
+		clearMessage,
+		interests,
+		toggleInterest,
+	} = useSubscribe(dict);
+
+	const [showTopics, setShowTopics] = useState(false);
 
 	return (
 		<footer className="footer">
@@ -57,6 +86,8 @@ const Footer = () => {
 						<FaTiktok />
 					</div>
 				</div>
+
+				{/* --- NAV SECTION --- */}
 				<div className="footer__nav">
 					<h3 className="footer__subtitle footer-title">
 						{t(footerContent.menu.title)}
@@ -77,6 +108,8 @@ const Footer = () => {
 						))}
 					</ul>
 				</div>
+
+				{/* --- SUPPORT SECTION --- */}
 				<div className="footer__support">
 					<h3 className="footer__subtitle footer-title">
 						{t(footerContent.support.title)}
@@ -117,27 +150,76 @@ const Footer = () => {
 						</li>
 					</ul>
 				</div>
+
+				{/* --- SUBSCRIBE SECTION --- */}
 				<div className="footer__subscription">
 					<h3 className="footer__subtitle footer-title">
 						{t(footerContent.subscription.title)}
 					</h3>
 					<p>{t(footerContent.subscription.text)}</p>
+
+					<div className="footer__subscription-topics">
+						<label className="footer__subscription-topic">
+							<input
+								type="checkbox"
+								checked={interests.includes("workshops")}
+								onChange={() => toggleInterest("workshops")}
+							/>
+							<span>{dict.workshopsLabel}</span>
+						</label>
+
+						<label className="footer__subscription-topic">
+							<input
+								type="checkbox"
+								checked={interests.includes("master-classes")}
+								onChange={() => toggleInterest("master-classes")}
+							/>
+							<span>{dict.masterClassesLabel}</span>
+						</label>
+
+						<label className="footer__subscription-topic">
+							<input
+								type="checkbox"
+								checked={interests.includes("sales")}
+								onChange={() => toggleInterest("sales")}
+							/>
+							<span>{dict.salesLabel}</span>
+						</label>
+					</div>
+
 					<div className="footer__subscription-action">
 						<input
+							type="email"
 							className="footer__subscription-input"
-							type="text"
+							value={email}
 							placeholder={t(footerContent.subscription.placeholder)}
+							onChange={(event) => {
+								setEmail(event.target.value);
+								clearMessage();
+							}}
+							aria-label={dict.ariaLabel}
 						/>
+						<p
+							className={`footer__subscription-message ${
+								message ? `footer__subscription-message--${status}` : ""
+							}`}
+						>
+							{message}
+						</p>
 
 						<PrimaryBtn
 							variant="footer"
 							type="button"
+							onClick={subscribe}
+							disabled={status === "loading"}
 						>
 							{t(footerContent.subscription.button)}
 						</PrimaryBtn>
 					</div>
 				</div>
 			</div>
+
+			{/* --- METADATA SECTION --- */}
 			<div className="footer__metadata">
 				<a
 					className="footer__metadata-email"

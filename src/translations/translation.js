@@ -19,6 +19,45 @@ export const menuUA = {
 	sale: "Poзпродаж",
 };
 
+// SUBSCRIPTION SECTION
+
+export const subscriptiopnEN = {
+	title: "Join Our Enchanted Circle",
+	text: "Subscribe to receive updates about new pieces and workshops",
+	placeholder: "Enter your email",
+	buttonLabel: "Subscribe",
+	ariaLabel: "Email for newsletter subscription",
+
+	successMessage: "Thank you for subscribing to our enchanted circle.",
+	emptyEmailMessage: "Please enter your email.",
+	invalidEmailMessage: "Please enter a valid email.",
+	alreadySubscribedMessage: "This email is already subscribed.",
+	errorMessage: "Something went wrong. Please try again.",
+	loadingLabel: "Subscribing...",
+	workshopsLabel: "Workshops",
+	masterClassesLabel: "Master classes",
+	salesLabel: "Sales",
+	emptyInterestsMessage: "Please choose at least one topic.",
+};
+export const subscriptiopnUA = {
+	title: "Приєднуйтесь до нашого чарівного кола",
+	text: "Підпишіться, щоб отримувати новини про нові вироби та майстер-класи",
+	placeholder: "Введіть вашу електронну пошту",
+	buttonLabel: "Підписатися",
+	ariaLabel: "Електронна пошта для підписки на новини",
+
+	successMessage: "Дякуємо за підписку на наше чарівне коло.",
+	emptyEmailMessage: "Будь ласка, введіть вашу електронну пошту.",
+	invalidEmailMessage: "Будь ласка, введіть коректну електронну пошту.",
+	alreadySubscribedMessage: "Ця електронна пошта вже підписана.",
+	errorMessage: "Щось пішло не так. Спробуйте ще раз.",
+	loadingLabel: "Підписка...",
+	workshopsLabel: "Воркшопи",
+	masterClassesLabel: "Майстер-класи",
+	salesLabel: "Знижки",
+	emptyInterestsMessage: "Будь ласка, оберіть хоча б одну тему.",
+};
+
 // Product Card-----------------------
 export const productCardEN = {
 	new: "New",

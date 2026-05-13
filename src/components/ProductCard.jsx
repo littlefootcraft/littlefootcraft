@@ -1,16 +1,24 @@
 //ProductCard.jsx
 
 import { Link } from "react-router-dom";
+
+// HOKS
 import { useProductCardState } from "../hooks/useProductCardState";
+
+// CONTEXTS
 import { useLanguage } from "../context/LanguageContext";
 import { useWishlist } from "../context/WishlistContext";
-import { productCardEN, productCardUA } from "../translations/translation";
-import MagicBadge from "./MagicBadge";
 
+// COMPONENTS
+import MagicBadge from "./MagicBadge";
+import SaleBadge from "./SaleBadge";
+
+// ICONS
 import { Star } from "lucide-react";
 import { IoArrowForward } from "react-icons/io5";
+
 import { formatPrice } from "../utils/formatPrice";
-import SaleBadge from "./SaleBadge";
+import { productCardEN, productCardUA } from "../translations/translation";
 
 export const ProductCard = ({ product }) => {
 	const { name, price, badges, specifications } = product;

@@ -4,7 +4,6 @@
 .footer {
 	padding-top: 50px;
 	background-color: $primary-text;
-	color: gray;
 	font-size: var(--regular-text-size);
 	font-weight: 300;
 	color: $light-text;
@@ -102,6 +101,71 @@
 
 	// SUBSCRIPTION
 	&__subscription {
+		// Checkboxes
+
+		&-topics {
+			margin-top: 18px;
+			display: flex;
+			flex-wrap: wrap;
+			gap: 5px;
+		}
+
+		&-topic {
+			position: relative;
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			padding: 5px 8px;
+			border-radius: 10px;
+			border: 1px solid rgba($gold-accent, 0.28);
+			background: rgba(255, 255, 255, 0.04);
+			backdrop-filter: blur(8px);
+			cursor: pointer;
+
+			transition:
+				background-color 0.25s ease,
+				border-color 0.25s ease,
+				transform 0.2s ease,
+				box-shadow 0.25s ease;
+
+			box-shadow:
+				inset 0 1px 0 rgba(255, 255, 255, 0.08),
+				0 4px 14px rgba(0, 0, 0, 0.18);
+
+			&:hover {
+				border-color: rgba($gold-accent, 0.55);
+				transform: translateY(-1px);
+
+				box-shadow:
+					inset 0 1px 0 rgba(255, 255, 255, 0.1),
+					0 8px 18px rgba(212, 175, 55, 0.14);
+			}
+
+			&:has(input:checked) {
+				border-color: rgba($gold-accent, 0.6);
+				background: rgba(212, 175, 55, 0.08);
+
+				box-shadow:
+					inset 0 1px 0 rgba(255, 255, 255, 0.12),
+					0 8px 22px rgba(212, 175, 55, 0.18);
+			}
+
+			input {
+				width: 14px;
+				height: 14px;
+				accent-color: $gold-accent;
+				cursor: pointer;
+				flex-shrink: 0;
+			}
+
+			span {
+				font-size: 0.875rem;
+				line-height: 1.2;
+				color: $light-text;
+			}
+		}
+
+		// Email input
 		&-input {
 			padding: 10px 12px;
 			background-color: rgba(255, 255, 255, 0.08);
@@ -117,7 +181,22 @@
 			margin-top: 20px;
 			display: flex;
 			flex-direction: column;
-			gap: 12px;
+			gap: 10px;
+		}
+
+		&-message {
+			min-height: 24px;
+			font-size: 0.95rem;
+			line-height: 1.5;
+			text-align: center;
+
+			&--success {
+				color: $success-message;
+			}
+
+			&--error {
+				color: $error-message;
+			}
 		}
 	}
 
@@ -163,31 +242,19 @@
 		}
 
 		&__brand,
-		&__newsletter {
+		&__subscription {
 			grid-column: 1 / -1;
 		}
 
-		&__newsletter-form {
+		&__subscription-action {
 			max-width: 100%;
 		}
 	}
 
 	@include mobile {
-		// &__content {
-		// 	grid-template-columns: repeat(1, minmax(0, 1fr));
-		// 	gap: 32px;
-		// }
-
-		// &__brand,
-		// &__subscription {
-		// 	grid-column: auto;
-		// }
-
-		// &__metadata {
-		// 	flex-direction: column;
-		// 	align-items: center;
-		// 	text-align: center;
-		// }
+		&__subscription-topics {
+			justify-content: center;
+		}
 	}
 
 	@include mobile-sm {
@@ -205,6 +272,15 @@
 			flex-direction: column;
 			align-items: center;
 			text-align: center;
+		}
+
+		&__subscription-topic {
+			gap: 5px;
+		}
+
+		&__subscription-topics {
+			justify-content: center;
+			gap: 8px;
 		}
 	}
 }

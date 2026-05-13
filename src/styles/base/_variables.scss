@@ -3,15 +3,15 @@ $header-height-tablet: 80px;
 $white: #fff;
 $light-text: #ffffffb3;
 
-//Primary Colors
+// PRIVARY COLORS
 $light-gold: #e6c27a; //Hover states, secondary accents
 
-//Background Colors
+// BACKGROUND COLORS
 $cream: #fdfbf7; //Main background, cards
 $parchment: #f4f1ea; //Section backgrounds, input fields
 $misty-ivory: #faf9f6; //Tertiary backgrounds
 
-//Text Colors
+// TEXT COLORS
 $primary-text: #1a2b4c; //Headlines, important textPrimary text, buttons, headers, footer background
 $secondary-text: #4a5568; //Body text, descriptions
 $light-gray-text: #1a2b4c99; //Subtle text, captions, disabled states
@@ -19,26 +19,28 @@ $gold-accent: #d4af37; //Category labels, highlights
 //Accents, badges, decorative elements, links
 $discount-price: #9ca3af; //Discounted price color
 
-//Border Colors
+// BORDER COLORS
 $card-borders: rgba(212, 175, 55, 0.2); //Card borders, dividers
 $input-borders: rgba(212, 175, 55, 0.3); //Input borders, subtle frames
 $light-blue-borders: rgba(26, 43, 76, 0.1); //Light blue borders
 
-// PrimaryBtn Colors
+// PRIMARY COLORS
 $gold-primary: #d4a017;
 $gold-light: #f9e195;
 $gold-dark: #a67c00;
 $border-color: #fcf1b8;
 
-//Border Radius
+// BORDER RADIUS
 $border-radius: 12px;
 $border-radius-sm: 6px;
 
 $category-letter-spacing: 0.2em;
-//Fonts
-// $title-font: "CinzelDecorative", "Sweet-Mavka-Script";
-// $text-font: "Rubik";
 
+// MESSAGES
+$success-message: #4f7a5d;
+$error-message: #9b4f4f;
+
+// FONTS
 $title-font-en: "CinzelDecorative";
 $title-font-ua: "Sweet-Mavka-Script";
 
