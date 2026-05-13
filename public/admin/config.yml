@@ -2009,29 +2009,13 @@ collections:
       - { label: "Active", name: "isActive", widget: "boolean", default: true }
 
   # MODALS
-  - name: "privacy-policy"
-    label: "Privacy Policy"
-    file: "src/content/pages/privacy-policy.json"
-
-    fields:
-      - label: "Title"
-        name: "title"
-        widget: "object"
-        fields:
-          - { label: "English", name: "en", widget: "string" }
-          - { label: "Ukrainian", name: "ua", widget: "string" }
-
-      - label: "Introduction"
-        name: "intro"
-        widget: "object"
-        fields:
-          - { label: "English", name: "en", widget: "text" }
-          - { label: "Ukrainian", name: "ua", widget: "text" }
-
-      - label: "Sections"
-        name: "sections"
-        widget: "list"
-
+  - name: "modals"
+    label: "Modals"
+    files:
+      - name: "privacy-policy"
+        label: "Privacy Policy"
+        file: "src/content/modals/privacy-policy.json"
+        format: "json"
         fields:
           - label: "Title"
             name: "title"
@@ -2040,16 +2024,34 @@ collections:
               - { label: "English", name: "en", widget: "string" }
               - { label: "Ukrainian", name: "ua", widget: "string" }
 
-          - label: "Text"
-            name: "text"
+          - label: "Introduction"
+            name: "intro"
             widget: "object"
             fields:
               - { label: "English", name: "en", widget: "text" }
               - { label: "Ukrainian", name: "ua", widget: "text" }
 
-      - label: "Updated"
-        name: "updated"
-        widget: "object"
-        fields:
-          - { label: "English", name: "en", widget: "string" }
-          - { label: "Ukrainian", name: "ua", widget: "string" }
+          - label: "Sections"
+            name: "sections"
+            widget: "list"
+            fields:
+              - label: "Title"
+                name: "title"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "string" }
+                  - { label: "Ukrainian", name: "ua", widget: "string" }
+
+              - label: "Text"
+                name: "text"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "text" }
+                  - { label: "Ukrainian", name: "ua", widget: "text" }
+
+          - label: "Updated"
+            name: "updated"
+            widget: "object"
+            fields:
+              - { label: "English", name: "en", widget: "string" }
+              - { label: "Ukrainian", name: "ua", widget: "string" }
