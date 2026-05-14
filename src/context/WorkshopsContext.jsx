@@ -1,18 +1,24 @@
-//src/context/ProductsContext.js
+// src/context/WorkshopsContext.jsx
+
 import { createContext, useContext, useMemo } from "react";
+import { validateWorkshops } from "../utils/validateWorkshops";
 
 export const WorkshopsContext = createContext([]);
 
 export const WorkshopsProvider = ({ children }) => {
-	// **/* -is for collecting all together from all folders of content folder
-	// creates an object.
-	const modules = import.meta.glob("../content/pages/workshops/*.json", {
+	const modules = import.meta.glob("../content/workshops/*.json", {
 		eager: true,
 	});
 
 	const workshops = useMemo(() => {
-		return Object.values(modules).map((m) => m.default ?? m);
-	}, [modules]);
+		const loadedWorkshops = Object.values(modules).map((m) => m.default ?? m);
+
+		if (import.meta.env.DEV) {
+			validateWorkshops(loadedWorkshops);
+		}
+
+		return loadedWorkshops;
+	}, []);
 
 	return (
 		<WorkshopsContext.Provider value={workshops}>

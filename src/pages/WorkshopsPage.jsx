@@ -1,13 +1,19 @@
 //WorkshopsPage.jsx
 import { useMemo } from "react";
 import WorkshopsPageContent from "../content/pages/workshops-page.json";
-import WorkshopsEmptyState from "../components/WorkshopsEmptyState";
 
-import { WorkshopCard } from "../components/WorkshopCard";
+// CONTEXTS
 import { useWorkshops } from "../context/WorkshopsContext";
 import { useLanguage } from "../context/LanguageContext";
-import { getVisibleWorkshops } from "../hooks/useVisibleWorkshops";
+
+// COMPONENTS
+import WorkshopsEmptyState from "../components/WorkshopsEmptyState";
+import { WorkshopCard } from "../components/WorkshopCard";
 import { PageTopTitle } from "../components/PageTopTitle";
+
+// HOOKS
+import { getVisibleWorkshops } from "../hooks/useVisibleWorkshops";
+
 import Seo from "../components/Seo";
 
 const WorkshopsPage = () => {

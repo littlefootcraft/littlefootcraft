@@ -318,3 +318,43 @@ export const getInTouchUA = {
 	errorMessage: "Щось пішло не так. Спробуйте ще раз.",
 	sendingMessage: "Надсилаємо ваше повідомлення...",
 };
+
+// WORKSHOP BOOKING FORM
+
+export const workShopBookingEN = {
+	title: "Book a Workshop",
+	text: "Leave your details and we’ll contact you to confirm your booking.",
+	name: "Your name",
+	email: "Email address",
+	phone: "Phone number",
+	date: "Choose a date",
+	participants: "Number of participants",
+	message: "Comment or question",
+	button: "Send Request",
+	note: "Your booking is not confirmed yet. We’ll contact you after checking availability.",
+
+	emptyNameMessage: "Please enter your name.",
+	emptyEmailMessage: "Please enter your email.",
+	invalidEmailMessage: "Please enter a valid email address.",
+	emptyPhoneMessage: "Please enter your phone number.",
+	emptyDateMessage: "Please choose a workshop date.",
+};
+
+export const workShopBookingUA = {
+	title: "Забронювати майстер-клас",
+	text: "Залиште ваші дані, і ми звʼяжемося з вами для підтвердження участі.",
+	name: "Ваше імʼя",
+	email: "Електронна пошта",
+	phone: "Телефон",
+	date: "Оберіть дату",
+	participants: "Кількість учасників",
+	message: "Коментар або запитання",
+	button: "Надіслати запит",
+	note: "Бронювання ще не підтверджене. Ми звʼяжемося з вами після перевірки доступності.",
+
+	emptyNameMessage: "Будь ласка, введіть ваше ім’я.",
+	emptyEmailMessage: "Будь ласка, введіть вашу електронну пошту.",
+	invalidEmailMessage: "Будь ласка, введіть коректну електронну пошту.",
+	emptyPhoneMessage: "Будь ласка, введіть номер телефону.",
+	emptyDateMessage: "Будь ласка, оберіть дату майстер-класу.",
+};

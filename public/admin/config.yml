@@ -1857,7 +1857,7 @@ collections:
   # WORKSOPS
   - name: "workshops"
     label: "Workshops"
-    folder: "src/content/pages/workshops"
+    folder: "src/content/workshops"
     create: true
     extension: "json"
     format: "json"

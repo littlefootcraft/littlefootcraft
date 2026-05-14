@@ -1,0 +1,222 @@
+@use "./../../styles/base/variables" as *;
+@use "./../abstracts/mixins" as *;
+
+.workshop-booking-modal {
+	position: fixed;
+	inset: 0;
+	z-index: 420;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	padding: 24px;
+
+	background: rgba($primary-text, 0.55);
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+
+	overflow-y: auto;
+
+	&__content {
+		position: relative;
+		width: min(100%, 620px);
+		padding: 40px;
+		border-radius: $border-radius;
+		background:
+			linear-gradient(rgba($cream, 0.96), rgba($cream, 0.96)),
+			radial-gradient(circle at top, rgba($gold-accent, 0.16), transparent 45%);
+		border: 1px solid rgba($gold-accent, 0.35);
+		box-shadow: 0 24px 70px rgba($primary-text, 0.28);
+		animation: workshopBookingModalIn 0.25s ease;
+	}
+
+	&__close {
+		position: absolute;
+		top: 16px;
+		right: 16px;
+
+		width: 40px;
+		height: 40px;
+		border: none;
+		border-radius: 50%;
+
+		background: rgba($gold-accent, 0.08);
+		color: $primary-text;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		cursor: pointer;
+
+		&:hover {
+			background: rgba($gold-accent, 0.16);
+		}
+	}
+
+	&__icon {
+		width: 52px;
+		height: 52px;
+		margin: 0 auto 18px;
+		border-radius: 50%;
+
+		background: rgba($gold-accent, 0.1);
+		color: $gold-accent;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		svg {
+			width: 24px;
+			height: 24px;
+		}
+	}
+
+	&__field-message {
+		min-height: 18px;
+		margin: -4px 0 0;
+		color: $error-message;
+		font-size: 0.8125rem;
+		line-height: 1.3;
+		text-align: center;
+	}
+
+	&__title {
+		margin-bottom: 10px;
+		font-family: var(--title-font);
+		font-size: var(--card-title-size);
+		font-weight: 400;
+		color: $primary-text;
+		text-align: center;
+		text-transform: uppercase;
+	}
+
+	&__workshop-name {
+		margin-bottom: 12px;
+		color: $gold-accent;
+		font-size: 0.875rem;
+		font-weight: 500;
+		letter-spacing: 0.12em;
+		text-align: center;
+		text-transform: uppercase;
+	}
+
+	&__text {
+		max-width: 440px;
+		margin: 0 auto 28px;
+		color: $secondary-text;
+		font-size: var(--regular-text-size);
+		line-height: 1.6;
+		text-align: center;
+	}
+
+	&__form {
+		display: flex;
+		flex-direction: column;
+		// gap: 14px;
+	}
+
+	&__row {
+		display: grid;
+		grid-template-columns: 1fr 0.8fr;
+		gap: 14px;
+	}
+
+	&__field {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+	}
+
+	&__label {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+
+		color: $secondary-text;
+		font-size: 0.875rem;
+		font-weight: 500;
+
+		svg {
+			width: 17px;
+			height: 17px;
+			color: $gold-accent;
+		}
+	}
+
+	&__input,
+	&__select,
+	&__textarea {
+		width: 100%;
+		padding: 14px 16px;
+		border: 1px solid $input-borders;
+		border-radius: $border-radius;
+
+		background: rgba($white, 0.75);
+		color: $primary-text;
+
+		font-family: var(--text-font);
+		font-size: var(--regular-text-size);
+
+		outline: none;
+
+		&:focus {
+			border-color: $gold-accent;
+			box-shadow: 0 0 0 3px rgba($gold-accent, 0.12);
+		}
+
+		&::placeholder {
+			color: $light-gray-text;
+		}
+	}
+
+	&__select {
+		appearance: none;
+		cursor: pointer;
+	}
+
+	&__textarea {
+		min-height: 110px;
+		resize: vertical;
+	}
+
+	&__note {
+		margin: 0;
+		color: $light-gray-text;
+		font-size: 0.875rem;
+		line-height: 1.5;
+		text-align: center;
+	}
+
+	&__submit {
+		width: 100%;
+		margin-top: 18px;
+	}
+
+	@include mobile {
+		align-items: flex-start;
+		padding: 40px 16px 24px;
+
+		&__content {
+			padding: 32px 20px 24px;
+		}
+
+		&__row {
+			grid-template-columns: 1fr;
+		}
+	}
+}
+
+@keyframes workshopBookingModalIn {
+	from {
+		opacity: 0;
+		transform: translateY(12px) scale(0.98);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}

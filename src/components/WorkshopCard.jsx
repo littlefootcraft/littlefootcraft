@@ -1,12 +1,24 @@
 //WorkshopCard.jsx
 
+import { useState } from "react";
+
+// CONTEXTS
 import { useLanguage } from "../context/LanguageContext";
-import { Clock3, Users, MapPin } from "lucide-react";
+
+// COMPONENTS
+import { WorkshopBookingModal } from "../components/WorkshopBookingModal";
 import { PrimaryBtn } from "./PrimaryBtn";
+
+// ICONS
+import { Clock3, Users, MapPin } from "lucide-react";
+
+// UTILS
 import { formatPrice } from "../utils/formatPrice";
+
 import { buttonsEN, buttonsUA } from "../translations/translation";
 
 export const WorkshopCard = ({ workshop }) => {
+	const [isBookingOpen, setIsBookingOpen] = useState(false);
 	// For language switching
 	const { currentLang } = useLanguage();
 	const t = (field) => field?.[currentLang] ?? field?.en ?? "";
@@ -76,12 +88,19 @@ export const WorkshopCard = ({ workshop }) => {
 					<div>
 						<PrimaryBtn
 							variant="booking"
-							to="/shop"
+							type="button"
+							onClick={() => setIsBookingOpen(true)}
 						>
 							{dict.bookNow}
 						</PrimaryBtn>
 					</div>
 				</div>
+				<WorkshopBookingModal
+					isOpen={isBookingOpen}
+					onClose={() => setIsBookingOpen(false)}
+					currentLang={currentLang}
+					workshop={workshop}
+				/>
 			</div>
 		</div>
 	);
