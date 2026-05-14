@@ -1,8 +1,27 @@
+//src/components/ContactModal.jsx
+
 import { useEffect } from "react";
 import { X, Mail, Sparkles } from "lucide-react";
 import { PrimaryBtn } from "./PrimaryBtn";
+import { useContactForm } from "../hooks/useContactForm";
+
+import { getInTouchEN, getInTouchUA } from "../translations/translation";
 
 export const ContactModal = ({ isOpen, onClose, currentLang = "en" }) => {
+	const t = currentLang === "ua" ? getInTouchUA : getInTouchEN;
+
+	const {
+		name,
+		setName,
+		email,
+		setEmail,
+		message,
+		setMessage,
+		status,
+		feedbackMessage,
+		handleSubmit,
+	} = useContactForm(t, currentLang);
+
 	useEffect(() => {
 		if (!isOpen) return;
 
@@ -21,27 +40,6 @@ export const ContactModal = ({ isOpen, onClose, currentLang = "en" }) => {
 	}, [isOpen, onClose]);
 
 	if (!isOpen) return null;
-
-	const t =
-		currentLang === "ua"
-			? {
-					title: "Звʼяжіться з нами",
-					text: "Маєте запитання щодо виробу, замовлення чи майстер-класу? Напишіть нам.",
-					name: "Ваше імʼя",
-					email: "Електронна пошта",
-					message: "Повідомлення",
-					button: "Надіслати",
-					emailText: "Або напишіть нам напряму:",
-				}
-			: {
-					title: "Get in Touch",
-					text: "Have a question about a piece, order, or workshop? Send us a message.",
-					name: "Your name",
-					email: "Email address",
-					message: "Message",
-					button: "Send Message",
-					emailText: "Or email us directly:",
-				};
 
 	return (
 		<div
@@ -71,21 +69,17 @@ export const ContactModal = ({ isOpen, onClose, currentLang = "en" }) => {
 				<form
 					className="contact-modal__form"
 					name="contact"
-					method="POST"
-					data-netlify="true"
+					onSubmit={handleSubmit}
+					noValidate
 				>
-					<input
-						type="hidden"
-						name="form-name"
-						value="contact"
-					/>
-
 					<input
 						className="contact-modal__input"
 						type="text"
 						name="name"
 						placeholder={t.name}
-						required
+						value={name}
+						onChange={(e) => setName(e.target.value)}
+						disabled={status === "loading"}
 					/>
 
 					<input
@@ -93,7 +87,9 @@ export const ContactModal = ({ isOpen, onClose, currentLang = "en" }) => {
 						type="email"
 						name="email"
 						placeholder={t.email}
-						required
+						value={email}
+						onChange={(e) => setEmail(e.target.value)}
+						disabled={status === "loading"}
 					/>
 
 					<textarea
@@ -101,13 +97,22 @@ export const ContactModal = ({ isOpen, onClose, currentLang = "en" }) => {
 						name="message"
 						placeholder={t.message}
 						rows="5"
-						required
+						value={message}
+						onChange={(e) => setMessage(e.target.value)}
+						disabled={status === "loading"}
 					/>
+
+					<p
+						className={`contact-modal__message contact-modal__message--${status}`}
+					>
+						{feedbackMessage}
+					</p>
 
 					<PrimaryBtn
 						variant="subscription"
 						type="submit"
 						className="contact-modal__submit"
+						disabled={status === "loading"}
 					>
 						{t.button}
 					</PrimaryBtn>

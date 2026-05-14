@@ -22,17 +22,6 @@ const BUTTON_CONFIG = {
 		icon: <LogIn size={20} />,
 		iconPosition: "left",
 	},
-	// confirm: {
-	// 	iconPosition: "left",
-	// },
-	// booking: {},
-	// subscription: { icon: <WandSparkles />, iconPosition: "right" },
-	// footer: { icon: <WandSparkles />, iconPosition: "right" },
-
-	// "to-catalog": {
-	// 	icon: <WandSparkles />,
-	// 	iconPosition: "left",
-	// },
 };
 
 export const PrimaryBtn = ({

@@ -122,12 +122,12 @@ const Footer = () => {
 								onClick={() => setIsContactOpen(true)}
 							>
 								{t(footerContent.support.contact)}
-								<ContactModal
-									isOpen={isContactOpen}
-									onClose={() => setIsContactOpen(false)}
-									currentLang={currentLang}
-								/>
 							</button>
+							<ContactModal
+								isOpen={isContactOpen}
+								onClose={() => setIsContactOpen(false)}
+								currentLang={currentLang}
+							/>
 						</li>
 						<li className="footer__support-item">
 							<Link to={`/${currentLang}/faq`}>

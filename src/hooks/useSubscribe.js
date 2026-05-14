@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { supabase } from "../lib/supabaseClient";
+import { useLanguage } from "../context/LanguageContext";
 
 export const useSubscribe = (dict) => {
+	const { currentLang } = useLanguage();
 	const [email, setEmail] = useState("");
 	const [status, setStatus] = useState("idle");
 	const [message, setMessage] = useState("");
@@ -54,6 +56,7 @@ export const useSubscribe = (dict) => {
 		const { error } = await supabase.from("subscribers").insert({
 			email: trimmedEmail,
 			interests,
+			language: currentLang,
 		});
 
 		// //Temporary

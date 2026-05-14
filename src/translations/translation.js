@@ -280,3 +280,41 @@ export const buttonsEN = {
 export const buttonsUA = {
 	bookNow: "Забронювати",
 };
+
+// GET IN TOUCH FORM
+
+export const getInTouchEN = {
+	title: "Get in Touch",
+	text: "Have a question about a piece, order, or workshop? Send us a message.",
+	name: "Your name",
+	email: "Email address",
+	message: "Message",
+	button: "Send Message",
+	emailText: "Or email us directly:",
+	emptyNameMessage: "Please enter your name.",
+	emptyEmailMessage: "Please enter your email.",
+	invalidEmailMessage: "Please enter a valid email address.",
+	emptyMessageMessage: "Please enter your message.",
+	shortMessageMessage: "Please write a little more detail.",
+	successMessage: "Thank you! Your message has been sent.",
+	errorMessage: "Something went wrong. Please try again.",
+	sendingMessage: "Sending your message...",
+};
+
+export const getInTouchUA = {
+	title: "Звʼяжіться з нами",
+	text: "Маєте запитання щодо виробу, замовлення чи майстер-класу? Напишіть нам.",
+	name: "Ваше імʼя",
+	email: "Електронна пошта",
+	message: "Повідомлення",
+	button: "Надіслати",
+	emailText: "Або напишіть нам напряму:",
+	emptyNameMessage: "Будь ласка, введіть ваше ім’я.",
+	emptyEmailMessage: "Будь ласка, введіть вашу електронну пошту.",
+	invalidEmailMessage: "Будь ласка, введіть коректну електронну пошту.",
+	emptyMessageMessage: "Будь ласка, введіть повідомлення.",
+	shortMessageMessage: "Будь ласка, напишіть трохи більше деталей.",
+	successMessage: "Дякуємо! Ваше повідомлення надіслано.",
+	errorMessage: "Щось пішло не так. Спробуйте ще раз.",
+	sendingMessage: "Надсилаємо ваше повідомлення...",
+};
