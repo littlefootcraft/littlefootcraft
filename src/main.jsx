@@ -22,6 +22,7 @@ import LoginPage from "./pages/LoginPage";
 import RegistrationPage from "./pages/RegistrationPage";
 import CartPage from "./pages/CartPage";
 import SalePage from "./pages/SalePage";
+import OrderPage from "./pages/OrderPage";
 
 const router = createBrowserRouter([
 	{
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
 			{ path: "login", element: <LoginPage /> },
 			{ path: "registration", element: <RegistrationPage /> },
 			{ path: "cart", element: <CartPage /> },
+			{
+				path: "order",
+				element: <OrderPage />,
+			},
 		],
 	},
 	{

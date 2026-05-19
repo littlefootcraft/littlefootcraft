@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
-import { X, Sparkles, CalendarDays } from "lucide-react";
+import { X, Sparkles, CalendarDays, Clock3, MapPin } from "lucide-react";
 import { PrimaryBtn } from "./PrimaryBtn";
+
+import { supabase } from "../lib/supabaseClient";
 
 import {
 	workShopBookingEN,
 	workShopBookingUA,
 } from "../translations/translation";
+
+const MESSAGE_MAX_LENGTH = 500;
 
 export const WorkshopBookingModal = ({
 	isOpen,
@@ -20,6 +24,8 @@ export const WorkshopBookingModal = ({
 	const [participants, setParticipants] = useState("1");
 	const [message, setMessage] = useState("");
 	const [errors, setErrors] = useState({});
+	const [status, setStatus] = useState("idle");
+	const [feedbackMessage, setFeedbackMessage] = useState("");
 
 	const t = currentLang === "ua" ? workShopBookingUA : workShopBookingEN;
 
@@ -44,6 +50,12 @@ export const WorkshopBookingModal = ({
 
 	const workshopTitle =
 		workshop?.title?.[currentLang] ?? workshop?.title?.en ?? "";
+
+	const workshopTime =
+		workshop?.time?.[currentLang] ?? workshop?.time?.en ?? "";
+
+	const workshopExactLocation =
+		workshop?.exactLocation?.[currentLang] ?? workshop?.exactLocation?.en ?? "";
 
 	const upcomingDates = workshop?.upcomingDates?.dates ?? [];
 
@@ -82,7 +94,7 @@ export const WorkshopBookingModal = ({
 		}));
 	};
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
 
 		const trimmedName = name.trim();
@@ -119,19 +131,39 @@ export const WorkshopBookingModal = ({
 
 		setErrors({});
 
-		console.log({
-			workshopId: workshop?.id,
-			workshopTitle,
-			name: trimmedName,
+		setStatus("loading");
+		setFeedbackMessage(t.sendingMessage);
+
+		const { error } = await supabase.from("workshop_bookings").insert({
+			workshop_id: workshop?.id,
+			workshop_title: workshopTitle,
+			workshop_date: selectedDate,
+			customer_name: trimmedName,
 			email: trimmedEmail,
 			phone: trimmedPhone,
-			selectedDate,
-			participants: trimmedParticipants,
-			message,
+			participants_count: trimmedParticipants,
+			message: message.trim(),
 			language: currentLang,
+			status: "new",
 		});
 
-		// Later we will send this to Supabase
+		if (error) {
+			console.log("Supabase workshop booking error:", error);
+
+			setStatus("error");
+			setFeedbackMessage(t.errorMessage);
+			return;
+		}
+
+		setStatus("success");
+		setFeedbackMessage(t.successMessage);
+
+		setName("");
+		setEmail("");
+		setPhone("");
+		setSelectedDate("");
+		setParticipants("1");
+		setMessage("");
 	};
 
 	return (
@@ -163,6 +195,26 @@ export const WorkshopBookingModal = ({
 						{workshopTitle}
 					</p>
 				)}
+				{(workshopTime || workshopExactLocation) && (
+					<div className="workshop-booking-modal__details">
+						{workshopTime && (
+							<p className="workshop-booking-modal__detail">
+								<Clock3 />
+								<span>{workshopTime}</span>
+							</p>
+						)}
+
+						{workshopExactLocation && (
+							<p className="workshop-booking-modal__detail">
+								{/* <MapPin /> */}
+								<span>
+									<MapPin />
+									{workshopExactLocation}
+								</span>
+							</p>
+						)}
+					</div>
+				)}
 
 				<p className="workshop-booking-modal__text">{t.text}</p>
 
@@ -181,6 +233,7 @@ export const WorkshopBookingModal = ({
 							placeholder={t.name}
 							value={name}
 							onChange={handleNameChange}
+							disabled={status === "loading"}
 						/>
 
 						<p className="workshop-booking-modal__field-message">
@@ -198,6 +251,7 @@ export const WorkshopBookingModal = ({
 							placeholder={t.email}
 							value={email}
 							onChange={handleEmailChange}
+							disabled={status === "loading"}
 						/>
 
 						<p className="workshop-booking-modal__field-message">
@@ -216,6 +270,7 @@ export const WorkshopBookingModal = ({
 							value={phone}
 							onChange={handlePhoneChange}
 							inputMode="numeric"
+							disabled={status === "loading"}
 						/>
 
 						<p className="workshop-booking-modal__field-message">
@@ -234,7 +289,14 @@ export const WorkshopBookingModal = ({
 								className="workshop-booking-modal__select"
 								name="selectedDate"
 								value={selectedDate}
-								onChange={(e) => setSelectedDate(e.target.value)}
+								onChange={(e) => {
+									setSelectedDate(e.target.value);
+									setErrors((currentErrors) => ({
+										...currentErrors,
+										selectedDate: "",
+									}));
+								}}
+								disabled={status === "loading"}
 							>
 								<option value="">{t.date}</option>
 
@@ -265,6 +327,7 @@ export const WorkshopBookingModal = ({
 								max="20"
 								value={participants}
 								onChange={(e) => setParticipants(e.target.value)}
+								disabled={status === "loading"}
 							/>
 						</div>
 					</div>
@@ -279,15 +342,25 @@ export const WorkshopBookingModal = ({
 							rows="4"
 							value={message}
 							onChange={(e) => setMessage(e.target.value)}
+							maxLength={MESSAGE_MAX_LENGTH}
+							disabled={status === "loading"}
 						/>
+						<p className="workshop-booking-modal__counter">
+							{message.length}/{MESSAGE_MAX_LENGTH}
+						</p>
 					</div>
 
 					<p className="workshop-booking-modal__note">{t.note}</p>
-
+					<p
+						className={`workshop-booking-modal__message workshop-booking-modal__message--${status}`}
+					>
+						{feedbackMessage}
+					</p>
 					<PrimaryBtn
 						variant="subscription"
 						type="submit"
 						className="workshop-booking-modal__submit"
+						disabled={status === "loading"}
 					>
 						{t.button}
 					</PrimaryBtn>

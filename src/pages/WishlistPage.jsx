@@ -53,7 +53,7 @@ const WishlistPage = () => {
 							<p className="wishlist-empty__text">{dict["empty-text"]}</p>
 
 							<PrimaryBtn
-								variant="to-catalog"
+								variant="to-shop"
 								to={`/${currentLang}/shop`}
 							>
 								{dict["empty-btn"]}

@@ -2,18 +2,32 @@
 import { useState, useMemo, useRef, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import { CgClose } from "react-icons/cg";
 
+// JSONS
+import ProductPageContent from "../content/pages/product-page.json";
+import CollectionsContent from "../content/collections/collections.json";
+
+// CONTEXTS
 import { useProducts } from "../context/ProductsContext";
 import { useLanguage } from "../context/LanguageContext";
 import { useWishlist } from "../context/WishlistContext";
+import { useCart } from "../context/CartContext";
+
+// HOOKS
 import { useProductGallery } from "../hooks/useProductGallery";
+
+// COMPONENTS
 import { ProductCard } from "../components/ProductCard";
+import { SecondaryBtn } from "../components/SecondaryBtn";
+import { PrimaryBtn } from "../components/PrimaryBtn";
+import Seo from "../components/Seo";
+import { ProcessSection } from "../components/ProcessSection";
+
+// ICONS
+import { X } from "lucide-react";
+
 import NotFoundPage from "./NotFoundPage";
 import { productPageUA, productPageEN } from "../translations/translation";
-import { SecondaryBtn } from "../components/SecondaryBtn";
-
-import ProductPageContent from "../content/pages/product-page.json";
 
 //Icons
 import { Check, Star, Sparkles } from "lucide-react";
@@ -26,14 +40,10 @@ import {
 } from "react-icons/fa";
 import { MdOutlineEmail } from "react-icons/md";
 import { FiLink } from "react-icons/fi";
-
-import { formatPrice } from "../utils/formatPrice";
-import { ProcessSection } from "../components/ProcessSection";
-import { PrimaryBtn } from "../components/PrimaryBtn";
-import { useCart } from "../context/CartContext";
-import Seo from "../components/Seo";
-
 import { ShieldCheck, PackageCheck, Truck } from "lucide-react";
+
+// UTILS
+import { formatPrice } from "../utils/formatPrice";
 
 const RECENTLY_VIEWED_KEY = "recently_viewed_skus";
 const MAX_RECENTLY_VIEWED = 8;
@@ -55,6 +65,10 @@ const ProductPage = () => {
 	const { currentLang } = useLanguage();
 	const t = (field) => field?.[currentLang] ?? field?.en ?? "";
 	const dict = currentLang === "ua" ? productPageUA : productPageEN;
+
+	const productCollection = CollectionsContent.find(
+		(collection) => collection.id === product.specifications?.collection,
+	);
 
 	// Wishlist
 	const { toggleWishlist, isInWishlist } = useWishlist();
@@ -114,13 +128,11 @@ const ProductPage = () => {
 	const relatedProducts = useMemo(() => {
 		const others = products.filter((p) => p.sku !== product.sku);
 
-		const currentCollection = product.specifications?.collection?.en;
+		const currentCollection = product.specifications?.collection;
 		const currentCategory = product.specifications?.category?.en;
 
 		const sameCollection = others.filter(
-			(p) =>
-				p.specifications?.collection?.en?.toLowerCase() ===
-				currentCollection?.toLowerCase(),
+			(p) => p.specifications?.collection === currentCollection,
 		);
 
 		const sameCategory = others.filter(
@@ -333,12 +345,12 @@ const ProductPage = () => {
 								<span>{t(product.specifications.size)}</span>
 							</div>
 						)}
-						{product.specifications?.collection && (
+						{product.specifications?.collection && productCollection && (
 							<div className="product-page__spec">
 								<span className="product-page__spec-label">
 									{dict.specs.collection}
 								</span>
-								<span>{t(product.specifications?.collection)}</span>
+								<span>{t(productCollection?.name)}</span>
 							</div>
 						)}
 						{product.specifications?.color && (
@@ -521,11 +533,11 @@ const ProductPage = () => {
 							className="product-page__video-modal-close"
 							onClick={() => setIsVideoModalOpen(false)}
 						>
-							<CgClose />
+							<X />
 						</button>
 						<video
 							className="product-page__video-modal-player"
-							src={product.video.src} // ← .src now, not just product.video
+							src={product.video?.src} // ← .src now, not just product.video
 							controls
 							autoPlay
 							playsInline

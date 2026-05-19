@@ -41,7 +41,7 @@ const CartPage = () => {
 
 						<div>
 							<PrimaryBtn
-								variant="to-catalog"
+								variant="to-shop"
 								to={`/${currentLang}/shop`}
 							>
 								{dict.emptyBtn}
@@ -125,18 +125,11 @@ const CartPage = () => {
 							<div className="cart__summary-btns">
 								<PrimaryBtn
 									variant="order"
-									to="/order"
-									onClick={(e) => {
-										e.preventDefault();
-										e.stopPropagation();
-									}}
+									to={`/${currentLang}/order`}
 								>
 									{dict.checkout}
 								</PrimaryBtn>
-								<SecondaryBtn
-									to="/catalog"
-									fullWidth
-								>
+								<SecondaryBtn to={`/${currentLang}/shop`}>
 									{dict.continueShopping}
 								</SecondaryBtn>
 							</div>

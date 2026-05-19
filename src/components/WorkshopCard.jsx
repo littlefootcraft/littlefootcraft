@@ -10,7 +10,7 @@ import { WorkshopBookingModal } from "../components/WorkshopBookingModal";
 import { PrimaryBtn } from "./PrimaryBtn";
 
 // ICONS
-import { Clock3, Users, MapPin } from "lucide-react";
+import { Clock3, Users, MapPin, CalendarClock } from "lucide-react";
 
 // UTILS
 import { formatPrice } from "../utils/formatPrice";
@@ -67,6 +67,21 @@ export const WorkshopCard = ({ workshop }) => {
 						{t(workshop.location)}
 					</span>
 				</p>
+				<div className="workshop-card__details">
+					{workshop.time && (
+						<p className="workshop-card__detail">
+							<CalendarClock />
+							<span>{t(workshop.time)}</span>
+						</p>
+					)}
+
+					{workshop.exactLocation && (
+						<p className="workshop-card__detail">
+							<MapPin />
+							<span>{t(workshop.exactLocation)}</span>
+						</p>
+					)}
+				</div>
 				<div className="workshop-card__calendar">
 					<span className="workshop-card__calendar-title">
 						{t(workshop.upcomingDates.title)}
@@ -95,13 +110,13 @@ export const WorkshopCard = ({ workshop }) => {
 						</PrimaryBtn>
 					</div>
 				</div>
-				<WorkshopBookingModal
-					isOpen={isBookingOpen}
-					onClose={() => setIsBookingOpen(false)}
-					currentLang={currentLang}
-					workshop={workshop}
-				/>
 			</div>
+			<WorkshopBookingModal
+				isOpen={isBookingOpen}
+				onClose={() => setIsBookingOpen(false)}
+				currentLang={currentLang}
+				workshop={workshop}
+			/>
 		</div>
 	);
 };

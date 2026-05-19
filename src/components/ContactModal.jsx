@@ -6,6 +6,7 @@ import { PrimaryBtn } from "./PrimaryBtn";
 import { useContactForm } from "../hooks/useContactForm";
 
 import { getInTouchEN, getInTouchUA } from "../translations/translation";
+const MESSAGE_MAX_LENGTH = 500;
 
 export const ContactModal = ({ isOpen, onClose, currentLang = "en" }) => {
 	const t = currentLang === "ua" ? getInTouchUA : getInTouchEN;
@@ -21,6 +22,28 @@ export const ContactModal = ({ isOpen, onClose, currentLang = "en" }) => {
 		feedbackMessage,
 		handleSubmit,
 	} = useContactForm(t, currentLang);
+
+	// To show message if NaN enrtered
+	// const handlePhoneChange = (e) => {
+	// 	const value = e.target.value;
+
+	// 	if (/^\d*$/.test(value)) {
+	// 		setPhone(value);
+	// 		setErrors((currentErrors) => ({
+	// 			...currentErrors,
+	// 			phone: "",
+	// 		}));
+	// 	}
+	// };
+
+	// For name do not accept numbers
+	const handleNameChange = (e) => {
+		const value = e.target.value;
+
+		if (/^[\p{L}\s'ʼ-]*$/u.test(value)) {
+			setName(value);
+		}
+	};
 
 	useEffect(() => {
 		if (!isOpen) return;
@@ -78,7 +101,7 @@ export const ContactModal = ({ isOpen, onClose, currentLang = "en" }) => {
 						name="name"
 						placeholder={t.name}
 						value={name}
-						onChange={(e) => setName(e.target.value)}
+						onChange={handleNameChange}
 						disabled={status === "loading"}
 					/>
 
@@ -100,8 +123,11 @@ export const ContactModal = ({ isOpen, onClose, currentLang = "en" }) => {
 						value={message}
 						onChange={(e) => setMessage(e.target.value)}
 						disabled={status === "loading"}
+						maxLength={MESSAGE_MAX_LENGTH}
 					/>
-
+					<p className="contact-modal__counter">
+						{message.length}/{MESSAGE_MAX_LENGTH}
+					</p>
 					<p
 						className={`contact-modal__message contact-modal__message--${status}`}
 					>

@@ -26,7 +26,7 @@ const BUTTON_CONFIG = {
 
 export const PrimaryBtn = ({
 	children,
-	variant = "to-cart",
+	variant,
 	type = "button",
 	onClick,
 	disabled = false,

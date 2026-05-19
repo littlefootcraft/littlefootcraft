@@ -86,11 +86,12 @@
 	&__title {
 		margin-bottom: 10px;
 		font-family: var(--title-font);
-		font-size: var(--card-title-size);
-		font-weight: 400;
+		font-size: var(--login-title-size);
+		font-weight: 700;
 		color: $primary-text;
 		text-align: center;
 		text-transform: uppercase;
+		line-height: 2rem;
 	}
 
 	&__workshop-name {
@@ -105,7 +106,7 @@
 
 	&__text {
 		max-width: 440px;
-		margin: 0 auto 28px;
+		margin: 0 auto;
 		color: $secondary-text;
 		font-size: var(--regular-text-size);
 		line-height: 1.6;
@@ -177,9 +178,53 @@
 		cursor: pointer;
 	}
 
+	&__details {
+		margin: -8px auto 22px;
+		// // // max-width: 460px;
+		// max-width: 520px;
+		display: flex;
+		flex-direction: column;
+		gap: 5px;
+		align-items: center;
+	}
+
+	&__detail {
+		margin: 0;
+		display: flex;
+		align-items: flex-start;
+		justify-content: center;
+		gap: 8px;
+
+		color: $light-gray-text;
+		font-size: 0.9375rem;
+		line-height: 1.45;
+		text-align: center;
+
+		svg {
+			width: 17px;
+			height: 17px;
+			margin-top: 3px;
+			color: $gold-accent;
+			flex-shrink: 0;
+		}
+		span {
+			// max-width: 390px;
+			display: flex;
+			gap: 5px;
+		}
+	}
+
 	&__textarea {
 		min-height: 110px;
 		resize: vertical;
+	}
+
+	&__counter {
+		margin: -4px 0 0;
+		color: $light-gray-text;
+		font-size: 0.75rem;
+		line-height: 1.2;
+		text-align: right;
 	}
 
 	&__note {
@@ -193,6 +238,34 @@
 	&__submit {
 		width: 100%;
 		margin-top: 18px;
+	}
+
+	// STATUS MESSAGES
+	&__message {
+		min-height: 22px;
+		margin: 0;
+		font-size: 0.875rem;
+		line-height: 1.4;
+		text-align: center;
+		transition:
+			color 0.2s ease,
+			opacity 0.2s ease;
+
+		&--idle {
+			color: transparent;
+		}
+
+		&--loading {
+			color: $secondary-text;
+		}
+
+		&--error {
+			color: $error-message;
+		}
+
+		&--success {
+			color: $success-message;
+		}
 	}
 
 	@include mobile {

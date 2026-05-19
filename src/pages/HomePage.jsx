@@ -3,6 +3,7 @@ import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 
 import HomePageContent from "../content/pages/home-page.json";
+import CollectionsContent from "../content/collections/collections.json";
 
 // CONTEXTS
 import { useWorkshops } from "../context/WorkshopsContext";
@@ -60,8 +61,16 @@ const HomePage = ({ workshop }) => {
 	const featuredWorkshop = visibleWorkshops[0] || null;
 
 	// To show collection title images
+	// const collections = useMemo(() => {
+	// 	return [...HomePageContent.collections.set]
+	// 		.sort(() => Math.random() - 0.5)
+	// 		.slice(0, 4);
+	// }, []);
 	const collections = useMemo(() => {
-		return HomePageContent.collections.set.slice(0, 4);
+		return [...CollectionsContent]
+			.filter((collection) => collection.image)
+			.sort(() => Math.random() - 0.5)
+			.slice(0, 4);
 	}, []);
 
 	// Subscription
@@ -97,7 +106,7 @@ const HomePage = ({ workshop }) => {
 
 					<div className="home-page__top-btn__wrap">
 						<PrimaryBtn
-							variant="to-catalog"
+							variant="to-shop"
 							to={`/${currentLang}/shop`}
 						>
 							{t(HomePageContent.hero.button.label)}
@@ -141,7 +150,7 @@ const HomePage = ({ workshop }) => {
 						</div>
 						<Link
 							className="home-page__to-catalog-btn"
-							variant="to-catalog"
+							variant="to-shop"
 							to={`/${currentLang}/shop`}
 						>
 							<span>{t(HomePageContent.newArrivals.button.label)}</span>
@@ -169,13 +178,15 @@ const HomePage = ({ workshop }) => {
 					<div className="home-page__collections-cards">
 						{collections.map((collection) => (
 							<Link
-								key={`${collection.group?.en}-${collection.name.en}`}
-								to={`/${currentLang}/shop?collection=${encodeURIComponent(collection.name.en)}`}
+								// key={`${collection.group?.en}-${collection.id}`}
+								key={collection.id}
+								// to={`/${currentLang}/shop?collection=${encodeURIComponent(collection.name.en)}`}
+								to={`/${currentLang}/shop?collection=${encodeURIComponent(collection.id)}`}
 								className="home-page__collections-card"
 							>
 								<img
 									className="home-page__collections-card-image"
-									src={collection.src}
+									src={collection.image}
 									alt={t(collection.name)}
 								/>
 

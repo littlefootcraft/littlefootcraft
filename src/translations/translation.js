@@ -187,7 +187,8 @@ export const sortOptionsEN = [
 	{ id: "price-desc", label: "Price: High to Low" },
 ];
 
-// Login Page-----------------------------------
+// LOGIN PAGE-----------------------------------
+
 export const loginPageEN = {
 	title: "Login to your account",
 	subtitle: "Welcome back! Please enter your details to continue.",
@@ -197,6 +198,11 @@ export const loginPageEN = {
 	loginBtn: "Log In",
 	registerInvitation: "Don't have an account? Register",
 	continueWithoutAccount: "Continue without registration",
+	emptyEmailMessage: "Please enter your email.",
+	invalidEmailMessage: "Please enter a valid email address.",
+	emptyPasswordMessage: "Please enter your password.",
+	hidePasswordAriaLabel: "Hide password",
+	showPasswordAriaLabel: "Show password",
 };
 
 export const loginPageUA = {
@@ -208,9 +214,15 @@ export const loginPageUA = {
 	loginBtn: "Увійти",
 	registerInvitation: "Немає акаунту? Зареєструватися",
 	continueWithoutAccount: "Продовжити без реєстрації",
+	emptyEmailMessage: "Будь ласка, введіть вашу електронну пошту.",
+	invalidEmailMessage: "Будь ласка, введіть коректну електронну пошту.",
+	emptyPasswordMessage: "Будь ласка, введіть пароль.",
+	hidePasswordAriaLabel: "Сховати пароль",
+	showPasswordAriaLabel: "Показати пароль",
 };
 
-// Registration Page---------------------------------------
+// REGISTRATION PAGE---------------------------------------
+
 export const registrationPageEN = {
 	title: "Create an account",
 	subtitle: "Join us for a magical shopping experience!",
@@ -241,7 +253,8 @@ export const registrationPageUA = {
 	loginInvitation: "Вже маєте акаунт? Увійти",
 };
 
-// Cart Page----------------------------------
+// CART PAGE----------------------------------
+
 export const cartPageEN = {
 	title: "Your Cart",
 	subtitle: "Review your selected treasures before sending an order.",
@@ -272,7 +285,8 @@ export const cartPageUA = {
 	backBtn: "Продовжити покупки",
 };
 
-// Buttons
+// BUTTONS-----------------------------------------
+
 export const buttonsEN = {
 	bookNow: "Book now",
 };
@@ -281,7 +295,7 @@ export const buttonsUA = {
 	bookNow: "Забронювати",
 };
 
-// GET IN TOUCH FORM
+// GET IN TOUCH FORM------------------------------------
 
 export const getInTouchEN = {
 	title: "Get in Touch",
@@ -357,4 +371,17 @@ export const workShopBookingUA = {
 	invalidEmailMessage: "Будь ласка, введіть коректну електронну пошту.",
 	emptyPhoneMessage: "Будь ласка, введіть номер телефону.",
 	emptyDateMessage: "Будь ласка, оберіть дату майстер-класу.",
+};
+
+// ORDER PAGE----------------------------------
+
+export const orderPageEN = {
+	title: "Request Your Order",
+	subtitle:
+		"Your order is not confirmed yet. We will check availability, shipping, and send you a confirmation with payment details.",
+};
+export const orderPageUA = {
+	title: "Запит на замовлення",
+	subtitle:
+		"Ваше замовлення ще не підтверджене. Ми перевіримо доступність, доставку та надішлемо вам підтвердження з деталями оплати.",
 };

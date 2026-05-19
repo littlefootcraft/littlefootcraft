@@ -248,6 +248,9 @@
 	}
 
 	@include mobile {
+		&__layout {
+			margin-top: 20px;
+		}
 		&__summary {
 			padding: 16px;
 		}

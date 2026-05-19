@@ -29,10 +29,7 @@
 			"ua": "3.5 см x 3.5 см"
 		},
 		"color": ["pink"],
-		"collection": {
-			"en": "Shades of Ocean Blue",
-			"ua": "Відтінки океанської синяви"
-		}
+		"collection": "ocean-blue"
 	},
 	"description": {
 		"en": "This unique brooch is carefully handcrafted using beads and decorative elements in rich red and purple shades. The jellyfish-inspired design features flowing, movable “tentacles” that gently sway with motion, giving the piece a lively, eye-catching effect.",

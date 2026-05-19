@@ -71,8 +71,9 @@
 	&__title {
 		margin-bottom: 12px;
 		font-family: var(--title-font);
-		font-size: var(--card-title-size);
-		font-weight: 400;
+		font-size: var(--login-title-size);
+		font-weight: 700;
+		line-height: 2rem;
 		color: $primary-text;
 		text-align: center;
 	}
@@ -106,7 +107,8 @@
 
 		&:focus {
 			border-color: $gold-accent;
-			box-shadow: 0 0 0 3px rgba($gold-accent, 0.12);
+			background-color: #fff;
+			box-shadow: 0 0 0 4px rgba($gold-accent, 0.12);
 		}
 
 		&::placeholder {
@@ -174,6 +176,14 @@
 		&--success {
 			color: $success-message;
 		}
+	}
+
+	&__counter {
+		margin: -8px 0 0;
+		color: $light-gray-text;
+		font-size: 0.75rem;
+		line-height: 1.2;
+		text-align: right;
 	}
 
 	@include mobile {

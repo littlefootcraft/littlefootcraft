@@ -1,10 +1,16 @@
 // components/FiltersDrawer.jsx
 import { useEffect, useState } from "react";
-import { ChevronDown, X } from "lucide-react";
-import { useLanguage } from "../context/LanguageContext";
-import { COLORS } from "../constants/filterOptions";
+
 import categories from "../content/categories/categories.json";
 import collections from "../content/collections/collections.json";
+
+// CONTEXTS
+import { useLanguage } from "../context/LanguageContext";
+
+// ICONS
+import { ChevronDown, X } from "lucide-react";
+
+import { COLORS } from "../constants/filterOptions";
 
 // A single collapsible section — Category, Collection, or Color
 // isOpen and onToggle control whether the options are visible

@@ -1,16 +1,22 @@
 //LoginPage.jsx
-
-import { PrimaryBtn } from "../components/PrimaryBtn";
 import { useState } from "react";
-import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 import { Link } from "react-router-dom";
-// import { useCart } from "../context/CartContext";
-import { User } from "lucide-react";
-import { loginPageEN, loginPageUA } from "../translations/translation";
-import { useLanguage } from "../context/LanguageContext";
-import Seo from "../components/Seo";
+
 import LoginPageContent from "../content/pages/login-page.json";
+
+// CONTEXTS
+import { useLanguage } from "../context/LanguageContext";
 import { useCart } from "../context/CartContext";
+
+// COMPONENTS
+import { PrimaryBtn } from "../components/PrimaryBtn";
+import Seo from "../components/Seo";
+
+//ICONS
+import { User } from "lucide-react";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
+
+import { loginPageEN, loginPageUA } from "../translations/translation";
 
 const LoginPage = () => {
 	const { cartList } = useCart();
@@ -21,6 +27,59 @@ const LoginPage = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [showPassword, setShowPassword] = useState(false);
+	const [errors, setErrors] = useState({});
+
+	const handleEmailChange = (e) => {
+		setEmail(e.target.value);
+
+		setErrors((currentErrors) => ({
+			...currentErrors,
+			email: "",
+		}));
+	};
+
+	const handlePasswordChange = (e) => {
+		setPassword(e.target.value);
+
+		setErrors((currentErrors) => ({
+			...currentErrors,
+			password: "",
+		}));
+	};
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+
+		const trimmedEmail = email.trim().toLowerCase();
+		const trimmedPassword = password.trim();
+
+		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+		const nextErrors = {};
+
+		if (!trimmedEmail) {
+			nextErrors.email = dict.emptyEmailMessage;
+		} else if (!emailRegex.test(trimmedEmail)) {
+			nextErrors.email = dict.invalidEmailMessage;
+		}
+
+		if (!trimmedPassword) {
+			nextErrors.password = dict.emptyPasswordMessage;
+		}
+
+		if (Object.keys(nextErrors).length > 0) {
+			setErrors(nextErrors);
+			return;
+		}
+
+		setErrors({});
+
+		console.log({
+			email: trimmedEmail,
+		});
+
+		// Later: Supabase login logic
+	};
 
 	return (
 		<div className="login-page">
@@ -29,15 +88,19 @@ const LoginPage = () => {
 				description={t(LoginPageContent.seo.description)}
 				image={LoginPageContent.seo.image}
 				imageAlt={t(LoginPageContent.seo.imageAlt)}
-				url={`/${currentLang}/shop`}
+				url={`/${currentLang}/login`}
 			/>
 			<div className="login-page__block-wrap container">
-				<div className="login-page__block">
+				<form
+					className="login-page__block"
+					onSubmit={handleSubmit}
+					noValidate
+				>
 					<div className="login-page__icon">
 						<User size="40" />
 					</div>
 					<h2 className="login-page__title">{dict.title}</h2>
-					<span className="login-page__coment">{dict.subtitle}</span>
+					<span className="login-page__comment">{dict.subtitle}</span>
 					<div className="login-page__field">
 						<label
 							className="login-page__label"
@@ -47,14 +110,16 @@ const LoginPage = () => {
 						</label>
 						<input
 							id="email"
-							className="login-page__input"
+							className={`login-page__input ${errors.email ? "login-page__input--error" : ""}`}
 							type="email"
 							value={email}
-							onChange={(e) => setEmail(e.target.value)}
+							onChange={handleEmailChange}
 							placeholder="email@example.com"
 							autoComplete="email"
 						/>
+						<p className="login-page__field-message">{errors.email}</p>
 					</div>
+
 					<div className="login-page__field">
 						<label
 							className="login-page__label"
@@ -65,10 +130,10 @@ const LoginPage = () => {
 						<div className="login-page__input-wrap">
 							<input
 								id="password"
-								className="login-page__input"
-								type="password"
+								className={`login-page__input ${errors.password ? "login-page__input--error" : ""}`}
+								type={showPassword ? "text" : "password"}
 								value={password}
-								onChange={(e) => setPassword(e.target.value)}
+								onChange={handlePasswordChange}
 								placeholder={dict.passwordPlaceholder}
 								autoComplete="current-password"
 							/>
@@ -76,7 +141,11 @@ const LoginPage = () => {
 								type="button"
 								className="login-page__toggle-password"
 								onClick={() => setShowPassword((prev) => !prev)}
-								aria-label={showPassword ? "Сховати пароль" : "Показати пароль"}
+								aria-label={
+									showPassword
+										? dict.hidePasswordAriaLabel
+										: dict.showPasswordAriaLabel
+								}
 							>
 								{showPassword ? (
 									<FaRegEye size={18} />
@@ -85,13 +154,17 @@ const LoginPage = () => {
 								)}
 							</button>
 						</div>
+						<p className="login-page__field-message">{errors.password}</p>
 					</div>
+
 					<PrimaryBtn
 						variant="login"
+						type="submit"
 						className="login-page__login-btn"
 					>
 						{dict.loginBtn}
 					</PrimaryBtn>
+
 					<Link
 						to={`/${currentLang}/registration`}
 						className="login-page__register-invitation-btn"
@@ -108,7 +181,7 @@ const LoginPage = () => {
 					>
 						{dict.continueWithoutAccount}
 					</Link>
-				</div>
+				</form>
 			</div>
 		</div>
 	);

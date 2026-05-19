@@ -21,7 +21,15 @@
 		"text": { "en": "participants", "ua": "людей" },
 		"amount-of-people": 6
 	},
-	"location": { "en": "Ireland, Galway", "ua": "Галвей, Ірландія" },
+	"location": { "en": "In person", "ua": "Особиста зустріч" },
+	"exactLocation": {
+		"en": "Galway, Ireland. Full address will be shared after booking confirmation.",
+		"ua": "Галвей, Ірландія. Точну адресу буде надіслано після підтвердження бронювання."
+	},
+	"time": {
+		"en": "11:00 AM – 2:00 PM",
+		"ua": "11:00 – 14:00"
+	},
 	"price": 85,
 	"currency": "EUR",
 	"includes": {
@@ -44,6 +52,7 @@
 		"en": "A warm, creative introduction to brooch making where participants learn the basics of composition, materials, and finishing techniques.",
 		"ua": "Теплий творчий воркшоп, де учасники знайомляться з основами композиції, матеріалами та техніками завершення брошки."
 	},
+
 	"image": {
 		"src": "/uploads/images/workshops/introduction-to-brooch-making.png",
 		"alt": {

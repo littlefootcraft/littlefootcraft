@@ -962,6 +962,31 @@ collections:
                 fields:
                   - { label: "English", name: "en", widget: "string" }
                   - { label: "Ukrainian", name: "ua", widget: "string" }
+  - name: "product_collections"
+    label: "Product Collections"
+    folder: "src/content/collections"
+    create: true
+    extension: "json"
+    format: "json"
+    identifier_field: "name.en"
+    slug: "{{fields.id}}"
+    fields:
+      - label: "Collection ID"
+        name: "id"
+        widget: "string"
+        hint: "Use lowercase words with hyphens. Example: bloom-spell"
+
+      - label: "Name"
+        name: "name"
+        widget: "object"
+        fields:
+          - { label: "English", name: "en", widget: "string" }
+          - { label: "Ukrainian", name: "ua", widget: "string" }
+
+      - label: "Image"
+        name: "image"
+        widget: "image"
+        required: false
 
   # PRODUCTS
   # BROOCHES
@@ -1063,21 +1088,13 @@ collections:
 
           - label: "Collection"
             name: "collection"
-            widget: "object"
+            widget: "relation"
+            collection: "product_collections"
+            search_fields: ["name.en", "name.ua", "id"]
+            value_field: "id"
+            display_fields: ["name.en"]
             required: false
-            fields:
-              - {
-                  label: "English",
-                  name: "en",
-                  widget: "string",
-                  required: false,
-                }
-              - {
-                  label: "Ukrainian",
-                  name: "ua",
-                  widget: "string",
-                  required: false,
-                }
+            hint: "Choose from collections created in Product Collections."
 
       - label: "Description"
         name: "description"
@@ -1241,21 +1258,13 @@ collections:
 
           - label: "Collection"
             name: "collection"
-            widget: "object"
+            widget: "relation"
+            collection: "product_collections"
+            search_fields: ["name.en", "name.ua", "id"]
+            value_field: "id"
+            display_fields: ["name.en"]
             required: false
-            fields:
-              - {
-                  label: "English",
-                  name: "en",
-                  widget: "string",
-                  required: false,
-                }
-              - {
-                  label: "Ukrainian",
-                  name: "ua",
-                  widget: "string",
-                  required: false,
-                }
+            hint: "Choose from collections created in Product Collections."
 
       - label: "Description"
         name: "description"
@@ -1419,21 +1428,13 @@ collections:
 
           - label: "Collection"
             name: "collection"
-            widget: "object"
+            widget: "relation"
+            collection: "product_collections"
+            search_fields: ["name.en", "name.ua", "id"]
+            value_field: "id"
+            display_fields: ["name.en"]
             required: false
-            fields:
-              - {
-                  label: "English",
-                  name: "en",
-                  widget: "string",
-                  required: false,
-                }
-              - {
-                  label: "Ukrainian",
-                  name: "ua",
-                  widget: "string",
-                  required: false,
-                }
+            hint: "Choose from collections created in Product Collections."
 
       - label: "Description"
         name: "description"
@@ -1597,21 +1598,13 @@ collections:
 
           - label: "Collection"
             name: "collection"
-            widget: "object"
+            widget: "relation"
+            collection: "product_collections"
+            search_fields: ["name.en", "name.ua", "id"]
+            value_field: "id"
+            display_fields: ["name.en"]
             required: false
-            fields:
-              - {
-                  label: "English",
-                  name: "en",
-                  widget: "string",
-                  required: false,
-                }
-              - {
-                  label: "Ukrainian",
-                  name: "ua",
-                  widget: "string",
-                  required: false,
-                }
+            hint: "Choose from collections created in Product Collections."
 
       - label: "Description"
         name: "description"
@@ -1775,21 +1768,13 @@ collections:
 
           - label: "Collection"
             name: "collection"
-            widget: "object"
+            widget: "relation"
+            collection: "product_collections"
+            search_fields: ["name.en", "name.ua", "id"]
+            value_field: "id"
+            display_fields: ["name.en"]
             required: false
-            fields:
-              - {
-                  label: "English",
-                  name: "en",
-                  widget: "string",
-                  required: false,
-                }
-              - {
-                  label: "Ukrainian",
-                  name: "ua",
-                  widget: "string",
-                  required: false,
-                }
+            hint: "Choose from collections created in Product Collections."
 
       - label: "Description"
         name: "description"
@@ -1861,8 +1846,8 @@ collections:
     create: true
     extension: "json"
     format: "json"
-    identifier_field: "title.en"
-    slug: "{{fields.title.en}}"
+    identifier_field: "id"
+    slug: "{{fields.id}}"
     hint:
       "Use lowercase words with hyphens, for example:
       introduction-to-brooch-making"
@@ -1923,12 +1908,42 @@ collections:
               widget: "number",
               value_type: "int",
             }
-      - label: "Location"
+      - label: "Location Type"
         name: "location"
         widget: "object"
+        hint: "Example: In person / Особиста зустріч"
+        fields:
+          - {
+              label: "English",
+              name: "en",
+              widget: "string",
+              default: "In person",
+            }
+          - {
+              label: "Ukrainian",
+              name: "ua",
+              widget: "string",
+              default: "Особиста зустріч",
+            }
+
+      - label: "Exact Location"
+        name: "exactLocation"
+        widget: "object"
+        hint:
+          "Example: Galway, Ireland. Full address will be shared after booking
+          confirmation."
+        fields:
+          - { label: "English", name: "en", widget: "text" }
+          - { label: "Ukrainian", name: "ua", widget: "text" }
+
+      - label: "Workshop Time"
+        name: "time"
+        widget: "object"
+        hint: "Example: 11:00 AM – 2:00 PM / 11:00 – 14:00"
         fields:
           - { label: "English", name: "en", widget: "string" }
           - { label: "Ukrainian", name: "ua", widget: "string" }
+
       - { label: "Price", name: "price", widget: "number", value_type: "int" }
       - label: "Currency"
         name: "currency"

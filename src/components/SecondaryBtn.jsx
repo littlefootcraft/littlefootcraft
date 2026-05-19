@@ -8,21 +8,6 @@ const BUTTON_CONFIG = {
 		icon: <ShoppingBag />,
 		iconPosition: "left",
 	},
-	// order: {
-	// 	icon: <IoArrowForwardOutline size={20} />,
-	// 	iconPosition: "right",
-	// },
-	// login: {
-	// 	icon: <HiOutlineLogin size={20} />,
-	// 	iconPosition: "left",
-	// },
-	// register: {
-	// 	icon: <FiLogIn size={20} />,
-	// 	iconPosition: "left",
-	// },
-	// confirm: {
-	// 	iconPosition: "left",
-	// },
 
 	"to-other-page": {
 		// icon: <FaWandMagicSparkles />,

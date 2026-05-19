@@ -29,10 +29,7 @@
 			"ua": "3.5 см x 3.5 см"
 		},
 		"color": ["blue", "red", "yellow", "pink"],
-		"collection": {
-			"en": "Shades of Ocean Blue",
-			"ua": "Відтінки океанської синяви"
-		}
+		"collection": "ocean-blue"
 	},
 	"description": {
 		"en": "This unique handmade brooch features a floral body in warm golden tones, with vibrant, iridescent tentacles that shimmer like a living kaleidoscope. Inspired by nature and art, the design combines lightness, fluidity, and movement, giving the impression that the brooch is almost alive. A bold and creative accessory for those who wish to express their individuality and add a touch of artistic flair to any outfit.",

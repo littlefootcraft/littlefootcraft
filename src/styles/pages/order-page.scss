@@ -1,0 +1,366 @@
+@use "./../../styles/base/variables" as *;
+@use "./../abstracts/mixins" as *;
+
+.order-page {
+	background-color: $cream;
+	color: $primary-text;
+
+	&__header {
+		max-width: 760px;
+		margin: 0 auto 48px;
+		text-align: center;
+	}
+
+	&__icon {
+		width: 36px;
+		height: 36px;
+		margin-bottom: 16px;
+		color: $gold-accent;
+	}
+
+	&__title {
+		margin-bottom: 16px;
+		font-family: var(--title-font);
+		font-size: clamp(2rem, 4vw, 3.5rem);
+		font-weight: 500;
+		line-height: 1.1;
+	}
+
+	&__text {
+		font-size: 1rem;
+		line-height: 1.7;
+		color: $secondary-text;
+	}
+
+	&__content {
+		margin-block: 40px;
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) 420px;
+		gap: 32px;
+		align-items: start;
+	}
+
+	&__form,
+	&__summary {
+		border: 1px solid rgba($gold-accent, 0.22);
+		border-radius: $border-radius;
+		background: linear-gradient(
+			135deg,
+			rgba(255, 255, 255, 0.82),
+			rgba($parchment, 0.88)
+		);
+		box-shadow: 0 20px 50px rgba($primary-text, 0.08);
+	}
+
+	&__form {
+		padding: clamp(16px, 4vw, 40px);
+
+		&-divider {
+			margin-bottom: 50px;
+		}
+	}
+
+	&__summary {
+		position: sticky;
+		top: 110px;
+		padding: 28px;
+	}
+
+	&__section-title {
+		margin-bottom: 22px;
+		font-family: var(--title-font);
+		font-size: 1.5rem;
+		font-weight: 500;
+	}
+
+	&__row {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 18px;
+	}
+
+	&__field {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		margin-bottom: 20px;
+
+		label {
+			font-size: 0.78rem;
+			font-weight: 500;
+			letter-spacing: 0.12em;
+			text-transform: uppercase;
+			color: rgba($primary-text, 0.75);
+		}
+
+		input,
+		textarea {
+			width: 100%;
+			border: 1px solid rgba($gold-accent, 0.3);
+			border-radius: $border-radius;
+			padding: 14px 16px;
+			font-family: var(--text-font);
+			font-size: 1rem;
+			color: $primary-text;
+			background-color: rgba($cream, 0.9);
+			outline: none;
+			transition:
+				border-color 0.25s ease,
+				box-shadow 0.25s ease,
+				background-color 0.25s ease;
+
+			&:focus {
+				border-color: $gold-accent;
+				background-color: #fff;
+				box-shadow: 0 0 0 4px rgba($gold-accent, 0.12);
+			}
+		}
+
+		textarea {
+			margin-bottom: 14px;
+			min-height: 130px;
+			resize: vertical;
+		}
+	}
+
+	&__notice {
+		display: flex;
+		gap: 12px;
+		align-items: flex-start;
+		margin: 8px 0 28px;
+		padding: 16px;
+		border-radius: $border-radius;
+		background-color: rgba($light-gold, 0.16);
+		color: $secondary-text;
+		line-height: 1.5;
+
+		svg {
+			flex-shrink: 0;
+			width: 22px;
+			height: 22px;
+			color: $gold-accent;
+		}
+	}
+
+	&__items {
+		display: flex;
+		flex-direction: column;
+		gap: 18px;
+	}
+
+	&__item {
+		display: grid;
+		grid-template-columns: 74px 1fr auto;
+		gap: 14px;
+		align-items: center;
+		padding-bottom: 18px;
+		// border-bottom: 1px solid rgba($gold-accent, 0.18);
+	}
+
+	&__item-image {
+		width: 74px;
+		height: 74px;
+		border-radius: 14px;
+		object-fit: cover;
+		background-color: $parchment;
+	}
+
+	&__item-info {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+
+		h3 {
+			font-size: 0.95rem;
+			font-weight: 500;
+			line-height: 1.35;
+		}
+
+		span {
+			font-size: 0.82rem;
+			color: $secondary-text;
+		}
+	}
+
+	&__total {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-top: 24px;
+		padding-top: 20px;
+		border-top: 1px solid rgba($gold-accent, 0.28);
+
+		font-size: var(--card-title-size);
+		font-family: var(--title-font);
+		color: #1a2b4c;
+		font-weight: 300;
+
+		strong {
+			color: $gold-accent;
+			font-family: var(--title-font);
+			font-weight: 700;
+			font-size: var(--card-price-size);
+		}
+	}
+
+	&__summary-note {
+		margin-top: 18px;
+		font-size: 0.9rem;
+		line-height: 1.6;
+		color: $secondary-text;
+	}
+
+	&__back-link {
+		display: inline-flex;
+		margin-top: 20px;
+		font-size: 0.85rem;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: $gold-accent;
+		text-decoration: none;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	// BREADCRUMBS
+	&__breadcrumbs {
+		margin-block: 20px;
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 8px;
+		font-size: 1rem;
+		color: $light-gray-text;
+
+		&-link {
+			color: $light-gray-text;
+			text-decoration: none;
+			transition: color 0.2s ease;
+
+			&:hover {
+				color: $gold-accent;
+			}
+		}
+
+		&-separator {
+			color: $light-gray-text;
+		}
+
+		&-current {
+			color: $primary-text;
+			font-weight: 500;
+		}
+	}
+
+	// GIFT POSTCARD
+	&__gift {
+		margin-top: 8px;
+		margin-bottom: 28px;
+	}
+
+	&__gift-checkbox {
+		margin-bottom: 14px;
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		padding: 16px 18px;
+		border: 1px solid rgba($gold-accent, 0.3);
+		border-radius: $border-radius;
+		background-color: rgba($cream, 0.9);
+		cursor: pointer;
+		transition:
+			border-color 0.25s ease,
+			box-shadow 0.25s ease,
+			background-color 0.25s ease;
+
+		&:hover {
+			border-color: rgba($gold-accent, 0.65);
+			box-shadow: 0 8px 24px rgba($primary-text, 0.06);
+		}
+
+		input {
+			width: 18px;
+			height: 18px;
+			accent-color: $gold-accent;
+			cursor: pointer;
+		}
+
+		span {
+			flex: 1;
+			font-size: 0.95rem;
+			font-weight: 500;
+			color: $primary-text;
+		}
+
+		strong {
+			color: $gold-accent;
+			font-weight: 600;
+			font-family: var(--title-font);
+			font-size: var(--card-price-size);
+		}
+	}
+
+	&__char-count {
+		margin-top: -12px;
+		font-size: 0.8rem;
+		color: $secondary-text;
+	}
+
+	// SUMMARY EXTRA ROW
+	&__extra {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-top: 18px;
+		padding-top: 18px;
+		border-top: 1px solid rgba($gold-accent, 0.18);
+		font-size: 0.95rem;
+
+		span {
+			color: $secondary-text;
+		}
+
+		strong {
+			color: $primary-text;
+			font-weight: 500;
+		}
+	}
+
+	@include tablet {
+		.order-page {
+			padding-block: 96px 64px;
+
+			&__content {
+				grid-template-columns: 1fr;
+			}
+
+			&__summary {
+				position: static;
+			}
+		}
+	}
+
+	@include mobile {
+		&__content {
+			margin-block: 20px;
+		}
+		&__row {
+			grid-template-columns: 1fr;
+			gap: 0;
+		}
+
+		&__item {
+			grid-template-columns: 64px 1fr;
+		}
+
+		&__item strong {
+			grid-column: 2;
+		}
+
+		&__summary {
+			padding: 16px;
+		}
+	}
+}

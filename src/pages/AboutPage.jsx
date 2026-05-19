@@ -123,7 +123,7 @@ const AboutPage = () => {
 					<div>
 						<PrimaryBtn
 							className="about__cta-button"
-							variant="to-catalog"
+							variant="to-shop"
 							to={`/${currentLang}${AboutPageContent.cta.button.to}`}
 						>
 							{t(AboutPageContent.cta.button.label)}
