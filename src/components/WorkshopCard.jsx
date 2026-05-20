@@ -82,6 +82,24 @@ export const WorkshopCard = ({ workshop }) => {
 						</p>
 					)}
 				</div>
+				{workshop.includes && (
+					<div className="workshop-card__includes">
+						<span className="workshop-card__includes-title">
+							{currentLang === "ua" ? "Що включено" : "What's Included"}
+						</span>
+
+						<ul className="workshop-card__includes-list">
+							{t(workshop.includes)?.map((item) => (
+								<li
+									key={item}
+									className="workshop-card__includes-item"
+								>
+									{item}
+								</li>
+							))}
+						</ul>
+					</div>
+				)}
 				<div className="workshop-card__calendar">
 					<span className="workshop-card__calendar-title">
 						{t(workshop.upcomingDates.title)}

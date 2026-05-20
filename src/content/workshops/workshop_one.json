@@ -8,7 +8,6 @@
 		"en": "Learn the fundamentals of brooch crafting in this beginner-friendly workshop.",
 		"ua": "Опануйте основи створення брошок на цьому воркшопі для початківців."
 	},
-	"category": "brooch-making",
 
 	"duration": {
 		"value": 3,
@@ -31,7 +30,6 @@
 		"ua": "11:00 – 14:00"
 	},
 	"price": 85,
-	"currency": "EUR",
 	"includes": {
 		"en": [
 			"All materials",

@@ -81,6 +81,42 @@
 		}
 	}
 
+	// INCLUDES-------------------
+	&__includes {
+		margin-top: 24px;
+		padding: 18px;
+		border-radius: $border-radius;
+		background-color: rgba($light-gold, 0.12);
+
+		&-title {
+			display: block;
+			margin-bottom: 12px;
+			font-size: 0.8rem;
+			font-weight: 600;
+			letter-spacing: 0.12em;
+			text-transform: uppercase;
+			color: $gold-accent;
+		}
+
+		&-list {
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+		}
+
+		&-item {
+			font-size: 0.95rem;
+			line-height: 1.5;
+			color: $secondary-text;
+
+			&::before {
+				content: "✦";
+				margin-right: 10px;
+				color: $gold-accent;
+			}
+		}
+	}
+
 	&__calendar {
 		margin-top: 24px;
 		display: flex;

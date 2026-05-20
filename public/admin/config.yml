@@ -1040,27 +1040,78 @@ collections:
       - label: "SEO"
         name: "seo"
         widget: "object"
+        hint:
+          "SEO helps Google understand the product and improves search results."
         fields:
           - label: "Title"
             name: "title"
             widget: "object"
+            hint:
+              "Short title shown in Google search results. Include product name
+              and brand."
             fields:
-              - { label: "English", name: "en", widget: "string" }
-              - { label: "Ukrainian", name: "ua", widget: "string" }
+              - {
+                  label: "English",
+                  name: "en",
+                  widget: "string",
+                  hint:
+                    "Example: Brooch Jellyfish Ann Blue Lulworth |
+                    LittleFootCraft",
+                }
+              - {
+                  label: "Ukrainian",
+                  name: "ua",
+                  widget: "string",
+                  hint:
+                    "Example: Брошка Джеллифіш Анн Блю Лулворд | LittleFootCraft",
+                }
 
           - label: "Description"
             name: "description"
             widget: "object"
+            hint:
+              "Short description for Google search results. Describe the product
+              naturally."
             fields:
-              - { label: "English", name: "en", widget: "text" }
-              - { label: "Ukrainian", name: "ua", widget: "text" }
+              - {
+                  label: "English",
+                  name: "en",
+                  widget: "text",
+                  hint:
+                    "Example: Handcrafted jellyfish brooch in soft gray-blue
+                    tones with shimmering details.",
+                }
+              - {
+                  label: "Ukrainian",
+                  name: "ua",
+                  widget: "text",
+                  hint:
+                    "Example: Ручна робота брошки Джеллифіш Анн Блю Лулворд |
+                    LittleFootCraft",
+                }
 
           - label: "Image Alt"
             name: "imageAlt"
             widget: "object"
+            hint:
+              "Describe the main SEO image for accessibility and Google image
+              search."
             fields:
-              - { label: "English", name: "en", widget: "string" }
-              - { label: "Ukrainian", name: "ua", widget: "string" }
+              - {
+                  label: "English",
+                  name: "en",
+                  widget: "string",
+                  hint:
+                    "Example: Brooch Jellyfish Ann Blue Lulworth by
+                    LittleFootCraft",
+                }
+              - {
+                  label: "Ukrainian",
+                  name: "ua",
+                  widget: "string",
+                  hint:
+                    "Example: Брошка Джеллифіш Анн Блю Лулворд | LittleFootCraft",
+                }
 
       - label: "Name"
         name: "name"
@@ -1222,27 +1273,73 @@ collections:
       - label: "SEO"
         name: "seo"
         widget: "object"
+        hint:
+          "SEO helps Google understand the painting and improves search results."
         fields:
           - label: "Title"
             name: "title"
             widget: "object"
+            hint:
+              "Short title shown in Google search results. Include painting name
+              and brand."
             fields:
-              - { label: "English", name: "en", widget: "string" }
-              - { label: "Ukrainian", name: "ua", widget: "string" }
+              - {
+                  label: "English",
+                  name: "en",
+                  widget: "string",
+                  hint: "Example: Moonlit Forest Painting | LittleFootCraft",
+                }
+              - {
+                  label: "Ukrainian",
+                  name: "ua",
+                  widget: "string",
+                  hint: "Example: Місячний ліс Форест Пінг | LittleFootCraft",
+                }
 
           - label: "Description"
             name: "description"
             widget: "object"
+            hint:
+              "Short description for Google search results. Describe colors,
+              mood, style, or inspiration."
             fields:
-              - { label: "English", name: "en", widget: "text" }
-              - { label: "Ukrainian", name: "ua", widget: "text" }
+              - {
+                  label: "English",
+                  name: "en",
+                  widget: "text",
+                  hint:
+                    "Example: Hand-painted fantasy forest artwork with deep blue
+                    tones and magical atmosphere.",
+                }
+              - {
+                  label: "Ukrainian",
+                  name: "ua",
+                  widget: "text",
+                  hint:
+                    "Example: Рукописна фантазійна лісова графіка з глибокими
+                    синіми тонами та магічною атмосфераю.",
+                }
 
           - label: "Image Alt"
             name: "imageAlt"
             widget: "object"
+            hint:
+              "Describe the main painting image for accessibility and Google
+              image search."
             fields:
-              - { label: "English", name: "en", widget: "string" }
-              - { label: "Ukrainian", name: "ua", widget: "string" }
+              - {
+                  label: "English",
+                  name: "en",
+                  widget: "string",
+                  hint:
+                    "Example: Moonlit Forest fantasy painting by LittleFootCraft",
+                }
+              - {
+                  label: "Ukrainian",
+                  name: "ua",
+                  widget: "string",
+                  hint: "Example: Місячний ліс Форест Пінг | LittleFootCraft",
+                }
 
       - label: "Name"
         name: "name"
@@ -1404,27 +1501,72 @@ collections:
       - label: "SEO"
         name: "seo"
         widget: "object"
+        hint:
+          "SEO helps Google understand the necklace and improves search results."
         fields:
           - label: "Title"
             name: "title"
             widget: "object"
+            hint:
+              "Short title shown in Google search results. Include necklace name
+              and brand."
             fields:
-              - { label: "English", name: "en", widget: "string" }
-              - { label: "Ukrainian", name: "ua", widget: "string" }
+              - {
+                  label: "English",
+                  name: "en",
+                  widget: "string",
+                  hint: "Example: Moon Crystal Necklace | LittleFootCraft",
+                }
+              - {
+                  label: "Ukrainian",
+                  name: "ua",
+                  widget: "string",
+                  hint: "Example: Місячний кристал | LittleFootCraft",
+                }
 
           - label: "Description"
             name: "description"
             widget: "object"
+            hint:
+              "Short description for Google search results. Describe materials,
+              colors, mood, or inspiration."
             fields:
-              - { label: "English", name: "en", widget: "text" }
-              - { label: "Ukrainian", name: "ua", widget: "text" }
+              - {
+                  label: "English",
+                  name: "en",
+                  widget: "text",
+                  hint:
+                    "Example: Handcrafted fantasy necklace with shimmering
+                    crystals and magical celestial details.",
+                }
+              - {
+                  label: "Ukrainian",
+                  name: "ua",
+                  widget: "text",
+                  hint:
+                    "Example: Ручна робота фантазійна намисто з блискучими
+                    кристалами та магічними небесними деталями.",
+                }
 
           - label: "Image Alt"
             name: "imageAlt"
             widget: "object"
+            hint:
+              "Describe the main necklace image for accessibility and Google
+              image search."
             fields:
-              - { label: "English", name: "en", widget: "string" }
-              - { label: "Ukrainian", name: "ua", widget: "string" }
+              - {
+                  label: "English",
+                  name: "en",
+                  widget: "string",
+                  hint: "Example: Moon Crystal Necklace by LittleFootCraft",
+                }
+              - {
+                  label: "Ukrainian",
+                  name: "ua",
+                  widget: "string",
+                  hint: "Example: Місячний кристал | LittleFootCraft",
+                }
 
       - label: "Name"
         name: "name"
@@ -1586,27 +1728,72 @@ collections:
       - label: "SEO"
         name: "seo"
         widget: "object"
+        hint:
+          "SEO helps Google understand the postcard and improves search results."
         fields:
           - label: "Title"
             name: "title"
             widget: "object"
+            hint:
+              "Short title shown in Google search results. Include postcard name
+              and brand."
             fields:
-              - { label: "English", name: "en", widget: "string" }
-              - { label: "Ukrainian", name: "ua", widget: "string" }
+              - {
+                  label: "English",
+                  name: "en",
+                  widget: "string",
+                  hint: "Example: Magical Forest Postcard | LittleFootCraft",
+                }
+              - {
+                  label: "Ukrainian",
+                  name: "ua",
+                  widget: "string",
+                  hint: "Example: Магічний ліс | LittleFootCraft",
+                }
 
           - label: "Description"
             name: "description"
             widget: "object"
+            hint:
+              "Short description for Google search results. Describe the
+              artwork, colors, mood, or inspiration."
             fields:
-              - { label: "English", name: "en", widget: "text" }
-              - { label: "Ukrainian", name: "ua", widget: "text" }
+              - {
+                  label: "English",
+                  name: "en",
+                  widget: "text",
+                  hint:
+                    "Example: Fantasy art postcard featuring magical forest
+                    scenery in soft watercolor tones.",
+                }
+              - {
+                  label: "Ukrainian",
+                  name: "ua",
+                  widget: "text",
+                  hint:
+                    "Example: Фантазійна малюнок посткоду, що відображає
+                    магічний ліс у м'яких водяних фарбах.",
+                }
 
           - label: "Image Alt"
             name: "imageAlt"
             widget: "object"
+            hint:
+              "Describe the main postcard image for accessibility and Google
+              image search."
             fields:
-              - { label: "English", name: "en", widget: "string" }
-              - { label: "Ukrainian", name: "ua", widget: "string" }
+              - {
+                  label: "English",
+                  name: "en",
+                  widget: "string",
+                  hint: "Example: Magical Forest postcard by LittleFootCraft",
+                }
+              - {
+                  label: "Ukrainian",
+                  name: "ua",
+                  widget: "string",
+                  hint: "Example: Магічний ліс | LittleFootCraft",
+                }
 
       - label: "Name"
         name: "name"
@@ -1768,27 +1955,71 @@ collections:
       - label: "SEO"
         name: "seo"
         widget: "object"
+        hint: "SEO helps Google understand the bag and improves search results."
         fields:
           - label: "Title"
             name: "title"
             widget: "object"
+            hint:
+              "Short title shown in Google search results. Include bag name and
+              brand."
             fields:
-              - { label: "English", name: "en", widget: "string" }
-              - { label: "Ukrainian", name: "ua", widget: "string" }
+              - {
+                  label: "English",
+                  name: "en",
+                  widget: "string",
+                  hint: "Example: Enchanted Forest Bag | LittleFootCraft",
+                }
+              - {
+                  label: "Ukrainian",
+                  name: "ua",
+                  widget: "string",
+                  hint: "Example: Зачарований ліс | LittleFootCraft",
+                }
 
           - label: "Description"
             name: "description"
             widget: "object"
+            hint:
+              "Short description for Google search results. Describe style,
+              colors, materials, or inspiration."
             fields:
-              - { label: "English", name: "en", widget: "text" }
-              - { label: "Ukrainian", name: "ua", widget: "text" }
+              - {
+                  label: "English",
+                  name: "en",
+                  widget: "text",
+                  hint:
+                    "Example: Handcrafted fantasy bag with embroidered magical
+                    details and deep forest tones.",
+                }
+              - {
+                  label: "Ukrainian",
+                  name: "ua",
+                  widget: "text",
+                  hint:
+                    "Приклад: Сумка ручної роботи з вишитими магічними деталями
+                    та глибокими лісовими відтінками.",
+                }
 
           - label: "Image Alt"
             name: "imageAlt"
             widget: "object"
+            hint:
+              "Describe the main bag image for accessibility and Google image
+              search."
             fields:
-              - { label: "English", name: "en", widget: "string" }
-              - { label: "Ukrainian", name: "ua", widget: "string" }
+              - {
+                  label: "English",
+                  name: "en",
+                  widget: "string",
+                  hint: "Example: Enchanted Forest Bag by LittleFootCraft",
+                }
+              - {
+                  label: "Ukrainian",
+                  name: "ua",
+                  widget: "string",
+                  hint: "Приклад: Сумка Зачарований ліс від LittleFootCraft",
+                }
 
       - label: "Name"
         name: "name"
@@ -1930,7 +2161,7 @@ collections:
                   hint: "Приклад: Брошка-медуза спереду",
                 }
 
-  # WORKSOPS
+  # WORKSHOPS
   - name: "workshops"
     label: "Workshops"
     folder: "src/content/workshops"
@@ -1943,11 +2174,19 @@ collections:
       "Use lowercase words with hyphens, for example:
       introduction-to-brooch-making"
     fields:
-      - { label: "ID", name: "id", widget: "string" }
+      - {
+          label: "ID",
+          name: "id",
+          widget: "string",
+          hint:
+            "Use lowercase English words with hyphens. No spaces. Example:
+            intro-brooch-making",
+        }
 
       - label: "Title"
         name: "title"
         widget: "object"
+
         fields:
           - { label: "English", name: "en", widget: "string" }
           - { label: "Ukrainian", name: "ua", widget: "string" }
@@ -1958,12 +2197,6 @@ collections:
         fields:
           - { label: "English", name: "en", widget: "text" }
           - { label: "Ukrainian", name: "ua", widget: "text" }
-
-      - label: "Category"
-        name: "category"
-        widget: "select"
-        options:
-          - { label: "Brooch Making", value: "brooch-making" }
 
       - label: "Duration"
         name: "duration"
@@ -2002,47 +2235,68 @@ collections:
       - label: "Location Type"
         name: "location"
         widget: "object"
-        hint: "Example: In person / Особиста зустріч"
+        hint:
+          "Short location type shown on the website. Example: In person /
+          Особиста зустріч"
         fields:
           - {
               label: "English",
               name: "en",
               widget: "string",
-              default: "In person",
+              default: "Example: In person",
             }
           - {
               label: "Ukrainian",
               name: "ua",
               widget: "string",
-              default: "Особиста зустріч",
+              default: "Приклад: Особиста зустріч",
             }
 
       - label: "Exact Location"
         name: "exactLocation"
         widget: "object"
         hint:
-          "Example: Galway, Ireland. Full address will be shared after booking
-          confirmation."
+          "Add city/country only, or full details if public. If private, mention
+          that full address is shared after confirmation."
         fields:
-          - { label: "English", name: "en", widget: "text" }
-          - { label: "Ukrainian", name: "ua", widget: "text" }
+          - {
+              label: "English",
+              name: "en",
+              widget: "text",
+              hint:
+                "Example: Galway, Ireland. Full address will be shared after
+                booking confirmation.",
+            }
+          - {
+              label: "Ukrainian",
+              name: "ua",
+              widget: "text",
+              hint:
+                "Приклад: Галвей, Ірландія. Точну адресу буде надіслано після
+                підтвердження бронювання.",
+            }
 
       - label: "Workshop Time"
         name: "time"
         widget: "object"
-        hint: "Example: 11:00 AM – 2:00 PM / 11:00 – 14:00"
+        hint:
+          "Use a clear time range. English can use AM/PM, Ukrainian can use
+          24-hour format."
         fields:
-          - { label: "English", name: "en", widget: "string" }
-          - { label: "Ukrainian", name: "ua", widget: "string" }
+          - {
+              label: "English",
+              name: "en",
+              widget: "string",
+              hint: "Example: 11:00 AM – 2:00 PM",
+            }
+          - {
+              label: "Ukrainian",
+              name: "ua",
+              widget: "string",
+              hint: "Приклад: 11:00 – 14:00",
+            }
 
       - { label: "Price", name: "price", widget: "number", value_type: "int" }
-      - label: "Currency"
-        name: "currency"
-        widget: "select"
-        options:
-          - "EUR"
-          - "USD"
-          - "GBP"
 
       - label: "Includes"
         name: "includes"
@@ -2096,23 +2350,22 @@ collections:
           - label: "Alt"
             name: "alt"
             widget: "object"
+            hint:
+              "Describe the workshop image for accessibility and Google image
+              search."
             fields:
-              - { label: "English", name: "en", widget: "string" }
-              - { label: "Ukrainian", name: "ua", widget: "string" }
-
-      - label: "Badges"
-        name: "badges"
-        widget: "object"
-        fields:
-          - {
-              label: "Featured",
-              name: "isFeatured",
-              widget: "boolean",
-              default: false,
-            }
-          - { label: "New", name: "isNew", widget: "boolean", default: false }
-
-      - { label: "Active", name: "isActive", widget: "boolean", default: true }
+              - {
+                  label: "English",
+                  name: "en",
+                  widget: "string",
+                  hint: "Example: Introduction to Brooch Making workshop",
+                }
+              - {
+                  label: "Ukrainian",
+                  name: "ua",
+                  widget: "string",
+                  hint: "Приклад: Вступ до виготовлення брошок",
+                }
 
   # MODALS
   - name: "modals"
