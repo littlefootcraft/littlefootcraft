@@ -19,6 +19,22 @@ collections:
             widget: "boolean"
             default: true
 
+  - name: "store_config"
+    label: "Store Config"
+    file: "src/content/store-config.json"
+    format: "json"
+    fields:
+      - label: "Currency"
+        name: "currency"
+        widget: "object"
+        fields:
+          - label: "Active Currency"
+            name: "active"
+            widget: "select"
+            options:
+              - { label: "Euro (€)", value: "EUR" }
+              - { label: "Ukrainian Hryvnia (₴)", value: "UAH" }
+
   - name: "pages"
     label: "Pages"
     files:
@@ -1000,8 +1016,12 @@ collections:
     slug: "{{fields.sku}}"
 
     fields:
-      - { label: "SKU", name: "sku", widget: "string" }
-
+      - label: "SKU"
+        name: "sku"
+        widget: "string"
+        hint:
+          "SKU format: BRMMDD-001. BR = Brooch. Example: BR0326-004 means brooch
+          made on March 26, item number 4."
       - label: "SEO"
         name: "seo"
         widget: "object"
@@ -1054,13 +1074,6 @@ collections:
                   widget: "string",
                   default: "Брошка",
                 }
-
-          - label: "Design"
-            name: "design"
-            widget: "object"
-            fields:
-              - { label: "English", name: "en", widget: "string" }
-              - { label: "Ukrainian", name: "ua", widget: "string" }
 
           - label: "Size"
             name: "size"
@@ -1170,8 +1183,12 @@ collections:
     slug: "{{fields.sku}}"
 
     fields:
-      - { label: "SKU", name: "sku", widget: "string" }
-
+      - label: "SKU"
+        name: "sku"
+        widget: "string"
+        hint:
+          "SKU format: PAMMDD-001. PA = Painting. Example: PA0326-004 means
+          painting made on March 26, item number 4."
       - label: "SEO"
         name: "seo"
         widget: "object"
@@ -1224,13 +1241,6 @@ collections:
                   widget: "string",
                   default: "Брошка",
                 }
-
-          - label: "Design"
-            name: "design"
-            widget: "object"
-            fields:
-              - { label: "English", name: "en", widget: "string" }
-              - { label: "Ukrainian", name: "ua", widget: "string" }
 
           - label: "Size"
             name: "size"
@@ -1340,8 +1350,12 @@ collections:
     slug: "{{fields.sku}}"
 
     fields:
-      - { label: "SKU", name: "sku", widget: "string" }
-
+      - label: "SKU"
+        name: "sku"
+        widget: "string"
+        hint:
+          "SKU format: NEMMDD-001. NE = Necklace. Example: NE0326-004 means
+          necklace made on March 26, item number 4."
       - label: "SEO"
         name: "seo"
         widget: "object"
@@ -1394,13 +1408,6 @@ collections:
                   widget: "string",
                   default: "Брошка",
                 }
-
-          - label: "Design"
-            name: "design"
-            widget: "object"
-            fields:
-              - { label: "English", name: "en", widget: "string" }
-              - { label: "Ukrainian", name: "ua", widget: "string" }
 
           - label: "Size"
             name: "size"
@@ -1510,8 +1517,12 @@ collections:
     slug: "{{fields.sku}}"
 
     fields:
-      - { label: "SKU", name: "sku", widget: "string" }
-
+      - label: "SKU"
+        name: "sku"
+        widget: "string"
+        hint:
+          "SKU format: POMMDD-001. PO = Postcard. Example: PO0326-004 means
+          postcard made on March 26, item number 4."
       - label: "SEO"
         name: "seo"
         widget: "object"
@@ -1564,13 +1575,6 @@ collections:
                   widget: "string",
                   default: "Брошка",
                 }
-
-          - label: "Design"
-            name: "design"
-            widget: "object"
-            fields:
-              - { label: "English", name: "en", widget: "string" }
-              - { label: "Ukrainian", name: "ua", widget: "string" }
 
           - label: "Size"
             name: "size"
@@ -1680,8 +1684,12 @@ collections:
     slug: "{{fields.sku}}"
 
     fields:
-      - { label: "SKU", name: "sku", widget: "string" }
-
+      - label: "SKU"
+        name: "sku"
+        widget: "string"
+        hint:
+          "SKU format: BAMMDD-001. BA = Bag. Example: BA0326-004 means bag made
+          on March 26, item number 4."
       - label: "SEO"
         name: "seo"
         widget: "object"
@@ -1734,13 +1742,6 @@ collections:
                   widget: "string",
                   default: "Брошка",
                 }
-
-          - label: "Design"
-            name: "design"
-            widget: "object"
-            fields:
-              - { label: "English", name: "en", widget: "string" }
-              - { label: "Ukrainian", name: "ua", widget: "string" }
 
           - label: "Size"
             name: "size"

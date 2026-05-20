@@ -328,6 +328,13 @@
 		}
 	}
 
+	// ERRORS
+	&__error {
+		margin-top: -4px;
+		font-size: 0.8rem;
+		color: $error-message;
+	}
+
 	@include tablet {
 		.order-page {
 			padding-block: 96px 64px;

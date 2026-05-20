@@ -379,9 +379,112 @@ export const orderPageEN = {
 	title: "Request Your Order",
 	subtitle:
 		"Your order is not confirmed yet. We will check availability, shipping, and send you a confirmation with payment details.",
+
+	// Breadcrumbs
+	home: "Home",
+	shop: "Shop",
+	cart: "Cart",
+	checkout: "Checkout",
+
+	// Sections
+	contactTitle: "Contact Details",
+	shippingTitle: "Shipping Address",
+	summaryTitle: "Order Summary",
+
+	// Fields
+	name: "Name",
+	lastName: "Last Name",
+	email: "Email",
+	phone: "Phone",
+	address: "Address",
+	apartment: "Apartment, suite, etc.",
+	city: "City",
+	postalCode: "Postal Code",
+	country: "Country",
+
+	// Gift
+	giftPostcard: "Add a gift postcard",
+	giftNote: "Gift Note optional",
+	giftPlaceholder: "Write a magical message for your recipient...",
+	giftPostcardSummary: "Gift postcard",
+
+	// Buttons
+	submitBtn: "Send Order Request",
+	backToCart: "Back to cart",
+
+	// Summary
+	total: "Total",
+	shippingNote:
+		"Shipping price will be confirmed after we check the item location and destination country.",
+
+	// Notice
+	paymentNotice:
+		"Payment is not taken now. The owner will confirm your order first.",
+
+	// Errors
+	nameError: "Please enter your name.",
+	lastNameError: "Please enter your last name.",
+	emailError: "Please enter your email.",
+	addressError: "Please enter your address.",
+	apartmentError: "Please enter apartment or suite information.",
+	cityError: "Please enter your city.",
+	postalCodeError: "Please enter your postal code.",
+	countryError: "Please enter your country.",
 };
+
 export const orderPageUA = {
 	title: "Запит на замовлення",
 	subtitle:
 		"Ваше замовлення ще не підтверджене. Ми перевіримо доступність, доставку та надішлемо вам підтвердження з деталями оплати.",
+
+	// Breadcrumbs
+	home: "Головна",
+	shop: "Магазин",
+	cart: "Кошик",
+	checkout: "Оформлення",
+
+	// Sections
+	contactTitle: "Контактні дані",
+	shippingTitle: "Адреса доставки",
+	summaryTitle: "Підсумок замовлення",
+
+	// Fields
+	name: "Ім’я",
+	lastName: "Прізвище",
+	email: "Електронна пошта",
+	phone: "Телефон",
+	address: "Адреса",
+	apartment: "Квартира, офіс тощо",
+	city: "Місто",
+	postalCode: "Поштовий індекс",
+	country: "Країна",
+
+	// Gift
+	giftPostcard: "Додати подарункову листівку",
+	giftNote: "Текст для листівки (необов’язково)",
+	giftPlaceholder: "Напишіть чарівне побажання для отримувача...",
+	giftPostcardSummary: "Подарункова листівка",
+
+	// Buttons
+	submitBtn: "Надіслати запит на замовлення",
+	backToCart: "Назад до кошика",
+
+	// Summary
+	total: "Разом",
+	shippingNote:
+		"Вартість доставки буде підтверджена після перевірки місця знаходження товару та країни доставки.",
+
+	// Notice
+	paymentNotice:
+		"Оплата зараз не стягується. Власник магазину спочатку підтвердить ваше замовлення.",
+
+	// Errors
+	nameError: "Будь ласка, введіть ім’я.",
+	lastNameError: "Будь ласка, введіть прізвище.",
+	emailError: "Будь ласка, введіть електронну пошту.",
+	addressError: "Будь ласка, введіть адресу.",
+	apartmentError: "Будь ласка, введіть квартиру або офіс.",
+	cityError: "Будь ласка, введіть місто.",
+	postalCodeError: "Будь ласка, введіть поштовий індекс.",
+	countryError: "Будь ласка, введіть країну.",
 };

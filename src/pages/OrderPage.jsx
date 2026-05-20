@@ -20,11 +20,13 @@ const OrderPage = () => {
 	const { currentLang } = useLanguage();
 	const products = useProducts();
 	const { cartList } = useCart();
+	const [errors, setErrors] = useState({});
 
 	const dict = currentLang === "en" ? orderPageEN : orderPageUA;
 
 	const [form, setForm] = useState({
 		name: "",
+		lastName: "",
 		email: "",
 		phone: "",
 		address: "",
@@ -64,18 +66,72 @@ const OrderPage = () => {
 	const handleSubmit = (event) => {
 		event.preventDefault();
 
+		const newErrors = {};
+
+		if (form.name.trim().length < 2) {
+			newErrors.name = dict.nameError;
+		}
+
+		if (form.lastName.trim().length < 2) {
+			newErrors.lastName = dict.lastNameError;
+		}
+
+		if (!form.email.trim()) {
+			newErrors.email = dict.emailError;
+		}
+
+		if (!form.address.trim()) {
+			newErrors.address = dict.addressError;
+		}
+
+		if (!form.city.trim()) {
+			newErrors.city = dict.cityError;
+		}
+
+		if (!form.postalCode.trim()) {
+			newErrors.postalCode = dict.postalCodeError;
+		}
+
+		if (!form.country.trim()) {
+			newErrors.country = dict.countryError;
+		}
+		if (!form.apartment.trim()) {
+			newErrors.apartment = dict.apartmentError;
+		}
+
+		setErrors(newErrors);
+
+		if (Object.keys(newErrors).length > 0) {
+			return;
+		}
+
 		console.log("Order request:", {
 			customer: form,
 			items: cartProducts,
-			total,
+			total: totalWithExtras,
 		});
-
-		// Later: send this data to Supabase
 	};
 
 	// Gift card
 	const giftPostcardPrice = form.giftPostcard ? GIFT_POSTCARD_PRICE : 0;
 	const totalWithExtras = total + giftPostcardPrice;
+
+	// For name do not accept numbers
+	const handleNameChange = (event) => {
+		const { name, value } = event.target;
+
+		if (/^[\p{L}\s'ʼ-]*$/u.test(value)) {
+			setForm((current) => ({
+				...current,
+				[name]: value,
+			}));
+
+			setErrors((current) => ({
+				...current,
+				[name]: "",
+			}));
+		}
+	};
 
 	return (
 		<section className="order-page">
@@ -102,21 +158,21 @@ const OrderPage = () => {
 							className="order-page__breadcrumbs-link"
 							to={`/${currentLang}`}
 						>
-							Home
+							{dict.home}
 						</Link>
 						<span className="order-page__breadcrumbs-separator">/</span>
 						<Link
 							className="order-page__breadcrumbs-link"
 							to={`/${currentLang}/shop`}
 						>
-							Shop
+							{dict.shop}
 						</Link>
 						<span className="order-page__breadcrumbs-separator">/</span>
 						<Link
 							className="order-page__breadcrumbs-link"
 							to={`/${currentLang}/cart`}
 						>
-							Cart
+							{dict.cart}
 						</Link>
 						<span className="order-page__breadcrumbs-separator">/</span>
 						<span className="order-page__breadcrumbs-current">Checkout</span>
@@ -126,30 +182,46 @@ const OrderPage = () => {
 						onSubmit={handleSubmit}
 					>
 						<div className="order-page__form-divider">
-							<h2 className="order-page__section-title">Contact Details</h2>
+							<h2 className="order-page__section-title">{dict.contactTitle}</h2>
 							<div className="order-page__field">
-								<label htmlFor="name">Full Name</label>
+								<label htmlFor="name">{dict.name}</label>
 								<input
 									id="name"
 									name="name"
 									value={form.name}
-									onChange={handleChange}
-									required
+									onChange={handleNameChange}
 								/>
+								{errors.name && (
+									<p className="order-page__error">{errors.name}</p>
+								)}
 							</div>
 							<div className="order-page__field">
-								<label htmlFor="email">Email</label>
+								<label htmlFor="lastName">{dict.lastName}</label>
+								<input
+									id="lastName"
+									name="lastName"
+									value={form.lastName}
+									onChange={handleNameChange}
+								/>
+								{errors.lastName && (
+									<p className="order-page__error">{errors.lastName}</p>
+								)}
+							</div>
+							<div className="order-page__field">
+								<label htmlFor="email">{dict.email}</label>
 								<input
 									id="email"
 									name="email"
 									type="email"
 									value={form.email}
 									onChange={handleChange}
-									required
 								/>
+								{errors.email && (
+									<p className="order-page__error">{errors.email}</p>
+								)}
 							</div>
 							<div className="order-page__field">
-								<label htmlFor="phone">Phone</label>
+								<label htmlFor="phone">{dict.phone}</label>
 								<input
 									id="phone"
 									name="phone"
@@ -160,59 +232,70 @@ const OrderPage = () => {
 						</div>
 
 						<div className="order-page__form-divider">
-							<h2 className="order-page__section-title">Shipping Address</h2>
+							<h2 className="order-page__section-title">
+								{dict.shippingTitle}
+							</h2>
 							<div className="order-page__field">
-								<label htmlFor="address">Address</label>
+								<label htmlFor="address">{dict.address}</label>
 								<input
 									id="address"
 									name="address"
 									value={form.address}
 									onChange={handleChange}
-									required
 								/>
+								{errors.address && (
+									<p className="order-page__error">{errors.address}</p>
+								)}
 							</div>
 							<div className="order-page__field">
-								<label htmlFor="apartment">
-									Apartment, suite, etc. optional
-								</label>
+								<label htmlFor="apartment">{dict.apartment}</label>
 								<input
 									id="apartment"
 									name="apartment"
 									value={form.apartment}
 									onChange={handleChange}
 								/>
+								{errors.apartment && (
+									<p className="order-page__error">{errors.apartment}</p>
+								)}
 							</div>
 							<div className="order-page__row">
 								<div className="order-page__field">
-									<label htmlFor="city">City</label>
+									<label htmlFor="city">{dict.city}</label>
 									<input
 										id="city"
 										name="city"
 										value={form.city}
 										onChange={handleChange}
-										required
 									/>
+									{errors.city && (
+										<p className="order-page__error">{errors.city}</p>
+									)}
 								</div>
 								<div className="order-page__field">
-									<label htmlFor="postalCode">Postal Code</label>
+									<label htmlFor="postalCode">{dict.postalCode}</label>
 									<input
 										id="postalCode"
 										name="postalCode"
 										value={form.postalCode}
 										onChange={handleChange}
-										required
 									/>
+									{errors.postalCode && (
+										<p className="order-page__error">{errors.postalCode}</p>
+									)}
 								</div>
 							</div>
 							<div className="order-page__field">
-								<label htmlFor="country">Country</label>
+								<label htmlFor="country">{dict.country}</label>
 								<input
 									id="country"
 									name="country"
 									value={form.country}
 									onChange={handleChange}
-									required
 								/>
+								{errors.country && (
+									<p className="order-page__error">{errors.country}</p>
+								)}
 							</div>
 						</div>
 
@@ -229,20 +312,20 @@ const OrderPage = () => {
 										}))
 									}
 								/>
-								<span>Add a gift postcard</span>
+								<span>{dict.giftPostcard}</span>
 								<strong>+ €2</strong>
 							</label>
 
 							{form.giftPostcard && (
 								<div className="order-page__field">
-									<label htmlFor="giftMessage">Gift Note optional</label>
+									<label htmlFor="giftMessage">{dict.giftNote}</label>
 									<textarea
 										id="giftMessage"
 										name="giftMessage"
 										maxLength={200}
 										value={form.giftMessage}
 										onChange={handleChange}
-										placeholder="Write a magical message for your recipient..."
+										placeholder={dict.giftPlaceholder}
 									/>
 									<span className="order-page__char-count">
 										{form.giftMessage.length}/200 characters
@@ -253,22 +336,19 @@ const OrderPage = () => {
 
 						<div className="order-page__notice">
 							<ShieldCheck />
-							<span>
-								Payment is not taken now. The owner will confirm your order
-								first.
-							</span>
+							<span>{dict.paymentNotice}</span>
 						</div>
 						<PrimaryBtn
 							variant="order"
 							type="submit"
 						>
-							Send Order Request
+							{dict.submitBtn}
 						</PrimaryBtn>
 					</form>
 				</div>
 
 				<aside className="order-page__summary">
-					<h2 className="order-page__section-title">Order Summary</h2>
+					<h2 className="order-page__section-title">{dict.summaryTitle}</h2>
 
 					<div className="order-page__items">
 						{cartProducts.map((product) => (
@@ -303,16 +383,13 @@ const OrderPage = () => {
 						<strong>{formatPrice(totalWithExtras)}</strong>
 					</div>
 
-					<p className="order-page__summary-note">
-						Shipping price will be confirmed after we check the item location
-						and destination country.
-					</p>
+					<p className="order-page__summary-note">{dict.shippingNote}</p>
 
 					<Link
 						className="order-page__back-link"
 						to={`/${currentLang}/cart`}
 					>
-						Back to cart
+						{dict.backToCart}
 					</Link>
 				</aside>
 			</div>
