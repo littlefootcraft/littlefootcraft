@@ -18,22 +18,21 @@ collections:
             name: "showSalePage"
             widget: "boolean"
             default: true
-
-  - name: "store_config"
-    label: "Store Config"
-    file: "src/content/store-config.json"
-    format: "json"
-    fields:
-      - label: "Currency"
-        name: "currency"
-        widget: "object"
+      - name: "store_config"
+        label: "Store Config"
+        file: "src/content/store-config.json"
+        format: "json"
         fields:
-          - label: "Active Currency"
-            name: "active"
-            widget: "select"
-            options:
-              - { label: "Euro (€)", value: "EUR" }
-              - { label: "Ukrainian Hryvnia (₴)", value: "UAH" }
+          - label: "Currency"
+            name: "currency"
+            widget: "object"
+            fields:
+              - label: "Active Currency"
+                name: "active"
+                widget: "select"
+                options:
+                  - { label: "Euro (€)", value: "EUR" }
+                  - { label: "Ukrainian Hryvnia (₴)", value: "UAH" }
 
   - name: "pages"
     label: "Pages"
