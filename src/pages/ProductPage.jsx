@@ -5,7 +5,7 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 // JSONS
 import ProductPageContent from "../content/pages/product-page.json";
-import CollectionsContent from "../content/collections/collections.json";
+// import CollectionsContent from "../content/collections/collections.json";
 
 // CONTEXTS
 import { useProducts } from "../context/ProductsContext";
@@ -45,19 +45,28 @@ import { ShieldCheck, PackageCheck, Truck } from "lucide-react";
 // UTILS
 import { formatPrice } from "../utils/formatPrice";
 
+// CONSTANTS
 const RECENTLY_VIEWED_KEY = "recently_viewed_skus";
 const MAX_RECENTLY_VIEWED = 8;
-
 const ICONS = {
 	shield: ShieldCheck,
 	package: PackageCheck,
 	truck: Truck,
 };
 
+// TO SHOW COLLECTIONS
+const collectionModules = import.meta.glob("../content/collections/*.json", {
+	eager: true,
+});
+
+const collections = Object.values(collectionModules).map(
+	(module) => module.default ?? module,
+);
+
 const ProductPage = () => {
 	const { sku } = useParams();
 	const products = useProducts();
-	const { addToCart, cartList } = useCart();
+	const { addToCart } = useCart();
 	const product = products.find((p) => p.sku === sku);
 
 	if (!product) return <NotFoundPage />;
@@ -66,7 +75,7 @@ const ProductPage = () => {
 	const t = (field) => field?.[currentLang] ?? field?.en ?? "";
 	const dict = currentLang === "ua" ? productPageUA : productPageEN;
 
-	const productCollection = CollectionsContent.find(
+	const productCollection = collections.find(
 		(collection) => collection.id === product.specifications?.collection,
 	);
 

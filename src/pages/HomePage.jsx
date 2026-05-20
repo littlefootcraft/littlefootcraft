@@ -3,7 +3,7 @@ import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 
 import HomePageContent from "../content/pages/home-page.json";
-import CollectionsContent from "../content/collections/collections.json";
+// import CollectionsContent from "../content/collections/collections.json";
 
 // CONTEXTS
 import { useWorkshops } from "../context/WorkshopsContext";
@@ -31,6 +31,15 @@ import Seo from "../components/Seo";
 import { subscriptiopnEN, subscriptiopnUA } from "../translations/translation";
 
 const WorkshopsImage = "/uploads/images/home_workshop_image.jpeg";
+
+// GET COLLECTIONS
+const collectionModules = import.meta.glob("../content/collections/*.json", {
+	eager: true,
+});
+
+const collectionsData = Object.values(collectionModules).map(
+	(module) => module.default ?? module,
+);
 
 const HomePage = ({ workshop }) => {
 	const products = useProducts();
@@ -60,14 +69,9 @@ const HomePage = ({ workshop }) => {
 	}, [workshops]);
 	const featuredWorkshop = visibleWorkshops[0] || null;
 
-	// To show collection title images
-	// const collections = useMemo(() => {
-	// 	return [...HomePageContent.collections.set]
-	// 		.sort(() => Math.random() - 0.5)
-	// 		.slice(0, 4);
-	// }, []);
+	// TO SHOW COLLECTION TITLES
 	const collections = useMemo(() => {
-		return [...CollectionsContent]
+		return [...collectionsData]
 			.filter((collection) => collection.image)
 			.sort(() => Math.random() - 0.5)
 			.slice(0, 4);

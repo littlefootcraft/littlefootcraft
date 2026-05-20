@@ -5,7 +5,7 @@ import { ChevronDown } from "lucide-react";
 import shopPage from "../content/pages/shop-page.json";
 import { COLORS } from "../constants/filterOptions";
 import categories from "../content/categories/categories.json";
-import collections from "../content/collections/collections.json";
+// import collections from "../content/collections/collections.json";
 
 import {
 	sortOptionsUA,
@@ -14,6 +14,15 @@ import {
 	toolbarUA,
 } from "../translations/translation";
 import { useLanguage } from "../context/LanguageContext";
+
+// TO SHOW COLLECTIONS
+const collectionModules = import.meta.glob("../content/collections/*.json", {
+	eager: true,
+});
+
+const collections = Object.values(collectionModules).map(
+	(module) => module.default ?? module,
+);
 
 export const ShopToolbar = ({
 	query,

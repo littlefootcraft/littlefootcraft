@@ -33,6 +33,47 @@ collections:
                 options:
                   - { label: "Euro (€)", value: "EUR" }
                   - { label: "Ukrainian Hryvnia (₴)", value: "UAH" }
+  - name: "product_collections"
+    label: "Product Collections"
+    folder: "src/content/collections"
+    create: true
+    extension: "json"
+    format: "json"
+    identifier_field: "name.en"
+    slug: "{{fields.id}}"
+    fields:
+      - label: "Collection ID"
+        name: "id"
+        widget: "string"
+        hint:
+          "Use lowercase English words with hyphens. No spaces.
+          Example:   ocean-blue, bloom-spell, cozy-purr-club."
+
+      - label: "Name"
+        name: "name"
+        widget: "object"
+        hint: "This name will be shown on the website."
+        fields:
+          - {
+              label: "English",
+              name: "en",
+              widget: "string",
+              hint: "Example: Ocean   Blue",
+            }
+          - {
+              label: "Ukrainian",
+              name: "ua",
+              widget: "string",
+              hint: "Example:   Океанська синява",
+            }
+
+      - label: "Image"
+        name: "image"
+        widget: "image"
+        required: false
+        hint:
+          "Optional. Used for collection cards on the homepage.
+          Recommended:   square or horizontal image."
 
   - name: "pages"
     label: "Pages"
@@ -1145,18 +1186,22 @@ collections:
             name: "alt"
             widget: "object"
             required: false
+            hint:
+              "Describe what is shown in the video for accessibility and SEO."
             fields:
               - {
                   label: "English",
                   name: "en",
                   widget: "string",
                   required: false,
+                  hint: "Example: Jellyfish brooch shimmering under light",
                 }
               - {
                   label: "Ukrainian",
                   name: "ua",
                   widget: "string",
                   required: false,
+                  hint: "Приклад: Брошка-медуза мерехтить на світлі",
                 }
 
       - label: "Photos"
@@ -1167,9 +1212,20 @@ collections:
           - label: "Alt"
             name: "alt"
             widget: "object"
+            hint: "Describe the image for accessibility and SEO."
             fields:
-              - { label: "English", name: "en", widget: "string" }
-              - { label: "Ukrainian", name: "ua", widget: "string" }
+              - {
+                  label: "English",
+                  name: "en",
+                  widget: "string",
+                  hint: "Example: Jellyfish brooch front view",
+                }
+              - {
+                  label: "Ukrainian",
+                  name: "ua",
+                  widget: "string",
+                  hint: "Приклад: Брошка-медуза вигляд спереду",
+                }
 
   # PAINTINGS
   - name: "paintings"
@@ -1312,18 +1368,22 @@ collections:
             name: "alt"
             widget: "object"
             required: false
+            hint:
+              "Describe what is shown in the video for accessibility and SEO."
             fields:
               - {
                   label: "English",
                   name: "en",
                   widget: "string",
                   required: false,
+                  hint: "Example: Jellyfish brooch shimmering under light",
                 }
               - {
                   label: "Ukrainian",
                   name: "ua",
                   widget: "string",
                   required: false,
+                  hint: "Приклад: Брошка-медуза мерехтить на світлі",
                 }
 
       - label: "Photos"
@@ -1334,9 +1394,20 @@ collections:
           - label: "Alt"
             name: "alt"
             widget: "object"
+            hint: "Describe the image for accessibility and SEO."
             fields:
-              - { label: "English", name: "en", widget: "string" }
-              - { label: "Ukrainian", name: "ua", widget: "string" }
+              - {
+                  label: "English",
+                  name: "en",
+                  widget: "string",
+                  hint: "Example: Jellyfish brooch front view",
+                }
+              - {
+                  label: "Ukrainian",
+                  name: "ua",
+                  widget: "string",
+                  hint: "Приклад: Брошка-медуза вигляд спереду",
+                }
 
   # NEKLACES
   - name: "necklaces"
@@ -1479,18 +1550,22 @@ collections:
             name: "alt"
             widget: "object"
             required: false
+            hint:
+              "Describe what is shown in the video for accessibility and SEO."
             fields:
               - {
                   label: "English",
                   name: "en",
                   widget: "string",
                   required: false,
+                  hint: "Example: Jellyfish brooch shimmering under light",
                 }
               - {
                   label: "Ukrainian",
                   name: "ua",
                   widget: "string",
                   required: false,
+                  hint: "Приклад: Брошка-медуза мерехтить на світлі",
                 }
 
       - label: "Photos"
@@ -1501,9 +1576,20 @@ collections:
           - label: "Alt"
             name: "alt"
             widget: "object"
+            hint: "Describe the image for accessibility and SEO."
             fields:
-              - { label: "English", name: "en", widget: "string" }
-              - { label: "Ukrainian", name: "ua", widget: "string" }
+              - {
+                  label: "English",
+                  name: "en",
+                  widget: "string",
+                  hint: "Example: Jellyfish brooch front view",
+                }
+              - {
+                  label: "Ukrainian",
+                  name: "ua",
+                  widget: "string",
+                  hint: "Приклад: Брошка-медуза вигляд спереду",
+                }
 
   # POSTCARDS
   - name: "postcards"
@@ -1646,18 +1732,22 @@ collections:
             name: "alt"
             widget: "object"
             required: false
+            hint:
+              "Describe what is shown in the video for accessibility and SEO."
             fields:
               - {
                   label: "English",
                   name: "en",
                   widget: "string",
                   required: false,
+                  hint: "Example: Jellyfish brooch shimmering under light",
                 }
               - {
                   label: "Ukrainian",
                   name: "ua",
                   widget: "string",
                   required: false,
+                  hint: "Приклад: Брошка-медуза мерехтить на світлі",
                 }
 
       - label: "Photos"
@@ -1668,9 +1758,20 @@ collections:
           - label: "Alt"
             name: "alt"
             widget: "object"
+            hint: "Describe the image for accessibility and SEO."
             fields:
-              - { label: "English", name: "en", widget: "string" }
-              - { label: "Ukrainian", name: "ua", widget: "string" }
+              - {
+                  label: "English",
+                  name: "en",
+                  widget: "string",
+                  hint: "Example: Jellyfish brooch front view",
+                }
+              - {
+                  label: "Ukrainian",
+                  name: "ua",
+                  widget: "string",
+                  hint: "Приклад: Брошка-медуза вид спереду",
+                }
 
   # BAGS
   - name: "bags"
@@ -1813,18 +1914,22 @@ collections:
             name: "alt"
             widget: "object"
             required: false
+            hint:
+              "Describe what is shown in the video for accessibility and SEO."
             fields:
               - {
                   label: "English",
                   name: "en",
                   widget: "string",
                   required: false,
+                  hint: "Example: Jellyfish brooch shimmering under light",
                 }
               - {
                   label: "Ukrainian",
                   name: "ua",
                   widget: "string",
                   required: false,
+                  hint: "Приклад: Брошка-медуза мерехтить на світлі",
                 }
 
       - label: "Photos"
@@ -1835,9 +1940,20 @@ collections:
           - label: "Alt"
             name: "alt"
             widget: "object"
+            hint: "Describe the image for accessibility and SEO."
             fields:
-              - { label: "English", name: "en", widget: "string" }
-              - { label: "Ukrainian", name: "ua", widget: "string" }
+              - {
+                  label: "English",
+                  name: "en",
+                  widget: "string",
+                  hint: "Example: Jellyfish brooch front view",
+                }
+              - {
+                  label: "Ukrainian",
+                  name: "ua",
+                  widget: "string",
+                  hint: "Приклад: Брошка-медуза спереду",
+                }
 
   # WORKSOPS
   - name: "workshops"

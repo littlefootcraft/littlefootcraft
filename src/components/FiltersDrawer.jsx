@@ -2,7 +2,6 @@
 import { useEffect, useState } from "react";
 
 import categories from "../content/categories/categories.json";
-import collections from "../content/collections/collections.json";
 
 // CONTEXTS
 import { useLanguage } from "../context/LanguageContext";
@@ -11,6 +10,15 @@ import { useLanguage } from "../context/LanguageContext";
 import { ChevronDown, X } from "lucide-react";
 
 import { COLORS } from "../constants/filterOptions";
+
+// TO SHOW COLLECTIONS
+const collectionModules = import.meta.glob("../content/collections/*.json", {
+	eager: true,
+});
+
+const collections = Object.values(collectionModules).map(
+	(module) => module.default ?? module,
+);
 
 // A single collapsible section — Category, Collection, or Color
 // isOpen and onToggle control whether the options are visible
