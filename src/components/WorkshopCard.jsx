@@ -100,6 +100,11 @@ export const WorkshopCard = ({ workshop }) => {
 						</ul>
 					</div>
 				)}
+				{workshop.description && (
+					<p className="workshop-card__description">
+						{t(workshop.description)}
+					</p>
+				)}
 				<div className="workshop-card__calendar">
 					<span className="workshop-card__calendar-title">
 						{t(workshop.upcomingDates.title)}

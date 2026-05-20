@@ -2186,51 +2186,59 @@ collections:
       - label: "Title"
         name: "title"
         widget: "object"
-
+        hint:
+            "Example: Name of the workshop / Назва майстер-класу",
         fields:
-          - { label: "English", name: "en", widget: "string" }
-          - { label: "Ukrainian", name: "ua", widget: "string" }
+          - { label: "English", name: "en", widget: "string", hint: "Example: Introduction to Brooch Making" }
+          - { label: "Ukrainian", name: "ua", widget: "string", hint: "Example: Введення до виготовлення брошок" }
 
       - label: "Subtitle"
         name: "subtitle"
         widget: "object"
+        hint: "Short description shown under the workshop title. Describe what participants will learn or experience."
         fields:
-          - { label: "English", name: "en", widget: "text" }
-          - { label: "Ukrainian", name: "ua", widget: "text" }
+          - { label: "English", name: "en", widget: "text", hint: "Example: Learn the fundamentals of brooch crafting in this beginner-friendly workshop." }
+          - { label: "Ukrainian", name: "ua", widget: "text", hint: "Example: Дізнайтесь основи виготовлення брошок у цьому дружнім до початківців майстер-класі." }
 
       - label: "Duration"
         name: "duration"
         widget: "object"
+        hint: "How long the workshop lasts."
         fields:
           - {
               label: "Value",
               name: "value",
               widget: "number",
               value_type: "int",
+              hint: "Example: 3",
             }
 
           - label: "Unit"
             name: "unit"
             widget: "object"
+            hint: "Time unit shown on the website."
             fields:
-              - { label: "English", name: "en", widget: "string" }
-              - { label: "Ukrainian", name: "ua", widget: "string" }
+              - { label: "English", name: "en", widget: "string", hint: "Example: hours" }
+              - { label: "Ukrainian", name: "ua", widget: "string", hint: "Example: годин" }
 
       - label: "Participants"
         name: "participants"
         widget: "object"
+        hint: "Maximum number of people who can join the workshop."
         fields:
           - label: "Text"
             name: "text"
             widget: "object"
+            hint: "Word shown after the participant number."
             fields:
-              - { label: "English", name: "en", widget: "string" }
-              - { label: "Ukrainian", name: "ua", widget: "string" }
+              - { label: "English", name: "en", widget: "string", hint: "Example: participants" }
+              - { label: "Ukrainian", name: "ua", widget: "string", hint: "Example: учасників/ людей" }
           - {
               label: "Amount of People",
               name: "amount-of-people",
               widget: "number",
               value_type: "int",
+              hint: "Example: 20"
             }
       - label: "Location Type"
         name: "location"
@@ -2243,15 +2251,49 @@ collections:
               label: "English",
               name: "en",
               widget: "string",
-              default: "Example: In person",
+              hint: "Example: In person",
+              
             }
           - {
               label: "Ukrainian",
               name: "ua",
               widget: "string",
-              default: "Приклад: Особиста зустріч",
+              hint: "Example: Особиста зустріч",
             }
+      - label: "What's Included"
+        name: "includes"
+        widget: "object"
+        hint:
+          "List what participants receive or what is included in the workshop."
 
+        fields:
+          - label: "English"
+            name: "en"
+            widget: "list"
+            hint:
+              "Example: All materials / Tea & refreshments / Your finished brooch to take home"
+
+            field:
+              {
+                label: "Item",
+                name: "item",
+                widget: "string",
+                hint: "Example: All materials",
+              }
+
+      - label: "Ukrainian"
+        name: "ua"
+        widget: "list"
+        hint:
+          "Приклад: Усі матеріали / Чай та частування / Готова брошка, яку ви заберете додому"
+
+        field:
+          {
+            label: "Пункт",
+            name: "item",
+            widget: "string",
+            hint: "Приклад: Усі матеріали",
+          }
       - label: "Exact Location"
         name: "exactLocation"
         widget: "object"
@@ -2315,17 +2357,20 @@ collections:
       - label: "Upcoming Dates"
         name: "upcomingDates"
         widget: "object"
+        hint: "Add future workshop dates that will be shown on the website."
         fields:
           - label: "Title"
             name: "title"
             widget: "object"
+            hint: "Section title shown above workshop dates."
             fields:
-              - { label: "English", name: "en", widget: "string" }
-              - { label: "Ukrainian", name: "ua", widget: "string" }
+              - { label: "English", name: "en", widget: "string", hint: "Example: Upcoming Dates" }
+              - { label: "Ukrainian", name: "ua", widget: "string", hint: "Приклад: Майбутні дати" }
 
           - label: "Dates"
             name: "dates"
             widget: "list"
+            hint: "Add workshop dates in chronological order."
             field:
               label: "Date"
               name: "date"
@@ -2333,13 +2378,15 @@ collections:
               format: "YYYY-MM-DD"
               date_format: "YYYY-MM-DD"
               time_format: false
+              hint: "Example: 2026-06-14"
 
       - label: "Description"
         name: "description"
         widget: "object"
+        hint: "Detailed workshop description shown on the workshop card. Describe the atmosphere, activities, and what participants will learn."
         fields:
-          - { label: "English", name: "en", widget: "text" }
-          - { label: "Ukrainian", name: "ua", widget: "text" }
+          - { label: "English", name: "en", widget: "text", hint: "Example: A warm, creative introduction to brooch making where participants learn the basics of composition, materials, and finishing techniques.", }
+          - { label: "Ukrainian", name: "ua", widget: "text", hint: "Приклад: Теплий, творчий вступ до виготовлення брошок, де учасники вивчають основи композиції, матеріалів та технік завершення.", }
 
       - label: "Image"
         name: "image"
