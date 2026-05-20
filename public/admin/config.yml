@@ -1018,31 +1018,6 @@ collections:
                 fields:
                   - { label: "English", name: "en", widget: "string" }
                   - { label: "Ukrainian", name: "ua", widget: "string" }
-  - name: "product_collections"
-    label: "Product Collections"
-    folder: "src/content/collections"
-    create: true
-    extension: "json"
-    format: "json"
-    identifier_field: "name.en"
-    slug: "{{fields.id}}"
-    fields:
-      - label: "Collection ID"
-        name: "id"
-        widget: "string"
-        hint: "Use lowercase words with hyphens. Example: bloom-spell"
-
-      - label: "Name"
-        name: "name"
-        widget: "object"
-        fields:
-          - { label: "English", name: "en", widget: "string" }
-          - { label: "Ukrainian", name: "ua", widget: "string" }
-
-      - label: "Image"
-        name: "image"
-        widget: "image"
-        required: false
 
   # PRODUCTS
   # BROOCHES
