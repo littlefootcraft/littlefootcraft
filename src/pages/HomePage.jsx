@@ -29,6 +29,7 @@ import { Sparkles, ChevronRight, Star, Globe, Shield } from "lucide-react";
 import Seo from "../components/Seo";
 
 import { subscriptiopnEN, subscriptiopnUA } from "../translations/translation";
+import { formatPrice } from "../utils/formatPrice";
 
 const WorkshopsImage = "/uploads/images/home_workshop_image.jpeg";
 
@@ -123,19 +124,19 @@ const HomePage = ({ workshop }) => {
 				<ul className="home-page__highlights-list container">
 					<li className="home-page__highlights-item">
 						<Sparkles />
-						{t(HomePageContent.highlights[0]["text-sparkles"])}
+						{t(HomePageContent.highlights[0].text)}
 					</li>
 					<li className="home-page__highlights-item">
 						<Star />
-						{t(HomePageContent.highlights[1]["text-star"])}
+						{t(HomePageContent.highlights[1].text)}
 					</li>
 					<li className="home-page__highlights-item">
 						<Globe />
-						{t(HomePageContent.highlights[2]["text-globe"])}
+						{t(HomePageContent.highlights[2].text)}
 					</li>
 					<li className="home-page__highlights-item">
 						<Shield />
-						{t(HomePageContent.highlights[3]["text-shield"])}
+						{t(HomePageContent.highlights[3].text)}
 					</li>
 				</ul>
 			</div>
@@ -302,12 +303,7 @@ const HomePage = ({ workshop }) => {
 
 									<div className="home-page__workshops-price">
 										<h4>Price</h4>
-										<span>
-											{featuredWorkshop.currency === "EUR"
-												? "€"
-												: workshop.currency}
-											{featuredWorkshop.price}
-										</span>
+										<span>{formatPrice(featuredWorkshop.price)}</span>
 									</div>
 								</div>
 								<SecondaryBtn

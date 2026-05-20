@@ -1037,6 +1037,11 @@ collections:
         hint:
           "SKU format: BRMMDD-001. BR = Brooch. Example: BR0326-004 means brooch
           made on March 26, item number 4."
+        pattern:
+          [
+            "^[A-Z]{2}[0-9]{4}-[0-9]{3}$",
+            "Example: BR0326-001"
+          ]  
       - label: "SEO"
         name: "seo"
         widget: "object"
@@ -1270,6 +1275,11 @@ collections:
         hint:
           "SKU format: PAMMDD-001. PA = Painting. Example: PA0326-004 means
           painting made on March 26, item number 4."
+        pattern:
+          [
+            "^[A-Z]{2}[0-9]{4}-[0-9]{3}$",
+            "Example: BR0326-001"
+          ]
       - label: "SEO"
         name: "seo"
         widget: "object"
@@ -1410,7 +1420,7 @@ collections:
           - { label: "English", name: "en", widget: "text" }
           - { label: "Ukrainian", name: "ua", widget: "text" }
 
-      - { label: "Price", name: "price", widget: "number", value_type: "int" }
+      - { label: "Price", name: "price", widget: "number", value_type: "int", min: 1 }
 
       - label: "Old Price"
         name: "oldPrice"
@@ -1498,6 +1508,11 @@ collections:
         hint:
           "SKU format: NEMMDD-001. NE = Necklace. Example: NE0326-004 means
           necklace made on March 26, item number 4."
+        pattern:
+          [
+            "^[A-Z]{2}[0-9]{4}-[0-9]{3}$",
+            "Example: BR0326-001"
+          ]
       - label: "SEO"
         name: "seo"
         widget: "object"
@@ -1637,7 +1652,7 @@ collections:
           - { label: "English", name: "en", widget: "text" }
           - { label: "Ukrainian", name: "ua", widget: "text" }
 
-      - { label: "Price", name: "price", widget: "number", value_type: "int" }
+      - { label: "Price", name: "price", widget: "number", value_type: "int", min: 1 }
 
       - label: "Old Price"
         name: "oldPrice"
@@ -1725,6 +1740,11 @@ collections:
         hint:
           "SKU format: POMMDD-001. PO = Postcard. Example: PO0326-004 means
           postcard made on March 26, item number 4."
+        pattern:
+          [
+            "^[A-Z]{2}[0-9]{4}-[0-9]{3}$",
+            "Example: BR0326-001"
+          ]
       - label: "SEO"
         name: "seo"
         widget: "object"
@@ -1864,7 +1884,7 @@ collections:
           - { label: "English", name: "en", widget: "text" }
           - { label: "Ukrainian", name: "ua", widget: "text" }
 
-      - { label: "Price", name: "price", widget: "number", value_type: "int" }
+      - { label: "Price", name: "price", widget: "number", value_type: "int", min: 1 }
 
       - label: "Old Price"
         name: "oldPrice"
@@ -1952,6 +1972,11 @@ collections:
         hint:
           "SKU format: BAMMDD-001. BA = Bag. Example: BA0326-004 means bag made
           on March 26, item number 4."
+        pattern:
+          [
+            "^[A-Z]{2}[0-9]{4}-[0-9]{3}$",
+            "Example: BR0326-001"
+          ]
       - label: "SEO"
         name: "seo"
         widget: "object"
@@ -2090,7 +2115,7 @@ collections:
           - { label: "English", name: "en", widget: "text" }
           - { label: "Ukrainian", name: "ua", widget: "text" }
 
-      - { label: "Price", name: "price", widget: "number", value_type: "int" }
+      - { label: "Price", name: "price", widget: "number", value_type: "int", min: 1 }
 
       - label: "Old Price"
         name: "oldPrice"
@@ -2170,9 +2195,7 @@ collections:
     format: "json"
     identifier_field: "id"
     slug: "{{fields.id}}"
-    hint:
-      "Use lowercase words with hyphens, for example:
-      introduction-to-brooch-making"
+
     fields:
       - {
           label: "ID",
@@ -2181,6 +2204,10 @@ collections:
           hint:
             "Use lowercase English words with hyphens. No spaces. Example:
             intro-brooch-making",
+          pattern: [
+            "^[a-z0-9-]+$",
+            "Use lowercase English letters, numbers, and hyphens only."
+        ]
         }
 
       - label: "Title"
@@ -2210,6 +2237,8 @@ collections:
               name: "value",
               widget: "number",
               value_type: "int",
+              min: 1,
+              max: 24,
               hint: "Example: 3",
             }
 
@@ -2238,6 +2267,7 @@ collections:
               name: "amount-of-people",
               widget: "number",
               value_type: "int",
+              min: 1,
               hint: "Example: 20"
             }
       - label: "Location Type"
@@ -2338,7 +2368,7 @@ collections:
               hint: "Приклад: 11:00 – 14:00",
             }
 
-      - { label: "Price", name: "price", widget: "number", value_type: "int" }
+      - { label: "Price", name: "price", widget: "number", value_type: "int", min: 1 }
 
       - label: "Includes"
         name: "includes"

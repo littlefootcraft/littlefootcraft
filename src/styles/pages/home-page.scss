@@ -303,6 +303,7 @@
 		&-text {
 			margin-top: 24px;
 			margin-bottom: 32px;
+			font-size: var(--regular-text-size);
 		}
 	}
 
@@ -345,6 +346,7 @@
 		&-text {
 			margin-top: 24px;
 			margin-bottom: 32px;
+			font-size: var(--regular-text-size);
 		}
 
 		&-details {
@@ -378,8 +380,8 @@
 		overflow: hidden;
 
 		&-title {
-			margin: 24px auto 0;
-			max-width: 760px;
+			margin: auto 0;
+			// max-width: 760px;
 			text-align: center;
 			font-size: var(--section-title-size);
 			text-wrap: balance;
