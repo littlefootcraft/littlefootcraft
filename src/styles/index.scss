@@ -25,6 +25,9 @@
 @use "../styles/pages/product-page";
 @use "../styles/pages/cart-page";
 @use "../styles/pages/order-page";
+@use "../styles/pages/not-found-page";
+@use "../styles/pages/server-error-page";
+@use "../styles/pages/network-error-page";
 
 //Components
 @use "../styles/components/badge";

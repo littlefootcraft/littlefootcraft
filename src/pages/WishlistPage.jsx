@@ -52,12 +52,14 @@ const WishlistPage = () => {
 							<h2 className="wishlist-empty__title">{dict["empty-title"]}</h2>
 							<p className="wishlist-empty__text">{dict["empty-text"]}</p>
 
-							<PrimaryBtn
-								variant="to-shop"
-								to={`/${currentLang}/shop`}
-							>
-								{dict["empty-btn"]}
-							</PrimaryBtn>
+							<div>
+								<PrimaryBtn
+									variant="to-shop"
+									to={`/${currentLang}/shop`}
+								>
+									{dict["empty-btn"]}
+								</PrimaryBtn>
+							</div>
 						</div>
 					) : (
 						<div>

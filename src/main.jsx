@@ -23,6 +23,9 @@ import RegistrationPage from "./pages/RegistrationPage";
 import CartPage from "./pages/CartPage";
 import SalePage from "./pages/SalePage";
 import OrderPage from "./pages/OrderPage";
+import NotFoundPage from "./pages/NotFoundPage";
+import ServerErrorPage from "./pages/ServerErrorPage";
+import NetworkErrorPage from "./pages/NetworkErrorPage";
 
 const router = createBrowserRouter([
 	{
@@ -37,9 +40,14 @@ const router = createBrowserRouter([
 	{
 		path: "/:lang",
 		element: <Layout />,
+		errorElement: <ServerErrorPage />,
 		children: [
 			{ index: true, element: <HomePage /> },
-
+			{ path: "network-error", element: <NetworkErrorPage /> },
+			{
+				path: "*",
+				element: <NotFoundPage />,
+			},
 			{
 				// path: "shop",
 				element: <ShopLayout />,
@@ -69,15 +77,6 @@ const router = createBrowserRouter([
 				element: <OrderPage />,
 			},
 		],
-	},
-	{
-		path: "*",
-		element: (
-			<Navigate
-				to="/en"
-				replace
-			/>
-		),
 	},
 ]);
 

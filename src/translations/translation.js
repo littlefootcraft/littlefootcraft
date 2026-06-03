@@ -488,3 +488,65 @@ export const orderPageUA = {
 	postalCodeError: "Будь ласка, введіть поштовий індекс.",
 	countryError: "Будь ласка, введіть країну.",
 };
+
+// NOT FOUND PAGE----------------------------------
+
+export const notFoundPageEN = {
+	eyebrow: "Lost in the enchanted forest",
+	code: "404",
+	title: "Oops! This page went on an adventure",
+	text: "Looks like this little path led somewhere we can’t find. Let’s guide you back to handmade treasures.",
+	goHome: "Go to Home",
+	browseShop: "Browse Shop",
+};
+
+export const notFoundPageUA = {
+	eyebrow: "Загубилися в зачарованому лісі",
+	code: "404",
+	title: "Ой! Ця сторінка вирушила у пригоду",
+	text: "Схоже, ця стежка привела нас туди, де ми не можемо знайти потрібну сторінку. Давайте повернемо вас до світу рукотворних скарбів.",
+	goHome: "На головну",
+	browseShop: "До магазину",
+};
+
+// WENT WRONG PAGE----------------------------------
+
+export const serverErrorPageEN = {
+	eyebrow: "A little magic went astray",
+	code: "500",
+	title: "Oops! Something went wrong",
+	text: "It seems one of our enchanted threads became tangled. Please try again in a moment while we weave everything back together.",
+	goHome: "Go to Home",
+	browseShop: "Browse Shop",
+};
+
+export const serverErrorPageUA = {
+	eyebrow: "Трішки магії збилося зі шляху",
+	code: "500",
+	title: "Ой! Щось пішло не так",
+	text: "Схоже, одна з наших чарівних ниточок заплуталася. Спробуйте ще раз за мить, поки ми все впорядковуємо.",
+	goHome: "На головну",
+	browseShop: "До магазину",
+};
+
+//NETWORK ERROR PAGE----------------------------------
+
+export const networkErrorPageEN = {
+	eyebrow: "The path is a little misty",
+	code: "Offline",
+	title: "Connection lost",
+	text: "It looks like we can’t reach the enchanted workshop right now. Please check your internet connection and try again.",
+	tryAgain: "Try Again",
+	goHome: "Go to Home",
+	browseShop: "Browse Shop",
+};
+
+export const networkErrorPageUA = {
+	eyebrow: "Стежка трохи вкрилася туманом",
+	code: "Offline",
+	title: "З’єднання втрачено",
+	text: "Схоже, зараз ми не можемо дістатися до чарівної майстерні. Перевірте інтернет-з’єднання та спробуйте ще раз.",
+	tryAgain: "Спробувати ще раз",
+	goHome: "На головну",
+	browseShop: "До магазину",
+};
