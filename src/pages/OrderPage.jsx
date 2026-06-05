@@ -1,16 +1,30 @@
 //OrderPage.jsx
-
 import { useState } from "react";
-import { Link, useOutletContext } from "react-router-dom";
-import { Sparkles, ShieldCheck } from "lucide-react";
+import { Link } from "react-router-dom";
 
+import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
+import "react-phone-number-input/style.css";
+import countries from "i18n-iso-countries";
+import ukLocale from "i18n-iso-countries/langs/uk.json";
+import enLocale from "i18n-iso-countries/langs/en.json";
+
+// COMPONENTS
+import { PrimaryBtn } from "../components/PrimaryBtn";
+import { PageTopTitle } from "../components/PageTopTitle";
+
+// ICONS
+import { ShieldCheck } from "lucide-react";
+
+// CONTEXT
 import { useCart } from "../context/CartContext";
 import { useProducts } from "../context/ProductsContext";
 import { useLanguage } from "../context/LanguageContext";
+
+// UTILS
 import { formatPrice } from "../utils/formatPrice";
+
+// SEO
 import Seo from "../components/Seo";
-import { PrimaryBtn } from "../components/PrimaryBtn";
-import { PageTopTitle } from "../components/PageTopTitle";
 
 import { orderPageUA, orderPageEN } from "../translations/translation";
 
@@ -97,6 +111,12 @@ const OrderPage = () => {
 		}
 		if (!form.apartment.trim()) {
 			newErrors.apartment = dict.apartmentError;
+		}
+
+		if (!form.phone?.trim()) {
+			newErrors.phone = dict.phoneError;
+		} else if (!isValidPhoneNumber(form.phone)) {
+			newErrors.phone = dict.invalidPhoneError;
 		}
 
 		setErrors(newErrors);
@@ -222,12 +242,31 @@ const OrderPage = () => {
 							</div>
 							<div className="order-page__field">
 								<label htmlFor="phone">{dict.phone}</label>
-								<input
-									id="phone"
+								<PhoneInput
+									// className="workshop-booking-modal__input"
+									type="tel"
+									international
+									defaultCountry="IE"
 									name="phone"
+									placeholder={dict.phone}
+									countryCallingCodeEditable={false}
 									value={form.phone}
-									onChange={handleChange}
+									onChange={(value) => {
+										setForm((current) => ({
+											...current,
+											phone: value || "",
+										}));
+
+										setErrors((currentErrors) => ({
+											...currentErrors,
+											phone: "",
+										}));
+									}}
+									disabled={status === "loading"}
 								/>
+								{errors.phone && (
+									<p className="order-page__error">{errors.phone}</p>
+								)}
 							</div>
 						</div>
 

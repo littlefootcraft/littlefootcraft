@@ -24,11 +24,15 @@ import { FaRegEnvelope } from "react-icons/fa6";
 import { IoLocationOutline } from "react-icons/io5";
 import { FaInstagram, FaTiktok } from "react-icons/fa6";
 
+import devLogo from "../assets/images/jane_dev_sign_whiteBG.png";
+
 import {
 	menuUA,
 	menuEN,
 	subscriptiopnEN,
 	subscriptiopnUA,
+	devSignEN,
+	devSignUA,
 } from "../translations/translation";
 
 const Footer = () => {
@@ -50,6 +54,7 @@ const Footer = () => {
 	// LANGUAGE SWITCHING
 	const t = (field) => field?.[currentLang] ?? field?.en ?? "";
 	const dict = currentLang === "en" ? subscriptiopnEN : subscriptiopnUA;
+	const developerSignature = currentLang === "en" ? devSignEN : devSignUA;
 
 	// GET IN TOUCH
 	const [isContactOpen, setIsContactOpen] = useState(false);
@@ -244,6 +249,22 @@ const Footer = () => {
 					© {new Date().getFullYear()} Little Foot Craft.{" "}
 					{t(footerContent.signature)}.
 				</p>
+
+				<div className="footer__developer container">
+					{developerSignature}
+					<a
+						href="https://www.jane.work"
+						target="_blank"
+						rel="noopener noreferrer"
+						aria-label="Visit Little Foot Craft website"
+					>
+						<img
+							src={devLogo}
+							alt="Jane's logo"
+							className="footer__developer-logo"
+						/>
+					</a>
+				</div>
 			</div>
 		</footer>
 	);

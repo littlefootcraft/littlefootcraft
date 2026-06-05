@@ -1,7 +1,20 @@
 import { useEffect, useState } from "react";
-import { X, Sparkles, CalendarDays, Clock3, MapPin } from "lucide-react";
+
+import PhoneInput, { getCountries } from "react-phone-number-input";
+import "react-phone-number-input/style.css";
+import countries from "i18n-iso-countries";
+import ukLocale from "i18n-iso-countries/langs/uk.json";
+import enLocale from "i18n-iso-countries/langs/en.json";
+
+import { isValidPhoneNumber } from "react-phone-number-input";
+
+// COMPONENTS
 import { PrimaryBtn } from "./PrimaryBtn";
 
+// ICONS
+import { X, Sparkles, CalendarDays, Clock3, MapPin } from "lucide-react";
+
+// SUPABASE
 import { supabase } from "../lib/supabaseClient";
 
 import {
@@ -59,19 +72,6 @@ export const WorkshopBookingModal = ({
 
 	const upcomingDates = workshop?.upcomingDates?.dates ?? [];
 
-	// To show message if NaN enrtered
-	const handlePhoneChange = (e) => {
-		const value = e.target.value;
-
-		if (/^\d*$/.test(value)) {
-			setPhone(value);
-			setErrors((currentErrors) => ({
-				...currentErrors,
-				phone: "",
-			}));
-		}
-	};
-
 	// For name do not accept numbers
 	const handleNameChange = (e) => {
 		const value = e.target.value;
@@ -118,6 +118,8 @@ export const WorkshopBookingModal = ({
 
 		if (!trimmedPhone) {
 			nextErrors.phone = t.emptyPhoneMessage;
+		} else if (!isValidPhoneNumber(trimmedPhone)) {
+			nextErrors.phone = t.invalidPhoneMessage;
 		}
 
 		if (!selectedDate) {
@@ -262,14 +264,23 @@ export const WorkshopBookingModal = ({
 					<div className="workshop-booking-modal__field">
 						<label className="workshop-booking-modal__label">{t.phone}</label>
 
-						<input
-							className="workshop-booking-modal__input"
+						<PhoneInput
+							// className="workshop-booking-modal__input"
 							type="tel"
+							international
+							defaultCountry="IE"
 							name="phone"
 							placeholder={t.phone}
+							countryCallingCodeEditable={false}
 							value={phone}
-							onChange={handlePhoneChange}
-							inputMode="numeric"
+							onChange={(value) => {
+								setPhone(value || "");
+
+								setErrors((currentErrors) => ({
+									...currentErrors,
+									phone: "",
+								}));
+							}}
 							disabled={status === "loading"}
 						/>
 

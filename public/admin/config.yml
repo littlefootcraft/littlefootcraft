@@ -2290,6 +2290,14 @@ collections:
               widget: "string",
               hint: "Example: Особиста зустріч",
             }
+      - label: Languages
+        name: language
+        widget: select
+        multiple: true
+        options:
+          - { label: English, value: en }
+          - { label: Ukrainian, value: ua }
+
       - label: "What's Included"
         name: "includes"
         widget: "object"

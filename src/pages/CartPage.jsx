@@ -1,11 +1,16 @@
 //CartPage.jsx
+import { Link, useOutletContext } from "react-router-dom";
 
-// import { CartItemCard } from "../components/CartItemCard";
+// COMPONENTS
 import { PrimaryBtn } from "../components/PrimaryBtn";
 import { SecondaryBtn } from "../components/SecondaryBtn";
+
+// UTILS
 import { formatPrice } from "../utils/formatPrice";
-import { Link, useOutletContext } from "react-router-dom";
+
+// HOOKS
 import { useCartDetails } from "../hooks/useCartDetails";
+
 import { cartPageEN, cartPageUA } from "../translations/translation";
 
 //Icons

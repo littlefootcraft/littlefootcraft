@@ -550,3 +550,8 @@ export const networkErrorPageUA = {
 	goHome: "На головну",
 	browseShop: "До магазину",
 };
+
+// DEVELOPER SIGNATURE----------------------------------
+
+export const devSignEN = "Crafted with care by";
+export const devSignUA = "З любов’ю створено";

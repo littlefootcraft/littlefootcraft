@@ -158,12 +158,11 @@
 			border-radius: 6px;
 		}
 
-		// & svg {
-		// 	width: 22px;
-		// 	height: 22px;
-		// 	color: $primary-text;
-		// }
-
+		// ***************************
+		&-login {
+			display: none; // hidden temporarily, will be added back in future updates
+		}
+		// ***************************
 		&-badge {
 			position: absolute;
 			top: -6px;

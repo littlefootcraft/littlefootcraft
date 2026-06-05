@@ -221,6 +221,12 @@
 		}
 	}
 
+	// ********************************
+	&__section-login {
+		display: none; // hidden temporarily, will be added back in future updates
+	}
+	// ********************************
+
 	@include tablet {
 		top: $header-height-tablet;
 

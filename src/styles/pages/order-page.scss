@@ -123,6 +123,37 @@
 		}
 	}
 
+	.PhoneInput {
+		width: 100%;
+		border: 1px solid rgba($gold-accent, 0.3);
+		border-radius: $border-radius;
+		padding: 14px 16px;
+		background-color: rgba($cream, 0.9);
+		transition:
+			border-color 0.25s ease,
+			box-shadow 0.25s ease,
+			background-color 0.25s ease;
+
+		&:focus-within {
+			border-color: $gold-accent;
+			background-color: #fff;
+			box-shadow: 0 0 0 4px rgba($gold-accent, 0.12);
+		}
+	}
+
+	.PhoneInputInput {
+		flex: 1;
+		min-width: 0;
+		padding: 0;
+		border: none;
+		outline: none;
+		background: transparent;
+		box-shadow: none;
+		font-family: var(--text-font);
+		font-size: 1rem;
+		color: $primary-text;
+	}
+
 	&__notice {
 		display: flex;
 		gap: 12px;

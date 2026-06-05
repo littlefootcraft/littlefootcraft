@@ -216,10 +216,33 @@
 	}
 
 	&__signature {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
 		padding-block: 20px;
 		border-top: 1px solid rgba($light-text, 0.1);
 		color: rgba($light-text, 0.3);
 	}
+
+	&__developer {
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		gap: 8px;
+
+		&-logo {
+			width: 30px;
+			border-radius: 4px;
+			transition: transform 0.2s ease;
+
+			&:hover {
+				transform: scale(1.1);
+			}
+		}
+	}
+
+	// RESPONSIVE
 
 	@include tablet {
 		&__content {
@@ -281,6 +304,17 @@
 		&__subscription-topics {
 			justify-content: center;
 			gap: 8px;
+		}
+
+		&__signature {
+			flex-direction: column;
+			gap: 8px;
+			// text-align: flex-start;
+		}
+
+		&__developer {
+			display: flex;
+			justify-content: flex-start;
 		}
 	}
 }

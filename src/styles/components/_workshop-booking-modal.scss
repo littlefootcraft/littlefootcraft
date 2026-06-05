@@ -7,8 +7,9 @@
 	z-index: 420;
 
 	display: flex;
-	align-items: center;
-	justify-content: center;
+
+	align-items: flex-start;
+	overflow-y: auto;
 
 	padding: 24px;
 
@@ -19,6 +20,7 @@
 	overflow-y: auto;
 
 	&__content {
+		margin: 50px auto;
 		position: relative;
 		width: min(100%, 620px);
 		padding: 40px;
@@ -167,6 +169,47 @@
 			border-color: $gold-accent;
 			box-shadow: 0 0 0 3px rgba($gold-accent, 0.12);
 		}
+
+		&::placeholder {
+			color: $light-gray-text;
+		}
+	}
+
+	.PhoneInput {
+		width: 100%;
+		padding: 14px 16px;
+		border: 1px solid $input-borders;
+		border-radius: $border-radius;
+
+		background: rgba($white, 0.75);
+		color: $primary-text;
+
+		font-family: var(--text-font);
+		font-size: var(--regular-text-size);
+
+		transition:
+			border-color 0.2s ease,
+			box-shadow 0.2s ease;
+
+		&:focus-within {
+			border-color: $gold-accent;
+			box-shadow: 0 0 0 3px rgba($gold-accent, 0.12);
+		}
+	}
+
+	.PhoneInputInput {
+		flex: 1;
+		min-width: 0;
+
+		padding: 0;
+		border: none;
+		outline: none;
+		background: transparent;
+		box-shadow: none;
+
+		font-family: var(--text-font);
+		font-size: var(--regular-text-size);
+		color: $primary-text;
 
 		&::placeholder {
 			color: $light-gray-text;

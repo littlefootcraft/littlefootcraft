@@ -21,6 +21,7 @@
 		"amount-of-people": 6
 	},
 	"location": { "en": "In person", "ua": "Особиста зустріч" },
+	"language": ["en"],
 	"exactLocation": {
 		"en": "Galway, Ireland. Full address will be shared after booking confirmation.",
 		"ua": "Галвей, Ірландія. Точну адресу буде надіслано після підтвердження бронювання."

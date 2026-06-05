@@ -102,9 +102,15 @@ const HomePage = ({ workshop }) => {
 				url={`/${currentLang}`}
 			/>
 			<section className="home-page__top">
-				<div className="home-page__top-content container">
+				<div
+					className="home-page__top-content container"
+					translate="no"
+				>
 					<MagicBadge>✦ {t(HomePageContent.hero.badge)} ✦</MagicBadge>
-					<h1 className="home-page__top-title">
+					<h1
+						className="home-page__top-title"
+						translate="no"
+					>
 						{t(HomePageContent.hero.title)}
 					</h1>
 					<p className="home-page__top-text">{t(HomePageContent.hero.text)}</p>

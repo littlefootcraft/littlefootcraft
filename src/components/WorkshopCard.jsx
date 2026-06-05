@@ -10,7 +10,7 @@ import { WorkshopBookingModal } from "../components/WorkshopBookingModal";
 import { PrimaryBtn } from "./PrimaryBtn";
 
 // ICONS
-import { Clock3, Users, MapPin, CalendarClock } from "lucide-react";
+import { Clock3, Users, MapPin, CalendarClock, Languages } from "lucide-react";
 
 // UTILS
 import { formatPrice } from "../utils/formatPrice";
@@ -33,6 +33,18 @@ export const WorkshopCard = ({ workshop }) => {
 		}).format(new Date(dateStr));
 	};
 
+	// Workshop language
+	const languageLabels = {
+		en: {
+			en: "English",
+			ua: "Англійська",
+		},
+		ua: {
+			en: "Ukrainian",
+			ua: "Українська",
+		},
+	};
+
 	return (
 		<div className="workshop-card">
 			<img
@@ -52,7 +64,7 @@ export const WorkshopCard = ({ workshop }) => {
 
 				<p className="workshop-card__subtitle">{t(workshop.subtitle)}</p>
 
-				<p className="workshop-card__meta">
+				<div className="workshop-card__meta">
 					<span>
 						<Clock3 />
 						{workshop.duration?.value} {t(workshop.duration?.unit)}
@@ -66,7 +78,13 @@ export const WorkshopCard = ({ workshop }) => {
 						<MapPin />
 						{t(workshop.location)}
 					</span>
-				</p>
+					<span>
+						<Languages />
+						{workshop.language
+							?.map((lang) => t(languageLabels[lang]))
+							?.join(", ")}
+					</span>
+				</div>
 				<div className="workshop-card__details">
 					{workshop.time && (
 						<p className="workshop-card__detail">
