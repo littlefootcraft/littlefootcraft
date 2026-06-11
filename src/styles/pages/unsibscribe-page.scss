@@ -75,4 +75,56 @@
 		text-decoration: underline;
 		text-underline-offset: 4px;
 	}
+
+	@include tablet {
+		.unsubscribe-page {
+			min-height: calc(100vh - $header-height-tablet);
+			padding: 32px 18px;
+
+			&__card {
+				padding: 32px 24px;
+			}
+
+			&__title {
+				font-size: clamp(1.8rem, 6vw, 2.5rem);
+			}
+		}
+	}
+
+	@include mobile {
+		.unsubscribe-page {
+			padding: 24px 16px;
+			align-items: flex-start;
+
+			&__card {
+				margin-top: 40px;
+				padding: 28px 18px;
+				border-radius: 18px;
+			}
+
+			&__title {
+				font-size: 2rem;
+				line-height: 1.2;
+			}
+
+			&__text {
+				margin-bottom: 24px;
+				font-size: 1rem;
+			}
+
+			&__button {
+				width: 100%;
+				padding: 13px 20px;
+			}
+
+			&__message {
+				font-size: 0.95rem;
+				line-height: 1.5;
+			}
+
+			&__link {
+				font-size: 0.95rem;
+			}
+		}
+	}
 }
