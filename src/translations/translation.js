@@ -555,3 +555,32 @@ export const networkErrorPageUA = {
 
 export const devSignEN = "Crafted with care by";
 export const devSignUA = "З любов’ю створено";
+
+// SUBSCRIPTION CONFIRMATION-----------------------------------
+
+export const newsletterEN = {
+	emailSubject: "Thank you for subscribing to LittleFootCraft",
+	emailTitle: "Thank you for subscribing ✨",
+	emailIntro:
+		"You have successfully joined the magical LittleFootCraft community.",
+	emailSubscribedTo: "You subscribed to:",
+	emailUpdates: "We'll send you updates based on your selected topics.",
+	emailButton: "Visit LittleFootCraft",
+	emailClosing: "Warm wishes,",
+	emailUnsubscribe:
+		"You received this email because you subscribed to LittleFootCraft updates.",
+	emailUnsubscribeButton: "Unsubscribe",
+};
+
+export const newsletterUA = {
+	emailSubject: "Дякуємо за підписку на LittleFootCraft",
+	emailTitle: "Дякуємо за підписку ✨",
+	emailIntro: "Ви успішно приєдналися до магічної спільноти LittleFootCraft.",
+	emailSubscribedTo: "Ви підписалися на:",
+	emailUpdates: "Ми надсилатимемо вам новини відповідно до вибраних тем.",
+	emailButton: "Відвідати сайт",
+	emailClosing: "З теплом,",
+	emailUnsubscribe:
+		"Ви отримали цей лист, тому що підписалися на новини LittleFootCraft.",
+	emailUnsubscribeButton: "Відписатися",
+};

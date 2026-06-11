@@ -2,11 +2,15 @@ import { useState } from "react";
 import { supabase } from "../lib/supabaseClient";
 import { useLanguage } from "../context/LanguageContext";
 
+import { newsletterEN, newsletterUA } from "../translations/translation";
+
 export const useSubscribe = (dict) => {
 	const { currentLang } = useLanguage();
 	const [email, setEmail] = useState("");
 	const [status, setStatus] = useState("idle");
 	const [message, setMessage] = useState("");
+
+	const emailDict = currentLang === "ua" ? newsletterUA : newsletterEN;
 
 	// INTERESTS
 	const INTERESTS = ["workshops", "master-classes", "sales"];
@@ -89,71 +93,54 @@ export const useSubscribe = (dict) => {
 			.map((label) => `<li>${label}</li>`)
 			.join("");
 
-		const confirmationSubject =
-			currentLang === "ua"
-				? "Дякуємо за підписку на LittleFootCraft"
-				: "Thank you for subscribing to LittleFootCraft";
+		const confirmationSubject = emailDict.emailSubject;
 
-		const confirmationHtml =
-			currentLang === "ua"
-				? `
-			<div style="font-family: Arial, sans-serif; background:#fdfbf7; padding:32px;">
-	    	<div style="max-width: 600px; margin: 0 auto; background:#ffffff; border:1px solid rgba(212,175,55,.35); border-radius:18px; padding:32px;">
-		    	<h1 style="color:#1a2b4c; margin:0 0 16px; font-size:28px;">Дякуємо за підписку ✨</h1>
+		const confirmationHtml = `<div style="font-family: Verdana, sans-serif; background:#fdfbf7; padding:32px;">
+				<div style="max-width: 600px; margin: 0 auto; background:#ffffff; border:1px solid rgba(212,175,55,.35); border-radius:18px; padding:32px;">
+					<div style="text-align:center; margin-bottom:24px;">
+			      <img
+				      src="https://littlefootcraft.art/uploads/images/logo.png"
+				      alt="LittleFootCraft"
+				      style="width:80px; height:auto;"
+			      />
+		      </div>
 
-		    	<p style="color:#4a5568; font-size:16px; line-height:1.6;">
-			    	Ви успішно приєдналися до магічної спільноти LittleFootCraft.
-		    	</p>
+					<h1 style="color:#1a2b4c; margin:0 0 16px; font-size:28px; text-align:center;">
+						${emailDict.emailTitle}
+					</h1>
 
-		    	<p style="color:#1a2b4c; font-weight:bold; font-size:16px;">Ви підписалися на:</p>
+					<p style="color:#4a5568; font-size:16px; line-height:1.6;">
+						${emailDict.emailIntro}
+					</p>
 
-		      	<ul style="padding-left:22px; margin-top:8px;">
-			      	${selectedInterestList}
-		      	</ul>
+					<p style="color:#1a2b4c; font-weight:bold; font-size:16px;">
+						${emailDict.emailSubscribedTo}
+					</p>
 
-		    	<p style="color:#4a5568; font-size:16px; line-height:1.6;">
-			    	Ми надсилатимемо вам новини відповідно до вибраних тем.
-		    	</p>
+					<ul style="padding-left:22px; margin-top:8px;">
+						${selectedInterestList}
+					</ul>
 
-		      <a href="https://littlefootcraft.art"
-			      style="display:inline-block; margin-top:16px; padding:12px 22px; background:#1a2b4c; color:#ffffff; text-decoration:none;       border-radius:999px; font-size:15px;">
-			      Відвідати сайт
-		      </a>
+					<p style="color:#4a5568; font-size:16px; line-height:1.6;">
+						${emailDict.emailUpdates}
+					</p>
 
-		    	<p style="color:#9ca3af; font-size:13px; margin-top:28px;">
-			    	З теплом,<br/>LittleFootCraft
-		    	</p>
-	    	</div>
-    	</div>`
-				: `<div style="font-family: Arial, sans-serif; background:#fdfbf7; padding:32px;">
-	    	<div style="max-width:600px; margin:0 auto; background:#ffffff; border:1px solid rgba(212,175,55,.35); border-radius:18px; padding:32px;">
-		    	<h1 style="color:#1a2b4c; margin:0 0 16px; font-size:28px;">Thank you for subscribing ✨</h1>
+					<div style="text-align:center; margin-top:24px;">
+						<a
+							href="https://littlefootcraft.art"
+							style="display:inline-block; padding:12px 22px; background:#1a2b4c; 					color:#ffffff; text-decoration:none; border-radius:999px; font-size:15px;"
+						>
+							${emailDict.emailButton}
+						</a>
+					</div>
 
-		      <p style="color:#4a5568; font-size:16px; line-height:1.6;">
-			      You have successfully joined the magical LittleFootCraft community.
-		      </p>
-
-		      <p style="color:#1a2b4c; font-weight:bold; font-size:16px;">You subscribed to:</p>
-
-		      <ul style="padding-left:22px; margin-top:8px;">
-			      ${selectedInterestList}
-		      </ul>
-
-		      <p style="color:#4a5568; font-size:16px; line-height:1.6;">
-			      We'll send you updates based on your selected topics.
-		      </p>
-
-					<a href="https://littlefootcraft.art"
-						style="display:inline-block; margin-top:16px; padding:12px 22px; background:#1a2b4c; color:#ffffff; text-decoration:none; 			border-radius:999px; font-size:15px;">
-						Visit LittleFootCraft
-					</a>
-
-					<p style="color:#9ca3af; font-size:13px; margin-top:28px;">
-						Warm wishes,<br/>LittleFootCraft
+					<p style="color:#9ca3af; font-size:13px; margin-top:28px; text-align:center;">
+						${emailDict.emailClosing}
+						<br />
+						LittleFootCraft
 					</p>
 				</div>
 			</div>`;
-
 		const { error: emailError } = await supabase.functions.invoke(
 			"resend-email",
 			{
