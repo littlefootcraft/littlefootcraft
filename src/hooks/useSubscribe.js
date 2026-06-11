@@ -59,21 +59,6 @@ export const useSubscribe = (dict) => {
 			language: currentLang,
 		});
 
-		// //Temporary
-		// if (error) {
-		// 	console.log("Supabase error:", error);
-
-		// 	setStatus("error");
-
-		// 	if (error.code === "23505") {
-		// 		setMessage(dict.alreadySubscribedMessage);
-		// 	} else {
-		// 		setMessage(dict.errorMessage);
-		// 	}
-
-		// 	return;
-		// }
-
 		if (error) {
 			setStatus("error");
 
@@ -84,6 +69,60 @@ export const useSubscribe = (dict) => {
 			}
 
 			return;
+		}
+		const interestLabels = {
+			en: {
+				workshops: "Workshops",
+				"master-classes": "Master classes",
+				sales: "Sales",
+			},
+			ua: {
+				workshops: "Воркшопи",
+				"master-classes": "Майстер-класи",
+				sales: "Знижки та пропозиції",
+			},
+		};
+
+		const confirmationSubject =
+			currentLang === "ua"
+				? "Дякуємо за підписку на LittleFootCraft"
+				: "Thank you for subscribing to LittleFootCraft";
+
+		const selectedInterestList = interests
+			.map((interest) => interestLabels[currentLang]?.[interest] ?? interest)
+			.map((label) => `<li>${label}</li>`)
+			.join("");
+
+		const confirmationHtml =
+			currentLang === "ua"
+				? `
+			<h2>Дякуємо за підписку на LittleFootCraft!</h2>
+			<p>Ви успішно підписалися на:</p>
+			<ul>${selectedInterestList}</ul>
+			<p>Ми надсилатимемо вам лише новини за вибраними темами.</p>
+			<p>З теплом,<br/>LittleFootCraft</p>
+		`
+				: `
+			<h2>Thank you for subscribing to LittleFootCraft!</h2>
+			<p>You successfully subscribed to:</p>
+			<ul>${selectedInterestList}</ul>
+			<p>We'll only send you updates related to your selected topics.</p>
+			<p>Warm wishes,<br/>LittleFootCraft</p>
+		`;
+
+		const { error: emailError } = await supabase.functions.invoke(
+			"resend-email",
+			{
+				body: {
+					to: trimmedEmail,
+					subject: confirmationSubject,
+					html: confirmationHtml,
+				},
+			},
+		);
+
+		if (emailError) {
+			console.log("Confirmation email error:", emailError);
 		}
 
 		setEmail("");
