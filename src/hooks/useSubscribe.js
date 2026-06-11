@@ -57,11 +57,15 @@ export const useSubscribe = (dict) => {
 
 		setStatus("loading");
 
-		const { error } = await supabase.from("subscribers").insert({
-			email: trimmedEmail,
-			interests,
-			language: currentLang,
-		});
+		const { data, error } = await supabase
+			.from("subscribers")
+			.insert({
+				email: trimmedEmail,
+				interests,
+				language: currentLang,
+			})
+			.select()
+			.single();
 
 		if (error) {
 			setStatus("error");
@@ -134,10 +138,15 @@ export const useSubscribe = (dict) => {
 						</a>
 					</div>
 
-					<p style="color:#9ca3af; font-size:13px; margin-top:28px; text-align:center;">
-						${emailDict.emailClosing}
+					<p style="color:#9ca3af; font-size:12px; margin-top:28px; text-align:center;">
+						${emailDict.emailUnsubscribe}
 						<br />
-						LittleFootCraft
+						<a
+							href="https://littlefootcraft.art/${currentLang}/unsubscribe?id=${data.id}"
+							style="color:#9ca3af; text-decoration:underline;"
+						>
+							${emailDict.emailUnsubscribeButton}
+						</a>
 					</p>
 				</div>
 			</div>`;

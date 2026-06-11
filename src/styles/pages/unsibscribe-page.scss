@@ -1,0 +1,78 @@
+@use "./../base/variables" as *;
+@use "./../abstracts/mixins" as *;
+
+.unsubscribe-page {
+	min-height: calc(100vh - $header-height);
+	padding: 40px 24px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: $cream;
+
+	&__card {
+		width: min(100%, 620px);
+		padding: 40px 32px;
+		border: 1px solid $card-borders;
+		border-radius: $border-radius;
+		background: $white;
+		text-align: center;
+		box-shadow: 0 18px 40px rgba($primary-text, 0.08);
+	}
+
+	&__title {
+		margin-bottom: 16px;
+		color: $primary-text;
+		font-family: var(--decorative-font);
+		font-size: clamp(2rem, 4vw, 3rem);
+	}
+
+	&__text {
+		margin-bottom: 28px;
+		color: $secondary-text;
+		font-size: var(--regular-text-size);
+		line-height: 1.6;
+	}
+
+	&__button {
+		padding: 12px 26px;
+		border: none;
+		border-radius: 999px;
+		background: $primary-text;
+		color: $white;
+		font-family: var(--text-font);
+		font-size: var(--regular-text-size);
+		cursor: pointer;
+		transition: all 0.3s;
+
+		&:hover:not(:disabled) {
+			background: $gold-accent;
+			color: $primary-text;
+		}
+
+		&:disabled {
+			opacity: 0.6;
+			cursor: not-allowed;
+		}
+	}
+
+	&__message {
+		margin-top: 22px;
+		font-size: var(--regular-text-size);
+
+		&--success {
+			color: $success-message;
+		}
+
+		&--error {
+			color: $error-message;
+		}
+	}
+
+	&__link {
+		display: inline-block;
+		margin-top: 24px;
+		color: $primary-text;
+		text-decoration: underline;
+		text-underline-offset: 4px;
+	}
+}

@@ -26,6 +26,7 @@ import OrderPage from "./pages/OrderPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import ServerErrorPage from "./pages/ServerErrorPage";
 import NetworkErrorPage from "./pages/NetworkErrorPage";
+import UnsubscribePage from "./pages/UnsubscribePage";
 
 const router = createBrowserRouter([
 	{
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
 		children: [
 			{ index: true, element: <HomePage /> },
 			{ path: "network-error", element: <NetworkErrorPage /> },
+			{
+				path: "unsubscribe",
+				element: <UnsubscribePage />,
+			},
 			{
 				path: "*",
 				element: <NotFoundPage />,
