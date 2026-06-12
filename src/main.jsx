@@ -45,10 +45,6 @@ const router = createBrowserRouter([
 		children: [
 			{ index: true, element: <HomePage /> },
 			{ path: "network-error", element: <NetworkErrorPage /> },
-			// {
-			// 	path: "server-error",
-			// 	element: <ServerErrorPage />,
-			// },
 
 			{
 				path: "unsubscribe",

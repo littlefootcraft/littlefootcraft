@@ -94,7 +94,7 @@ export const useSubscribe = (dict) => {
 
 		const selectedInterestList = interests
 			.map((interest) => interestLabels[currentLang]?.[interest] ?? interest)
-			.map((label) => `<li>✧ ${label}</li>`)
+			.map((label) => `<li style="list-style:none;>✧ ${label}</li>`)
 			.join("");
 
 		const confirmationSubject = emailDict.emailSubject;
@@ -105,7 +105,7 @@ export const useSubscribe = (dict) => {
 			      <img
 				      src="https://littlefootcraft.art/uploads/images/logo.png"
 				      alt="LittleFootCraft"
-				      style="width:120px; height:auto;"
+				      style="width:180px; height:auto;"
 			      />
 		      </div>
 

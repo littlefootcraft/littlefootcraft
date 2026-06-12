@@ -178,7 +178,9 @@ const UnsubscribePage = () => {
 										checked={selectedInterests.includes(interest)}
 										onChange={() => toggleInterest(interest)}
 									/>
-									<span>{interestLabels[lang]?.[interest] ?? interest}</span>
+									<span>
+										{interestLabels[currentLang]?.[interest] ?? interest}
+									</span>
 								</label>
 							))}
 						</div>
