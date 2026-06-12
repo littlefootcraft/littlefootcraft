@@ -14,6 +14,7 @@ const BUTTON_CONFIG = {
 		// iconPosition: "left",
 	},
 	filter: { icon: <Filter size={20} />, iconPosition: "left" },
+	unsibscribe: {},
 };
 
 export const SecondaryBtn = ({

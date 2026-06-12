@@ -22,6 +22,10 @@ const BUTTON_CONFIG = {
 		icon: <LogIn size={20} />,
 		iconPosition: "left",
 	},
+	"change-subscription": {
+		icon: <WandSparkles size={20} />,
+		iconPosition: "right",
+	},
 };
 
 export const PrimaryBtn = ({

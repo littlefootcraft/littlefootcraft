@@ -11,7 +11,7 @@ const NotFoundPage = () => {
 	const dict = currentLang === "en" ? notFoundPageEN : notFoundPageUA;
 
 	return (
-		<main className="not-found">
+		<section className="not-found">
 			<section className="not-found__block">
 				<div className="not-found__content">
 					<p className="not-found__eyebrow">{dict.eyebrow}</p>
@@ -39,7 +39,7 @@ const NotFoundPage = () => {
 					</div>
 				</div>
 			</section>
-		</main>
+		</section>
 	);
 };
 

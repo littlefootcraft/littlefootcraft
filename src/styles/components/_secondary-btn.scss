@@ -56,6 +56,17 @@
 		font-size: 1.25rem;
 	}
 
+	&--unsubscribe {
+		padding: 15px 32px;
+		min-width: 280px;
+		font-size: 1.125rem;
+
+		@include mobile {
+			width: 100%;
+			min-width: 0;
+		}
+	}
+
 	&--to-cart {
 		padding: 15px 32px;
 		width: 100%;

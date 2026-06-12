@@ -186,7 +186,8 @@
 	&--login,
 	&--register,
 	&--add-to-cart,
-	&--order {
+	&--order,
+	&--change-subscription {
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -200,6 +201,10 @@
 		&::before {
 			border-radius: $border-radius;
 		}
+	}
+
+	&--change-subscription {
+		font-size: 18px;
 	}
 
 	@include mobile {

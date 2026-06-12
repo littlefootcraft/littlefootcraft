@@ -45,6 +45,11 @@ const router = createBrowserRouter([
 		children: [
 			{ index: true, element: <HomePage /> },
 			{ path: "network-error", element: <NetworkErrorPage /> },
+			// {
+			// 	path: "server-error",
+			// 	element: <ServerErrorPage />,
+			// },
+
 			{
 				path: "unsubscribe",
 				element: <UnsubscribePage />,
@@ -53,6 +58,7 @@ const router = createBrowserRouter([
 				path: "*",
 				element: <NotFoundPage />,
 			},
+
 			{
 				// path: "shop",
 				element: <ShopLayout />,

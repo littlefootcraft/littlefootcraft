@@ -94,18 +94,18 @@ export const useSubscribe = (dict) => {
 
 		const selectedInterestList = interests
 			.map((interest) => interestLabels[currentLang]?.[interest] ?? interest)
-			.map((label) => `<li>${label}</li>`)
+			.map((label) => `<li>✧ ${label}</li>`)
 			.join("");
 
 		const confirmationSubject = emailDict.emailSubject;
 
 		const confirmationHtml = `<div style="font-family: Verdana, sans-serif; background:#fdfbf7; padding:32px;">
 				<div style="max-width: 600px; margin: 0 auto; background:#ffffff; border:1px solid rgba(212,175,55,.35); border-radius:18px; padding:32px;">
-					<div style="text-align:center; margin-bottom:24px;">
+					<div style="text-align:center; margin-bottom:12px;">
 			      <img
 				      src="https://littlefootcraft.art/uploads/images/logo.png"
 				      alt="LittleFootCraft"
-				      style="width:80px; height:auto;"
+				      style="width:120px; height:auto;"
 			      />
 		      </div>
 
@@ -121,7 +121,7 @@ export const useSubscribe = (dict) => {
 						${emailDict.emailSubscribedTo}
 					</p>
 
-					<ul style="padding-left:22px; margin-top:8px;">
+					<ul style="padding-left:22px; margin-top:8px; color:#4a5568;">
 						${selectedInterestList}
 					</ul>
 

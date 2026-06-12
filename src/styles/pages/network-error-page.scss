@@ -7,7 +7,9 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background: $cream;
+	background:
+		radial-gradient(circle at top, rgba($gold-accent, 0.12), transparent 35%),
+		$cream;
 
 	&__block {
 		width: min(100%, 1180px);
@@ -26,7 +28,7 @@
 				rgba(253, 251, 247, 0.58) 62%,
 				rgba(253, 251, 247, 0.88) 100%
 			),
-			url("/uploads/images/network_error_page.png");
+			url("./../../assets/images/network_error_page.png");
 		background-size: cover;
 		background-position: center;
 		box-shadow: 0 24px 70px rgba(26, 43, 76, 0.16);
@@ -185,7 +187,7 @@
 					rgba(253, 251, 247, 0.25) 68%,
 					rgba(253, 251, 247, 0.82) 100%
 				),
-				url("/uploads/images/network_error_page_mobile.png");
+				url("./../../assets/images/network_error_page_mobile.png");
 
 			background-size: cover;
 			background-position: center top;
