@@ -3,6 +3,10 @@ import { useState, useMemo, useRef, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
+// CONSTANTS
+
+import { COLOR_BY_CODE } from "../constants/color_shades_system";
+
 // JSONS
 import ProductPageContent from "../content/pages/product-page.json";
 // import CollectionsContent from "../content/collections/collections.json";
@@ -25,11 +29,6 @@ import { ProcessSection } from "../components/ProcessSection";
 
 // ICONS
 import { X } from "lucide-react";
-
-import NotFoundPage from "./NotFoundPage";
-import { productPageUA, productPageEN } from "../translations/translation";
-
-//Icons
 import { Check, Star, Sparkles } from "lucide-react";
 import { IoShareSocialOutline } from "react-icons/io5";
 import {
@@ -41,6 +40,12 @@ import {
 import { MdOutlineEmail } from "react-icons/md";
 import { FiLink } from "react-icons/fi";
 import { ShieldCheck, PackageCheck, Truck } from "lucide-react";
+
+// 404 PADE
+import NotFoundPage from "./NotFoundPage";
+
+// TRANSLATION
+import { productPageUA, productPageEN } from "../translations/translation";
 
 // UTILS
 import { formatPrice } from "../utils/formatPrice";
@@ -346,14 +351,20 @@ const ProductPage = () => {
 
 					{/* Specs */}
 					<div className="product-page__specs">
-						{product.specifications?.size && (
+						<div className="product-page__spec">
+							<span className="product-page__spec-label">{dict.specs.sku}</span>
+							<span>{product.sku}</span>
+						</div>
+
+						{product.specifications?.design && (
 							<div className="product-page__spec">
 								<span className="product-page__spec-label">
-									{dict.specs.size}
+									{dict.specs.design}
 								</span>
-								<span>{t(product.specifications.size)}</span>
+								<span>{t(product.specifications.design)}</span>
 							</div>
 						)}
+
 						{product.specifications?.collection && productCollection && (
 							<div className="product-page__spec">
 								<span className="product-page__spec-label">
@@ -362,27 +373,70 @@ const ProductPage = () => {
 								<span>{t(productCollection?.name)}</span>
 							</div>
 						)}
-						{product.specifications?.color && (
+						{product.specifications?.size && (
 							<div className="product-page__spec">
 								<span className="product-page__spec-label">
-									{dict.specs.color}
+									{dict.specs.size}
 								</span>
-								<div className="product-page__colors">
-									{product.specifications.color.map((color) => (
-										<span
-											key={color}
-											className="product-page__color-dot"
-											style={{ backgroundColor: color }}
-											title={color}
-										/>
+								<div className="product-page__spec-value">
+									{t(product.specifications.size).map((item) => (
+										<div key={item}>{item}</div>
 									))}
 								</div>
 							</div>
 						)}
-						<div className="product-page__spec">
-							<span className="product-page__spec-label">{dict.specs.sku}</span>
-							<span>{product.sku}</span>
-						</div>
+
+						{product.specifications?.colors && (
+							<div className="product-page__spec">
+								<span className="product-page__spec-label">
+									{dict.specs.color}
+								</span>
+
+								<div className="product-page__colors">
+									<div className="product-page__color-dots">
+										{product.specifications.colors.map((colorCode) => {
+											const colorInfo = COLOR_BY_CODE[colorCode];
+
+											return (
+												<span
+													key={colorCode}
+													className="product-page__color-dot"
+													style={{
+														backgroundColor: colorInfo?.hex ?? "#ccc",
+													}}
+												/>
+											);
+										})}
+									</div>
+
+									<span className="product-page__color-names">
+										{product.specifications.colors
+											.map((colorCode) => {
+												const colorInfo = COLOR_BY_CODE[colorCode];
+												return t(colorInfo?.label);
+											})
+											.filter(Boolean)
+											.join(", ")}
+									</span>
+								</div>
+							</div>
+						)}
+						{product.specifications?.materials && (
+							<div className="product-page__spec">
+								<span className="product-page__spec-label">
+									{dict.specs.materials}
+								</span>
+								<span>{t(product.specifications.materials).join(", ")}</span>
+							</div>
+						)}
+						{product.specifications?.clasp && (
+							<div className="product-page__spec">
+								<span className="product-page__spec-label">
+									{dict.specs.clasp}
+								</span>
+								<span>{t(product.specifications.clasp)}</span>
+							</div>
+						)}
 					</div>
 
 					{/* Action buttons */}
@@ -581,7 +635,7 @@ const ProductPage = () => {
 					</div>
 				</div>
 			)}
-			{console.log("relatedProducts", relatedProducts)}
+			{/* {console.log("relatedProducts", relatedProducts)} */}
 
 			{/* Recently viewed */}
 			{recentlyViewed.length > 0 && (

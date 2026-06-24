@@ -240,6 +240,7 @@
 		line-height: 1.7;
 		border-top: 1px solid $card-borders;
 		padding-top: 24px;
+		white-space: pre-line;
 	}
 
 	// Specs table
@@ -249,6 +250,7 @@
 		gap: 12px;
 		border-top: 1px solid $card-borders;
 		padding-top: 24px;
+		color: $light-gray-text;
 	}
 
 	&__spec {
@@ -256,9 +258,15 @@
 		justify-content: space-between;
 		align-items: center;
 		font-size: var(--regular-text-size);
+		gap: 10px;
 
 		& span {
-			color: $light-gray-text;
+			text-align: end;
+		}
+
+		&-value {
+			white-space: pre-line;
+			text-align: end;
 		}
 	}
 
@@ -270,6 +278,14 @@
 	// Color dots in specs
 	&__colors {
 		display: flex;
+		flex-direction: column;
+		align-items: end;
+		gap: 10px;
+		flex-wrap: wrap;
+		justify-content: flex-end;
+	}
+	&__color-dots {
+		display: flex;
 		gap: 6px;
 	}
 
@@ -279,6 +295,12 @@
 		height: 18px;
 		border-radius: 50%;
 		border: 1px solid rgba(26, 43, 76, 0.15);
+		flex-shrink: 0;
+
+		&__color-names {
+			color: $light-gray-text;
+			text-align: right;
+		}
 	}
 
 	// ACTION BUTTONS---------------------------
@@ -456,30 +478,6 @@
 			overflow: hidden;
 			background: $primary-text;
 		}
-
-		// &-close {
-		// 	top: -44px;
-		// 	position: absolute;
-		// 	top: 12px;
-		// 	right: 12px;
-		// 	z-index: 1;
-		// 	width: 36px;
-		// 	height: 36px;
-		// 	border: none;
-		// 	border-radius: 50%;
-		// 	background: rgba($white, 0.15);
-		// 	color: $white;
-		// 	display: flex;
-		// 	align-items: center;
-		// 	justify-content: center;
-		// 	cursor: pointer;
-		// 	font-size: 1.25rem;
-		// 	transition: background-color 0.2s ease;
-
-		// 	&:hover {
-		// 		background: rgba($white, 0.3);
-		// 	}
-		// }
 
 		&-close {
 			position: absolute;

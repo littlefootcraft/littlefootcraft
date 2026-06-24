@@ -1,0 +1,76 @@
+{
+	"sku": "BR0624-002",
+	"seo": {
+		"title": {
+			"en": "Brooch Jellyfish Snizhana Arg | LittleFootCraft",
+			"ua": "Брошка Медуза Сніжана Арг | LittleFootCraft"
+		},
+		"description": {
+			"en": "Handcrafted jellyfish brooch in icy blue, silver, and crystal tones, adorned with sparkling rhinestone chains and shimmering beadwork. Inspired by moonlit ocean waters and winter skies, this elegant design captures the graceful movement of a drifting jellyfish while adding a touch of magic, light, and sophistication to any outfit.",
+
+			"ua": "Брошка-медуза ручної роботи в крижаних блакитних, сріблястих і кришталевих відтінках, оздоблена мерехтливими стразовими ланцюжками та витонченою бісерною вишивкою. Натхненна місячним сяйвом над океаном і зимовим небом, вона передає граційний рух медузи та додає образу нотку чарівності, світла й елегантності."
+		},
+		"imageAlt": {
+			"en": "Brooch Jellyfish Snizhana Arg by LittleFootCraft",
+			"ua": "Медуза Сніжана Арг від LittleFootCraft"
+		}
+	},
+	"name": {
+		"en": "Brooch Jellyfish Snizhana Arg",
+		"ua": "Брошка Медуза Сніжана Арг"
+	},
+	"specifications": {
+		"category": { "en": "Brooches", "ua": "Брошки" },
+		"size": {
+			"en": [
+				"Full length: approx. 16 x 7 cm (6.3 × 2.8 in)",
+				"Body: approx. 6 x 7 cm (2.4 × 2.8 in)"
+			],
+			"ua": [
+				"Загальна довжина: приблизно 16 x 7 см",
+				"Тіло медузи: приблизно 16 x 7 см"
+			]
+		},
+		"colors": ["BL13", "GY05"],
+		"collection": "ocean-blue",
+		"materials": {
+			"en": ["seed beads", "glass beads", "rhinestone chain", "textile base"],
+			"ua": [
+				"бісер",
+				"скляні намистини",
+				"стразовий ланцюжок",
+				"текстильна основа"
+			]
+		},
+		"design": {
+			"en": "Jellyfish",
+			"ua": "Медуза"
+		},
+		"clasp": {
+			"en": "Metal pin",
+			"ua": "Металева застібка"
+		}
+	},
+	"description": {
+		"en": "The brooch “Jellyfish Snizhana Arg” is simple. Grey-blue. Like water before sunrise.\n\nIt does not try to be anything else. That is its strength.\n\nIt has the look of cold air over still sea. The kind of color you see when you are alone and there is no need to speak. It is soft, but not weak. Delicate, but not unsure of itself.\n\nA jellyfish drifts in deep water. No hurry. No noise. Just movement that does not ask for attention.\n\nThat is what this is.\n\nSomething quiet. Clean. True enough that you don’t need to explain it.",
+
+		"ua": "Брошка «Медуза Сніжана Арг» проста. Сіро-блакитна. Як вода перед світанком.\n\nВона не намагається бути чимось іншим. У цьому її сила.\n\nВ її кольорах є щось від холодного повітря над спокійним морем. Такий відтінок бачиш тоді, коли залишаєшся наодинці з собою і слова вже не потрібні. Вона ніжна, але не слабка. Делікатна, але впевнена у собі.\n\nМедуза дрейфує в глибокій воді. Без поспіху. Без шуму. Просто рух, який не прагне привернути увагу.\n\nСаме такою є ця прикраса.\n\nЩось тихе. Чисте. Справжнє настільки, що його не потрібно пояснювати."
+	},
+	"price": 150,
+	"oldPrice": null,
+
+	"badges": {
+		"isTop": false,
+		"isNew": true
+	},
+	"video": null,
+	"photo": [
+		{
+			"src": "/uploads/images/broches/BR0624-002-1.jpeg",
+			"alt": {
+				"en": "Jellyfish Snizhana Arg - Front View",
+				"ua": "Брошка Медуза Сніжана Арг - Вид спереди"
+			}
+		}
+	]
+}

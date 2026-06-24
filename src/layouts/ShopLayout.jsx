@@ -2,12 +2,13 @@
 import { Outlet } from "react-router-dom";
 import { useMemo, useState } from "react";
 import { PageTopTitle } from "../components/PageTopTitle";
-import { useCatalogPagination } from "../hooks/useCatalogPagination";
-import { PaginationBar } from "../components/Pagination";
+// import { useCatalogPagination } from "../hooks/useCatalogPagination";
+// import { PaginationBar } from "../components/Pagination";
 import { useProducts } from "../context/ProductsContext";
 import { ShopToolbar } from "../components/ShopToolbar";
 import { FiltersDrawer } from "../components/FiltersDrawer";
 import { useFilters } from "../hooks/useFilters";
+import { COLOR_BY_CODE } from "../constants/color_shades_system";
 
 // This function lives outside the component — that's fine because
 // it's not a hook, just a plain helper function.
@@ -22,13 +23,23 @@ function applyFilters(products, activeFilters) {
 
 			// Check if the product matches at least one selected value
 			// product.specifications is where your product data stores these values
-			const productValues = product.specifications?.[key];
+			let productValues = product.specifications?.[key];
+
+			if (key === "color") {
+				productValues = product.specifications?.colors?.map(
+					(colorCode) => COLOR_BY_CODE[colorCode]?.group,
+				);
+			}
 			if (!productValues) return false;
 
 			// Normalize a value to array of lowercase strings
 			// handles: string, { en, ua } object, or array of those
 			const normalize = (val) => {
-				if (typeof val === "object" && val !== null && !Array.isArray(val)) {
+				if (Array.isArray(val)) {
+					return val.flatMap(normalize);
+				}
+
+				if (typeof val === "object" && val !== null) {
 					return Object.values(val).map((v) => String(v).toLowerCase());
 				}
 				return [String(val).toLowerCase()];
@@ -107,11 +118,11 @@ const ShopLayout = () => {
 		return sorted;
 	}, [filteredProducts, sortKey]);
 
-	// Step 4: Paginate (always last — paginates whatever survived the pipeline)
-	const { page, totalPages, paginatedItems, setParams } = useCatalogPagination(
-		sortedProducts,
-		20,
-	);
+	// // Step 4: Paginate (always last — paginates whatever survived the pipeline)
+	// const { page, totalPages, paginatedItems, setParams } = useCatalogPagination(
+	// 	sortedProducts,
+	// 	20,
+	// );
 
 	return (
 		<div className="shop-layout">
@@ -163,8 +174,8 @@ const ShopLayout = () => {
 				}}
 			/>
 
-			{/* 3. pagination */}
-			{/* <div className="shop-page__pagination-slot">
+			{/* 3. pagination
+			<div className="shop-page__pagination-slot">
 				<PaginationBar
 					page={page}
 					totalPages={totalPages}

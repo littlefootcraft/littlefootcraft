@@ -1,6 +1,6 @@
 //Translation.jsx
 
-// Menu --------------------------------
+// MENU --------------------------------
 export const menuEN = {
 	home: "Home",
 	shop: "Shop",
@@ -19,7 +19,7 @@ export const menuUA = {
 	sale: "Poзпродаж",
 };
 
-// SUBSCRIPTION SECTION
+// SUBSCRIPTION SECTION-----------------------------------------
 
 export const subscriptiopnEN = {
 	title: "Join Our Enchanted Circle",
@@ -58,7 +58,7 @@ export const subscriptiopnUA = {
 	emptyInterestsMessage: "Будь ласка, оберіть хоча б одну тему.",
 };
 
-// Product Card-----------------------
+// PRODUCT CARD-----------------------
 export const productCardEN = {
 	new: "New",
 	addToWishlist: "Add to wishlist",
@@ -73,7 +73,7 @@ export const productCardUA = {
 	"details-btn": "Детальніше",
 };
 
-// Wishlist page---------------------------------------
+// WISHLIST PAGE---------------------------------------
 export const wishlistPageEN = {
 	title: "My Wishlist",
 	subtitle: "Pieces you've fallen in love with. Take your time — magic waits.",
@@ -111,14 +111,17 @@ export const wishlistPageUA = {
 	"empty-btn": "Перейти до магазину",
 };
 
-// Product page----------------------------------
+// PRODUCT PAGE----------------------------------
 export const productPageEN = {
 	breadcrumbs: { home: "Home", catalog: "Catalog" },
 	specs: {
+		design: "Design",
+		materials: "Materials",
 		size: "Size",
 		collection: "Collection",
 		color: "Colors",
 		sku: "SKU",
+		clasp: "Clasp",
 	},
 	addToCart: "Request to order",
 	related: "You may also like",
@@ -132,10 +135,13 @@ export const productPageEN = {
 export const productPageUA = {
 	breadcrumbs: { home: "Головна", catalog: "Каталог" },
 	specs: {
+		design: "Дизайн",
+		materials: "Матеріали",
 		size: "Розмір",
 		collection: "Колекція",
 		color: "Кольори",
 		sku: "Артикул",
+		clasp: "Застібка",
 	},
 	addToCart: "Замовити",
 	related: "Вам також може сподобатись",
@@ -146,7 +152,7 @@ export const productPageUA = {
 	removeWishlistAria: "Видалити з списку бажань",
 };
 
-// Toolbar--------------------------------------
+// TOOLBAR--------------------------------------
 export const toolbarEN = {
 	filters: "Filters",
 	items: "items",
@@ -174,7 +180,7 @@ export const toolbarUA = {
 	},
 };
 
-// Sort options-------------------------------
+// SORT OPTIONS-------------------------------
 export const sortOptionsUA = [
 	{ id: "newest", label: "Новинки" },
 	{ id: "price-asc", label: "Ціна: дешевші" },
@@ -337,7 +343,7 @@ export const getInTouchUA = {
 
 export const workShopBookingEN = {
 	title: "Book a Workshop",
-	text: "Leave your details and we’ll contact you to confirm your booking.",
+	// text: "Leave your details and we’ll contact you to confirm your booking.",
 	name: "Your name",
 	email: "Email address",
 	phone: "Phone number",
@@ -345,18 +351,34 @@ export const workShopBookingEN = {
 	participants: "Number of participants",
 	message: "Comment or question",
 	button: "Send Request",
-	note: "Your booking is not confirmed yet. We’ll contact you after checking availability.",
+	note: "Your booking is not confirmed yet. Once you submit your request, we'll check availability and contact you with confirmation details.",
 
 	emptyNameMessage: "Please enter your name.",
 	emptyEmailMessage: "Please enter your email.",
 	invalidEmailMessage: "Please enter a valid email address.",
 	emptyPhoneMessage: "Please enter your phone number.",
 	emptyDateMessage: "Please choose a workshop date.",
+	invalidPhoneMessage: "Please enter a valid phone number.",
+
+	sendingMessage: "Sending your request...",
+	successMessage:
+		"Your booking request has been received. We’ll contact you soon to confirm availability.",
+	errorMessage: "Something went wrong. Please try again later.",
+
+	cancellationPolicyTitle: "Cancellation Policy",
+	cancellationPolicy: [
+		"Full refund for cancellations made 48 hours or more before the workshop.",
+		"50% refund for cancellations made between 24 and 48 hours before the workshop.",
+		"No refund for cancellations made less than 24 hours before the workshop.",
+	],
+
+	alreadyBookedMessage:
+		"We have already received a booking request for this workshop date from this email address. If you have not received a confirmation yet, please contact us at littlefootcraft@gmail.com and we will be happy to assist you.",
 };
 
 export const workShopBookingUA = {
 	title: "Забронювати майстер-клас",
-	text: "Залиште ваші дані, і ми звʼяжемося з вами для підтвердження участі.",
+	// text: "Залиште ваші дані, і ми звʼяжемося з вами для підтвердження участі.",
 	name: "Ваше імʼя",
 	email: "Електронна пошта",
 	phone: "Телефон",
@@ -364,13 +386,156 @@ export const workShopBookingUA = {
 	participants: "Кількість учасників",
 	message: "Коментар або запитання",
 	button: "Надіслати запит",
-	note: "Бронювання ще не підтверджене. Ми звʼяжемося з вами після перевірки доступності.",
+	note: "Ваше бронювання ще не підтверджено. Після надсилання запиту ми перевіримо наявність місць і зв’яжемося з вами для підтвердження участі.",
 
 	emptyNameMessage: "Будь ласка, введіть ваше ім’я.",
 	emptyEmailMessage: "Будь ласка, введіть вашу електронну пошту.",
 	invalidEmailMessage: "Будь ласка, введіть коректну електронну пошту.",
 	emptyPhoneMessage: "Будь ласка, введіть номер телефону.",
 	emptyDateMessage: "Будь ласка, оберіть дату майстер-класу.",
+	invalidPhoneMessage: "Будь ласка, введіть коректний номер телефону.",
+
+	sendingMessage: "Надсилаємо ваш запит...",
+	successMessage:
+		"Ваш запит отримано. Ми зв’яжемося з вами найближчим часом для підтвердження доступності.",
+	errorMessage: "Щось пішло не так. Спробуйте ще раз пізніше.",
+
+	cancellationPolicyTitle: "Політика скасування",
+	cancellationPolicy: [
+		"Повне повернення коштів при скасуванні за 48 годин або більше до початку майстер-класу.",
+		"50% повернення коштів при скасуванні за 24–48 годин до початку майстер-класу.",
+		"Повернення коштів не здійснюється при скасуванні менш ніж за 24 години до початку майстер-класу.",
+	],
+
+	alreadyBookedMessage:
+		"Ми вже отримали запит на бронювання цієї дати майстер-класу з цієї електронної адреси. Якщо ви ще не отримали підтвердження, будь ласка, зв’яжіться з нами за адресою littlefootcraft@gmail.com, і ми з радістю вам допоможемо.",
+};
+
+// WORKSHOP CONFIRMATION EMAIL---------------------------------
+
+export const workshopConfirmationEmailEN = {
+	subject: "We received your workshop booking request",
+	title: "Workshop Booking Request Received",
+	greeting: "Thank you for your workshop booking request!",
+	intro: "We have received your request and will review it shortly.",
+	notConfirmed:
+		"Please note that your place is not yet confirmed. The workshop organizer will verify availability and contact you by email to confirm your booking and provide any additional details.",
+	workshop: "Workshop",
+	dateRequested: "Date requested",
+	participants: "Participants",
+	questions:
+		"If you have any questions, feel free to reply to our email or send a letter to littlefootcraft@gmail.com. We would be happy to assist you.",
+	thankYou: "Thank you for your interest in LittleFootCraft workshops!",
+	signature: "Warm regards,",
+	team: "LittleFootCraft",
+	location: "Format",
+	cancelBooking: "Cancel Booking",
+	price: "Price",
+	time: "Time",
+
+	cancellationPolicyTitle: "Cancellation Policy",
+	cancellationPolicy: [
+		"Full refund for cancellations made 48 hours or more before the workshop.",
+		"50% refund for cancellations made between 24 and 48 hours before the workshop.",
+		"No refund for cancellations made less than 24 hours before the workshop.",
+	],
+
+	alreadyBookedMessage:
+		"A booking request for this workshop has already been submitted using this email address. Please check your inbox or contact us if you need assistance.",
+};
+
+export const workshopConfirmationEmailUA = {
+	subject: "Ми отримали ваш запит на бронювання майстер-класу",
+	title: "Запит на бронювання отримано",
+	greeting: "Дякуємо за ваш запит на бронювання майстер-класу!",
+	intro: "Ми отримали ваш запит і незабаром його розглянемо.",
+	notConfirmed:
+		"Будь ласка, зверніть увагу: ваше місце ще не підтверджене. Організатор майстер-класу перевірить наявність місць і зв’яжеться з вами електронною поштою для підтвердження бронювання та надання додаткових деталей.",
+	workshop: "Майстер-клас",
+	dateRequested: "Обрана дата",
+	participants: "Кількість учасників",
+	questions:
+		"Якщо у вас виникли запитання, ви можете відповісти на цей лист або написати нам на littlefootcraft@gmail.com. Ми будемо раді допомогти.",
+	thankYou: "Дякуємо за інтерес до майстер-класів LittleFootCraft!",
+	signature: "З теплом,",
+	team: "LittleFootCraft",
+	location: "Формат",
+	cancelBooking: "Скасувати бронювання",
+	price: "Вартість",
+	time: "Час",
+
+	cancellationPolicyTitle: "Політика скасування",
+	cancellationPolicy: [
+		"Повне повернення коштів при скасуванні за 48 годин або більше до початку майстер-класу.",
+		"50% повернення коштів при скасуванні за 24–48 годин до початку майстер-класу.",
+		"Повернення коштів не здійснюється при скасуванні менш ніж за 24 години до початку майстер-класу.",
+	],
+
+	alreadyBookedMessage:
+		"Запит на бронювання цього майстер-класу вже було надіслано з цієї електронної адреси. Будь ласка, перевірте свою пошту або зв’яжіться з нами, якщо вам потрібна допомога.",
+};
+
+// WORKSHOP CANCELLATION PAGE
+
+export const workshopCancellationEN = {
+	title: "Cancel workshop booking?",
+	cancelledTitle: "Booking Cancelled",
+	imageAlt: "Cancel workshop",
+	bookingLabel: "You are about to cancel:",
+	dateLabel: "Date:",
+	formatLabel: "Format:",
+	locationLabel: "Location:",
+	confirmMessage: "Are you sure you want to cancel this workshop booking?",
+
+	cancelButton: "Cancel",
+	returnButton: "No, return",
+
+	notFound: "Booking was not found.",
+
+	cancelError:
+		"We could not cancel your booking. Please contact us at littlefootcraft@gmail.com.",
+
+	refundMessages: {
+		full_refund:
+			"Your workshop booking has been cancelled. According to our cancellation policy, you are eligible for a full refund. If your payment was made earlier, you will receive a full refund within 3–5 business days.",
+
+		partial_refund:
+			"Your workshop booking has been cancelled. According to our cancellation policy, you are eligible for a 50% refund. If your payment was made earlier, the refund will be processed within 3–5 business days.",
+
+		no_refund:
+			"Your workshop booking has been cancelled. According to our cancellation policy, this cancellation is not eligible for a refund.",
+	},
+};
+
+export const workshopCancellationUA = {
+	title: "Скасувати бронювання?",
+	cancelledTitle: "Бронювання скасовано",
+	imageAlt: "Скасування майстер-класу",
+	bookingLabel: "Ви збираєтеся скасувати:",
+	dateLabel: "Дата:",
+	formatLabel: "Формат:",
+	locationLabel: "Локація:",
+	confirmMessage:
+		"Ви впевнені, що хочете скасувати бронювання цього майстер-класу?",
+
+	cancelButton: "Скасувати",
+	returnButton: "Ні, повернутися",
+
+	notFound: "Бронювання не знайдено.",
+
+	cancelError:
+		"Не вдалося скасувати бронювання. Будь ласка, напишіть нам на littlefootcraft@gmail.com.",
+
+	refundMessages: {
+		full_refund:
+			"Ваше бронювання скасовано. Відповідно до нашої політики скасування, ви маєте право на повне повернення коштів. Якщо оплата була здійснена раніше, повне повернення коштів буде оброблено протягом 3–5 робочих днів.",
+
+		partial_refund:
+			"Ваше бронювання скасовано. Відповідно до нашої політики скасування, ви маєте право на повернення 50% вартості. Якщо оплата була здійснена раніше, повернення коштів буде оброблено протягом 3–5 робочих днів.",
+
+		no_refund:
+			"Ваше бронювання скасовано. Відповідно до нашої політики скасування, це скасування не передбачає повернення коштів.",
+	},
 };
 
 // ORDER PAGE----------------------------------
@@ -465,7 +630,7 @@ export const orderPageUA = {
 	giftPlaceholder: "Напишіть чарівне побажання для отримувача...",
 	giftPostcardSummary: "Подарункова листівка",
 
-	// Buttons
+	// BUTTONS
 	submitBtn: "Надіслати запит на замовлення",
 	backToCart: "Назад до кошика",
 

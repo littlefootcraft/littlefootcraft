@@ -1,7 +1,7 @@
 @use "./../base/variables" as *;
 @use "./../abstracts/mixins" as *;
 
-.unsubscribe-page {
+.cancel-workshop-page {
 	min-height: calc(100vh - $header-height);
 	padding: 60px 24px;
 	display: flex;
@@ -48,6 +48,41 @@
 		background: rgba($white, 0.96);
 	}
 
+	&__booking {
+		max-width: 560px;
+		margin: 0 auto 18px;
+		padding: 18px 22px;
+
+		border: 1px solid rgba($gold-accent, 0.28);
+		border-radius: 18px;
+		background: rgba($parchment, 0.55);
+
+		color: $secondary-text;
+		font-size: var(--regular-text-size);
+		line-height: 1.5;
+
+		p {
+			margin: 0 0 8px;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		p:first-child {
+			color: $primary-text;
+			font-family: var(--title-font);
+			font-size: var(--card-title-size);
+			font-weight: 700;
+			line-height: 1.2;
+		}
+
+		strong {
+			color: $primary-text;
+			font-weight: 700;
+		}
+	}
+
 	&__title {
 		margin-bottom: 20px;
 		color: $primary-text;
@@ -60,7 +95,7 @@
 		max-width: 560px;
 		margin: 0 auto 28px;
 		color: $secondary-text;
-		font-size: var(--subtitle-size);
+		font-size: var(--card-title-size);
 		line-height: 1.6;
 	}
 
@@ -146,13 +181,13 @@
 
 	&__message {
 		min-height: 26px;
-		max-width: 500px;
 		margin: 24px auto 0;
 		font-size: var(--regular-text-size);
 		line-height: 1.6;
 
 		&--success {
 			color: $success-message;
+			font-size: var(--card-title-size);
 		}
 
 		&--error {

@@ -1,0 +1,71 @@
+{
+	"sku": "BR0326-004",
+	"seo": {
+		"title": {
+			"en": "Brooch Jellyfish MALINDA | LittleFootCraft",
+			"ua": "Брошка Медуза Малінда | LittleFootCraft"
+		},
+		"description": {
+			"en": "Handcrafted jellyfish brooch in vibrant fuchsia, magenta, and berry-purple tones, adorned with shimmering beads and delicate embroidered details. Inspired by the enchanting colors of coral reefs and magical underwater worlds, this one-of-a-kind accessory captures the graceful movement of a drifting jellyfish while adding bold elegance, fantasy, and artisan craftsmanship to any outfit.",
+
+			"ua": "Брошка-медуза ручної роботи в яскравих відтінках фуксії, мадженти та ягідно-фіолетового кольору, оздоблена мерехтливими намистинами й витонченими вишитими деталями. Натхненна чарівними барвами коралових рифів і магічного підводного світу, ця унікальна прикраса передає граційний рух медузи та додає образу сміливої елегантності, фантазійності й майстерності ручної роботи."
+		},
+		"imageAlt": {
+			"en": "Brooch Jellyfish MALINDA by LittleFootCraft",
+			"ua": "Медуза Малінда від LittleFootCraft"
+		}
+	},
+	"name": {
+		"en": "Brooch Jellyfish MALINDA",
+		"ua": "Брошка Медуза Малінда"
+	},
+	"specifications": {
+		"category": { "en": "Brooches", "ua": "Брошки" },
+		"size": {
+			"en": [
+				"Full length: approx. 15 x 6 cm (5.9 × 2.4 in)",
+				"Body: approx. 5.5 x 6 cm (2.2 × 2.4 in)"
+			],
+			"ua": [
+				"Загальна довжина: приблизно 15 × 6 см",
+				"Тіло медузи: приблизно 5.5 × 6 см"
+			]
+		},
+		"colors": ["PK11", "PK12", "PK03"],
+		"collection": "ocean-blue",
+		"materials": {
+			"en": ["seed beads", "glass beads", "textile base"],
+			"ua": ["бісер", "скляні намистини", "текстильна основа"]
+		},
+		"design": {
+			"en": "Jellyfish",
+			"ua": "Медуза"
+		},
+		"clasp": {
+			"en": "Metal pin",
+			"ua": "Металева застібка"
+		}
+	},
+	"description": {
+		"en": "This unique brooch is carefully handcrafted using beads and decorative elements in rich red and purple shades. The jellyfish-inspired design features flowing, movable “tentacles” that gently sway with motion, giving the piece a lively, eye-catching effect.",
+
+		"ua": "Ця унікальна брошка ретельно створена вручну з бісеру та декоративних елементів у насичених червоних і пурпурових відтінках. Дизайн, натхненний медузою, доповнений рухомими «щупальцями», які м’яко коливаються під час руху, надаючи прикрасі живого та захопливого вигляду."
+	},
+	"price": 150,
+	"oldPrice": null,
+
+	"badges": {
+		"isTop": false,
+		"isNew": true
+	},
+	"video": null,
+	"photo": [
+		{
+			"src": "/uploads/images/broches/BR0326-004-1.jpeg",
+			"alt": {
+				"en": "Jellyfish MALINDA Brooch - Front View",
+				"ua": "Брошка Медуза Малінда - Вид спереди"
+			}
+		}
+	]
+}

@@ -63,7 +63,7 @@ export const useContactForm = (dict, currentLang) => {
 		});
 
 		if (error) {
-			console.log("Supabase contact error:", error);
+			// console.log("Supabase contact error:", error);
 
 			setStatus("error");
 			setFeedbackMessage(dict.errorMessage);

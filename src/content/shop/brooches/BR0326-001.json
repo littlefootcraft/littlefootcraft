@@ -2,34 +2,54 @@
 	"sku": "BR0326-001",
 	"seo": {
 		"title": {
-			"en": "Brooch Jellyfish Ann Blue Lulworth | LittleFootCraft",
-			"ua": "Брошка Медуза Анна Блю Лулворт | LittleFootCraft"
+			"en": "Brooch Jellyfish Sofia Fizz | LittleFootCraft",
+			"ua": "Брошка Медуза Софія Фізз | LittleFootCraft"
 		},
 		"description": {
-			"en": "Handcrafted jellyfish brooch in soft gray-blue tones with shimmering details, inspired by magical underwater worlds.",
-			"ua": "Брошка-медуза ручної роботи в ніжних сіро-блакитних тонах із мерехтливими деталями, натхненна магічним підводним світом."
+			"en": "Handcrafted jellyfish brooch in champagne, blush pink, and smoky crystal tones, adorned with shimmering rhinestone chains and delicate bead embroidery. Inspired by moonlit tides and the quiet beauty of underwater worlds, this elegant design captures the graceful movement of a drifting jellyfish while adding a touch of magic, softness, and timeless sophistication to any outfit.",
+
+			"ua": "Брошка-медуза ручної роботи в відтінках шампані, ніжно-рожевого та димчастого кришталю, оздоблена мерехтливими стразовими ланцюжками та витонченою бісерною вишивкою. Натхненна місячними припливами та тихою красою підводного світу, вона передає граційний рух медузи й додає образу нотку чарівності, ніжності та позачасової елегантності."
 		},
 		"imageAlt": {
-			"en": "Brooch Jellyfish Ann Blue Lulworth by LittleFootCraft",
-			"ua": "Брошка Медуза Анна Блю Лулворт від LittleFootCraft"
+			"en": "Brooch Jellyfish Sofia Fizz by LittleFootCraft",
+			"ua": "Брошка Медуза Софія Фізз від LittleFootCraft"
 		}
 	},
 	"name": {
-		"en": "Brooch Jellyfish Ann Blue Lulworth",
-		"ua": "Брошка Медуза Анна Блю Лулворт"
+		"en": "Brooch Jellyfish Sofia Fizz",
+		"ua": "Брошка Медуза Софія Фізз"
 	},
 	"specifications": {
 		"category": { "en": "Brooches", "ua": "Брошки" },
 		"size": {
-			"en": "3.5 cm x 3.5 cm",
-			"ua": "3.5 см x 3.5 см"
+			"en": [
+				"Full length: approx. 16 x 7 cm (6.3 × 2.8 in)",
+				"Body: approx. 6 x 7 cm (2.4 × 2.8 in)"
+			],
+			"ua": [
+				"Загальна довжина: приблизно 16 x 7 см",
+				"Тіло медузи: приблизно 6 x 7 см"
+			]
 		},
-		"color": ["gold", "pink", "brown"],
-		"collection": "ocean-blue"
+		"colors": ["GY05", "EC06", "PK02"],
+		"collection": "ocean-blue",
+		"materials": {
+			"en": ["seed beads", "glass beads", "rhinestone chain", "textile base"],
+			"ua": [
+				"бісер",
+				"скляні намистини",
+				"стразовий ланцюжок",
+				"текстильна основа"
+			]
+		},
+		"design": {
+			"en": "Jellyfish",
+			"ua": "Медуза"
+		}
 	},
 	"description": {
-		"en": "This enchanting brooch shimmers in soft gray-blue hues, its iridescent “tentacles” shifting colors like a rainbow dancing in the light. Inspired by the mysterious depths of the Hogwarts Lake, its design combines delicate lightness with fluid movement, making the brooch seem almost alive. A perfect magical artifact for anyone wishing to add a touch of sorcery and elegance to any outfit.",
-		"ua": "Ця чарівна брошка мерехтить у ніжних сіро-блакитних тонах, її перламутрові «щупальця» переливаються цветами, словно радуга, танцующая на свету. Вдохновленная загадочными глубинами озера Хогвартс, ее дизайн сочетает в себе деликатную легкость и плавное движение, делая брошку почти живой. Идеальный магический артефакт для тех, кто хочет добавить нотку волшебства и элегантности в любой наряд."
+		"en": "This elegant handmade silver brooch is crafted with delicate beads and shimmering rhinestone chains in soft champagne, blush pink, and golden tones. The jellyfish-inspired design features flowing, flexible “tentacles” that catch the light and gently move, creating a refined, luminous effect. A sophisticated statement piece that adds a touch of elegance and artistic flair to any outfit.",
+		"ua": "Ця елегантна срібляста брошка ручної роботи створена з витонченого бісеру та мерехтливих стразових ланцюжків у ніжних відтінках шампані, пудрово-рожевого та золота. Дизайн, натхненний медузою, доповнений рухливими гнучкими «щупальцями», які красиво вловлюють світло та плавно коливаються під час руху, створюючи вишуканий сяйливий ефект. Витончена акцентна прикраса, що додає образу елегантності, легкості та художньої виразності."
 	},
 	"price": 150,
 	"oldPrice": null,
@@ -41,30 +61,16 @@
 	"video": {
 		"src": "/uploads/images/broches/video/SK0001_video.mp4",
 		"alt": {
-			"en": "Jellyfish Ann Blue Lulworth Brooch - Video",
-			"ua": "Брошка Медуза Анна Блю Лулворт - Вiдeo"
+			"en": "Jellyfish Sofia Fizz - Video",
+			"ua": "Брошка Медуза Софія Фізз - Вiдeo"
 		}
 	},
 	"photo": [
 		{
 			"src": "/uploads/images/broches/BR0326-001-1.jpeg",
 			"alt": {
-				"en": "Jellyfish Ann Blue Lulworth Brooch - Front View",
-				"ua": "Брошка Медуза Анна Блю Лулворт - Вид спереди"
-			}
-		},
-		{
-			"src": "/uploads/images/broches/BR0326-001-1.jpeg",
-			"alt": {
-				"en": "Jellyfish Ann Blue Lulworth Brooch - Front View",
-				"ua": "Брошка Медуза Анна Блю Лулворт - Вид спереди"
-			}
-		},
-		{
-			"src": "/uploads/images/broches/BR0326-001-1.jpeg",
-			"alt": {
-				"en": "Jellyfish Ann Blue Lulworth Brooch - Front View",
-				"ua": "Брошка Медуза Анна Блю Лулворт - Вид спереди"
+				"en": "Jellyfish Sofia Fizz - Front View",
+				"ua": "Брошка Медуза Софія Фізз - Вид спереди"
 			}
 		}
 	]

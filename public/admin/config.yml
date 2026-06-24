@@ -58,13 +58,13 @@ collections:
               label: "English",
               name: "en",
               widget: "string",
-              hint: "Example: Ocean   Blue",
+              hint: "Example: Ocean Blue",
             }
           - {
               label: "Ukrainian",
               name: "ua",
               widget: "string",
-              hint: "Example:   Океанська синява",
+              hint: "Example: Океанська синява",
             }
 
       - label: "Image"
@@ -1035,8 +1035,7 @@ collections:
         name: "sku"
         widget: "string"
         hint:
-          "SKU format: BRMMDD-001. BR = Brooch. Example: BR0326-004 means brooch
-          made on March 26, item number 4."
+          "SKU format: BRMMDD-001. BR = Brooch. Example: BR0326-004 means brooch made on March 26, item number 4."
         pattern:
           [
             "^[A-Z]{2}[0-9]{4}-[0-9]{3}$",
@@ -1137,38 +1136,41 @@ collections:
                   label: "English",
                   name: "en",
                   widget: "string",
-                  default: "Brooch",
+                  default: "Brooches",
                 }
               - {
                   label: "Ukrainian",
                   name: "ua",
                   widget: "string",
-                  default: "Брошка",
+                  default: "Брошки",
                 }
 
           - label: "Size"
             name: "size"
             widget: "object"
             fields:
-              - { label: "English", name: "en", widget: "string" }
-              - { label: "Ukrainian", name: "ua", widget: "string" }
+              - label: "English"
+                name: "en"
+                widget: "list"
+                field: { label: "Size line", widget: "string" }
+
+              - label: "Ukrainian"
+                name: "ua"
+                widget: "list"
+                field: { label: "Size line", widget: "string" }
 
           - label: "Colors"
-            name: "color"
-            widget: "select"
-            multiple: true
-            options:
-              - gold
-              - pink
-              - brown
-              - blue
-              - red
-              - yellow
-              - green
-              - black
-              - white
-              - purple
-              - multicolor
+            name: "colors"
+            widget: "list"
+            hint: "Add color shade codes from color_shades_system.js. Example: GY05, EC06, PK02"
+            field:
+              label: "Color code"
+              widget: "string"
+              pattern:
+                [
+                  "^[A-Z]{2}[0-9]{2}$",
+                  "Use format like GY05, EC06, PK02"
+                ]
 
           - label: "Collection"
             name: "collection"
@@ -1179,13 +1181,42 @@ collections:
             display_fields: ["name.en"]
             required: false
             hint: "Choose from collections created in Product Collections."
+      
+          - label: "Materials"
+            name: "materials"
+            widget: "object"
+            fields:
+              - label: "English"
+                name: "en"
+                widget: "list"
+                field: { label: "Material", widget: "string" }
+
+              - label: "Ukrainian"
+                name: "ua"
+                widget: "list"
+                field: { label: "Матеріал", widget: "string" }
+
+          - label: "Design"
+            name: "design"
+            widget: "object"
+            fields:
+              - { label: "English", name: "en", widget: "string" }
+              - { label: "Ukrainian", name: "ua", widget: "string" }
+          
+          - label: "Clasp"
+            name: "clasp"
+            widget: "object"
+            required: false
+            fields:
+              - { label: "English", name: "en", widget: "string" }
+              - { label: "Ukrainian", name: "ua", widget: "string" }
 
       - label: "Description"
         name: "description"
         widget: "object"
         fields:
-          - { label: "English", name: "en", widget: "text" }
-          - { label: "Ukrainian", name: "ua", widget: "text" }
+          - { label: "English", name: "en", widget: "text",hint: "Supports multiple paragraphs. Press Enter twice between paragraphs."}
+          - { label: "Ukrainian", name: "ua", widget: "text", hint: "Підтримує кілька абзаців. Натисніть Enter двічі між абзацами." }
 
       - { label: "Price", name: "price", widget: "number", value_type: "int" }
 
@@ -2290,48 +2321,34 @@ collections:
               widget: "string",
               hint: "Example: Особиста зустріч",
             }
-      - label: Languages
-        name: language
-        widget: select
+      - label: "Languages"
+        name: "language"
+        widget: "select"
         multiple: true
         options:
-          - { label: English, value: en }
-          - { label: Ukrainian, value: ua }
+          - { label: "English", value: "en" }
+          - { label: "Ukrainian", value: "ua" }
 
-      - label: "What's Included"
+      - label: "Includes"
         name: "includes"
         widget: "object"
-        hint:
-          "List what participants receive or what is included in the workshop."
-
         fields:
           - label: "English"
             name: "en"
             widget: "list"
-            hint:
-              "Example: All materials / Tea & refreshments / Your finished brooch to take home"
-
             field:
-              {
-                label: "Item",
-                name: "item",
-                widget: "string",
-                hint: "Example: All materials",
-              }
+              label: "Item"
+              name: "item"
+              widget: "string"
 
-      - label: "Ukrainian"
-        name: "ua"
-        widget: "list"
-        hint:
-          "Приклад: Усі матеріали / Чай та частування / Готова брошка, яку ви заберете додому"
+          - label: "Ukrainian"
+            name: "ua"
+            widget: "list"
+            field:
+              label: "Item"
+              name: "item"
+              widget: "string"
 
-        field:
-          {
-            label: "Пункт",
-            name: "item",
-            widget: "string",
-            hint: "Приклад: Усі матеріали",
-          }
       - label: "Exact Location"
         name: "exactLocation"
         widget: "object"
@@ -2376,21 +2393,27 @@ collections:
               hint: "Приклад: 11:00 – 14:00",
             }
 
-      - { label: "Price", name: "price", widget: "number", value_type: "int", min: 1 }
-
-      - label: "Includes"
-        name: "includes"
+      - label: "Timezone"
+        name: "timezone"
         widget: "object"
         fields:
-          - label: "English"
-            name: "en"
-            widget: "list"
-            field: { label: "Item", name: "item", widget: "string" }
+          - label: "Timezone value"
+            name: "value"
+            widget: "select"
+            options:
+              - { label: "Dublin / Ireland", value: "Europe/Dublin" }
+              - { label: "Kyiv / Ukraine", value: "Europe/Kyiv" }
+            hint: "Used for cancellation refund calculations."
 
-          - label: "Ukrainian"
-            name: "ua"
-            widget: "list"
-            field: { label: "Item", name: "item", widget: "string" }
+          - label: "Label"
+            name: "label"
+            widget: "object"
+            fields:
+              - { label: "English", name: "en", widget: "string", hint: "Example: Ireland time" }
+              - { label: "Ukrainian", name: "ua", widget: "string", hint: "Example: за Ірландським часом" }      
+
+      - { label: "Price", name: "price", widget: "number", value_type: "int", min: 0 }
+        hint: "Enter 0 for free workshops / Введіть 0 для безкоштовних майстер-класів."
 
       - label: "Upcoming Dates"
         name: "upcomingDates"

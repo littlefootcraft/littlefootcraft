@@ -1,21 +1,27 @@
 import { useState } from "react";
 import { supabase } from "../lib/supabaseClient";
+
 import { useLanguage } from "../context/LanguageContext";
 
 import { newsletterEN, newsletterUA } from "../translations/translation";
 
 export const useSubscribe = (dict) => {
+	// Current website language
 	const { currentLang } = useLanguage();
+
+	// Form state
 	const [email, setEmail] = useState("");
 	const [status, setStatus] = useState("idle");
 	const [message, setMessage] = useState("");
 
+	// Email translations
 	const emailDict = currentLang === "ua" ? newsletterUA : newsletterEN;
 
-	// INTERESTS
+	// Newsletter interests
 	const INTERESTS = ["workshops", "master-classes", "sales"];
 	const [interests, setInterests] = useState(INTERESTS);
 
+	// Toggle interest selection
 	const toggleInterest = (interest) => {
 		if (interests.includes(interest)) {
 			setInterests(interests.filter((item) => item !== interest));
@@ -24,11 +30,13 @@ export const useSubscribe = (dict) => {
 		}
 	};
 
+	// Reset feedback message
 	const clearMessage = () => {
 		setMessage("");
 		setStatus("idle");
 	};
 
+	// Create newsletter subscription
 	const subscribe = async () => {
 		const trimmedEmail = email.trim().toLowerCase();
 
@@ -41,6 +49,7 @@ export const useSubscribe = (dict) => {
 			return;
 		}
 
+		// Validation: email format
 		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 		if (!emailRegex.test(trimmedEmail)) {
@@ -49,6 +58,7 @@ export const useSubscribe = (dict) => {
 			return;
 		}
 
+		// Validation: at least one interest selected
 		if (interests.length === 0) {
 			setStatus("error");
 			setMessage(dict.emptyInterestsMessage);
@@ -57,6 +67,7 @@ export const useSubscribe = (dict) => {
 
 		setStatus("loading");
 
+		// Save subscriber in Supabase
 		const { data, error } = await supabase
 			.from("subscribers")
 			.insert({
@@ -67,6 +78,7 @@ export const useSubscribe = (dict) => {
 			.select()
 			.single();
 
+		// Handle database errors
 		if (error) {
 			setStatus("error");
 
@@ -79,6 +91,7 @@ export const useSubscribe = (dict) => {
 			return;
 		}
 
+		// Interest labels for confirmation email
 		const interestLabels = {
 			en: {
 				workshops: "Workshops",
@@ -92,13 +105,16 @@ export const useSubscribe = (dict) => {
 			},
 		};
 
+		// Build selected interests list for email
 		const selectedInterestList = interests
 			.map((interest) => interestLabels[currentLang]?.[interest] ?? interest)
-			.map((label) => `<li style="list-style:none;>✧ ${label}</li>`)
+			.map((label) => `<li style=list-style:none;>✧ ${label}</li>`)
 			.join("");
 
+		// Email subject
 		const confirmationSubject = emailDict.emailSubject;
 
+		// Confirmation email HTML
 		const confirmationHtml = `<div style="font-family: Verdana, sans-serif; background:#fdfbf7; padding:32px;">
 				<div style="max-width: 600px; margin: 0 auto; background:#ffffff; border:1px solid rgba(212,175,55,.35); border-radius:18px; padding:32px;">
 					<div style="text-align:center; margin-bottom:12px;">
@@ -121,7 +137,7 @@ export const useSubscribe = (dict) => {
 						${emailDict.emailSubscribedTo}
 					</p>
 
-					<ul style="padding-left:22px; margin-top:8px; color:#4a5568;">
+					<ul style="margin-top:8px; color:#4a5568;">
 						${selectedInterestList}
 					</ul>
 

@@ -1,0 +1,82 @@
+{
+	"sku": "BR0624-003",
+	"seo": {
+		"title": {
+			"en": "Brooch Jellyfish Larissa Mar | LittleFootCraft",
+			"ua": "Брошка Медуза Лариса Мар | LittleFootCraft"
+		},
+		"description": {
+			"en": "Handcrafted green jellyfish brooch featuring bead embroidery, crystals, and shimmering lime, olive, and gold accents. A one-of-a-kind fantasy-inspired accessory that combines nature, elegance, and artisan craftsmanship.",
+			"ua": "Брошка-медуза ручної роботи в зелених відтінках із вишивкою бісером, кристалами та сяйливими лаймовими, оливковими й золотистими акцентами. Унікальна фантазійна прикраса, що поєднує природну красу, елегантність і майстерність ручної роботи."
+		},
+		"imageAlt": {
+			"en": "Brooch Jellyfish Larissa Mar by LittleFootCraft",
+			"ua": "Медуза Лариса Мар від LittleFootCraft"
+		}
+	},
+	"name": {
+		"en": "Brooch Jellyfish Larissa Mar",
+		"ua": "Брошка Медуза Лариса Мар"
+	},
+	"specifications": {
+		"category": { "en": "Brooches", "ua": "Брошки" },
+		"size": {
+			"en": [
+				"Full length: approx. 11 x 7 cm (4.3 × 2.8 in)",
+				"Body: approx. 5 x 7 cm (4.3 × 2.8 in)"
+			],
+			"ua": [
+				"Загальна довжина: приблизно 11 × 7 см",
+				"Тіло медузи: приблизно 5 × 7 см"
+			]
+		},
+		"colors": ["BL12", "GR02", "GR05", "YL03"],
+		"collection": "ocean-blue",
+		"materials": {
+			"en": [
+				"seed beads",
+				"bugle beads",
+				"glass beads",
+				"pearl stick",
+				"textile base"
+			],
+			"ua": [
+				"бісер",
+				"стеклярус",
+				"скляні намистини",
+				"перлинна паличка",
+				"текстильна основа"
+			]
+		},
+		"design": {
+			"en": "Jellyfish",
+			"ua": "Медуза"
+		},
+		"clasp": {
+			"en": "Metal pin",
+			"ua": "Металева застібка"
+		}
+	},
+	"description": {
+		"en": "The handmade brooch “Jellyfish Larissa Mar” is a small thing only in size—never in presence.\n\nTurquoise runs through it like a fragment of stolen Mediterranean light, the kind of blue that does not belong to objects but to memories of water. It feels both cool and alive, as though it has only just decided to become solid for the sake of being admired.\n\nAnd yet, for all its elegance, there is something undeniably brave about it. It does not ask for permission to be noticed. It simply arrives, delicate as a thought, bold as a decision, and leaves the air slightly altered in its wake.\n\nSmall, yes. But only in the way a spark is small before it learns what fire is.",
+
+		"ua": "Брошка ручної роботи «Медуза Лариса Мар» — річ маленька лише за розміром, але ніколи — за своєю присутністю.\n\nБірюзовий колір проходить крізь неї, немов уламок викраденого середземноморського світла — того відтінку синяви, який належить не речам, а спогадам про воду. Він водночас прохолодний і живий, ніби лише мить тому вирішив набути форми, щоб ним могли милуватися.\n\nІ все ж, попри всю свою витонченість, у ній є щось беззаперечно сміливе. Вона не просить дозволу бути поміченою. Вона просто з’являється — тендітна, як думка, рішуча, як вибір — і залишає по собі ледь відчутно змінене повітря.\n\nМаленька, так. Але лише так, як маленька іскра, перш ніж зрозуміє, що таке вогонь."
+	},
+	"price": 150,
+	"oldPrice": null,
+
+	"badges": {
+		"isTop": false,
+		"isNew": true
+	},
+	"video": null,
+	"photo": [
+		{
+			"src": "/uploads/images/broches/BR0623-004-1.jpeg",
+			"alt": {
+				"en": "Jellyfish Ann Blue Lulworth Brooch - Front View",
+				"ua": "Брошка Медуза Анна Блю Лулворт - Вид спереди"
+			}
+		}
+	]
+}

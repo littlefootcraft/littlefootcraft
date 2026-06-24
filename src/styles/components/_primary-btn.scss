@@ -7,9 +7,9 @@
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	text-transform: uppercase;
 
-	// border-radius: 12px;
+	text-transform: uppercase;
+	border-radius: $border-radius;
 
 	// Typography
 	color: $white;
@@ -51,7 +51,7 @@
 		left: 0;
 		right: 0;
 		bottom: 0;
-		// border-radius: 12px;
+
 		padding: 2px; // Thickness of the gold rim
 		background: linear-gradient(
 			135deg,
@@ -106,13 +106,6 @@
 	// When item is added — disabled state
 	&:disabled,
 	&.is-active {
-		// background: linear-gradient(
-		// 	to bottom,
-		// 	#5a7a5a 0%,
-		// 	#6d9e6d 45%,
-		// 	#5a8a5a 55%,
-		// 	#3d6b3d 100%
-		// ); // ← green gradient instead of gold
 		background: $gold-dark;
 		cursor: default;
 		transform: none;
@@ -203,8 +196,15 @@
 		}
 	}
 
-	&--change-subscription {
-		font-size: 18px;
+	&--unsubscribe {
+		padding: 15px 32px;
+		min-width: 280px;
+		width: 100%;
+		font-size: 1.125rem;
+
+		&::before {
+			border-radius: $border-radius;
+		}
 	}
 
 	@include mobile {

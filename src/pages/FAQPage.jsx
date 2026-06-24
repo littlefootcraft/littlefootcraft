@@ -5,7 +5,14 @@ import { useLanguage } from "../context/LanguageContext";
 import faqQuestions from "../content/pages/faq.json";
 import { PageTopTitle } from "../components/PageTopTitle";
 // import { Accordion } from "../components/Accordion";
-import { Heart, Truck, RefreshCw, Package, ChevronDown } from "lucide-react";
+import {
+	Heart,
+	Truck,
+	RefreshCw,
+	Package,
+	ChevronDown,
+	CalendarX,
+} from "lucide-react";
 import Seo from "../components/Seo";
 
 const SECTION_ICONS = {
@@ -14,6 +21,7 @@ const SECTION_ICONS = {
 	returns_and_care: RefreshCw,
 	order_and_payment: Package,
 	other_questions: Heart,
+	workshop_cancellation: CalendarX,
 };
 
 const FAQPage = () => {

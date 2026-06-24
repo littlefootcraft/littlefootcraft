@@ -27,10 +27,13 @@ export const WorkshopCard = ({ workshop }) => {
 	const formatDate = (dateStr, lang = "en") => {
 		const locale = lang === "ua" ? "uk-UA" : "en-US";
 
+		const [year, month, day] = dateStr.split("-").map(Number);
+		const date = new Date(year, month - 1, day);
+
 		return new Intl.DateTimeFormat(locale, {
 			day: "numeric",
 			month: "long",
-		}).format(new Date(dateStr));
+		}).format(date);
 	};
 
 	// Workshop language
@@ -89,7 +92,10 @@ export const WorkshopCard = ({ workshop }) => {
 					{workshop.time && (
 						<p className="workshop-card__detail">
 							<CalendarClock />
-							<span>{t(workshop.time)}</span>
+							<span>
+								{t(workshop.time)}{" "}
+								{workshop.timezone?.label && `(${t(workshop.timezone.label)})`}
+							</span>
 						</p>
 					)}
 
@@ -140,7 +146,13 @@ export const WorkshopCard = ({ workshop }) => {
 				</div>
 
 				<div className="workshop-card__footer">
-					<p className="workshop-card__price">{formatPrice(workshop.price)}</p>
+					<p className="workshop-card__price">
+						{workshop.price == 0
+							? currentLang === "ua"
+								? "Безкоштовно"
+								: "Free"
+							: formatPrice(workshop.price)}
+					</p>
 					<div>
 						<PrimaryBtn
 							variant="booking"

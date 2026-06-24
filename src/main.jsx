@@ -27,6 +27,7 @@ import NotFoundPage from "./pages/NotFoundPage";
 import ServerErrorPage from "./pages/ServerErrorPage";
 import NetworkErrorPage from "./pages/NetworkErrorPage";
 import UnsubscribePage from "./pages/UnsubscribePage";
+import CancelWorkshopPage from "./pages/CancelWorkshopPage";
 
 const router = createBrowserRouter([
 	{
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
 			{
 				path: "unsubscribe",
 				element: <UnsubscribePage />,
+			},
+			{
+				path: "workshop-cancel/:token",
+				element: <CancelWorkshopPage />,
 			},
 			{
 				path: "*",

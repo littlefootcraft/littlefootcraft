@@ -1,0 +1,75 @@
+{
+	"sku": "BR0624-001",
+	"seo": {
+		"title": {
+			"en": "Brooch Jellyfish Gala Voski | LittleFootCraft",
+			"ua": "Брошка Медуза Гала Воскі | LittleFootCraft"
+		},
+		"description": {
+			"en": "Handcrafted green jellyfish brooch featuring bead embroidery, crystals, and shimmering lime, olive, and gold accents. A one-of-a-kind fantasy-inspired accessory that combines nature, elegance, and artisan craftsmanship.",
+			"ua": "Брошка-медуза ручної роботи в зелених відтінках із вишивкою бісером, кристалами та сяйливими лаймовими, оливковими й золотистими акцентами. Унікальна фантазійна прикраса, що поєднує природну красу, елегантність і майстерність ручної роботи."
+		},
+		"imageAlt": {
+			"en": "Brooch Jellyfish Gala Voski by LittleFootCraft",
+			"ua": "Медуза Гала Воскі від LittleFootCraft"
+		}
+	},
+	"name": {
+		"en": "Brooch Jellyfish Gala Voski",
+		"ua": "Брошка Медуза Гала Воскі"
+	},
+	"specifications": {
+		"category": { "en": "Brooches", "ua": "Брошки" },
+		"size": {
+			"en": [
+				"Full length: approx. 15.5 x 6 cm (6.1 × 2.4 in)",
+				"Body: approx. 5.5 x 6 cm (6.1 × 2.4 in)"
+			],
+			"ua": [
+				"Загальна довжина: приблизно 15.5 x 6 см",
+				"Тіло медузи: приблизно 5.5 x 6 см"
+			]
+		},
+		"colors": ["GR03", "PK02", "EC06", "YL03"],
+		"collection": "ocean-blue",
+		"materials": {
+			"en": ["seed beads", "glass beads", "rhinestone chain", "textile base"],
+			"ua": [
+				"бісер",
+				"скляні намистини",
+				"стразовий ланцюжок",
+				"текстильна основа"
+			]
+		},
+		"design": {
+			"en": "Jellyfish",
+			"ua": "Медуза"
+		},
+		"clasp": {
+			"en": "Metal pin",
+			"ua": "Металева застібка"
+		}
+	},
+	"description": {
+		"en": "The olive-green brooch with gold and soft pink accents feels like a sunset preserved in object form. The olive tone suggests earth at the end of the day—quiet, grounded, slowly cooling into evening stillness. Gold threads through it like the last lingering light on the horizon, warm and dissolving into a gentle glow. The pink details capture the fragile moment between day’s release and night’s arrival, when everything feels tender and in transition.\n\nTogether, they form a portable sunset—calm, luminous, slightly melancholic, and quietly radiant in the way endings can ",
+
+		"ua": "Оливково-зелена брошка із золотими та ніжно-рожевими акцентами нагадує захід сонця, збережений у формі прикраси. Оливковий відтінок навіює образ землі наприкінці дня — спокійної, врівноваженої, що повільно охолоджується в вечірній тиші. Золоті деталі проходять крізь композицію, мов останні промені світла на горизонті — теплі, м’які та поступово розчинені в ніжному сяйві. Рожеві акценти вловлюють крихку мить між завершенням дня та приходом ночі, коли все навколо здається особливо ніжним і перебуває в стані переходу.\n\nРазом ці кольори створюють образ переносного заходу сонця — спокійного, світлого, з легкою ноткою меланхолії та тихим сяйвом, яким іноді наповнені завершення."
+	},
+	"price": 150,
+	"oldPrice": null,
+
+	"badges": {
+		"isTop": false,
+		"isNew": true
+	},
+	"video": null,
+	"photo": [
+		{
+			"src": "/uploads/images/broches/BR0624-001-1.jpeg",
+			"alt": {
+				"en": "Jellyfish Gala Voski Brooch - Front View",
+				"ua": "Брошка Медуза Гала Воскі - Вид спереди"
+			}
+		}
+	]
+}

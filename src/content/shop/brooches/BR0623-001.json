@@ -1,0 +1,70 @@
+{
+	"sku": "BR0623-001",
+	"seo": {
+		"title": {
+			"en": "Brooch Jellyfish Holly Sterling | LittleFootCraft",
+			"ua": "Брошка Медуза Холлі Стерлінг | LittleFootCraft"
+		},
+		"description": {
+			"en": "Handcrafted jellyfish brooch in shimmering silver and champagne tones, adorned with crystal-like beads and delicate metallic details. Inspired by moonlit ocean depths, this elegant design captures the graceful movement of a drifting jellyfish while adding a touch of magic and sophistication to any outfit.",
+			"ua": "Брошка-медуза ручної роботи у мерехтливих срібних та шампань відтінках, оздоблена кришталевими намистинами й витонченими металевими деталями. Натхненна місячним сяйвом над океанськими глибинами, вона передає граційний рух медузи та додає образу нотку чарівності й елегантності."
+		},
+		"imageAlt": {
+			"en": "Brooch Jellyfish Holly Sterling by LittleFootCraft",
+			"ua": "Брошка Медуза Холлі Стерлінг від LittleFootCraft"
+		}
+	},
+	"name": {
+		"en": "Brooch Jellyfish Holly Sterling",
+		"ua": "Брошка Медуза Холлі Стерлінг"
+	},
+	"specifications": {
+		"category": { "en": "Brooches", "ua": "Брошки" },
+		"size": {
+			"en": [
+				"Full length: approx. 15 x 16 cm (5.9 x 6.3 in)",
+				"Body: approx. 5.5 x 6 cm (2.2 x 2.4 in)"
+			],
+			"ua": [
+				"Загальна довжина: приблизно 15–16 см",
+				"Тіло медузи: приблизно 5.5–6 см"
+			]
+		},
+		"colors": ["GY05", "EC06", "EC08"],
+		"collection": "ocean-blue",
+		"materials": {
+			"en": ["seed beads", "glass beads", "textile base"],
+			"ua": ["бісер", "скляні намистини", "текстильна основа"]
+		},
+		"design": {
+			"en": "Jellyfish",
+			"ua": "Медуза"
+		},
+		"clasp": {
+			"en": "Metal pin",
+			"ua": "Металева застібка"
+		}
+	},
+	"description": {
+		"en": "A luminous jellyfish suspended between sea and sky. This one-of-a-kind brooch is entirely handcrafted using bead embroidery and shimmering crystals. Inspired by moonlight reflecting on ocean waves, it combines delicate textures with flowing movement to create a wearable piece of art. Every bead is stitched by hand, transforming forgotten materials into a new story of beauty, sustainability and imagination.\n\nThis brooch is designed for collectors of unique jewellery and those who appreciate craftsmanship, originality and conscious design.\n\nOne piece only. Just as no two jellyfish are alike, this artwork will never be recreated exactly the same way.",
+
+		"ua": "Медуза, що сяє між морем і небом. Ця унікальна брошка повністю створена вручну в техніці вишивки бісером із використанням мерехтливих кристалів. Натхненна місячним сяйвом, що відбивається в океанських хвилях, вона поєднує ніжні текстури та плавні лінії, перетворюючись на справжній витвір мистецтва, який можна носити. Кожна намистина пришита вручну, даруючи нове життя матеріалам і розповідаючи історію про красу, усвідомлене ставлення до ресурсів та безмежну силу уяви.\n\nЦя брошка створена для поціновувачів унікальних прикрас, ручної роботи, оригінального дизайну та справжньої майстерності.\n\nІснує лише в одному екземплярі. Так само, як не існує двох однакових медуз, ця прикраса ніколи не буде відтворена точнісінько такою самою."
+	},
+	"price": 150,
+	"oldPrice": null,
+
+	"badges": {
+		"isTop": false,
+		"isNew": true
+	},
+	"video": null,
+	"photo": [
+		{
+			"src": "/uploads/images/broches/BR0623-001-1.jpeg",
+			"alt": {
+				"en": "Jellyfish Holly Sterling Brooch - Front View",
+				"ua": "Брошка Медуза Холлі Стерлінг - Вид спереди"
+			}
+		}
+	]
+}

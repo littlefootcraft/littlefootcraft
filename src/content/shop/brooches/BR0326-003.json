@@ -3,7 +3,7 @@
 	"seo": {
 		"title": {
 			"en": "Jellyfish Dahlia Lali Brooch | LittleFootCraft",
-			"ua": "Брошка Медуза Жоржина Лалі | LittleFootCraft"
+			"ua": "Брошка Медуза Далія Лалі | LittleFootCraft"
 		},
 		"description": {
 			"en": "Handcrafted jellyfish brooch with golden floral details and shimmering multicolored accents inspired by magical underwater worlds.",
@@ -11,22 +11,36 @@
 		},
 		"imageAlt": {
 			"en": "Jellyfish Dahlia Lali brooch by LittleFootCraft",
-			"ua": "Брошка Медуза Жоржина Лалі від LittleFootCraft"
+			"ua": "Брошка Медуза Далія Лалі від LittleFootCraft"
 		}
 	},
 	"name": {
 		"en": "Brooch Jellyfish Dahlia Lali",
-		"ua": "Брошка Медуза Жоржина Лалі"
+		"ua": "Брошка Медуза Далія Лалі"
 	},
 	"specifications": {
-		"category": { "en": "Brooch", "ua": "Брошка" },
+		"category": { "en": "Brooches", "ua": "Брошки" },
 
 		"size": {
-			"en": "3.5 cm x 3.5 cm",
-			"ua": "3.5 см x 3.5 см"
+			"en": [
+				"Full length: approx. 15.5 x 7 cm (6.1 × 2.8 in)",
+				"Body: approx. 5.5 x 7 cm (2.2 × 2.8 in)"
+			],
+			"ua": [
+				"Загальна довжина: приблизно 15.5 x 7 см",
+				"Тіло медузи: приблизно 5.5 x 7 см"
+			]
 		},
-		"color": ["blue", "red", "yellow", "pink"],
-		"collection": "ocean-blue"
+		"colors": ["BL08", "PK02", "YL03", "RD05"],
+		"collection": "ocean-blue",
+		"materials": {
+			"en": ["seed beads", "glass beads", "textile base"],
+			"ua": ["бісер", "скляні намистини", "текстильна основа"]
+		},
+		"design": {
+			"en": "Jellyfish",
+			"ua": "Медуза"
+		}
 	},
 	"description": {
 		"en": "This unique handmade brooch features a floral body in warm golden tones, with vibrant, iridescent tentacles that shimmer like a living kaleidoscope. Inspired by nature and art, the design combines lightness, fluidity, and movement, giving the impression that the brooch is almost alive. A bold and creative accessory for those who wish to express their individuality and add a touch of artistic flair to any outfit.",
@@ -45,7 +59,7 @@
 			"src": "/uploads/images/broches/BR0326-003-1.jpeg",
 			"alt": {
 				"en": "Jellyfish Dahlia Lali Brooch - Front View",
-				"ua": "Брошка Медуза Жоржина Лалі - Вид спереди"
+				"ua": "Брошка Медуза Далія Лалі - Вид спереди"
 			}
 		}
 	]

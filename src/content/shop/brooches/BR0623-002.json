@@ -1,0 +1,70 @@
+{
+	"sku": "BR0623-002",
+	"seo": {
+		"title": {
+			"en": "Brooch Jellyfish Olivia Flavia Green | LittleFootCraft",
+			"ua": "Брошка Медуза Олівія Флавія Ґрін | LittleFootCraft"
+		},
+		"description": {
+			"en": "Handcrafted green jellyfish brooch featuring bead embroidery, crystals, and shimmering lime, olive, and gold accents. A one-of-a-kind fantasy-inspired accessory that combines nature, elegance, and artisan craftsmanship.",
+			"ua": "Брошка-медуза ручної роботи в зелених відтінках із вишивкою бісером, кристалами та сяйливими лаймовими, оливковими й золотистими акцентами. Унікальна фантазійна прикраса, що поєднує природну красу, елегантність і майстерність ручної роботи."
+		},
+		"imageAlt": {
+			"en": "Brooch Jellyfish Olivia Flavia Green by LittleFootCraft",
+			"ua": "Медуза Олівія Флавія Ґрін від LittleFootCraft"
+		}
+	},
+	"name": {
+		"en": "Brooch Jellyfish Olivia Flavia Green",
+		"ua": "Брошка Медуза Олівія Флавія Ґрін"
+	},
+	"specifications": {
+		"category": { "en": "Brooches", "ua": "Брошки" },
+		"size": {
+			"en": [
+				"Full length: approx. 18 x 8 cm (7.1 × 3.1 in)",
+				"Body: approx. 5 x 8 cm (2.0 × 3.1 in)"
+			],
+			"ua": [
+				"Загальна довжина: приблизно 18 × 8 см",
+				"Тіло медузи: приблизно 5 × 8 см"
+			]
+		},
+		"colors": ["GR03", "YL03"],
+		"collection": "ocean-blue",
+		"materials": {
+			"en": ["seed beads", "bugle beads", "glass beads", "textile base"],
+			"ua": ["бісер", "стеклярус", "скляні намистини", "текстильна основа"]
+		},
+		"design": {
+			"en": "Jellyfish",
+			"ua": "Медуза"
+		},
+		"clasp": {
+			"en": "Metal pin",
+			"ua": "Металева застібка"
+		}
+	},
+	"description": {
+		"en": "Handcrafted in a symphony of green hues — from soft sage and olive to deep moss, forest and jade — this delicate jellyfish shimmers with the quiet magic of nature. Golden accents catch the light like sunbeams dancing on the surface of the sea, while her flowing tentacles move gracefully with every step.\n\nRich textures, layered shades of green and sparkling details make this brooch a small work of wearable art, inspired by the mystery and beauty of the natural world. Whether worn on a coat, scarf or dress, Olivia Flavia Green brings a touch of ocean wonder and woodland enchantment wherever she travels.",
+
+		"ua": "Створена вручну в симфонії зелених відтінків — від ніжного шавлієвого та оливкового до глибокого мохового, лісового й нефритового — ця витончена медуза мерехтить тихою магією природи. Золотисті акценти вловлюють світло, немов сонячні промені, що танцюють на поверхні моря, а її плавні щупальця граційно коливаються з кожним рухом.\n\n Багаті текстури, нашарування зелених тонів і мерехтливі деталі перетворюють цю брошку на маленький витвір мистецтва, який можна носити. Натхненна загадковістю та красою природного світу, вона поєднує в собі чарівність океанських глибин і магію лісових хащ. На пальті, шарфі чи сукні ця прикраса додасть образу нотку морського дива та лісового зачарування, куди б вона не вирушила."
+	},
+	"price": 150,
+	"oldPrice": null,
+
+	"badges": {
+		"isTop": false,
+		"isNew": true
+	},
+	"video": null,
+	"photo": [
+		{
+			"src": "/uploads/images/broches/BR0623-002-1.jpeg",
+			"alt": {
+				"en": "Jellyfish Olivia Flavia Green - Front View",
+				"ua": "Брошка Медуза Олівія Флавія Ґрін - Вид спереди"
+			}
+		}
+	]
+}

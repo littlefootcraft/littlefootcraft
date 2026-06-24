@@ -56,9 +56,10 @@
 		font-size: 1.25rem;
 	}
 
-	&--unsubscribe {
+	&--change-subscription {
 		padding: 15px 32px;
 		min-width: 280px;
+		width: 100%;
 		font-size: 1.125rem;
 
 		@include mobile {

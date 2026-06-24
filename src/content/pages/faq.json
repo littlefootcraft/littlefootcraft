@@ -257,6 +257,47 @@
 			]
 		},
 
+		"workshop_cancellation": {
+			"title": {
+				"en": "Workshop Cancellation Policy",
+				"ua": "Політика скасування воркшопів"
+			},
+			"items": [
+				{
+					"question": {
+						"en": "What is your workshop cancellation policy?",
+						"ua": "Яка у вас політика скасування воркшопів?"
+					},
+					"answer": [
+						{
+							"type": {
+								"en": "Cancellation Policy:",
+								"ua": "Політика скасування:"
+							},
+							"care": [
+								{
+									"en": "Full refund for cancellations made 48 hours or more before the workshop",
+									"ua": "Повне повернення коштів при скасуванні за 48 годин або більше до початку воркшопу"
+								},
+								{
+									"en": "50% refund for cancellations made between 24 and 48 hours before the workshop",
+									"ua": "Повернення 50% вартості при скасуванні за 24–48 годин до початку воркшопу"
+								},
+								{
+									"en": "No refund for cancellations made less than 24 hours before the workshop",
+									"ua": "Кошти не повертаються при скасуванні менш ніж за 24 години до початку воркшопу"
+								}
+							],
+							"additional": {
+								"en": "If you are unable to attend, please let us know as soon as possible.",
+								"ua": "Якщо ви не можете відвідати воркшоп, будь ласка, повідомте нас якомога раніше."
+							}
+						}
+					]
+				}
+			]
+		},
+
 		"other_questions": {
 			"title": {
 				"en": "Other Questions",

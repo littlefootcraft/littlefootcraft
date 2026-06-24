@@ -46,7 +46,7 @@ const Header = () => {
 
 	// Cart
 	const { cartCount } = useCart();
-	console.log("cart-count", cartCount);
+	// console.log("cart-count", cartCount);
 
 	// Mobile Menu
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);

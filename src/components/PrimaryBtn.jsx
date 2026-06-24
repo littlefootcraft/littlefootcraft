@@ -2,6 +2,7 @@
 
 import { Link } from "react-router-dom";
 
+// ICONS
 import { ArrowRight, LogIn, WandSparkles } from "lucide-react";
 
 const BUTTON_CONFIG = {
@@ -22,10 +23,7 @@ const BUTTON_CONFIG = {
 		icon: <LogIn size={20} />,
 		iconPosition: "left",
 	},
-	"change-subscription": {
-		icon: <WandSparkles size={20} />,
-		iconPosition: "right",
-	},
+	unsubscribe: {},
 };
 
 export const PrimaryBtn = ({

@@ -125,11 +125,11 @@ const OrderPage = () => {
 			return;
 		}
 
-		console.log("Order request:", {
-			customer: form,
-			items: cartProducts,
-			total: totalWithExtras,
-		});
+		// console.log("Order request:", {
+		// 	customer: form,
+		// 	items: cartProducts,
+		// 	total: totalWithExtras,
+		// });
 	};
 
 	// Gift card
@@ -251,6 +251,7 @@ const OrderPage = () => {
 									placeholder={dict.phone}
 									countryCallingCodeEditable={false}
 									value={form.phone}
+									limitMaxLength
 									onChange={(value) => {
 										setForm((current) => ({
 											...current,

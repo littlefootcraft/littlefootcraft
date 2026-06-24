@@ -1,12 +1,19 @@
 //ShopPage.jsx
 import { useOutletContext } from "react-router-dom";
 import { useEffect } from "react";
+
+// COMPONENTS
 import { ProductCard } from "../components/ProductCard";
+import Seo from "../components/Seo";
+import { PaginationBar } from "../components/Pagination";
+
+// CONTEXTS
 import { useProducts } from "../context/ProductsContext";
 import { useLanguage } from "../context/LanguageContext";
 import shopPage from "../content/pages/shop-page.json";
+
+// HOOKS
 import { useCatalogPagination } from "../hooks/useCatalogPagination";
-import Seo from "../components/Seo";
 
 const ShopPage = () => {
 	const { sortedProducts, setPageTitle } = useOutletContext();
@@ -26,7 +33,7 @@ const ShopPage = () => {
 	// Pagination
 	const { page, totalPages, paginatedItems, setParams } = useCatalogPagination(
 		sortedProducts,
-		20,
+		8,
 	);
 
 	// // Empty state — filters returned nothing
@@ -66,6 +73,13 @@ const ShopPage = () => {
 					</div>
 				</div>
 			)}
+			<div className="shop-page__pagination-slot">
+				<PaginationBar
+					page={page}
+					totalPages={totalPages}
+					setParams={setParams}
+				/>
+			</div>
 		</section>
 	);
 };

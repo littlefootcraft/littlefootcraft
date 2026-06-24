@@ -2,7 +2,7 @@
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi2";
 
 //Smart pagination ‹ 1 … 7 8 9 … 16 ›
-const getPaginationItems = (currentPage, totalPagesPages) => {
+const getPaginationItems = (currentPage, totalPages) => {
 	const items = [];
 	const siblings = 1; // сколько страниц показывать слева/справа от текущей
 	const maxVisible = 7; // примерно: 1 ... a b [c] d e ... last

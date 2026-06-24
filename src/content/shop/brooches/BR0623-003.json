@@ -1,0 +1,70 @@
+{
+	"sku": "BR0623-003",
+	"seo": {
+		"title": {
+			"en": "Brooch Jellyfish Zoriana Zlatan | LittleFootCraft",
+			"ua": "Брошка Медуза Зоряна Златан | LittleFootCraft"
+		},
+		"description": {
+			"en": "Handcrafted green jellyfish brooch featuring bead embroidery, crystals, and shimmering lime, olive, and gold accents. A one-of-a-kind fantasy-inspired accessory that combines nature, elegance, and artisan craftsmanship.",
+			"ua": "Брошка-медуза ручної роботи в зелених відтінках із вишивкою бісером, кристалами та сяйливими лаймовими, оливковими й золотистими акцентами. Унікальна фантазійна прикраса, що поєднує природну красу, елегантність і майстерність ручної роботи."
+		},
+		"imageAlt": {
+			"en": "Brooch Jellyfish Zoriana Zlatan by LittleFootCraft",
+			"ua": "Медуза Зоряна Златан від LittleFootCraft"
+		}
+	},
+	"name": {
+		"en": "Brooch Jellyfish Zoriana Zlatan",
+		"ua": "Брошка Медуза Зоряна Златан"
+	},
+	"specifications": {
+		"category": { "en": "Brooches", "ua": "Брошки" },
+		"size": {
+			"en": [
+				"Full length: approx. 17 x 7 cm (6.7 × 2.8 in)",
+				"Body: approx. 6 x 7 cm (6.7 × 2.8 in)"
+			],
+			"ua": [
+				"Загальна довжина: приблизно 17 × 7 см",
+				"Тіло медузи: приблизно 6 × 7 см"
+			]
+		},
+		"colors": ["RD04", "YL03"],
+		"collection": "ocean-blue",
+		"materials": {
+			"en": ["seed beads", "bugle beads", "glass beads", "textile base"],
+			"ua": ["бісер", "стеклярус", "скляні намистини", "текстильна основа"]
+		},
+		"design": {
+			"en": "Jellyfish",
+			"ua": "Медуза"
+		},
+		"clasp": {
+			"en": "Metal pin",
+			"ua": "Металева застібка"
+		}
+	},
+	"description": {
+		"en": "The “Jellyfish Zoriana Zlatan” brooch is not an ornament, but a quiet conspiracy between the sea and the sky, agreed upon without the permission of daylight. Its deep burgundy tone recalls wine that has not yet decided whether it wishes to become memory or remain temptation. \n\nThere is in it something of an evening that lingers too long before a mirror, slowly beginning to suspect it might, in fact, be beautiful. \n\nThe golden accents are not decoration, but the manners of light itself. They do not shine so much as behave—as though they have always known they would be noticed, yet refuse the vulgarity of haste. It is not the glitter of jewellery, but of judgment; a brightness with opinions.",
+
+		"ua": "Брошка «Медуза Зоряна Златан» — це не прикраса, а тиха змова між морем і небом, укладена без дозволу денного світла. Її глибокий бордовий відтінок нагадує вино, яке ще не вирішило, чи хоче воно стати спогадом, чи залишитися спокусою.\n\nУ ній є щось від вечора, що занадто довго затримався перед дзеркалом і поволі починає здогадуватися, що, можливо, він справді прекрасний.\n\nЗолотисті акценти тут — не оздоба, а сама манера світла існувати. Вони не стільки сяють, скільки поводяться так, ніби завжди знали, що їх помітять, але відмовляються від вульгарності поспіху. Це не блиск ювелірної прикраси, а блиск судження; сяйво, яке має власну думку."
+	},
+	"price": 150,
+	"oldPrice": null,
+
+	"badges": {
+		"isTop": false,
+		"isNew": true
+	},
+	"video": null,
+	"photo": [
+		{
+			"src": "/uploads/images/broches/BR0623-003-1.jpeg",
+			"alt": {
+				"en": "Jellyfish Zoriana Zlatan Brooch - Front View",
+				"ua": "Брошка Медуза Зоряна Златан - Вид спереди"
+			}
+		}
+	]
+}

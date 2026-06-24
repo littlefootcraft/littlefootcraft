@@ -27,10 +27,17 @@
 		"ua": "Галвей, Ірландія. Точну адресу буде надіслано після підтвердження бронювання."
 	},
 	"time": {
-		"en": "11:00 AM – 2:00 PM",
-		"ua": "11:00 – 14:00"
+		"en": "4:00 PM – 6:00 PM",
+		"ua": "16:00 – 18:00"
 	},
-	"price": 85,
+	"timezone": {
+		"value": "Europe/Dublin",
+		"label": {
+			"en": "Ireland time",
+			"ua": "за Ірландським часом"
+		}
+	},
+	"price": "55",
 	"includes": {
 		"en": [
 			"All materials",
@@ -45,7 +52,7 @@
 	},
 	"upcomingDates": {
 		"title": { "en": "Upcoming Dates", "ua": "Найближчі дати" },
-		"dates": ["2026-06-14", "2026-07-21", "2026-08-28"]
+		"dates": ["2026-06-19", "2026-06-20", "2026-07-21", "2026-08-28"]
 	},
 	"description": {
 		"en": "A warm, creative introduction to brooch making where participants learn the basics of composition, materials, and finishing techniques.",
