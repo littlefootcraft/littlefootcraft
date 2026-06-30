@@ -1,5 +1,4 @@
 //Header.jsx
-
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
 
@@ -8,14 +7,23 @@ import { useLanguage } from "../context/LanguageContext";
 import { useWishlist } from "../context/WishlistContext";
 import { useCart } from "../context/CartContext";
 
+// UTILS
 import { NavItems } from "../utils/navItems";
-import { menuUA, menuEN } from "../translations/translation";
+
+// TRANSLATION
+import {
+	menuUA,
+	menuEN,
+	headerEN,
+	headerUA,
+} from "../translations/translation";
+
 import logo from "/uploads/images/logo.png";
 
-// Components
+// COMPONENTS
 import { Badge } from "../components/Badge";
 
-// Icons
+// ICONS
 import { Search, Globe, Star, ShoppingBag, User, Menu, X } from "lucide-react";
 import { IoSearchOutline, IoCloseOutline } from "react-icons/io5";
 import { MobileMenu } from "./MobileMenu";
@@ -24,7 +32,10 @@ const Header = () => {
 	const { currentLang, setCurrentLang } = useLanguage();
 	const navigate = useNavigate();
 	const location = useLocation();
+
+	// Dictionary
 	const dict = currentLang === "en" ? menuEN : menuUA;
+	const headerDict = currentLang === "en" ? headerEN : headerUA;
 
 	function switchLang(lang) {
 		// setCurrentLang(lang);
@@ -37,6 +48,7 @@ const Header = () => {
 
 	//Search
 	const [isSearchOpen, setIsSearchOpen] = useState(false);
+	const [query, setQuery] = useState("");
 
 	//Language switcher
 	const [isLangSwitcherOpen, setIsLangSwitcherOpen] = useState(false);
@@ -82,7 +94,19 @@ const Header = () => {
 
 	// Close Mobile menu when icons clicked
 	const closeMobileMenu = () => {
-		setIsMenuOpen(false);
+		setIsMobileMenuOpen(false);
+	};
+
+	// For Search to work
+	const handleSearchSubmit = (e) => {
+		e.preventDefault();
+
+		const cleanedQuery = query.trim();
+
+		if (!cleanedQuery) return;
+
+		setIsSearchOpen(false);
+		navigate(`/${currentLang}/shop?search=${encodeURIComponent(cleanedQuery)}`);
 	};
 
 	return (
@@ -124,7 +148,7 @@ const Header = () => {
 					<button
 						// ref={searchBtnRef}
 						className="header__input-btn"
-						aria-label="Search button"
+						aria-label={headerDict.searchButton}
 						onClick={() => setIsSearchOpen((prev) => !prev)}
 					>
 						<Search />
@@ -133,7 +157,7 @@ const Header = () => {
 					<Link
 						to={`/${currentLang}/wishlist`}
 						className={`header__icon ${wishlist.length > 0 ? "header__icon--has-items" : ""}`}
-						aria-label="Wishlist icon"
+						aria-label={headerDict.wishlist}
 						onClick={closeMobileMenu}
 					>
 						<Star />
@@ -150,7 +174,7 @@ const Header = () => {
 					<Link
 						to={`/${currentLang}/cart`}
 						className={`header__icon ${cartCount > 0 ? "header__icon--has-items" : ""}`}
-						aria-label="Cart icon"
+						aria-label={headerDict.cart}
 						onClick={closeMobileMenu}
 					>
 						<ShoppingBag />
@@ -169,7 +193,7 @@ const Header = () => {
 					<Link
 						to={`/${currentLang}/login`}
 						className="header__icon header__icon-login"
-						aria-label="Login icon"
+						aria-label={headerDict.login}
 						onClick={closeMobileMenu}
 					>
 						<User />
@@ -182,8 +206,7 @@ const Header = () => {
 					>
 						<button
 							className="header__language-btn"
-							aria-label="Language button"
-							// onClick={() => switchLang(currentLang === "en" ? "ua" : "en")}
+							aria-label={headerDict.languageButton}
 							onClick={() => setIsLangSwitcherOpen((prev) => !prev)}
 						>
 							<Globe />
@@ -217,7 +240,7 @@ const Header = () => {
 					<button
 						className="header__hamburger"
 						onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-						aria-label="Toggle menu"
+						aria-label={headerDict.toggleMenu}
 					>
 						{isMobileMenuOpen ? <X /> : <Menu />}
 					</button>
@@ -233,7 +256,7 @@ const Header = () => {
 					>
 						<form
 							className="header__search-form"
-							// onSubmit={handleSubmit}
+							onSubmit={handleSearchSubmit}
 						>
 							<IoSearchOutline
 								size={18}
@@ -243,27 +266,26 @@ const Header = () => {
 								id="search"
 								className="header__search-input"
 								type="text"
-								// placeholder="Пошук"
-								// value={query}
-								// onChange={(e) => setQuery(e.target.value)}
+								placeholder={headerDict.search}
+								value={query}
+								onChange={(e) => setQuery(e.target.value)}
 							/>
 
 							<button
 								className="header__search-submit"
 								type="submit"
-								aria-label="Шукати"
+								aria-label={headerDict.search}
 							></button>
 						</form>
 
 						<button
 							className="header__search-close"
 							type="button"
-							// aria-label="Закрити пошук"
-							// onClick={() => {
-							// 	setIsSearchOpen(false);
-							// 	setQuery("");
-							// }}
-							onClick={() => setIsSearchOpen(false)}
+							aria-label={headerDict.closeSearch}
+							onClick={() => {
+								setIsSearchOpen(false);
+								setQuery("");
+							}}
 						>
 							<IoCloseOutline size={32} />
 						</button>

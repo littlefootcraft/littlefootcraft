@@ -52,11 +52,23 @@ export const CartProvider = ({ children }) => {
 		setCartList((prev) => saveCart(prev.filter((item) => item.sku !== sku)));
 	}
 
+	function clearCart() {
+		setCartList([]);
+		localStorage.removeItem("cart");
+	}
+
 	const cartCount = cartList.reduce((sum, item) => sum + item.qty, 0);
 
 	return (
 		<CartContext.Provider
-			value={{ cartList, addToCart, removeFromCart, deleteFromCart, cartCount }}
+			value={{
+				cartList,
+				addToCart,
+				removeFromCart,
+				deleteFromCart,
+				cartCount,
+				clearCart,
+			}}
 		>
 			{children}
 		</CartContext.Provider>

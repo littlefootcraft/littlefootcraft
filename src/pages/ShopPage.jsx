@@ -1,6 +1,6 @@
 //ShopPage.jsx
 import { useOutletContext } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 
 // COMPONENTS
 import { ProductCard } from "../components/ProductCard";
@@ -30,10 +30,18 @@ const ShopPage = () => {
 		});
 	}, [currentLang]); // ← needed to sync title up to ShopLayout on language change
 
+	const newestFirstProducts = useMemo(() => {
+		return [...sortedProducts].sort((a, b) => {
+			if (a.badges?.isNew && !b.badges?.isNew) return -1;
+			if (!a.badges?.isNew && b.badges?.isNew) return 1;
+			return 0;
+		});
+	}, [sortedProducts]);
+
 	// Pagination
 	const { page, totalPages, paginatedItems, setParams } = useCatalogPagination(
-		sortedProducts,
-		8,
+		newestFirstProducts,
+		16,
 	);
 
 	// // Empty state — filters returned nothing

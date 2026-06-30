@@ -19,6 +19,29 @@ export const menuUA = {
 	sale: "Poзпродаж",
 };
 
+// HEADER---------------------------------
+export const headerEN = {
+	search: "Search",
+	searchButton: "Open search",
+	closeSearch: "Close search",
+	languageButton: "Select language",
+	wishlist: "Wishlist",
+	cart: "Shopping cart",
+	login: "Login",
+	toggleMenu: "Toggle menu",
+};
+
+export const headerUA = {
+	search: "Пошук",
+	searchButton: "Відкрити пошук",
+	closeSearch: "Закрити пошук",
+	languageButton: "Обрати мову",
+	wishlist: "Список бажань",
+	cart: "Кошик",
+	login: "Увійти",
+	toggleMenu: "Відкрити меню",
+};
+
 // SUBSCRIPTION SECTION-----------------------------------------
 
 export const subscriptiopnEN = {
@@ -475,7 +498,7 @@ export const workshopConfirmationEmailUA = {
 		"Запит на бронювання цього майстер-класу вже було надіслано з цієї електронної адреси. Будь ласка, перевірте свою пошту або зв’яжіться з нами, якщо вам потрібна допомога.",
 };
 
-// WORKSHOP CANCELLATION PAGE
+// WORKSHOP CANCELLATION PAGE--------------------------
 
 export const workshopCancellationEN = {
 	title: "Cancel workshop booking?",
@@ -561,8 +584,8 @@ export const orderPageEN = {
 	lastName: "Last Name",
 	email: "Email",
 	phone: "Phone",
-	address: "Address",
-	apartment: "Apartment, suite, etc.",
+	street: "Street",
+	apartment: "Apartment, suite, etc. (optional)",
 	city: "City",
 	postalCode: "Postal Code",
 	country: "Country",
@@ -590,8 +613,8 @@ export const orderPageEN = {
 	nameError: "Please enter your name.",
 	lastNameError: "Please enter your last name.",
 	emailError: "Please enter your email.",
-	addressError: "Please enter your address.",
-	apartmentError: "Please enter apartment or suite information.",
+	streetError: "Please enter your street.",
+	// apartmentError: "Please enter apartment or suite information.",
 	cityError: "Please enter your city.",
 	postalCodeError: "Please enter your postal code.",
 	countryError: "Please enter your country.",
@@ -618,8 +641,8 @@ export const orderPageUA = {
 	lastName: "Прізвище",
 	email: "Електронна пошта",
 	phone: "Телефон",
-	address: "Адреса",
-	apartment: "Квартира, офіс тощо",
+	street: "Вулиця",
+	apartment: "Квартира, офіс тощо (необов'язково)",
 	city: "Місто",
 	postalCode: "Поштовий індекс",
 	country: "Країна",
@@ -647,8 +670,8 @@ export const orderPageUA = {
 	nameError: "Будь ласка, введіть ім’я.",
 	lastNameError: "Будь ласка, введіть прізвище.",
 	emailError: "Будь ласка, введіть електронну пошту.",
-	addressError: "Будь ласка, введіть адресу.",
-	apartmentError: "Будь ласка, введіть квартиру або офіс.",
+	streetError: "Будь ласка, введіть вулицю.",
+	// apartmentError: "Будь ласка, введіть квартиру або офіс.",
 	cityError: "Будь ласка, введіть місто.",
 	postalCodeError: "Будь ласка, введіть поштовий індекс.",
 	countryError: "Будь ласка, введіть країну.",

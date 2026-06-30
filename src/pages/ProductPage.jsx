@@ -248,14 +248,16 @@ const ProductPage = () => {
 				<div className="product-page__media">
 					{/* Main image / active item */}
 					<div className="product-page__stage">
-						<button
-							type="button"
-							className="product-page__nav product-page__nav--prev"
-							onClick={goToPrev}
-							disabled={activeIndex === 0}
-						>
-							<IoIosArrowBack size={28} />
-						</button>
+						{mediaItems.length > 1 && (
+							<button
+								type="button"
+								className="product-page__nav product-page__nav--prev"
+								onClick={goToPrev}
+								disabled={activeIndex === 0}
+							>
+								<IoIosArrowBack size={28} />
+							</button>
+						)}
 
 						{/* Show image or video poster depending on active item */}
 						{activeItem?.type === "video" ? (
@@ -280,14 +282,16 @@ const ProductPage = () => {
 							/>
 						)}
 
-						<button
-							type="button"
-							className="product-page__nav product-page__nav--next"
-							onClick={goToNext}
-							disabled={activeIndex === mediaItems.length - 1}
-						>
-							<IoIosArrowForward size={28} />
-						</button>
+						{mediaItems.length > 1 && (
+							<button
+								type="button"
+								className="product-page__nav product-page__nav--next"
+								onClick={goToNext}
+								disabled={activeIndex === mediaItems.length - 1}
+							>
+								<IoIosArrowForward size={28} />
+							</button>
+						)}
 					</div>
 
 					{/* Thumbnails */}

@@ -1035,12 +1035,9 @@ collections:
         name: "sku"
         widget: "string"
         hint:
-          "SKU format: BRMMDD-001. BR = Brooch. Example: BR0326-004 means brooch made on March 26, item number 4."
-        pattern:
-          [
-            "^[A-Z]{2}[0-9]{4}-[0-9]{3}$",
-            "Example: BR0326-001"
-          ]  
+          "SKU format: BRMMDD-001. BR = Brooch. Example: BR0326-004 means brooch
+          made on March 26, item number 4."
+        pattern: ["^[A-Z]{2}[0-9]{4}-[0-9]{3}$", "Example: BR0326-001"]
       - label: "SEO"
         name: "seo"
         widget: "object"
@@ -1152,25 +1149,25 @@ collections:
               - label: "English"
                 name: "en"
                 widget: "list"
-                field: { label: "Size line", widget: "string" }
+                field: { label: "Size line", name: "item", widget: "string" }
 
               - label: "Ukrainian"
                 name: "ua"
                 widget: "list"
-                field: { label: "Size line", widget: "string" }
+                field: { label: "Size line", name: "item", widget: "string" }
 
           - label: "Colors"
             name: "colors"
             widget: "list"
-            hint: "Add color shade codes from color_shades_system.js. Example: GY05, EC06, PK02"
+            hint:
+              "Add color shade codes from color_shades_system.js. Example: GY05,
+              EC06, PK02"
             field:
               label: "Color code"
+              name: "item"
               widget: "string"
               pattern:
-                [
-                  "^[A-Z]{2}[0-9]{2}$",
-                  "Use format like GY05, EC06, PK02"
-                ]
+                ["^[A-Z]{2}[0-9]{2}$", "Use format like GY05, EC06, PK02"]
 
           - label: "Collection"
             name: "collection"
@@ -1181,7 +1178,7 @@ collections:
             display_fields: ["name.en"]
             required: false
             hint: "Choose from collections created in Product Collections."
-      
+
           - label: "Materials"
             name: "materials"
             widget: "object"
@@ -1189,12 +1186,12 @@ collections:
               - label: "English"
                 name: "en"
                 widget: "list"
-                field: { label: "Material", widget: "string" }
+                field: { label: "Material", name: "item", widget: "string" }
 
               - label: "Ukrainian"
                 name: "ua"
                 widget: "list"
-                field: { label: "Матеріал", widget: "string" }
+                field: { label: "Матеріал", name: "item", widget: "string" }
 
           - label: "Design"
             name: "design"
@@ -1202,7 +1199,7 @@ collections:
             fields:
               - { label: "English", name: "en", widget: "string" }
               - { label: "Ukrainian", name: "ua", widget: "string" }
-          
+
           - label: "Clasp"
             name: "clasp"
             widget: "object"
@@ -1215,8 +1212,21 @@ collections:
         name: "description"
         widget: "object"
         fields:
-          - { label: "English", name: "en", widget: "text",hint: "Supports multiple paragraphs. Press Enter twice between paragraphs."}
-          - { label: "Ukrainian", name: "ua", widget: "text", hint: "Підтримує кілька абзаців. Натисніть Enter двічі між абзацами." }
+          - {
+              label: "English",
+              name: "en",
+              widget: "text",
+              hint:
+                "Supports multiple paragraphs. Press Enter twice between
+                paragraphs.",
+            }
+          - {
+              label: "Ukrainian",
+              name: "ua",
+              widget: "text",
+              hint:
+                "Підтримує кілька абзаців. Натисніть Enter двічі між абзацами.",
+            }
 
       - { label: "Price", name: "price", widget: "number", value_type: "int" }
 
@@ -1306,11 +1316,7 @@ collections:
         hint:
           "SKU format: PAMMDD-001. PA = Painting. Example: PA0326-004 means
           painting made on March 26, item number 4."
-        pattern:
-          [
-            "^[A-Z]{2}[0-9]{4}-[0-9]{3}$",
-            "Example: BR0326-001"
-          ]
+        pattern: ["^[A-Z]{2}[0-9]{4}-[0-9]{3}$", "Example: BR0326-001"]
       - label: "SEO"
         name: "seo"
         widget: "object"
@@ -1451,7 +1457,13 @@ collections:
           - { label: "English", name: "en", widget: "text" }
           - { label: "Ukrainian", name: "ua", widget: "text" }
 
-      - { label: "Price", name: "price", widget: "number", value_type: "int", min: 1 }
+      - {
+          label: "Price",
+          name: "price",
+          widget: "number",
+          value_type: "int",
+          min: 1,
+        }
 
       - label: "Old Price"
         name: "oldPrice"
@@ -1539,11 +1551,7 @@ collections:
         hint:
           "SKU format: NEMMDD-001. NE = Necklace. Example: NE0326-004 means
           necklace made on March 26, item number 4."
-        pattern:
-          [
-            "^[A-Z]{2}[0-9]{4}-[0-9]{3}$",
-            "Example: BR0326-001"
-          ]
+        pattern: ["^[A-Z]{2}[0-9]{4}-[0-9]{3}$", "Example: BR0326-001"]
       - label: "SEO"
         name: "seo"
         widget: "object"
@@ -1683,7 +1691,13 @@ collections:
           - { label: "English", name: "en", widget: "text" }
           - { label: "Ukrainian", name: "ua", widget: "text" }
 
-      - { label: "Price", name: "price", widget: "number", value_type: "int", min: 1 }
+      - {
+          label: "Price",
+          name: "price",
+          widget: "number",
+          value_type: "int",
+          min: 1,
+        }
 
       - label: "Old Price"
         name: "oldPrice"
@@ -1771,11 +1785,7 @@ collections:
         hint:
           "SKU format: POMMDD-001. PO = Postcard. Example: PO0326-004 means
           postcard made on March 26, item number 4."
-        pattern:
-          [
-            "^[A-Z]{2}[0-9]{4}-[0-9]{3}$",
-            "Example: BR0326-001"
-          ]
+        pattern: ["^[A-Z]{2}[0-9]{4}-[0-9]{3}$", "Example: BR0326-001"]
       - label: "SEO"
         name: "seo"
         widget: "object"
@@ -1915,7 +1925,13 @@ collections:
           - { label: "English", name: "en", widget: "text" }
           - { label: "Ukrainian", name: "ua", widget: "text" }
 
-      - { label: "Price", name: "price", widget: "number", value_type: "int", min: 1 }
+      - {
+          label: "Price",
+          name: "price",
+          widget: "number",
+          value_type: "int",
+          min: 1,
+        }
 
       - label: "Old Price"
         name: "oldPrice"
@@ -2003,11 +2019,7 @@ collections:
         hint:
           "SKU format: BAMMDD-001. BA = Bag. Example: BA0326-004 means bag made
           on March 26, item number 4."
-        pattern:
-          [
-            "^[A-Z]{2}[0-9]{4}-[0-9]{3}$",
-            "Example: BR0326-001"
-          ]
+        pattern: ["^[A-Z]{2}[0-9]{4}-[0-9]{3}$", "Example: BR0326-001"]
       - label: "SEO"
         name: "seo"
         widget: "object"
@@ -2146,7 +2158,13 @@ collections:
           - { label: "English", name: "en", widget: "text" }
           - { label: "Ukrainian", name: "ua", widget: "text" }
 
-      - { label: "Price", name: "price", widget: "number", value_type: "int", min: 1 }
+      - {
+          label: "Price",
+          name: "price",
+          widget: "number",
+          value_type: "int",
+          min: 1,
+        }
 
       - label: "Old Price"
         name: "oldPrice"
@@ -2228,35 +2246,57 @@ collections:
     slug: "{{fields.id}}"
 
     fields:
-      - {
-          label: "ID",
-          name: "id",
-          widget: "string",
-          hint:
-            "Use lowercase English words with hyphens. No spaces. Example:
-            intro-brooch-making",
-          pattern: [
-            "^[a-z0-9-]+$",
-            "Use lowercase English letters, numbers, and hyphens only."
-        ]
-        }
+      - label: "ID"
+        name: "id"
+        widget: "string"
+        hint:
+          "Use lowercase English words with hyphens. No spaces. Example:
+          intro-brooch-making"
+        pattern:
+          - "^[a-z0-9-]+$"
+          - "Use lowercase English letters, numbers, and hyphens only."
 
       - label: "Title"
         name: "title"
         widget: "object"
-        hint:
-            "Example: Name of the workshop / Назва майстер-класу",
+        hint: "Example: Name of the workshop / Назва майстер-класу"
         fields:
-          - { label: "English", name: "en", widget: "string", hint: "Example: Introduction to Brooch Making" }
-          - { label: "Ukrainian", name: "ua", widget: "string", hint: "Example: Введення до виготовлення брошок" }
+          - {
+              label: "English",
+              name: "en",
+              widget: "string",
+              hint: "Example: Introduction to Brooch Making",
+            }
+          - {
+              label: "Ukrainian",
+              name: "ua",
+              widget: "string",
+              hint: "Example: Введення до виготовлення брошок",
+            }
 
       - label: "Subtitle"
         name: "subtitle"
         widget: "object"
-        hint: "Short description shown under the workshop title. Describe what participants will learn or experience."
+        hint:
+          "Short description shown under the workshop title. Describe what
+          participants will learn or experience."
         fields:
-          - { label: "English", name: "en", widget: "text", hint: "Example: Learn the fundamentals of brooch crafting in this beginner-friendly workshop." }
-          - { label: "Ukrainian", name: "ua", widget: "text", hint: "Example: Дізнайтесь основи виготовлення брошок у цьому дружнім до початківців майстер-класі." }
+          - {
+              label: "English",
+              name: "en",
+              widget: "text",
+              hint:
+                "Example: Learn the fundamentals of brooch crafting in this
+                beginner-friendly workshop.",
+            }
+          - {
+              label: "Ukrainian",
+              name: "ua",
+              widget: "text",
+              hint:
+                "Example: Дізнайтесь основи виготовлення брошок у цьому дружнім
+                до початківців майстер-класі.",
+            }
 
       - label: "Duration"
         name: "duration"
@@ -2278,8 +2318,18 @@ collections:
             widget: "object"
             hint: "Time unit shown on the website."
             fields:
-              - { label: "English", name: "en", widget: "string", hint: "Example: hours" }
-              - { label: "Ukrainian", name: "ua", widget: "string", hint: "Example: годин" }
+              - {
+                  label: "English",
+                  name: "en",
+                  widget: "string",
+                  hint: "Example: hours",
+                }
+              - {
+                  label: "Ukrainian",
+                  name: "ua",
+                  widget: "string",
+                  hint: "Example: годин",
+                }
 
       - label: "Participants"
         name: "participants"
@@ -2291,15 +2341,25 @@ collections:
             widget: "object"
             hint: "Word shown after the participant number."
             fields:
-              - { label: "English", name: "en", widget: "string", hint: "Example: participants" }
-              - { label: "Ukrainian", name: "ua", widget: "string", hint: "Example: учасників/ людей" }
+              - {
+                  label: "English",
+                  name: "en",
+                  widget: "string",
+                  hint: "Example: participants",
+                }
+              - {
+                  label: "Ukrainian",
+                  name: "ua",
+                  widget: "string",
+                  hint: "Example: учасників/ людей",
+                }
           - {
               label: "Amount of People",
               name: "amount-of-people",
               widget: "number",
               value_type: "int",
               min: 1,
-              hint: "Example: 20"
+              hint: "Example: 20",
             }
       - label: "Location Type"
         name: "location"
@@ -2313,7 +2373,6 @@ collections:
               name: "en",
               widget: "string",
               hint: "Example: In person",
-              
             }
           - {
               label: "Ukrainian",
@@ -2409,11 +2468,27 @@ collections:
             name: "label"
             widget: "object"
             fields:
-              - { label: "English", name: "en", widget: "string", hint: "Example: Ireland time" }
-              - { label: "Ukrainian", name: "ua", widget: "string", hint: "Example: за Ірландським часом" }      
+              - {
+                  label: "English",
+                  name: "en",
+                  widget: "string",
+                  hint: "Example: Ireland time",
+                }
+              - {
+                  label: "Ukrainian",
+                  name: "ua",
+                  widget: "string",
+                  hint: "Example: за Ірландським часом",
+                }
 
-      - { label: "Price", name: "price", widget: "number", value_type: "int", min: 0 }
-        hint: "Enter 0 for free workshops / Введіть 0 для безкоштовних майстер-класів."
+      - label: "Price"
+        name: "price"
+        widget: "number"
+        value_type: "int"
+        min: 0
+        hint:
+          "Enter 0 for free workshops / Введіть 0 для безкоштовних
+          майстер-класів."
 
       - label: "Upcoming Dates"
         name: "upcomingDates"
@@ -2425,8 +2500,18 @@ collections:
             widget: "object"
             hint: "Section title shown above workshop dates."
             fields:
-              - { label: "English", name: "en", widget: "string", hint: "Example: Upcoming Dates" }
-              - { label: "Ukrainian", name: "ua", widget: "string", hint: "Приклад: Майбутні дати" }
+              - {
+                  label: "English",
+                  name: "en",
+                  widget: "string",
+                  hint: "Example: Upcoming Dates",
+                }
+              - {
+                  label: "Ukrainian",
+                  name: "ua",
+                  widget: "string",
+                  hint: "Приклад: Майбутні дати",
+                }
 
           - label: "Dates"
             name: "dates"
@@ -2444,10 +2529,28 @@ collections:
       - label: "Description"
         name: "description"
         widget: "object"
-        hint: "Detailed workshop description shown on the workshop card. Describe the atmosphere, activities, and what participants will learn."
+        hint:
+          "Detailed workshop description shown on the workshop card. Describe
+          the atmosphere, activities, and what participants will learn."
         fields:
-          - { label: "English", name: "en", widget: "text", hint: "Example: A warm, creative introduction to brooch making where participants learn the basics of composition, materials, and finishing techniques.", }
-          - { label: "Ukrainian", name: "ua", widget: "text", hint: "Приклад: Теплий, творчий вступ до виготовлення брошок, де учасники вивчають основи композиції, матеріалів та технік завершення.", }
+          - {
+              label: "English",
+              name: "en",
+              widget: "text",
+              hint:
+                "Example: A warm, creative introduction to brooch making where
+                participants learn the basics of composition, materials, and
+                finishing techniques.",
+            }
+          - {
+              label: "Ukrainian",
+              name: "ua",
+              widget: "text",
+              hint:
+                "Приклад: Теплий, творчий вступ до виготовлення брошок, де
+                учасники вивчають основи композиції, матеріалів та технік
+                завершення.",
+            }
 
       - label: "Image"
         name: "image"

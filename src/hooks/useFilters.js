@@ -9,6 +9,8 @@ const FILTERS_KEYS = ["category", "color", "collection"];
 export const useFilters = () => {
 	const [searchParams, setSearchParams] = useSearchParams();
 
+	const query = searchParams.get("search") || "";
+
 	// --- FILTERS ---
 	// Read active filters from URL
 	//?category=brooch&color=gold&color=pink
@@ -58,6 +60,22 @@ export const useFilters = () => {
 	// Read current sort from URL, default to "newest"
 	const sortKey = searchParams.get("sort") || "newest";
 
+	const setQuery = useCallback(
+		(value) => {
+			const params = new URLSearchParams(searchParams);
+
+			if (value.trim()) {
+				params.set("search", value);
+			} else {
+				params.delete("search");
+			}
+
+			params.delete("page");
+			setSearchParams(params);
+		},
+		[searchParams, setSearchParams],
+	);
+
 	// Write a new sort value into the URL
 	const setSort = useCallback(
 		(value) => {
@@ -75,6 +93,8 @@ export const useFilters = () => {
 		clearFilters,
 		hasActiveFilters,
 		sortKey,
+		query,
+		setQuery,
 		setSort,
 	};
 };

@@ -1,9 +1,16 @@
 //ShopToolbar.jsx
-import { useEffect, useState } from "react";
+import { useState } from "react";
+
+// COMPONENTS
 import { SecondaryBtn } from "../components/SecondaryBtn";
+
+// ICONS
 import { ChevronDown } from "lucide-react";
-import shopPage from "../content/pages/shop-page.json";
+
+// CONSTANS
 import { COLORS } from "../constants/filterOptions";
+
+// CONTENT
 import categories from "../content/categories/categories.json";
 // import collections from "../content/collections/collections.json";
 
@@ -36,7 +43,7 @@ export const ShopToolbar = ({
 	clearFilters,
 	hasActiveFilters,
 }) => {
-	const { currentLang, setCurrentLang } = useLanguage();
+	const { currentLang } = useLanguage();
 	const SORT_OPTIONS = currentLang === "en" ? sortOptionsEN : sortOptionsUA;
 	const t = currentLang === "en" ? toolbarEN : toolbarUA;
 
@@ -155,6 +162,17 @@ export const ShopToolbar = ({
 								)),
 							)}
 						</>
+					)}
+
+					{/* search query */}
+					{query && (
+						<div className="shop-toolbar__search-summary">
+							<span className="shop-toolbar__search-label">
+								{currentLang === "ua" ? "Ви шукали:" : "You searched for:"}
+							</span>
+
+							<strong className="shop-toolbar__search-query">“{query}”</strong>
+						</div>
 					)}
 				</div>
 				<span className="shop-toolbar__count">{t.itemsFound(count)}</span>

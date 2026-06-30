@@ -9,6 +9,10 @@ import { ShopToolbar } from "../components/ShopToolbar";
 import { FiltersDrawer } from "../components/FiltersDrawer";
 import { useFilters } from "../hooks/useFilters";
 import { COLOR_BY_CODE } from "../constants/color_shades_system";
+import { useLanguage } from "../context/LanguageContext";
+
+const normalizeSku = (value = "") =>
+	String(value).toLowerCase().replaceAll("-", "").trim();
 
 // This function lives outside the component — that's fine because
 // it's not a hook, just a plain helper function.
@@ -58,6 +62,7 @@ function applyFilters(products, activeFilters) {
 const ShopLayout = () => {
 	// 1. Raw products from context
 	const products = useProducts();
+	const { currentLang } = useLanguage();
 
 	// Display count
 	const [displayCount, setDisplayCount] = useState(null);
@@ -69,28 +74,33 @@ const ShopLayout = () => {
 		hasActiveFilters,
 		sortKey,
 		setSort,
+		query,
+		setQuery,
 	} = useFilters();
 
 	// Page title is set by each child page (ShopPage, ProductPage)
 	const [pageTitle, setPageTitle] = useState({ title: "", subtitle: "" });
 
-	// Search filter
-	const [query, setQuery] = useState("");
-
 	// drawer open/close
 	const [isFiltersOpen, setIsFiltersOpen] = useState(false);
-	const openFilters = () => setIsFiltersOpen(true);
-	const closeFilters = () => setIsFiltersOpen(false);
-
-	// --- THE PIPELINE ---
-	// Each step feeds into the next.
 
 	// Step 1: Search
 	const searchedProducts = useMemo(() => {
-		if (!query) return products; // skip filtering if no query
-		return products.filter((p) =>
-			p.name.en.toLowerCase().includes(query.toLowerCase()),
-		);
+		const searchQuery = query.trim().toLowerCase();
+
+		if (!searchQuery) return products;
+
+		return products.filter((product) => {
+			const matchesName =
+				product.name?.en?.toLowerCase().includes(searchQuery) ||
+				product.name?.ua?.toLowerCase().includes(searchQuery);
+
+			const matchesSku = normalizeSku(product.sku).includes(
+				normalizeSku(searchQuery),
+			);
+
+			return matchesName || matchesSku;
+		});
 	}, [query, products]);
 
 	// Step 2: Filter (receives searched, not raw products)
@@ -118,12 +128,6 @@ const ShopLayout = () => {
 		return sorted;
 	}, [filteredProducts, sortKey]);
 
-	// // Step 4: Paginate (always last — paginates whatever survived the pipeline)
-	// const { page, totalPages, paginatedItems, setParams } = useCatalogPagination(
-	// 	sortedProducts,
-	// 	20,
-	// );
-
 	return (
 		<div className="shop-layout">
 			{/* 1. title */}
@@ -140,6 +144,7 @@ const ShopLayout = () => {
 				onSortChange={setSort}
 				onFiltersOpen={() => setIsFiltersOpen(true)}
 				count={displayCount ?? sortedProducts.length}
+				currentLang={currentLang}
 				activeFilters={activeFilters}
 				toggleFilter={toggleFilter}
 				clearFilters={clearFilters}
@@ -173,15 +178,6 @@ const ShopLayout = () => {
 					setQuery,
 				}}
 			/>
-
-			{/* 3. pagination
-			<div className="shop-page__pagination-slot">
-				<PaginationBar
-					page={page}
-					totalPages={totalPages}
-					setParams={setParams}
-				/>
-			</div> */}
 		</div>
 	);
 };

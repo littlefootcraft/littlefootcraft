@@ -56,11 +56,12 @@
 		font-size: 1.25rem;
 	}
 
-	&--change-subscription {
+	&--change-subscription,
+	&--home {
 		padding: 15px 32px;
 		min-width: 280px;
 		width: 100%;
-		font-size: 1.125rem;
+		font-size: 1rem;
 
 		@include mobile {
 			width: 100%;

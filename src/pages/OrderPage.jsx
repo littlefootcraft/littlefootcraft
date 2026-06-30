@@ -13,7 +13,7 @@ import { PrimaryBtn } from "../components/PrimaryBtn";
 import { PageTopTitle } from "../components/PageTopTitle";
 
 // ICONS
-import { ShieldCheck } from "lucide-react";
+import { ShieldCheck, ChevronDown } from "lucide-react";
 
 // CONTEXT
 import { useCart } from "../context/CartContext";
@@ -28,22 +28,48 @@ import Seo from "../components/Seo";
 
 import { orderPageUA, orderPageEN } from "../translations/translation";
 
+import { supabase } from "../lib/supabaseClient";
+
+// CONFIRMATION EMAIL
+import { createOrderConfirmationEmail } from "../emails/orderConfirmationEmail";
+
+import { OrderSuccessModal } from "../components/OrderSuccessModal";
+
 const GIFT_POSTCARD_PRICE = 2;
 
 const OrderPage = () => {
 	const { currentLang } = useLanguage();
 	const products = useProducts();
-	const { cartList } = useCart();
+	const { cartList, clearCart } = useCart();
+
 	const [errors, setErrors] = useState({});
+	const [status, setStatus] = useState("idle");
+	// Order Confirmation message
+	const [message, setMessage] = useState("");
+
+	// Order numbre from Supabase
+	const [orderNumber, setOrderNumber] = useState("");
 
 	const dict = currentLang === "en" ? orderPageEN : orderPageUA;
+
+	// List of countries to choose from
+	countries.registerLocale(enLocale);
+	countries.registerLocale(ukLocale);
+
+	const countryNames = countries.getNames(currentLang === "ua" ? "uk" : "en", {
+		select: "official",
+	});
+
+	const countryOptions = Object.entries(countryNames).sort((a, b) =>
+		a[1].localeCompare(b[1]),
+	);
 
 	const [form, setForm] = useState({
 		name: "",
 		lastName: "",
 		email: "",
 		phone: "",
-		address: "",
+		street: "",
 		apartment: "",
 		city: "",
 		postalCode: "",
@@ -77,7 +103,7 @@ const OrderPage = () => {
 		}));
 	};
 
-	const handleSubmit = (event) => {
+	const handleSubmit = async (event) => {
 		event.preventDefault();
 
 		const newErrors = {};
@@ -94,8 +120,8 @@ const OrderPage = () => {
 			newErrors.email = dict.emailError;
 		}
 
-		if (!form.address.trim()) {
-			newErrors.address = dict.addressError;
+		if (!form.street.trim()) {
+			newErrors.street = dict.streetError;
 		}
 
 		if (!form.city.trim()) {
@@ -109,9 +135,9 @@ const OrderPage = () => {
 		if (!form.country.trim()) {
 			newErrors.country = dict.countryError;
 		}
-		if (!form.apartment.trim()) {
-			newErrors.apartment = dict.apartmentError;
-		}
+		// if (!form.apartment.trim()) {
+		// 	newErrors.apartment = dict.apartmentError;
+		// }
 
 		if (!form.phone?.trim()) {
 			newErrors.phone = dict.phoneError;
@@ -125,11 +151,69 @@ const OrderPage = () => {
 			return;
 		}
 
-		// console.log("Order request:", {
-		// 	customer: form,
-		// 	items: cartProducts,
-		// 	total: totalWithExtras,
-		// });
+		setStatus("loading");
+
+		// Supabase
+		const { data, error } = await supabase
+			.from("orders")
+			.insert({
+				customer_name: `${form.name} ${form.lastName}`,
+				email: form.email,
+				phone: form.phone,
+				country: form.country,
+				city: form.city,
+				street: form.street,
+				apartment: form.apartment, // optional
+				zip_code: form.postalCode,
+
+				comment: form.message,
+
+				items: cartProducts,
+				subtotal: total,
+				discount: 0,
+				total: totalWithExtras,
+			})
+			.select("order_number")
+			.single();
+
+		if (error) {
+			console.error("Order creation failed:", error);
+			setStatus("error");
+			return;
+		}
+
+		const { subject, html } = createOrderConfirmationEmail({
+			cartProducts,
+			currentLang,
+			totalWithExtras,
+			orderNumber: data.order_number,
+			t,
+		});
+
+		const { error: emailError } = await supabase.functions.invoke(
+			"resend-email",
+			{
+				body: {
+					to: form.email,
+					subject,
+					html,
+				},
+			},
+		);
+
+		if (emailError) {
+			console.log("Order confirmation email error:", emailError);
+		}
+
+		setStatus("success");
+		setOrderNumber(data.order_number);
+		clearCart();
+		// setMessage(
+		// 	currentLang === "ua"
+		// 		? "Ваше замовлення надіслано. Ми зв’яжемося з вами найближчим часом."
+		// 		: "Your order request was sent. We will contact you shortly.",
+		// );
+		console.log("Order created successfully!");
 	};
 
 	// Gift card
@@ -276,15 +360,15 @@ const OrderPage = () => {
 								{dict.shippingTitle}
 							</h2>
 							<div className="order-page__field">
-								<label htmlFor="address">{dict.address}</label>
+								<label htmlFor="street">{dict.street}</label>
 								<input
-									id="address"
-									name="address"
-									value={form.address}
+									id="street"
+									name="street"
+									value={form.street}
 									onChange={handleChange}
 								/>
-								{errors.address && (
-									<p className="order-page__error">{errors.address}</p>
+								{errors.street && (
+									<p className="order-page__error">{errors.street}</p>
 								)}
 							</div>
 							<div className="order-page__field">
@@ -327,12 +411,30 @@ const OrderPage = () => {
 							</div>
 							<div className="order-page__field">
 								<label htmlFor="country">{dict.country}</label>
-								<input
-									id="country"
-									name="country"
-									value={form.country}
-									onChange={handleChange}
-								/>
+								<div className="order-page__select-wrapper">
+									<select
+										id="country"
+										name="country"
+										value={form.country}
+										onChange={handleChange}
+									>
+										<option value="">
+											{currentLang === "ua"
+												? "Оберіть країну"
+												: "Select a country"}
+										</option>
+										{countryOptions.map(([code, name]) => (
+											<option
+												key={code}
+												value={name}
+											>
+												{name}
+											</option>
+										))}
+									</select>
+									<ChevronDown className="order-page__select-icon" />
+								</div>
+
 								{errors.country && (
 									<p className="order-page__error">{errors.country}</p>
 								)}
@@ -378,11 +480,25 @@ const OrderPage = () => {
 							<ShieldCheck />
 							<span>{dict.paymentNotice}</span>
 						</div>
+
+						{/* Order confirmation message*/}
+						{message && (
+							<p
+								className={`order-page__feedback order-page__feedback--${status}`}
+							>
+								{message}
+							</p>
+						)}
 						<PrimaryBtn
 							variant="order"
 							type="submit"
+							disabled={status === "loading"}
 						>
-							{dict.submitBtn}
+							{status === "loading"
+								? currentLang === "ua"
+									? "Надсилаємо..."
+									: "Sending..."
+								: dict.submitBtn}
 						</PrimaryBtn>
 					</form>
 				</div>
@@ -432,6 +548,13 @@ const OrderPage = () => {
 						{dict.backToCart}
 					</Link>
 				</aside>
+
+				<OrderSuccessModal
+					isOpen={status === "success"}
+					currentLang={currentLang}
+					orderNumber={orderNumber}
+					onClose={() => setStatus("idle")}
+				/>
 			</div>
 		</section>
 	);

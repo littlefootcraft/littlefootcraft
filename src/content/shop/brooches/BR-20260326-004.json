@@ -1,5 +1,5 @@
 {
-	"sku": "BR0326-004",
+	"sku": "BR-20260326-004",
 	"seo": {
 		"title": {
 			"en": "Brooch Jellyfish MALINDA | LittleFootCraft",
@@ -56,12 +56,12 @@
 
 	"badges": {
 		"isTop": false,
-		"isNew": true
+		"isNew": false
 	},
 	"video": null,
 	"photo": [
 		{
-			"src": "/uploads/images/broches/BR0326-004-1.jpeg",
+			"src": "/uploads/images/broches/BR-20260326-004-1.jpeg",
 			"alt": {
 				"en": "Jellyfish MALINDA Brooch - Front View",
 				"ua": "Брошка Медуза Малінда - Вид спереди"

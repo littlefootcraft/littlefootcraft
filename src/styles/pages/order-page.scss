@@ -94,7 +94,8 @@
 		}
 
 		input,
-		textarea {
+		textarea,
+		select {
 			width: 100%;
 			border: 1px solid rgba($gold-accent, 0.3);
 			border-radius: $border-radius;
@@ -121,6 +122,26 @@
 			min-height: 130px;
 			resize: vertical;
 		}
+	}
+
+	&__select-wrapper {
+		position: relative;
+
+		select {
+			appearance: none;
+			padding-right: 48px; // space for icon
+		}
+	}
+
+	&__select-icon {
+		position: absolute;
+		top: 50%;
+		right: 18px; // move left/right here
+		transform: translateY(-50%);
+		width: 18px;
+		height: 18px;
+		color: rgba($primary-text, 0.7);
+		pointer-events: none;
 	}
 
 	.PhoneInput {
@@ -364,6 +385,27 @@
 		margin-top: -4px;
 		font-size: 0.8rem;
 		color: $error-message;
+	}
+
+	// CONFIRM MESSAGES
+	&__feedback {
+		margin-bottom: 16px;
+		padding: 14px 18px;
+		border-radius: $border-radius;
+		font-size: 0.95rem;
+		line-height: 1.5;
+
+		&--success {
+			background: rgba(#4caf50, 0.1);
+			border: 1px solid rgba(#4caf50, 0.25);
+			color: #2e7d32;
+		}
+
+		&--error {
+			background: rgba($error-message, 0.08);
+			border: 1px solid rgba($error-message, 0.2);
+			color: $error-message;
+		}
 	}
 
 	@include tablet {

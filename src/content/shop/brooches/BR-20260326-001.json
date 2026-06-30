@@ -1,5 +1,5 @@
 {
-	"sku": "BR0326-001",
+	"sku": "BR-20260326-001",
 	"seo": {
 		"title": {
 			"en": "Brooch Jellyfish Sofia Fizz | LittleFootCraft",
@@ -51,12 +51,12 @@
 		"en": "This elegant handmade silver brooch is crafted with delicate beads and shimmering rhinestone chains in soft champagne, blush pink, and golden tones. The jellyfish-inspired design features flowing, flexible “tentacles” that catch the light and gently move, creating a refined, luminous effect. A sophisticated statement piece that adds a touch of elegance and artistic flair to any outfit.",
 		"ua": "Ця елегантна срібляста брошка ручної роботи створена з витонченого бісеру та мерехтливих стразових ланцюжків у ніжних відтінках шампані, пудрово-рожевого та золота. Дизайн, натхненний медузою, доповнений рухливими гнучкими «щупальцями», які красиво вловлюють світло та плавно коливаються під час руху, створюючи вишуканий сяйливий ефект. Витончена акцентна прикраса, що додає образу елегантності, легкості та художньої виразності."
 	},
-	"price": 150,
+	"price": 120,
 	"oldPrice": null,
 
 	"badges": {
 		"isTop": false,
-		"isNew": true
+		"isNew": false
 	},
 	"video": {
 		"src": "/uploads/images/broches/video/SK0001_video.mp4",
@@ -67,7 +67,14 @@
 	},
 	"photo": [
 		{
-			"src": "/uploads/images/broches/BR0326-001-1.jpeg",
+			"src": "/uploads/images/broches/BR-20260326-001-1.jpeg",
+			"alt": {
+				"en": "Jellyfish Sofia Fizz - Front View",
+				"ua": "Брошка Медуза Софія Фізз - Вид спереди"
+			}
+		},
+		{
+			"src": "/uploads/images/broches/BR-20260326-001-001_copy.jpeg",
 			"alt": {
 				"en": "Jellyfish Sofia Fizz - Front View",
 				"ua": "Брошка Медуза Софія Фізз - Вид спереди"

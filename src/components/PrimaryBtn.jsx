@@ -24,6 +24,7 @@ const BUTTON_CONFIG = {
 		iconPosition: "left",
 	},
 	unsubscribe: {},
+	shop: {},
 };
 
 export const PrimaryBtn = ({

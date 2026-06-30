@@ -96,7 +96,8 @@
 		}
 	}
 
-	&__active-filters {
+	&__active-filters,
+	&__search-summary {
 		min-height: 55px;
 		display: flex;
 		flex-wrap: wrap;
@@ -149,6 +150,12 @@
 		&:hover {
 			color: $primary-text;
 		}
+	}
+
+	// Search
+
+	&__search-summary {
+		color: $primary-text;
 	}
 
 	@include mobile-sm {
