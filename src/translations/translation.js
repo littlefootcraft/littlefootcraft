@@ -758,6 +758,11 @@ export const newsletterEN = {
 	emailUnsubscribe:
 		"You received this email because you subscribed to LittleFootCraft updates.",
 	emailUnsubscribeButton: "Unsubscribe",
+	interests: {
+		workshops: "Workshops",
+		"master-classes": "Master classes",
+		sales: "Sales",
+	},
 };
 
 export const newsletterUA = {
@@ -771,4 +776,9 @@ export const newsletterUA = {
 	emailUnsubscribe:
 		"Ви отримали цей лист, тому що підписалися на новини LittleFootCraft.",
 	emailUnsubscribeButton: "Відписатися",
+	interests: {
+		workshops: "Воркшопи",
+		"master-classes": "Майстер-класи",
+		sales: "Знижки та пропозиції",
+	},
 };

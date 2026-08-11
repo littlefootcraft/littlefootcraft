@@ -108,8 +108,14 @@ export const createOrderConfirmationEmail = ({
 				<p style="color:#9ca3af; font-size:12px; margin-top:28px; text-align:center;">
 					${
 						currentLang === "ua"
-							? "Якщо у вас є питання, просто дайте відповідь на цей лист."
-							: "If you have any questions, simply reply to this email."
+							? `Якщо у вас є питання, просто дайте відповідь на цей лист або напишіть нам на
+						<a href="mailto:littlefootcraft@gmail.com" style="color:#9ca3af;">
+							littlefootcraft@gmail.com
+						</a>.`
+							: `If you have any questions, simply reply to this email or contact us at
+						<a href="mailto:littlefootcraft@gmail.com" style="color:#9ca3af;">
+							littlefootcraft@gmail.com
+						</a>.`
 					}
 				</p>
 			</div>

@@ -83,7 +83,7 @@ const OrderPage = () => {
 		.map((item) => {
 			const product = products.find((p) => p.sku === item.sku);
 
-			return product ? { ...product, quantity: item.quantity || 1 } : null;
+			return product ? { ...product, quantity: item.qty || 1 } : null;
 		})
 		.filter(Boolean);
 

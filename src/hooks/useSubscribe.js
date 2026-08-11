@@ -3,7 +3,7 @@ import { supabase } from "../lib/supabaseClient";
 
 import { useLanguage } from "../context/LanguageContext";
 
-import { newsletterEN, newsletterUA } from "../translations/translation";
+// import { newsletterEN, newsletterUA } from "../translations/translation";
 
 export const useSubscribe = (dict) => {
 	// Current website language
@@ -14,8 +14,8 @@ export const useSubscribe = (dict) => {
 	const [status, setStatus] = useState("idle");
 	const [message, setMessage] = useState("");
 
-	// Email translations
-	const emailDict = currentLang === "ua" ? newsletterUA : newsletterEN;
+	// // Email translations
+	// const emailDict = currentLang === "ua" ? newsletterUA : newsletterEN;
 
 	// Newsletter interests
 	const INTERESTS = ["workshops", "master-classes", "sales"];
@@ -91,81 +91,83 @@ export const useSubscribe = (dict) => {
 			return;
 		}
 
-		// Interest labels for confirmation email
-		const interestLabels = {
-			en: {
-				workshops: "Workshops",
-				"master-classes": "Master classes",
-				sales: "Sales",
-			},
-			ua: {
-				workshops: "Воркшопи",
-				"master-classes": "Майстер-класи",
-				sales: "Знижки та пропозиції",
-			},
-		};
+		// // Interest labels for confirmation email
+		// const interestLabels = {
+		// 	en: {
+		// 		workshops: "Workshops",
+		// 		"master-classes": "Master classes",
+		// 		sales: "Sales",
+		// 	},
+		// 	ua: {
+		// 		workshops: "Воркшопи",
+		// 		"master-classes": "Майстер-класи",
+		// 		sales: "Знижки та пропозиції",
+		// 	},
+		// };
 
-		// Build selected interests list for email
-		const selectedInterestList = interests
-			.map((interest) => interestLabels[currentLang]?.[interest] ?? interest)
-			.map((label) => `<li style=list-style:none;>✧ ${label}</li>`)
-			.join("");
+		// // Build selected interests list for email
+		// const selectedInterestList = interests
+		// 	.map((interest) => interestLabels[currentLang]?.[interest] ?? interest)
+		// 	.map((label) => `<li style=list-style:none;>✧ ${label}</li>`)
+		// 	.join("");
 
-		// Email subject
-		const confirmationSubject = emailDict.emailSubject;
+		// // Email subject
+		// const confirmationSubject = emailDict.emailSubject;
 
-		// Confirmation email HTML
-		const confirmationHtml = `<div style="font-family: Verdana, sans-serif; background:#fdfbf7; padding:32px;">
-				<div style="max-width: 600px; margin: 0 auto; background:#ffffff; border:1px solid rgba(212,175,55,.35); border-radius:18px; padding:32px;">
-					<div style="text-align:center; margin-bottom:12px;">
-			      <img
-				      src="https://littlefootcraft.art/uploads/images/logo.png"
-				      alt="LittleFootCraft"
-				      style="width:180px; height:auto;"
-			      />
-		      </div>
+		// // Confirmation email HTML
+		// const confirmationHtml = `<div style="font-family: Verdana, sans-serif; background:#fdfbf7; padding:32px;">
+		// 		<div style="max-width: 600px; margin: 0 auto; background:#ffffff; border:1px solid rgba(212,175,55,.35); border-radius:18px; padding:32px;">
+		// 			<div style="text-align:center; margin-bottom:12px;">
+		// 	      <img
+		// 		      src="https://littlefootcraft.art/uploads/images/logo.png"
+		// 		      alt="LittleFootCraft"
+		// 		      style="width:180px; height:auto;"
+		// 	      />
+		//       </div>
 
-					<h1 style="color:#1a2b4c; margin:0 0 16px; font-size:28px; text-align:center;">
-						${emailDict.emailTitle}
-					</h1>
+		// 			<h1 style="color:#1a2b4c; margin:0 0 16px; font-size:28px; text-align:center;">
+		// 				${emailDict.emailTitle}
+		// 			</h1>
 
-					<p style="color:#4a5568; font-size:16px; line-height:1.6;">
-						${emailDict.emailIntro}
-					</p>
+		// 			<p style="color:#4a5568; font-size:16px; line-height:1.6;">
+		// 				${emailDict.emailIntro}
+		// 			</p>
 
-					<p style="color:#1a2b4c; font-weight:bold; font-size:16px;">
-						${emailDict.emailSubscribedTo}
-					</p>
+		// 			<p style="color:#1a2b4c; font-weight:bold; font-size:16px;">
+		// 				${emailDict.emailSubscribedTo}
+		// 			</p>
 
-					<ul style="margin-top:8px; color:#4a5568;">
-						${selectedInterestList}
-					</ul>
+		// 			<ul style="margin-top:8px; color:#4a5568;">
+		// 				${selectedInterestList}
+		// 			</ul>
 
-					<p style="color:#4a5568; font-size:16px; line-height:1.6;">
-						${emailDict.emailUpdates}
-					</p>
+		// 			<p style="color:#4a5568; font-size:16px; line-height:1.6;">
+		// 				${emailDict.emailUpdates}
+		// 			</p>
 
-					<div style="text-align:center; margin-top:24px;">
-						<a
-							href="https://littlefootcraft.art"
-							style="display:inline-block; padding:12px 22px; background:#1a2b4c; 					color:#ffffff; text-decoration:none; border-radius:999px; font-size:15px;"
-						>
-							${emailDict.emailButton}
-						</a>
-					</div>
+		// 			<div style="text-align:center; margin-top:24px;">
+		// 				<a
+		// 					href="https://littlefootcraft.art"
+		// 					style="display:inline-block; padding:12px 22px; background:#1a2b4c; 					color:#ffffff; text-decoration:none; border-radius:999px; font-size:15px;"
+		// 				>
+		// 					${emailDict.emailButton}
+		// 				</a>
+		// 			</div>
 
-					<p style="color:#9ca3af; font-size:12px; margin-top:28px; text-align:center;">
-						${emailDict.emailUnsubscribe}
-						<br />
-						<a
-							href="https://littlefootcraft.art/${currentLang}/unsubscribe?id=${data.id}"
-							style="color:#9ca3af; text-decoration:underline;"
-						>
-							${emailDict.emailUnsubscribeButton}
-						</a>
-					</p>
-				</div>
-			</div>`;
+		// 			<p style="color:#9ca3af; font-size:12px; margin-top:28px; text-align:center;">
+		// 				${emailDict.emailUnsubscribe}
+		// 				<br />
+		// 				<a
+		// 					href="https://littlefootcraft.art/${currentLang}/unsubscribe?id=${data.id}"
+		// 					style="color:#9ca3af; text-decoration:underline;"
+		// 				>
+		// 					${emailDict.emailUnsubscribeButton}
+		// 				</a>
+		// 			</p>
+		// 		</div>
+		// 	</div>`;
+
+		// Send confirmation email
 		const { error: emailError } = await supabase.functions.invoke(
 			"resend-email",
 			{
