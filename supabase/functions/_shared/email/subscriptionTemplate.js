@@ -1,7 +1,10 @@
 import { emailLayout } from "./layout.js";
 
 // TRANSLATIONS
-import { newsletterEN, newsletterUA } from "./translations.js";
+import {
+	newsletterEN,
+	newsletterUA,
+} from "../../../../src/translations/translation.js";
 
 export const subscriptionTemplate = ({ language, interests, subscriberId }) => {
 	const emailDict = language === "ua" ? newsletterUA : newsletterEN;
