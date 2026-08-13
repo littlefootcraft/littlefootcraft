@@ -1,7 +1,20 @@
 import { subscriptionTemplate } from "../_shared/email/subscriptionTemplate.js";
 
+const corsHeaders = {
+	"Access-Control-Allow-Origin": "*",
+	"Access-Control-Allow-Headers":
+		"authorization, x-client-info, apikey, content-type",
+};
+
 export default {
 	async fetch(req: Request) {
+		// Handle browser CORS preflight request
+		if (req.method === "OPTIONS") {
+			return new Response("ok", {
+				headers: corsHeaders,
+			});
+		}
+
 		try {
 			const { type, email, language, interests, subscriberId } =
 				await req.json();
@@ -14,6 +27,7 @@ export default {
 					{
 						status: 400,
 						headers: {
+							...corsHeaders,
 							"Content-Type": "application/json",
 						},
 					},
@@ -40,6 +54,7 @@ export default {
 					{
 						status: 400,
 						headers: {
+							...corsHeaders,
 							"Content-Type": "application/json",
 						},
 					},
@@ -80,25 +95,39 @@ export default {
 					{
 						status: resendResponse.status,
 						headers: {
+							...corsHeaders,
 							"Content-Type": "application/json",
 						},
 					},
 				);
 			}
 
-			return Response.json({
-				success: true,
-				data: resendData,
-			});
+			return new Response(
+				JSON.stringify({
+					success: true,
+					data: resendData,
+				}),
+				{
+					status: 200,
+					headers: {
+						...corsHeaders,
+						"Content-Type": "application/json",
+					},
+				},
+			);
 		} catch (error) {
 			console.error("resend-email error:", error);
 
-			return Response.json(
-				{
+			return new Response(
+				JSON.stringify({
 					error: error instanceof Error ? error.message : "Unknown error",
-				},
+				}),
 				{
 					status: 500,
+					headers: {
+						...corsHeaders,
+						"Content-Type": "application/json",
+					},
 				},
 			);
 		}

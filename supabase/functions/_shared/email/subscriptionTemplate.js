@@ -1,10 +1,49 @@
 import { emailLayout } from "./layout.js";
 
-// TRANSLATIONS
-import {
-	newsletterEN,
-	newsletterUA,
-} from "../../../../src/translations/translation.js";
+// // TRANSLATIONS
+// import {
+// 	newsletterEN,
+// 	newsletterUA,
+// } from "../../../../src/translations/translation.js";
+
+const newsletterEN = {
+	emailSubject: "Thank you for subscribing to LittleFootCraft",
+	emailTitle: "Thank you for subscribing ✨",
+	emailIntro:
+		"You have successfully joined the magical LittleFootCraft community.",
+	emailSubscribedTo: "You subscribed to:",
+	emailUpdates: "We'll send you updates based on your selected topics.",
+	emailButton: "Visit LittleFootCraft",
+	emailClosing: "Warm wishes,",
+	emailUnsubscribe:
+		"You received this email because you subscribed to LittleFootCraft updates.",
+	emailUnsubscribeButton: "Unsubscribe",
+
+	interests: {
+		workshops: "Workshops",
+		"master-classes": "Master classes",
+		sales: "Sales",
+	},
+};
+
+const newsletterUA = {
+	emailSubject: "Дякуємо за підписку на LittleFootCraft",
+	emailTitle: "Дякуємо за підписку ✨",
+	emailIntro: "Ви успішно приєдналися до магічної спільноти LittleFootCraft.",
+	emailSubscribedTo: "Ви підписалися на:",
+	emailUpdates: "Ми надсилатимемо вам новини відповідно до вибраних тем.",
+	emailButton: "Відвідати сайт",
+	emailClosing: "З теплом,",
+	emailUnsubscribe:
+		"Ви отримали цей лист, тому що підписалися на новини LittleFootCraft.",
+	emailUnsubscribeButton: "Відписатися",
+
+	interests: {
+		workshops: "Воркшопи",
+		"master-classes": "Майстер-класи",
+		sales: "Знижки та пропозиції",
+	},
+};
 
 export const subscriptionTemplate = ({ language, interests, subscriberId }) => {
 	const emailDict = language === "ua" ? newsletterUA : newsletterEN;
@@ -23,7 +62,7 @@ export const subscriptionTemplate = ({ language, interests, subscriberId }) => {
 	// };
 
 	const selectedInterestList = interests
-		.map((interest) => emailDict.interest ?? interest)
+		.map((interest) => emailDict.interests?.[interest] ?? interest)
 		.map((label) => `<li style="list-style: none;">✧ ${label}</li>`)
 		.join("");
 
