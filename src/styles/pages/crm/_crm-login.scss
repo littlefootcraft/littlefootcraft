@@ -1,0 +1,148 @@
+// styles/pages/_crm-login.scss
+
+@use "../../base/variables" as *;
+@use "../../abstracts/mixins" as *;
+
+.crm-login {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	min-height: 100vh;
+	padding: 24px;
+
+	background-color: $cream;
+
+	&__container {
+		width: 100%;
+		max-width: 440px;
+		padding: 48px 40px;
+
+		background-color: $white;
+		border: 1px solid $card-borders;
+		border-radius: $border-radius;
+
+		box-shadow: 0 12px 35px rgba($primary-text, 0.08);
+	}
+
+	&__header {
+		margin-bottom: 32px;
+		text-align: center;
+	}
+
+	&__brand {
+		margin: 0 0 4px;
+
+		font-family: $title-font-en;
+		font-size: 30px;
+		font-weight: 400;
+
+		color: $primary-text;
+	}
+
+	&__title {
+		text-align: center;
+
+		font-size: 20px;
+		font-weight: 600;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+
+		color: $gold-primary;
+	}
+
+	&__text {
+		margin: 0;
+		text-align: center;
+		margin-block: 24px;
+
+		font-size: 0.95rem;
+		line-height: 1.5;
+
+		color: $secondary-text;
+	}
+
+	&__form {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+
+	&__field {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+
+		span {
+			font-size: 0.875rem;
+			font-weight: 600;
+
+			color: $primary-text;
+		}
+
+		input {
+			@include input-soft;
+		}
+	}
+
+	&__error {
+		margin: -4px 0 0;
+
+		font-size: 0.875rem;
+		line-height: 1.4;
+
+		color: $error-message;
+	}
+
+	&__button {
+		width: 100%;
+		margin-top: 4px;
+		padding: 13px 20px;
+
+		font-family: inherit;
+		font-size: 1rem;
+		font-weight: 600;
+
+		color: $white;
+		background-color: $primary-text;
+
+		border: none;
+		border-radius: $border-radius;
+
+		cursor: pointer;
+
+		transition:
+			background-color 0.2s ease,
+			transform 0.2s ease,
+			opacity 0.2s ease;
+
+		&:hover:not(:disabled) {
+			background-color: $gold-dark;
+		}
+
+		&:active:not(:disabled) {
+			transform: translateY(1px);
+		}
+
+		&:disabled {
+			opacity: 0.55;
+			cursor: not-allowed;
+		}
+	}
+
+	@include mobile-sm {
+		padding: 16px;
+
+		&__container {
+			padding: 36px 24px;
+		}
+
+		&__brand {
+			font-size: 26px;
+		}
+
+		&__title {
+			font-size: 18px;
+		}
+	}
+}

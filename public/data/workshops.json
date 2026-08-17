@@ -1,0 +1,85 @@
+[
+  {
+    "id": "intro-brooch-making",
+    "title": {
+      "en": "Introduction to Brooch Making",
+      "ua": "Вступ до створення брошки"
+    },
+    "subtitle": {
+      "en": "Learn the fundamentals of brooch crafting in this beginner-friendly workshop.",
+      "ua": "Опануйте основи створення брошок на цьому воркшопі для початківців."
+    },
+    "duration": {
+      "value": 3,
+      "unit": {
+        "en": "hours",
+        "ua": "години"
+      }
+    },
+    "participants": {
+      "text": {
+        "en": "participants",
+        "ua": "людей"
+      },
+      "amount-of-people": 6
+    },
+    "location": {
+      "en": "In person",
+      "ua": "Особиста зустріч"
+    },
+    "language": [
+      "en"
+    ],
+    "exactLocation": {
+      "en": "Galway, Ireland. Full address will be shared after booking confirmation.",
+      "ua": "Галвей, Ірландія. Точну адресу буде надіслано після підтвердження бронювання."
+    },
+    "time": {
+      "en": "4:00 PM – 6:00 PM",
+      "ua": "16:00 – 18:00"
+    },
+    "timezone": {
+      "value": "Europe/Dublin",
+      "label": {
+        "en": "Ireland time",
+        "ua": "за Ірландським часом"
+      }
+    },
+    "price": 55,
+    "includes": {
+      "en": [
+        "All materials",
+        "Tea & refreshments",
+        "Your finished brooch to take home"
+      ],
+      "ua": [
+        "Усі матеріали",
+        "Чай та частування",
+        "Готова брошка, яку ви заберете додому"
+      ]
+    },
+    "upcomingDates": {
+      "title": {
+        "en": "Upcoming Dates",
+        "ua": "Найближчі дати"
+      },
+      "dates": [
+        "2026-06-19",
+        "2026-10-20",
+        "2026-09-21",
+        "2026-08-28"
+      ]
+    },
+    "description": {
+      "en": "A warm, creative introduction to brooch making where participants learn the basics of composition, materials, and finishing techniques.",
+      "ua": "Теплий творчий воркшоп, де учасники знайомляться з основами композиції, матеріалами та техніками завершення брошки."
+    },
+    "image": {
+      "src": "/uploads/images/workshops/introduction-to-brooch-making.png",
+      "alt": {
+        "en": "Introduction to Brooch Making workshop",
+        "ua": "Воркшоп Вступ до створення брошки"
+      }
+    }
+  }
+]

@@ -24,3 +24,45 @@ export const ProductsProvider = ({ children }) => {
 export const useProducts = () => {
 	return useContext(ProductsContext);
 };
+
+// import { createContext, useContext, useEffect, useState } from "react";
+
+// export const ProductsContext = createContext([]);
+
+// export const ProductsProvider = ({ children }) => {
+// 	const [products, setProducts] = useState([]);
+
+// 	useEffect(() => {
+// 		const loadProducts = async () => {
+// 			try {
+// 				const indexResponse = await fetch("/data/shop/products.json");
+
+// 				const productPaths = await indexResponse.json();
+
+// 				const productResponses = await Promise.all(
+// 					productPaths.map((path) => fetch(path)),
+// 				);
+
+// 				const productData = await Promise.all(
+// 					productResponses.map((response) => response.json()),
+// 				);
+
+// 				setProducts(productData);
+// 			} catch (error) {
+// 				console.error("Failed to load products:", error);
+// 			}
+// 		};
+
+// 		loadProducts();
+// 	}, []);
+
+// 	return (
+// 		<ProductsContext.Provider value={products}>
+// 			{children}
+// 		</ProductsContext.Provider>
+// 	);
+// };
+
+// export const useProducts = () => {
+// 	return useContext(ProductsContext);
+// };

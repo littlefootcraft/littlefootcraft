@@ -52,3 +52,13 @@
 @use "./components/book-workshop-popup";
 @use "./components/workshop-booking-modal";
 @use "./components/order-success-modal";
+@use "./components/crm/crm-send-modal";
+
+// CRM
+@use "./layout/crm/crm-layout";
+@use "../styles/pages/crm/crm-login";
+@use "../styles/pages/crm/crm-dashboard";
+@use "../styles/pages/crm/crm-newsletter";
+@use "../styles/pages/crm/crm-subscribers";
+@use "../styles/pages/crm/crm-campaigns";
+@use "../styles/pages/crm/crm-new-newsletter";

@@ -1,0 +1,88 @@
+@use "../../base/variables" as *;
+@use "../../abstracts/mixins" as *;
+
+.crm-campaigns {
+	&__create-btn {
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+
+		padding: 12px 18px;
+
+		font-size: 0.875rem;
+		font-weight: 600;
+
+		color: $primary-text;
+		background-color: $gold-light;
+
+		border: 1px solid $card-borders;
+		border-radius: $border-radius-sm;
+
+		text-decoration: none;
+
+		&:hover {
+			background-color: $light-gold;
+		}
+	}
+
+	&__table-wrapper {
+		overflow-x: auto;
+
+		margin-top: 32px;
+
+		background-color: $white;
+
+		border: 1px solid $card-borders;
+		border-radius: $border-radius;
+	}
+
+	&__table {
+		width: 100%;
+
+		border-collapse: collapse;
+
+		th,
+		td {
+			padding: 16px 18px;
+
+			text-align: left;
+
+			border-bottom: 1px solid $light-blue-borders;
+		}
+
+		th {
+			font-size: 0.75rem;
+			font-weight: 600;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+
+			color: $secondary-text;
+			background-color: $misty-ivory;
+		}
+
+		td {
+			font-size: 0.875rem;
+
+			color: $secondary-text;
+		}
+
+		tbody tr:last-child td {
+			border-bottom: none;
+		}
+	}
+
+	&__empty {
+		padding: 46px 20px;
+
+		text-align: center;
+
+		color: $light-gray-text;
+	}
+
+	@include mobile-sm {
+		&__create-btn {
+			width: 100%;
+			justify-content: center;
+		}
+	}
+}

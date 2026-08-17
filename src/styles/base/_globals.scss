@@ -130,3 +130,99 @@ main {
 	line-height: 1.625;
 	font-size: var(--regular-text-size);
 }
+
+// ========================================
+// GENERAL CRM PAGE
+// ========================================
+
+.crm-page {
+	width: 100%;
+	max-width: 1200px;
+	margin-inline: auto;
+
+	&__header {
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		gap: 24px;
+	}
+
+	&__eyebrow {
+		margin: 0 0 8px;
+
+		font-size: 1rem;
+		font-weight: 600;
+		letter-spacing: $category-letter-spacing;
+		text-transform: uppercase;
+
+		color: $gold-primary;
+	}
+
+	&__title {
+		margin: 0;
+
+		font-size: 2.25rem;
+		font-weight: 600;
+		line-height: 1.2;
+
+		color: $primary-text;
+	}
+
+	&__description {
+		margin: 10px 0 0;
+		max-width: 650px;
+
+		font-size: 1rem;
+		line-height: 1.6;
+
+		color: $secondary-text;
+	}
+
+	@include mobile {
+		&__header {
+			flex-direction: column;
+		}
+
+		&__title {
+			font-size: 1.7rem;
+		}
+	}
+}
+
+// BREADCRUMBS
+
+.crm-breadcrumbs {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+
+	margin-bottom: 22px;
+
+	font-size: 0.8rem;
+
+	&__link {
+		font-weight: 500;
+
+		color: $secondary-text;
+
+		text-decoration: none;
+
+		transition: color 0.2s ease;
+
+		&:hover {
+			color: $gold-dark;
+		}
+	}
+
+	&__separator {
+		flex-shrink: 0;
+
+		color: $light-gray-text;
+	}
+
+	&__current {
+		font-weight: 500;
+
+		color: $primary-text;
+	}
+}

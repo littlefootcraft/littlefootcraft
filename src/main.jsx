@@ -29,7 +29,59 @@ import NetworkErrorPage from "./pages/NetworkErrorPage";
 import UnsubscribePage from "./pages/UnsubscribePage";
 import CancelWorkshopPage from "./pages/CancelWorkshopPage";
 
+// PROVIDERS
+import { WorkshopsProvider } from "./context/WorkshopsContext";
+
+// CRM AUTH
+import { CrmAuthProvider } from "./context/CrmAuthContext";
+
+// CRM
+import CrmLayout from "./layouts/CrmLayout";
+
+import CrmLoginPage from "./pages/crm/CrmLoginPage";
+
+import CrmDashboardPage from "./pages/crm/CrmDashboardPage";
+import CrmNewsletterPage from "./pages/crm/newsletter/CrmNewsletterPage";
+import CrmSubscribersPage from "./pages/crm/newsletter/CrmSubscribersPage";
+import ProtectedCrmRoute from "./components/crm/ProtectedCrmRoute";
+import CrmCampaignsPage from "./pages/crm/newsletter/CrmCampaignsPage";
+import CrmNewNewsletterPage from "./pages/crm/newsletter/CrmNewNewsletterPage";
+
 const router = createBrowserRouter([
+	{
+		path: "/crm/login",
+		element: <CrmLoginPage />,
+	},
+	{
+		path: "/crm",
+		element: (
+			<ProtectedCrmRoute>
+				<CrmLayout />
+			</ProtectedCrmRoute>
+		),
+		children: [
+			{
+				index: true,
+				element: <CrmDashboardPage />,
+			},
+			{
+				path: "newsletter",
+				element: <CrmNewsletterPage />,
+			},
+			{
+				path: "newsletter/subscribers",
+				element: <CrmSubscribersPage />,
+			},
+			{
+				path: "newsletter/campaigns",
+				element: <CrmCampaignsPage />,
+			},
+			{
+				path: "newsletter/new",
+				element: <CrmNewNewsletterPage />,
+			},
+		],
+	},
 	{
 		path: "/",
 		element: (
@@ -94,6 +146,10 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
 	<StrictMode>
-		<RouterProvider router={router} />
+		<WorkshopsProvider>
+			<CrmAuthProvider>
+				<RouterProvider router={router} />
+			</CrmAuthProvider>
+		</WorkshopsProvider>
 	</StrictMode>,
 );

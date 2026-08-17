@@ -1,0 +1,144 @@
+@use "../../base/variables" as *;
+@use "../../abstracts/mixins" as *;
+
+// // ========================================
+// // GENERAL CRM PAGE
+// // ========================================
+
+// .crm-page {
+// 	width: 100%;
+// 	max-width: 1200px;
+// 	margin-inline: auto;
+
+// 	&__header {
+// 		display: flex;
+// 		align-items: flex-start;
+// 		justify-content: space-between;
+// 		gap: 24px;
+// 	}
+
+// 	&__eyebrow {
+// 		margin: 0 0 8px;
+
+// 		font-size: 0.75rem;
+// 		font-weight: 600;
+// 		letter-spacing: $category-letter-spacing;
+// 		text-transform: uppercase;
+
+// 		color: $gold-primary;
+// 	}
+
+// 	&__title {
+// 		margin: 0;
+
+// 		font-size: 2rem;
+// 		font-weight: 600;
+// 		line-height: 1.2;
+
+// 		color: $primary-text;
+// 	}
+
+// 	&__description {
+// 		margin: 10px 0 0;
+// 		max-width: 650px;
+
+// 		font-size: 0.95rem;
+// 		line-height: 1.6;
+
+// 		color: $secondary-text;
+// 	}
+
+// 	@include mobile {
+// 		&__header {
+// 			flex-direction: column;
+// 		}
+
+// 		&__title {
+// 			font-size: 1.7rem;
+// 		}
+// 	}
+// }
+
+// ========================================
+// CRM DASHBOARD
+// ========================================
+
+.crm-dashboard {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 24px;
+
+	margin-top: 36px;
+
+	&__card {
+		display: flex;
+		flex-direction: column;
+
+		padding: 28px;
+
+		background-color: $white;
+		border: 1px solid $card-borders;
+		border-radius: $border-radius;
+
+		box-shadow: 0 6px 20px rgba($primary-text, 0.05);
+
+		transition:
+			transform 0.2s ease,
+			box-shadow 0.2s ease,
+			border-color 0.2s ease;
+
+		&:hover {
+			transform: translateY(-2px);
+
+			border-color: $input-borders;
+
+			box-shadow: 0 10px 28px rgba($primary-text, 0.08);
+		}
+	}
+
+	&__card-label {
+		margin: 0 0 12px;
+
+		font-size: 0.7rem;
+		font-weight: 600;
+		letter-spacing: $category-letter-spacing;
+		text-transform: uppercase;
+
+		color: $gold-primary;
+	}
+
+	&__card-title {
+		margin: 0;
+
+		font-size: 1.15rem;
+		font-weight: 600;
+		line-height: 1.4;
+
+		color: $primary-text;
+	}
+
+	&__card-text {
+		margin: 12px 0 0;
+
+		font-size: 0.9rem;
+		line-height: 1.65;
+
+		color: $secondary-text;
+	}
+
+	@include tablet {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	@include mobile-sm {
+		grid-template-columns: 1fr;
+
+		gap: 16px;
+
+		margin-top: 28px;
+
+		&__card {
+			padding: 22px;
+		}
+	}
+}
