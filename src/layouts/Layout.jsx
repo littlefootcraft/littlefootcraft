@@ -6,8 +6,8 @@ import Header from "./Header";
 import Footer from "./Footer";
 import NotFoundPage from "./../pages/NotFoundPage";
 import { supportedLanguages } from "../utils/localeConfig";
-import { ProductsProvider } from "../context/ProductsContext";
-import { WorkshopsProvider } from "../context/WorkshopsContext";
+// import { ProductsProvider } from "../context/ProductsContext";
+// import { WorkshopsProvider } from "../context/WorkshopsContext";
 import { WishlistProvider } from "../context/WishlistContext";
 import { CartProvider } from "../context/CartContext";
 import { ScrollToTop } from "../components/ScrollToTop";
@@ -25,31 +25,8 @@ export const Layout = () => {
 	}
 
 	return (
-		// <LanguageProvider initialLang={lang}>
-		// 	<WishlistProvider>
-		// 		<CartProvider>
-		// 			<div className={`page ${lang === "ua" ? "ua" : ""}`}>
-		// 				<ScrollToTop />
-		// 				<Header />
-		// 				<main>
-		// 					<ProductsProvider>
-		// 						<WorkshopsProvider>
-		// 							<Outlet />
-		// 						</WorkshopsProvider>
-		// 					</ProductsProvider>
-		// 				</main>
-		// 				<Footer />
-		// 			</div>
-		// 		</CartProvider>
-		// 	</WishlistProvider>
-		// </LanguageProvider>
-
 		<SiteShell>
-			<ProductsProvider>
-				<WorkshopsProvider>
-					<Outlet />
-				</WorkshopsProvider>
-			</ProductsProvider>
+			<Outlet />
 		</SiteShell>
 	);
 };

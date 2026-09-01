@@ -9,12 +9,24 @@
 
 		margin-top: 32px;
 		margin-bottom: 20px;
+	}
+
+	&__select {
+		position: relative;
+
+		flex: 0 0 auto;
 
 		select {
-			padding: 11px 14px;
+			appearance: none;
+
+			min-width: 150px;
+			min-height: 44px;
+			padding: 10px 38px 10px 14px;
 
 			font-family: inherit;
-			font-size: 0.875rem;
+			font-size: 1rem;
+			font-weight: 500;
+			line-height: 1.4;
 
 			color: $secondary-text;
 			background-color: $white;
@@ -26,10 +38,36 @@
 
 			cursor: pointer;
 
+			transition:
+				border-color 0.2s ease,
+				box-shadow 0.2s ease,
+				background-color 0.2s ease;
+
+			&:hover {
+				border-color: $card-borders;
+				background-color: $misty-ivory;
+			}
+
 			&:focus {
-				border-color: rgba($gold-accent, 0.6);
+				border-color: rgba($gold-primary, 0.55);
+				box-shadow: 0 0 0 3px rgba($gold-primary, 0.08);
 			}
 		}
+	}
+
+	&__select-icon {
+		position: absolute;
+		top: 50%;
+		right: 12px;
+
+		width: 17px;
+		height: 17px;
+
+		color: $secondary-text;
+
+		pointer-events: none;
+
+		transform: translateY(-50%);
 	}
 
 	&__search {
@@ -39,7 +77,7 @@
 
 		flex: 1;
 
-		max-width: 380px;
+		max-width: 420px;
 
 		padding: 0 14px;
 
@@ -55,7 +93,8 @@
 			padding: 11px 0;
 
 			font-family: inherit;
-			font-size: 0.875rem;
+			font-size: 1rem;
+			font-weight: 500;
 
 			color: $secondary-text;
 			background: transparent;
@@ -85,7 +124,7 @@
 
 		th,
 		td {
-			padding: 16px 18px;
+			padding: 17px 18px;
 
 			text-align: left;
 
@@ -93,9 +132,9 @@
 		}
 
 		th {
-			font-size: 0.75rem;
+			font-size: 0.85rem;
 			font-weight: 600;
-			letter-spacing: 0.08em;
+			letter-spacing: 0.07em;
 			text-transform: uppercase;
 
 			color: $secondary-text;
@@ -103,7 +142,8 @@
 		}
 
 		td {
-			font-size: 0.875rem;
+			font-size: 1rem;
+			line-height: 1.5;
 
 			color: $secondary-text;
 		}
@@ -118,8 +158,77 @@
 
 		text-align: center;
 
+		font-size: 1rem;
+		line-height: 1.5;
+
 		color: $light-gray-text;
 	}
+
+	&__delete-cell {
+		width: 80px;
+	}
+
+	&__delete-btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+
+		width: 40px;
+		height: 40px;
+		padding: 0;
+
+		color: $light-gray-text;
+		background-color: transparent;
+
+		border: 1px solid transparent;
+		border-radius: $border-radius-sm;
+
+		cursor: pointer;
+
+		transition:
+			color 0.2s ease,
+			background-color 0.2s ease,
+			border-color 0.2s ease;
+
+		&:hover {
+			color: $error-message;
+			background-color: rgba($error-message, 0.07);
+			border-color: rgba($error-message, 0.2);
+		}
+
+		&:focus-visible {
+			outline: 2px solid rgba($error-message, 0.35);
+			outline-offset: 2px;
+		}
+	}
+
+	&__interests-list {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 0;
+	}
+
+	&__interest {
+		display: inline-flex;
+		align-items: center;
+
+		font-size: 1rem;
+		font-weight: 500;
+		line-height: 1.5;
+
+		color: $secondary-text;
+
+		&:not(:last-child)::after {
+			content: "•";
+
+			margin-inline: 8px;
+
+			color: $gold-primary;
+		}
+	}
+
+	// RESPONSIVE
 
 	@include tablet-sm {
 		&__toolbar {

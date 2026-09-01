@@ -1,0 +1,172 @@
+@use "../../base/variables" as *;
+@use "../../abstracts/mixins" as *;
+
+.crm-delete-modal {
+	position: fixed;
+	inset: 0;
+	z-index: 1000;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	padding: 20px;
+
+	background-color: rgba($primary-text, 0.45);
+
+	&__content {
+		width: min(100%, 480px);
+		padding: 30px;
+
+		background-color: $white;
+
+		border: 1px solid $card-borders;
+		border-radius: $border-radius;
+
+		box-shadow: 0 20px 50px rgba($primary-text, 0.18);
+	}
+
+	&__icon {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		width: 48px;
+		height: 48px;
+		margin-bottom: 18px;
+
+		color: $error-message;
+		background-color: rgba($error-message, 0.08);
+
+		border: 1px solid rgba($error-message, 0.2);
+		border-radius: 50%;
+	}
+
+	&__title {
+		margin: 0 0 12px;
+
+		font-size: 1.35rem;
+		font-weight: 600;
+		line-height: 1.4;
+
+		color: $primary-text;
+	}
+
+	&__text {
+		margin: 0;
+
+		font-size: 0.95rem;
+		line-height: 1.6;
+
+		color: $secondary-text;
+
+		strong {
+			font-weight: 600;
+			color: $primary-text;
+		}
+	}
+
+	&__warning {
+		margin: 12px 0 0;
+		padding: 12px 14px;
+
+		font-size: 0.9rem;
+		font-weight: 500;
+		line-height: 1.5;
+
+		color: $error-message;
+		background-color: rgba($error-message, 0.06);
+
+		border: 1px solid rgba($error-message, 0.18);
+		border-radius: $border-radius-sm;
+	}
+
+	&__error {
+		margin: 14px 0 0;
+
+		font-size: 0.9rem;
+		font-weight: 500;
+		line-height: 1.5;
+
+		color: $error-message;
+	}
+
+	&__actions {
+		display: flex;
+		justify-content: flex-end;
+		gap: 12px;
+
+		margin-top: 26px;
+	}
+
+	&__cancel-btn,
+	&__delete-btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+
+		min-height: 44px;
+		padding: 11px 18px;
+
+		font-family: inherit;
+		font-size: 0.95rem;
+		font-weight: 600;
+		line-height: 1.3;
+
+		border-radius: $border-radius-sm;
+
+		cursor: pointer;
+
+		transition:
+			background-color 0.2s ease,
+			border-color 0.2s ease,
+			opacity 0.2s ease;
+
+		&:disabled {
+			opacity: 0.6;
+			cursor: not-allowed;
+		}
+	}
+
+	&__cancel-btn {
+		color: $primary-text;
+		background-color: $white;
+
+		border: 1px solid $input-borders;
+
+		&:hover:not(:disabled) {
+			background-color: $parchment;
+			border-color: $card-borders;
+		}
+	}
+
+	&__delete-btn {
+		color: $white;
+		background-color: $error-message;
+
+		border: 1px solid $error-message;
+
+		&:hover:not(:disabled) {
+			background-color: rgba($error-message, 0.9);
+		}
+	}
+
+	@include mobile-sm {
+		align-items: flex-end;
+
+		padding: 12px;
+
+		&__content {
+			padding: 24px 20px;
+		}
+
+		&__actions {
+			flex-direction: column-reverse;
+		}
+
+		&__cancel-btn,
+		&__delete-btn {
+			width: 100%;
+		}
+	}
+}

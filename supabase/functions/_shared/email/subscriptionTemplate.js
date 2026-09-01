@@ -21,7 +21,6 @@ const newsletterEN = {
 
 	interests: {
 		workshops: "Workshops",
-		"master-classes": "Master classes",
 		sales: "Sales",
 	},
 };
@@ -39,27 +38,13 @@ const newsletterUA = {
 	emailUnsubscribeButton: "Відписатися",
 
 	interests: {
-		workshops: "Воркшопи",
-		"master-classes": "Майстер-класи",
+		workshops: "Майстер-класи",
 		sales: "Знижки та пропозиції",
 	},
 };
 
 export const subscriptionTemplate = ({ language, interests, subscriberId }) => {
 	const emailDict = language === "ua" ? newsletterUA : newsletterEN;
-
-	// const interestLabels = {
-	// 	en: {
-	// 		workshops: "Workshops",
-	// 		"master-classes": "Master classes",
-	// 		sales: "Sales",
-	// 	},
-	// 	ua: {
-	// 		workshops: "Воркшопи",
-	// 		"master-classes": "Майстер-класи",
-	// 		sales: "Знижки та пропозиції",
-	// 	},
-	// };
 
 	const selectedInterestList = interests
 		.map((interest) => emailDict.interests?.[interest] ?? interest)

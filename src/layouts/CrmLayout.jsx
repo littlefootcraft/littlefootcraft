@@ -1,8 +1,18 @@
 // src/layouts/CrmLayout.jsx
 
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
-import { LayoutDashboard, Mail, Users, Send, LogOut } from "lucide-react";
+import {
+	LayoutDashboard,
+	Mail,
+	Users,
+	Send,
+	LogOut,
+	Package,
+	ShoppingBag,
+	Palette,
+} from "lucide-react";
 
+// SUPABASE
 import { supabase } from "../lib/supabaseClient";
 
 const CrmLayout = () => {
@@ -19,6 +29,9 @@ const CrmLayout = () => {
 		navigate("/crm/login");
 	};
 
+	const getNavLinkClass = ({ isActive }) =>
+		`crm-layout__nav-link ${isActive ? "crm-layout__nav-link--active" : ""}`;
+
 	return (
 		<div className="crm-layout">
 			<aside className="crm-layout__sidebar">
@@ -31,52 +44,72 @@ const CrmLayout = () => {
 					<NavLink
 						to="/crm"
 						end
-						className={({ isActive }) =>
-							`crm-layout__nav-link ${
-								isActive ? "crm-layout__nav-link--active" : ""
-							}`
-						}
+						className={getNavLinkClass}
 					>
 						<LayoutDashboard size={19} />
 						<span>Dashboard</span>
 					</NavLink>
 
-					<NavLink
-						to="/crm/newsletter"
-						end
-						className={({ isActive }) =>
-							`crm-layout__nav-link ${
-								isActive ? "crm-layout__nav-link--active" : ""
-							}`
-						}
-					>
-						<Mail size={19} />
-						<span>Newsletter</span>
-					</NavLink>
+					<div className="crm-layout__nav-section">
+						<p className="crm-layout__nav-label">Orders</p>
 
-					<NavLink
-						to="/crm/newsletter/subscribers"
-						className={({ isActive }) =>
-							`crm-layout__nav-link ${
-								isActive ? "crm-layout__nav-link--active" : ""
-							}`
-						}
-					>
-						<Users size={19} />
-						<span>Subscribers</span>
-					</NavLink>
+						<NavLink
+							to="/crm/orders"
+							className={getNavLinkClass}
+						>
+							<ShoppingBag size={19} />
+							<span>Orders</span>
+						</NavLink>
+					</div>
 
-					<NavLink
-						to="/crm/newsletter/campaigns"
-						className={({ isActive }) =>
-							`crm-layout__nav-link ${
-								isActive ? "crm-layout__nav-link--active" : ""
-							}`
-						}
-					>
-						<Send size={19} />
-						<span>Campaigns</span>
-					</NavLink>
+					<div className="crm-layout__nav-section">
+						<p className="crm-layout__nav-label">Catalog</p>
+
+						<NavLink
+							to="/crm/inventory"
+							className={getNavLinkClass}
+						>
+							<Package size={19} />
+							<span>Inventory</span>
+						</NavLink>
+
+						<NavLink
+							to="/crm/artists"
+							className={getNavLinkClass}
+						>
+							<Palette size={19} />
+							<span>Artists</span>
+						</NavLink>
+					</div>
+
+					<div className="crm-layout__nav-section">
+						<p className="crm-layout__nav-label">Marketing</p>
+
+						<NavLink
+							to="/crm/newsletter"
+							end
+							className={getNavLinkClass}
+						>
+							<Mail size={19} />
+							<span>Newsletter</span>
+						</NavLink>
+
+						<NavLink
+							to="/crm/newsletter/subscribers"
+							className={getNavLinkClass}
+						>
+							<Users size={19} />
+							<span>Subscribers</span>
+						</NavLink>
+
+						<NavLink
+							to="/crm/newsletter/campaigns"
+							className={getNavLinkClass}
+						>
+							<Send size={19} />
+							<span>Campaigns</span>
+						</NavLink>
+					</div>
 				</nav>
 
 				<div className="crm-layout__sidebar-footer">
@@ -95,6 +128,7 @@ const CrmLayout = () => {
 				<header className="crm-layout__topbar">
 					<div>
 						<p className="crm-layout__topbar-label">LittleFootCraft</p>
+
 						<p className="crm-layout__topbar-text">Owner management</p>
 					</div>
 				</header>

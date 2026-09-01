@@ -1,0 +1,48 @@
+// src/styles/components/crm/_crm-badge.scss
+
+@use "../../base/variables" as *;
+
+.crm-flag-badge {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+
+	padding: 6px 10px;
+
+	font-size: 1rem;
+	font-weight: 600;
+	line-height: 1;
+
+	white-space: nowrap;
+
+	&--new {
+		border-radius: 999px;
+		border: 1px solid rgba($gold-primary, 0.25);
+
+		background-color: rgba($gold-light, 0.35);
+		color: $gold-dark;
+	}
+
+	&--sale {
+		border-radius: 999px;
+		border: 1px solid rgba($error-message, 0.18);
+
+		background-color: rgba($error-message, 0.08);
+		color: $error-message;
+	}
+	&--yes {
+		border-radius: 5px;
+		border: 1px solid rgba($success-message, 0.28);
+
+		background-color: rgba($success-message, 0.1);
+		color: $success-message;
+	}
+
+	// &--no {
+	// 	border-radius: 5px;
+	// 	border: 1px solid $light-blue-borders;
+
+	// 	background-color: $misty-ivory;
+	// 	color: $secondary-text;
+	// }
+}

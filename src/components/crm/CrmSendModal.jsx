@@ -1,6 +1,12 @@
 import { Send } from "lucide-react";
 
-export const CrmSendModal = ({ audience, interests, onClose, onConfirm }) => {
+export const CrmSendModal = ({
+	contentType,
+	audience,
+	interests,
+	onClose,
+	onConfirm,
+}) => {
 	return (
 		<div
 			className="crm-send-modal"
@@ -32,6 +38,16 @@ export const CrmSendModal = ({ audience, interests, onClose, onConfirm }) => {
 
 				<div className="crm-send-modal__details">
 					<p>
+						<span>Newsletter type</span>
+
+						<strong>
+							{contentType === "new-items" && "New items"}
+							{contentType === "workshop" && "Workshop"}
+							{contentType === "workshop-reminder" && "Workshop reminder"}
+							{contentType === "other" && "Other"}
+						</strong>
+					</p>
+					<p>
 						<span>Audience</span>
 
 						<strong>
@@ -43,16 +59,21 @@ export const CrmSendModal = ({ audience, interests, onClose, onConfirm }) => {
 
 					{audience === "interest" && (
 						<p>
-							<span>Interests</span>
+							<span>
+								{interests.length === 1
+									? "Selected interest"
+									: "Selected interests"}
+							</span>
 
 							<strong>
-								{interests.length
-									? interests
-											.map(
-												(item) => item.charAt(0).toUpperCase() + item.slice(1),
-											)
-											.join(", ")
-									: "None selected"}
+								{interests
+									.map((interest) => {
+										if (interest === "workshops") return "Workshops";
+										if (interest === "sales") return "Sales";
+
+										return interest;
+									})
+									.join(", ")}
 							</strong>
 						</p>
 					)}

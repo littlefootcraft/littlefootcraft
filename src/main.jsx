@@ -31,6 +31,7 @@ import CancelWorkshopPage from "./pages/CancelWorkshopPage";
 
 // PROVIDERS
 import { WorkshopsProvider } from "./context/WorkshopsContext";
+import { ProductsProvider } from "./context/ProductsContext";
 
 // CRM AUTH
 import { CrmAuthProvider } from "./context/CrmAuthContext";
@@ -44,8 +45,16 @@ import CrmDashboardPage from "./pages/crm/CrmDashboardPage";
 import CrmNewsletterPage from "./pages/crm/newsletter/CrmNewsletterPage";
 import CrmSubscribersPage from "./pages/crm/newsletter/CrmSubscribersPage";
 import ProtectedCrmRoute from "./components/crm/ProtectedCrmRoute";
-import CrmCampaignsPage from "./pages/crm/newsletter/CrmCampaignsPage";
+import CrmCampaignsPage from "./pages/crm/campaigns/CrmCampaignsPage";
 import CrmNewNewsletterPage from "./pages/crm/newsletter/CrmNewNewsletterPage";
+import CrmSendDetailsPage from "./pages/crm/sends/CrmSendDetailsPage";
+import CrmInventoryPage from "./pages/crm/catalog/inventory/CrmInventoryPage";
+import CrmInventoryDetailsPage from "./pages/crm/catalog/inventory/CrmInventoryDetailsPage";
+import CrmOrdersPage from "./pages/crm/orders/CrmOrdersPage";
+import CrmOrderDetailsPage from "./pages/crm/orders/CrmOrderDetailsPage";
+import CrmArtistsPage from "./pages/crm/catalog/artists/CrmArtistsPage";
+import CrmArtistFormPage from "./pages/crm/catalog/artists/CrmArtistFormPage";
+import CrmArtistDetailsPage from "./pages/crm/catalog/artists/CrmArtistDetailsPage";
 
 const router = createBrowserRouter([
 	{
@@ -65,6 +74,14 @@ const router = createBrowserRouter([
 				element: <CrmDashboardPage />,
 			},
 			{
+				path: "orders",
+				element: <CrmOrdersPage />,
+			},
+			{
+				path: "orders/:orderId",
+				element: <CrmOrderDetailsPage />,
+			},
+			{
 				path: "newsletter",
 				element: <CrmNewsletterPage />,
 			},
@@ -79,6 +96,31 @@ const router = createBrowserRouter([
 			{
 				path: "newsletter/new",
 				element: <CrmNewNewsletterPage />,
+			},
+			{
+				path: "newsletter/sends/:sendId",
+				element: <CrmSendDetailsPage />,
+			},
+			{
+				path: "inventory",
+				element: <CrmInventoryPage />,
+			},
+			{
+				path: "inventory/:sku",
+				element: <CrmInventoryDetailsPage />,
+			},
+
+			{
+				path: "artists",
+				element: <CrmArtistsPage />,
+			},
+			{
+				path: "artists/new",
+				element: <CrmArtistFormPage />,
+			},
+			{
+				path: "artists/:artistId",
+				element: <CrmArtistDetailsPage />,
 			},
 		],
 	},
@@ -146,10 +188,12 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
 	<StrictMode>
-		<WorkshopsProvider>
-			<CrmAuthProvider>
-				<RouterProvider router={router} />
-			</CrmAuthProvider>
-		</WorkshopsProvider>
+		<ProductsProvider>
+			<WorkshopsProvider>
+				<CrmAuthProvider>
+					<RouterProvider router={router} />
+				</CrmAuthProvider>
+			</WorkshopsProvider>
+		</ProductsProvider>
 	</StrictMode>,
 );

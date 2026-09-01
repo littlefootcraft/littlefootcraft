@@ -1,0 +1,565 @@
+@use "../../base/variables" as *;
+@use "../../abstracts/mixins" as *;
+
+.crm-order-details {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+
+	&__back {
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+
+		align-self: flex-start;
+
+		font-size: 1rem;
+		font-weight: 500;
+
+		color: $secondary-text;
+
+		text-decoration: none;
+
+		transition: color 0.2s ease;
+
+		&:hover {
+			color: $gold-dark;
+		}
+	}
+
+	// ========================================
+	// HEADER
+	// ========================================
+
+	&__header {
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		gap: 32px;
+	}
+
+	&__eyebrow {
+		margin: 0 0 6px;
+
+		font-size: 1rem;
+		font-weight: 600;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+
+		color: $light-gray-text;
+	}
+
+	&__title {
+		margin: 0;
+
+		font-size: 2rem;
+		font-weight: 600;
+		line-height: 1.2;
+
+		color: $primary-text;
+	}
+
+	&__date {
+		margin: 8px 0 0;
+
+		font-size: 1rem;
+		line-height: 1.5;
+
+		color: $secondary-text;
+	}
+
+	&__statuses {
+		display: flex;
+		align-items: flex-start;
+		gap: 28px;
+
+		padding: 14px 18px;
+
+		background-color: $white;
+
+		border: 1px solid $card-borders;
+		border-radius: $border-radius;
+	}
+
+	&__status-group {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 8px;
+	}
+
+	&__status-label {
+		font-size: 1rem;
+		font-weight: 500;
+
+		color: $light-gray-text;
+	}
+
+	// ========================================
+	// PAYMENT
+	// ========================================
+
+	&__payment {
+		display: inline-flex;
+		align-items: center;
+		gap: 7px;
+
+		min-height: 30px;
+
+		font-size: 1rem;
+		font-weight: 600;
+		white-space: nowrap;
+
+		&--pending,
+		&--paid {
+			&::before {
+				content: "";
+
+				width: 8px;
+				height: 8px;
+
+				flex-shrink: 0;
+
+				background-color: currentColor;
+
+				border-radius: 50%;
+			}
+		}
+
+		&--not_requested {
+			color: $light-gray-text;
+		}
+
+		&--pending {
+			color: $gold-dark;
+		}
+
+		&--paid {
+			color: $success-message;
+		}
+	}
+
+	// ========================================
+	// PAGE LAYOUT
+	// ========================================
+
+	&__layout {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) 340px;
+		align-items: start;
+		gap: 24px;
+	}
+
+	&__main {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+
+	&__sidebar {
+		position: sticky;
+		top: 24px;
+	}
+
+	// ========================================
+	// CARDS
+	// ========================================
+
+	&__card {
+		padding: 24px;
+
+		background-color: $white;
+
+		border: 1px solid $card-borders;
+		border-radius: $border-radius;
+	}
+
+	&__card-header {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+
+		margin-bottom: 20px;
+
+		color: $primary-text;
+	}
+
+	&__card-title {
+		margin: 0;
+
+		font-size: 1.15rem;
+		font-weight: 600;
+		line-height: 1.4;
+
+		color: $primary-text;
+	}
+
+	// ========================================
+	// CUSTOMER
+	// ========================================
+
+	&__customer {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 12px;
+	}
+
+	&__customer-name {
+		margin: 0;
+
+		font-size: 1.1rem;
+		font-weight: 600;
+
+		color: $primary-text;
+	}
+
+	&__contact {
+		display: inline-flex;
+		align-items: center;
+		gap: 10px;
+
+		font-size: 1rem;
+		line-height: 1.5;
+
+		color: $secondary-text;
+
+		text-decoration: none;
+
+		transition: color 0.2s ease;
+
+		&:hover {
+			color: $gold-dark;
+		}
+	}
+
+	// ========================================
+	// SHIPPING
+	// ========================================
+
+	&__address {
+		display: flex;
+		flex-direction: column;
+		gap: 7px;
+
+		margin: 0;
+
+		font-size: 1rem;
+		font-style: normal;
+		line-height: 1.55;
+
+		color: $secondary-text;
+	}
+
+	// ========================================
+	// ITEMS
+	// ========================================
+
+	&__items {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__item {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 24px;
+
+		padding: 18px 0;
+
+		border-bottom: 1px solid $light-blue-borders;
+
+		&:first-child {
+			padding-top: 0;
+		}
+
+		&:last-child {
+			padding-bottom: 0;
+
+			border-bottom: 0;
+		}
+	}
+
+	&__item-info {
+		display: flex;
+		align-items: center;
+		gap: 16px;
+
+		min-width: 0;
+	}
+
+	&__item-image,
+	&__item-placeholder {
+		width: 72px;
+		height: 72px;
+
+		flex-shrink: 0;
+
+		border: 1px solid $card-borders;
+		border-radius: $border-radius-sm;
+	}
+
+	&__item-image {
+		display: block;
+
+		object-fit: cover;
+	}
+
+	&__item-placeholder {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		color: $light-gray-text;
+		background-color: $parchment;
+	}
+
+	&__item-text {
+		display: flex;
+		flex-direction: column;
+		gap: 5px;
+
+		min-width: 0;
+	}
+
+	&__item-name {
+		margin: 0;
+
+		font-size: 1rem;
+		font-weight: 600;
+		line-height: 1.4;
+
+		color: $primary-text;
+	}
+
+	&__item-sku,
+	&__item-quantity {
+		margin: 0;
+
+		font-size: 1rem;
+		line-height: 1.4;
+
+		color: $secondary-text;
+	}
+
+	&__item-price {
+		flex-shrink: 0;
+
+		font-size: 1rem;
+		font-weight: 600;
+		white-space: nowrap;
+
+		color: $primary-text;
+	}
+
+	// ========================================
+	// GIFT POSTCARD
+	// ========================================
+
+	&__gift {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+
+	&__field {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 24px;
+	}
+
+	&__field-label {
+		font-size: 1rem;
+		font-weight: 500;
+
+		color: $secondary-text;
+	}
+
+	&__gift-value {
+		font-size: 1rem;
+		font-weight: 600;
+
+		&--yes {
+			color: $success-message;
+		}
+
+		&--no {
+			color: $light-gray-text;
+		}
+	}
+
+	&__gift-note {
+		padding: 16px;
+
+		background-color: $misty-ivory;
+
+		border: 1px solid $light-blue-borders;
+		border-radius: $border-radius-sm;
+
+		p {
+			margin: 10px 0 0;
+
+			font-size: 1rem;
+			line-height: 1.6;
+
+			color: $primary-text;
+		}
+	}
+
+	// ========================================
+	// COMMENT
+	// ========================================
+
+	&__comment {
+		margin: 0;
+
+		font-size: 1rem;
+		line-height: 1.65;
+
+		color: $secondary-text;
+	}
+
+	// ========================================
+	// ORDER SUMMARY
+	// ========================================
+
+	&__summary {
+		display: flex;
+		flex-direction: column;
+		gap: 18px;
+
+		.crm-order-details__card-title {
+			padding-bottom: 16px;
+
+			border-bottom: 1px solid $light-blue-borders;
+		}
+	}
+
+	&__summary-row {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 16px;
+
+		font-size: 1rem;
+
+		color: $secondary-text;
+
+		strong {
+			font-size: 1rem;
+			font-weight: 600;
+
+			color: $primary-text;
+		}
+	}
+
+	&__summary-total {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 16px;
+
+		padding-top: 18px;
+
+		font-size: 1.1rem;
+		font-weight: 600;
+
+		color: $primary-text;
+
+		border-top: 1px solid $card-borders;
+
+		strong {
+			font-size: 1.25rem;
+			font-weight: 700;
+
+			color: $primary-text;
+		}
+	}
+
+	// ========================================
+	// STATES
+	// ========================================
+
+	&__state,
+	&__empty {
+		padding: 48px 24px;
+
+		font-size: 1rem;
+		text-align: center;
+
+		color: $secondary-text;
+	}
+
+	&__state {
+		background-color: $white;
+
+		border: 1px solid $card-borders;
+		border-radius: $border-radius;
+
+		&--error {
+			color: $error-message;
+		}
+	}
+
+	&__empty {
+		margin: 0;
+	}
+
+	// ========================================
+	// RESPONSIVE
+	// ========================================
+
+	@include tablet-lg {
+		&__layout {
+			grid-template-columns: minmax(0, 1fr);
+		}
+
+		&__sidebar {
+			position: static;
+		}
+	}
+
+	@include tablet-sm {
+		&__header {
+			flex-direction: column;
+		}
+
+		&__statuses {
+			width: 100%;
+		}
+	}
+
+	@include mobile-sm {
+		gap: 20px;
+
+		&__title {
+			font-size: 1.65rem;
+		}
+
+		&__statuses {
+			flex-direction: column;
+		}
+
+		&__card {
+			padding: 18px;
+		}
+
+		&__item {
+			align-items: flex-start;
+		}
+
+		&__item-image,
+		&__item-placeholder {
+			width: 60px;
+			height: 60px;
+		}
+
+		&__field {
+			align-items: flex-start;
+			flex-direction: column;
+			gap: 8px;
+		}
+	}
+}

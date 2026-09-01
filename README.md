@@ -29,8 +29,8 @@ for information on how to integrate TypeScript and
 sales → any sale/discount campaign → old items on sale → new items launched
 directly on sale → special offers / reduced prices
 
-workshops → workshop-related news master-classes → new master class
-announcements sales → discounts and sale items
+workshops → workshop-related news → new master class announcements sales →
+discounts and sale items
 
 # How To send
 

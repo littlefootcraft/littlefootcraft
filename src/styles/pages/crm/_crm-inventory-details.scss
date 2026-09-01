@@ -1,0 +1,447 @@
+// _crm-inventory-details.scss
+
+@use "../../base/variables" as *;
+@use "../../abstracts/mixins" as *;
+
+.crm-inventory-details {
+	&__back {
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+
+		margin-bottom: 24px;
+
+		font-size: 1rem;
+		font-weight: 500;
+
+		color: $secondary-text;
+		text-decoration: none;
+
+		transition: color 0.2s ease;
+
+		&:hover {
+			color: $gold-dark;
+		}
+	}
+
+	&__header {
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		gap: 24px;
+
+		margin-bottom: 28px;
+	}
+
+	&__eyebrow {
+		margin: 0 0 6px;
+
+		font-size: 0.875rem;
+		font-weight: 600;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+
+		color: $gold-dark;
+	}
+
+	&__title {
+		margin: 0;
+
+		font-size: 2.125rem;
+		font-weight: 600;
+		line-height: 1.25;
+
+		color: $primary-text;
+	}
+
+	&__sku {
+		margin-top: 8px;
+
+		font-size: 1rem;
+		color: $secondary-text;
+	}
+
+	&__badges {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		flex-wrap: wrap;
+		gap: 8px;
+	}
+
+	&__badge,
+	&__status {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+
+		padding: 7px 11px;
+
+		border-radius: 999px;
+
+		font-size: 0.9rem;
+		font-weight: 600;
+		line-height: 1;
+
+		white-space: nowrap;
+	}
+
+	&__badge {
+		&--new {
+			border: 1px solid rgba($gold-primary, 0.25);
+
+			background-color: rgba($gold-light, 0.35);
+			color: $gold-dark;
+		}
+
+		&--sale {
+			border: 1px solid rgba($error-message, 0.18);
+
+			background-color: rgba($error-message, 0.08);
+			color: $error-message;
+		}
+	}
+
+	&__status {
+		&--in_stock {
+			border: 1px solid rgba($success-message, 0.2);
+
+			background-color: rgba($success-message, 0.1);
+			color: $success-message;
+		}
+
+		&--pending {
+			border: 1px solid rgba($gold-dark, 0.2);
+
+			background-color: rgba($gold-light, 0.25);
+			color: $gold-dark;
+		}
+
+		&--sold {
+			border: 1px solid rgba($secondary-text, 0.15);
+
+			background-color: rgba($secondary-text, 0.08);
+			color: $secondary-text;
+		}
+	}
+
+	&__layout {
+		display: grid;
+		grid-template-columns: minmax(0, 1.1fr) minmax(380px, 0.9fr);
+		gap: 24px;
+
+		align-items: start;
+	}
+
+	&__product-card,
+	&__inventory-card {
+		border: 1px solid $card-borders;
+		border-radius: $border-radius;
+
+		background-color: $cream;
+	}
+
+	&__product-card {
+		display: grid;
+		grid-template-columns: 260px minmax(0, 1fr);
+
+		overflow: hidden;
+	}
+
+	&__image {
+		display: block;
+
+		width: 260px;
+		height: 260px;
+
+		object-fit: cover;
+
+		border-right: 1px solid $light-blue-borders;
+	}
+
+	&__product-info {
+		align-self: center;
+
+		padding: 22px;
+	}
+
+	&__row {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 20px;
+
+		padding-block: 13px;
+
+		border-bottom: 1px solid $light-blue-borders;
+
+		span {
+			font-size: 1rem;
+			font-weight: 500;
+			line-height: 1.5;
+
+			color: $secondary-text;
+		}
+
+		strong {
+			font-size: 1.05rem;
+			font-weight: 600;
+			line-height: 1.5;
+
+			color: $primary-text;
+
+			text-align: right;
+		}
+
+		&:last-child {
+			border-bottom: 0;
+		}
+	}
+
+	&__inventory-card {
+		padding: 26px;
+	}
+
+	&__section-header {
+		margin-bottom: 24px;
+
+		h2 {
+			margin: 0;
+
+			font-size: 1.5rem;
+			font-weight: 600;
+
+			color: $primary-text;
+		}
+
+		p {
+			margin-top: 7px;
+
+			font-size: 1rem;
+			line-height: 1.6;
+
+			color: $secondary-text;
+		}
+	}
+
+	&__form {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 16px;
+
+		margin-bottom: 24px;
+	}
+
+	&__field {
+		display: flex;
+		flex-direction: column;
+		gap: 9px;
+
+		span {
+			font-size: 1rem;
+			font-weight: 600;
+
+			color: $secondary-text;
+		}
+
+		input {
+			width: 100%;
+			min-height: 50px;
+
+			padding: 11px 14px;
+
+			border: 1px solid $input-borders;
+			border-radius: $border-radius-sm;
+
+			background-color: $misty-ivory;
+			color: $primary-text;
+
+			font-family: inherit;
+			font-size: 1.1rem;
+			line-height: 1.4;
+
+			transition:
+				border-color 0.2s ease,
+				box-shadow 0.2s ease;
+
+			&:focus {
+				outline: none;
+
+				border-color: $gold-primary;
+				box-shadow: 0 0 0 3px rgba($gold-primary, 0.1);
+			}
+		}
+	}
+
+	&__summary {
+		padding: 6px 0 10px;
+	}
+
+	&__message {
+		margin: 14px 0 0;
+
+		padding: 11px 13px;
+
+		border-radius: $border-radius-sm;
+
+		font-size: 1rem;
+		line-height: 1.5;
+
+		&--success {
+			border: 1px solid rgba($success-message, 0.18);
+
+			background-color: rgba($success-message, 0.08);
+			color: $success-message;
+		}
+
+		&--error {
+			border: 1px solid rgba($error-message, 0.18);
+
+			background-color: rgba($error-message, 0.08);
+			color: $error-message;
+		}
+	}
+
+	&__save {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 8px;
+
+		width: 100%;
+		min-height: 50px;
+
+		margin-top: 18px;
+		padding: 11px 16px;
+
+		border: 1px solid $gold-primary;
+		border-radius: $border-radius-sm;
+
+		background-color: $gold-light;
+		color: $primary-text;
+
+		font-family: inherit;
+		font-size: 1rem;
+		font-weight: 600;
+
+		cursor: pointer;
+
+		transition:
+			background-color 0.2s ease,
+			border-color 0.2s ease,
+			opacity 0.2s ease;
+
+		&:hover {
+			background-color: $light-gold;
+			border-color: $gold-dark;
+		}
+
+		&:disabled {
+			cursor: not-allowed;
+			opacity: 0.6;
+		}
+	}
+
+	&__state {
+		padding: 40px 20px;
+
+		text-align: center;
+
+		font-size: 1rem;
+		color: $secondary-text;
+
+		&--error {
+			color: $error-message;
+		}
+	}
+
+	// RESPONSIVE
+
+	@include tablet-lg {
+		&__layout {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	@include tablet {
+		&__title {
+			font-size: 1.875rem;
+		}
+
+		&__product-info,
+		&__inventory-card {
+			padding: 20px;
+		}
+	}
+
+	@include tablet-sm {
+		&__header {
+			flex-direction: column;
+		}
+
+		&__badges {
+			justify-content: flex-start;
+		}
+
+		&__product-card {
+			grid-template-columns: 220px minmax(0, 1fr);
+		}
+
+		&__image {
+			width: 220px;
+			height: 220px;
+		}
+	}
+
+	@include mobile {
+		&__product-card {
+			grid-template-columns: 1fr;
+		}
+
+		&__image {
+			width: 100%;
+			height: 280px;
+
+			border-right: 0;
+			border-bottom: 1px solid $light-blue-borders;
+		}
+
+		&__form {
+			grid-template-columns: 1fr;
+		}
+
+		&__row {
+			align-items: flex-start;
+		}
+
+		&__row strong {
+			max-width: 58%;
+		}
+	}
+
+	@include mobile-sm {
+		&__title {
+			font-size: 1.625rem;
+		}
+
+		&__product-info,
+		&__inventory-card {
+			padding: 16px;
+		}
+
+		&__image {
+			height: 240px;
+		}
+
+		&__row {
+			flex-direction: column;
+			gap: 4px;
+		}
+
+		&__row strong {
+			max-width: none;
+
+			text-align: left;
+		}
+	}
+}

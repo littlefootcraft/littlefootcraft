@@ -49,23 +49,34 @@ const CrmLoginPage = () => {
 				<form
 					className="crm-login__form"
 					onSubmit={handleSubmit}
+					autoComplete="on"
 				>
-					<label className="crm-login__field">
+					<label
+						className="crm-login__field"
+						htmlFor="crm-email"
+					>
 						<span>Email</span>
 
 						<input
+							id="crm-email"
+							name="username"
 							type="email"
 							value={email}
 							onChange={(e) => setEmail(e.target.value)}
-							autoComplete="email"
+							autoComplete="username"
 							required
 						/>
 					</label>
 
-					<label className="crm-login__field">
+					<label
+						className="crm-login__field"
+						htmlFor="crm-password"
+					>
 						<span>Password</span>
 
 						<input
+							id="crm-password"
+							name="password"
 							type="password"
 							value={password}
 							onChange={(e) => setPassword(e.target.value)}

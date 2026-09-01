@@ -1,0 +1,455 @@
+// _crm-artists.scss
+
+@use "../../base/variables" as *;
+@use "../../abstracts/mixins" as *;
+
+.crm-artists {
+	&__header {
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		gap: 24px;
+
+		margin-bottom: 28px;
+	}
+
+	&__title {
+		margin: 0;
+
+		font-size: 2.125rem;
+		font-weight: 600;
+
+		color: $primary-text;
+	}
+
+	&__subtitle {
+		margin: 8px 0 0;
+
+		font-size: 1rem;
+		line-height: 1.6;
+
+		color: $secondary-text;
+	}
+
+	&__add-button {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 8px;
+
+		min-height: 46px;
+		padding: 11px 16px;
+
+		border: 1px solid $card-borders;
+		border-radius: $border-radius-sm;
+
+		background-color: $gold-light;
+		color: $primary-text;
+
+		font-size: 1rem;
+		font-weight: 600;
+		line-height: 1;
+
+		text-decoration: none;
+
+		transition:
+			background-color 0.2s ease,
+			border-color 0.2s ease;
+
+		&:hover {
+			background-color: $light-gold;
+			border-color: $input-borders;
+		}
+
+		svg {
+			flex-shrink: 0;
+		}
+	}
+
+	&__summary {
+		display: grid;
+		grid-template-columns: repeat(4, minmax(110px, 1fr));
+
+		max-width: 560px;
+		margin: 0 0 20px auto;
+
+		border: 1px solid $card-borders;
+		border-radius: $border-radius;
+
+		background-color: $cream;
+
+		overflow: hidden;
+	}
+
+	&__summary-item {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 8px;
+
+		min-height: 58px;
+		padding: 10px 14px;
+
+		&:not(:last-child) {
+			border-right: 1px solid $light-blue-borders;
+		}
+	}
+
+	&__summary-value {
+		font-size: 1.125rem;
+		font-weight: 700;
+		line-height: 1;
+
+		color: $primary-text;
+	}
+
+	&__summary-label {
+		font-size: 1rem;
+		font-weight: 500;
+		line-height: 1.2;
+
+		color: $secondary-text;
+
+		white-space: nowrap;
+	}
+
+	&__toolbar {
+		display: grid;
+		grid-template-columns:
+			minmax(280px, 1fr)
+			auto;
+		gap: 14px;
+
+		align-items: center;
+
+		margin-bottom: 20px;
+	}
+
+	&__search {
+		position: relative;
+
+		min-width: 0;
+	}
+
+	&__search-icon {
+		position: absolute;
+		top: 50%;
+		left: 14px;
+
+		transform: translateY(-50%);
+
+		color: $secondary-text;
+
+		pointer-events: none;
+	}
+
+	&__search-input {
+		width: 100%;
+		min-height: 48px;
+
+		padding: 10px 14px 10px 42px;
+
+		border: 1px solid $input-borders;
+		border-radius: $border-radius-sm;
+
+		background-color: $cream;
+		color: $primary-text;
+
+		font-family: inherit;
+		font-size: 1rem;
+
+		transition:
+			border-color 0.2s ease,
+			box-shadow 0.2s ease;
+
+		&::placeholder {
+			color: $light-gray-text;
+		}
+
+		&:focus {
+			outline: none;
+
+			border-color: $gold-primary;
+			box-shadow: 0 0 0 3px rgba($gold-primary, 0.1);
+		}
+	}
+
+	&__filter {
+		min-width: 170px;
+	}
+
+	&__table-wrap {
+		overflow-x: auto;
+
+		border: 1px solid $card-borders;
+		border-radius: $border-radius;
+
+		background-color: $cream;
+	}
+
+	&__table {
+		width: 100%;
+		min-width: 1180px;
+
+		border-collapse: collapse;
+
+		th,
+		td {
+			padding: 15px 16px;
+
+			text-align: left;
+			vertical-align: middle;
+
+			border-bottom: 1px solid $light-blue-borders;
+		}
+
+		th {
+			font-size: 1rem;
+			font-weight: 600;
+
+			text-transform: uppercase;
+			letter-spacing: 0.05em;
+
+			color: $secondary-text;
+			background-color: $parchment;
+
+			white-space: nowrap;
+		}
+
+		td {
+			font-size: 1rem;
+			line-height: 1.45;
+
+			color: $primary-text;
+		}
+
+		tbody {
+			tr {
+				transition: background-color 0.2s ease;
+
+				&:hover {
+					background-color: $misty-ivory;
+				}
+			}
+
+			tr:last-child td {
+				border-bottom: 0;
+			}
+		}
+	}
+
+	&__artist {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+
+		min-width: 190px;
+	}
+
+	&__artist-name {
+		display: inline-block;
+
+		font-size: 1rem;
+		font-weight: 600;
+		line-height: 1.4;
+
+		color: $primary-text;
+
+		text-decoration: none;
+
+		transition: color 0.2s ease;
+
+		&:hover {
+			color: $gold-dark;
+		}
+	}
+
+	&__slug {
+		font-size: 1rem;
+		line-height: 1.3;
+
+		color: $light-gray-text;
+	}
+
+	&__link {
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+
+		color: $secondary-text;
+
+		font-size: 1rem;
+
+		text-decoration: none;
+
+		transition: color 0.2s ease;
+
+		&:hover {
+			color: $gold-dark;
+		}
+
+		svg {
+			flex-shrink: 0;
+		}
+	}
+
+	&__status {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+
+		min-width: 88px;
+		padding: 7px 11px;
+
+		border-radius: 999px;
+
+		font-size: 1rem;
+		font-weight: 600;
+
+		white-space: nowrap;
+
+		&--active {
+			border: 1px solid rgba($success-message, 0.2);
+
+			background-color: rgba($success-message, 0.1);
+			color: $success-message;
+		}
+
+		&--inactive {
+			border: 1px solid rgba($secondary-text, 0.15);
+
+			background-color: rgba($secondary-text, 0.08);
+			color: $secondary-text;
+		}
+	}
+
+	&__date {
+		white-space: nowrap;
+
+		color: $secondary-text;
+	}
+
+	&__view {
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+
+		color: $primary-text;
+
+		font-size: 1rem;
+		font-weight: 600;
+
+		text-decoration: none;
+
+		transition: color 0.2s ease;
+
+		&:hover {
+			color: $gold-dark;
+		}
+
+		svg {
+			flex-shrink: 0;
+		}
+	}
+
+	&__empty,
+	&__state {
+		padding: 40px 20px;
+
+		text-align: center;
+
+		font-size: 1rem;
+
+		color: $secondary-text;
+	}
+
+	&__state--error {
+		color: $error-message;
+	}
+
+	// RESPONSIVE
+
+	@include tablet-lg {
+		&__header {
+			flex-direction: column;
+		}
+
+		&__summary {
+			width: 100%;
+			max-width: none;
+			margin-left: 0;
+		}
+
+		&__toolbar {
+			grid-template-columns: 1fr;
+		}
+
+		&__filter {
+			width: 200px;
+		}
+	}
+
+	@include tablet {
+		&__title {
+			font-size: 1.875rem;
+		}
+
+		&__table {
+			th,
+			td {
+				padding: 13px 14px;
+			}
+		}
+	}
+
+	@include mobile {
+		&__summary {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		&__summary-item {
+			&:nth-child(odd) {
+				border-right: 1px solid $light-blue-borders;
+			}
+
+			&:nth-child(even) {
+				border-right: 0;
+			}
+
+			&:nth-child(-n + 2) {
+				border-bottom: 1px solid $light-blue-borders;
+			}
+		}
+
+		&__filter {
+			width: 100%;
+		}
+	}
+
+	@include mobile-sm {
+		&__title {
+			font-size: 1.625rem;
+		}
+
+		&__summary {
+			grid-template-columns: 1fr;
+		}
+
+		&__summary-item {
+			justify-content: flex-start;
+
+			&:nth-child(odd),
+			&:nth-child(even) {
+				border-right: 0;
+			}
+
+			&:not(:last-child) {
+				border-bottom: 1px solid $light-blue-borders;
+			}
+		}
+
+		&__add-button {
+			width: 100%;
+		}
+	}
+}

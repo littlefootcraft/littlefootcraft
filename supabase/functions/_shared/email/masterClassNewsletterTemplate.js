@@ -14,6 +14,7 @@ export const masterClassNewsletterTemplate = ({
 	language,
 	reminderDate,
 	subscriberId,
+	customTitle = "",
 	customMessage = "",
 }) => {
 	const isUA = language === "ua";
@@ -56,9 +57,22 @@ export const masterClassNewsletterTemplate = ({
 
 	let content = "";
 
-	if (type === "new-master-class") {
+	if (type === "new-workshop") {
 		content = `
 			${imageHtml}
+
+			<h2
+				style="
+					color: #1a2b4c;
+					font-size: 22px;
+					line-height: 1.4;
+					margin: 20px 0 12px;
+					text-align: center;
+				"
+			>
+				${title}
+			</h2>
+
 
 			<p style="color: #4a5568; font-size: 16px; line-height: 1.6;">
 				${subtitle}
@@ -96,16 +110,28 @@ export const masterClassNewsletterTemplate = ({
 		`;
 	}
 
-	if (type === "master-class-reminder") {
+	if (type === "workshop-reminder") {
 		content = `
 			${imageHtml}
+
+			<h2
+				style="
+					color: #1a2b4c;
+					font-size: 22px;
+					line-height: 1.4;
+					margin: 20px 0 12px;
+					text-align: center;
+				"
+			>
+				${title}
+			</h2>
 
 			<p style="color: #4a5568; font-size: 16px; line-height: 1.6;">
 				${
 					customMessage.trim() ||
 					(isUA
 						? "Майстер-клас уже зовсім скоро ✨ Ще є час приєднатися."
-						: "This master class is coming up soon ✨ There is still time to join us.")
+						: "This workshop is coming up soon ✨ There is still time to join us.")
 				}
 			</p>
 
@@ -128,41 +154,48 @@ export const masterClassNewsletterTemplate = ({
 		`;
 	}
 
-	const footer = `
-		<p
-			style="
-				color: #9ca3af;
-				font-size: 12px;
-				margin-top: 28px;
-				text-align: center;
-			"
-		>
-			${
-				isUA
-					? "Ви отримали цей лист, тому що підписалися на новини LittleFootCraft."
-					: "You received this email because you subscribed to LittleFootCraft updates."
-			}
-
-			<br />
-
-			<a
-				href="https://littlefootcraft.art/${language}/unsubscribe?id=${subscriberId}"
+	const footer = subscriberId
+		? `
+			<p
 				style="
 					color: #9ca3af;
-					text-decoration: underline;
+					font-size: 12px;
+					margin-top: 28px;
+					text-align: center;
 				"
 			>
-				${isUA ? "Керувати підпискою" : "Manage subscription"}
-			</a>
-		</p>
-	`;
+				${
+					isUA
+						? "Ви отримали цей лист, тому що підписалися на новини LittleFootCraft."
+						: "You received this email because you subscribed to LittleFootCraft updates."
+				}
 
-	const emailTitle =
-		type === "master-class-reminder"
-			? isUA
-				? `${title} — уже скоро`
-				: `${title} — Coming Soon`
-			: title;
+				<br />
+
+				<a
+					href="https://littlefootcraft.art/${language}/unsubscribe?id=${subscriberId}"
+					style="
+						color: #9ca3af;
+						text-decoration: underline;
+					"
+				>
+					${isUA ? "Керувати підпискою" : "Manage subscription"}
+				</a>
+			</p>
+		`
+		: "";
+
+	let emailTitle = customTitle.trim() || title;
+
+	if (type === "new-workshop" && !customTitle.trim()) {
+		emailTitle = isUA
+			? "Запрошення на майстер-клас ✨"
+			: "Workshop Invitation ✨";
+	}
+
+	if (type === "workshop-reminder" && !customTitle.trim()) {
+		emailTitle = isUA ? `${title} — уже скоро` : `${title} — Coming Soon`;
+	}
 
 	return emailLayout({
 		title: emailTitle,

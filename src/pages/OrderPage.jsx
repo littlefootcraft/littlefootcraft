@@ -106,6 +106,8 @@ const OrderPage = () => {
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 
+		setMessage("");
+
 		const newErrors = {};
 
 		if (form.name.trim().length < 2) {
@@ -154,31 +156,55 @@ const OrderPage = () => {
 		setStatus("loading");
 
 		// Supabase
-		const { data, error } = await supabase
-			.from("orders")
-			.insert({
-				customer_name: `${form.name} ${form.lastName}`,
-				email: form.email,
-				phone: form.phone,
-				country: form.country,
-				city: form.city,
-				street: form.street,
-				apartment: form.apartment, // optional
-				zip_code: form.postalCode,
+		const { data, error } = await supabase.rpc(
+			"create_order_with_reservation",
+			{
+				p_customer_name: `${form.name} ${form.lastName}`,
+				p_email: form.email,
+				p_phone: form.phone,
 
-				comment: form.message,
+				p_country: form.country,
+				p_city: form.city,
+				p_street: form.street,
+				p_apartment: form.apartment || null,
+				p_zip_code: form.postalCode,
 
-				items: cartProducts,
-				subtotal: total,
-				discount: 0,
-				total: totalWithExtras,
-			})
-			.select("order_number")
-			.single();
+				p_comment: form.message.trim() || null,
+
+				p_gift_postcard: form.giftPostcard,
+				p_gift_note: form.giftPostcard ? form.giftMessage.trim() || null : null,
+
+				p_items: cartProducts,
+
+				p_subtotal: total,
+				p_discount: 0,
+				p_total: totalWithExtras,
+			},
+		);
 
 		if (error) {
 			console.error("Order creation failed:", error);
+
 			setStatus("error");
+
+			const isInventoryError = error.message?.includes(
+				"Not enough inventory available",
+			);
+
+			if (isInventoryError) {
+				const skuMatch = error.message.match(/SKU\s+([^\s]+)/i);
+				const unavailableSku = skuMatch?.[1] || "";
+
+				setMessage(
+					currentLang === "ua"
+						? `На жаль, товар ${
+								unavailableSku ? `SKU ${unavailableSku}` : ""
+							} більше недоступний. Можливо, його щойно зарезервував інший покупець. Будь ласка, оберіть інший товар.`
+						: `Sorry, the item ${
+								unavailableSku ? `SKU ${unavailableSku}` : ""
+							} is no longer available. It may have just been reserved by another customer. Please choose another item.`,
+				);
+			}
 			return;
 		}
 
@@ -187,11 +213,13 @@ const OrderPage = () => {
 			currentLang,
 			totalWithExtras,
 			orderNumber: data.order_number,
+			giftPostcard: form.giftPostcard,
+			giftMessage: form.giftMessage.trim(),
 			t,
 		});
 
 		const { error: emailError } = await supabase.functions.invoke(
-			"resend-email",
+			"send-order-email",
 			{
 				body: {
 					to: form.email,

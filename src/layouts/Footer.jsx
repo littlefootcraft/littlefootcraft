@@ -176,15 +176,6 @@ const Footer = () => {
 						<label className="footer__subscription-topic">
 							<input
 								type="checkbox"
-								checked={interests.includes("master-classes")}
-								onChange={() => toggleInterest("master-classes")}
-							/>
-							<span>{dict.masterClassesLabel}</span>
-						</label>
-
-						<label className="footer__subscription-topic">
-							<input
-								type="checkbox"
 								checked={interests.includes("sales")}
 								onChange={() => toggleInterest("sales")}
 							/>

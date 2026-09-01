@@ -13,7 +13,7 @@ export const useSubscribe = (dict) => {
 	const [message, setMessage] = useState("");
 
 	// Newsletter interests
-	const INTERESTS = ["workshops", "master-classes", "sales"];
+	const INTERESTS = ["workshops", "sales"];
 	const [interests, setInterests] = useState(INTERESTS);
 
 	// Toggle interest selection

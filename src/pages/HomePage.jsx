@@ -352,15 +352,6 @@ const HomePage = ({ workshop }) => {
 					<label className="home-page__subscription-topic">
 						<input
 							type="checkbox"
-							checked={interests.includes("master-classes")}
-							onChange={() => toggleInterest("master-classes")}
-						/>
-						<span>{dict.masterClassesLabel}</span>
-					</label>
-
-					<label className="home-page__subscription-topic">
-						<input
-							type="checkbox"
 							checked={interests.includes("sales")}
 							onChange={() => toggleInterest("sales")}
 						/>

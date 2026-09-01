@@ -7,17 +7,15 @@ import { SecondaryBtn } from "../components/SecondaryBtn";
 import UnsubscribeImage from "../assets/images/manage_subscription.png";
 import { useLanguage } from "../context/LanguageContext";
 
-const INTERESTS = ["workshops", "master-classes", "sales"];
+const INTERESTS = ["workshops", "sales"];
 
 const interestLabels = {
 	en: {
 		workshops: "Workshops",
-		"master-classes": "Master classes",
 		sales: "Sales",
 	},
 	ua: {
-		workshops: "Воркшопи",
-		"master-classes": "Майстер-класи",
+		workshops: "Майстер-класи",
 		sales: "Знижки та пропозиції",
 	},
 };

@@ -1,13 +1,8 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
+import { corsHeaders } from "npm:@supabase/supabase-js@2/cors";
 
 import { newsletterTemplate } from "../_shared/email/newsletterTemplate.js";
 import { masterClassNewsletterTemplate } from "../_shared/email/masterClassNewsletterTemplate.js";
-
-const corsHeaders = {
-	"Access-Control-Allow-Origin": "*",
-	"Access-Control-Allow-Headers":
-		"authorization, x-client-info, apikey, content-type",
-};
 
 // ---------------------------------------
 // NEWSLETTER TYPE → DEFAULT INTEREST
@@ -15,9 +10,11 @@ const corsHeaders = {
 const campaignInterestMap: Record<string, string> = {
 	"new-items": "sales",
 	sale: "sales",
-	"new-master-class": "workshops",
-	"master-class-reminder": "workshops",
+	"new-workshop": "workshops",
+	"workshop-reminder": "workshops",
 };
+
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 // ---------------------------------------
 // BUILT-IN NEWSLETTER CONTENT
@@ -58,13 +55,13 @@ const campaignContent = {
 		},
 	},
 
-	"new-master-class": {
+	"new-workshop": {
 		en: {
-			subject: "A new LittleFootCraft master class is here ✨",
-			title: "New Master Class",
+			subject: "A new LittleFootCraft workshop is here ✨",
+			title: "New Workshop",
 			message:
-				"Join us for a creative LittleFootCraft master class and discover something new.",
-			buttonText: "View master class",
+				"Join us for a creative LittleFootCraft workshop and discover something new.",
+			buttonText: "View workshop",
 		},
 
 		ua: {
@@ -100,12 +97,23 @@ export default {
 				audience = "all",
 				interests = [],
 				otherRecipients = [],
+				additionalRecipientsLanguage = "en",
 
 				subjectEN = "",
+				titleEN = "",
 				contentEN = "",
 
 				subjectUA = "",
+				titleUA = "",
 				contentUA = "",
+
+				// TEST EMAIL
+				isTest = false,
+				testEmail = "",
+				testLanguage = "en",
+
+				campaignName = "",
+				campaignId = null,
 			} = await req.json();
 
 			// ---------------------------------------
@@ -129,8 +137,9 @@ export default {
 			const supportedTypes = [
 				"new-items",
 				"sale",
-				"new-master-class",
-				"master-class-reminder",
+				"new-workshop",
+				"workshop-reminder",
+				"other",
 			];
 
 			if (!supportedTypes.includes(type)) {
@@ -162,6 +171,94 @@ export default {
 						},
 					},
 				);
+			}
+
+			if (
+				audience === "other" &&
+				!["en", "ua"].includes(additionalRecipientsLanguage)
+			) {
+				return new Response(
+					JSON.stringify({
+						error: "Unsupported recipient language.",
+					}),
+					{
+						status: 400,
+						headers: {
+							...corsHeaders,
+							"Content-Type": "application/json",
+						},
+					},
+				);
+			}
+
+			// ---------------------------------------
+			// CAMPAIGN NAME VALIDATION
+			// ---------------------------------------
+			if (!isTest && !campaignId && !String(campaignName).trim()) {
+				return new Response(
+					JSON.stringify({
+						error: "Campaign name is required.",
+					}),
+					{
+						status: 400,
+						headers: {
+							...corsHeaders,
+							"Content-Type": "application/json",
+						},
+					},
+				);
+			}
+
+			// ---------------------------------------
+			// TEST EMAIL VALIDATION
+			// ---------------------------------------
+			if (isTest) {
+				const normalizedTestEmail = String(testEmail).trim().toLowerCase();
+
+				if (!normalizedTestEmail) {
+					return new Response(
+						JSON.stringify({
+							error: "Test email is required.",
+						}),
+						{
+							status: 400,
+							headers: {
+								...corsHeaders,
+								"Content-Type": "application/json",
+							},
+						},
+					);
+				}
+
+				if (!EMAIL_REGEX.test(normalizedTestEmail)) {
+					return new Response(
+						JSON.stringify({
+							error: "Invalid test email address.",
+						}),
+						{
+							status: 400,
+							headers: {
+								...corsHeaders,
+								"Content-Type": "application/json",
+							},
+						},
+					);
+				}
+
+				if (!["en", "ua"].includes(testLanguage)) {
+					return new Response(
+						JSON.stringify({
+							error: "Unsupported test language.",
+						}),
+						{
+							status: 400,
+							headers: {
+								...corsHeaders,
+								"Content-Type": "application/json",
+							},
+						},
+					);
+				}
 			}
 
 			const requiredInterest = campaignInterestMap[type];
@@ -223,16 +320,17 @@ export default {
 			}
 
 			// ---------------------------------------
-			// MASTER CLASS
+			// WORKSHOP
 			// ---------------------------------------
 			let selectedWorkshop = null;
+			let workshopForEmail = null;
 			let reminderDate = null;
 
-			if (type === "new-master-class" || type === "master-class-reminder") {
+			if (type === "new-workshop" || type === "workshop-reminder") {
 				if (!itemId) {
 					return new Response(
 						JSON.stringify({
-							error: "Master class ID is required.",
+							error: "Workshop ID is required.",
 						}),
 						{
 							status: 400,
@@ -259,7 +357,7 @@ export default {
 				if (!selectedWorkshop) {
 					return new Response(
 						JSON.stringify({
-							error: "Master class was not found.",
+							error: "Workshop was not found.",
 							itemId,
 						}),
 						{
@@ -271,29 +369,30 @@ export default {
 						},
 					);
 				}
-			}
 
-			// ---------------------------------------
-			// MASTER CLASS REMINDER DATE
-			// ---------------------------------------
-			if (type === "master-class-reminder") {
+				// ---------------------------------------
+				// REMOVE PAST WORKSHOP DATES
+				// ---------------------------------------
 				const today = new Date();
-
 				today.setHours(0, 0, 0, 0);
 
-				const futureDates =
+				const futureWorkshopDates =
 					selectedWorkshop.upcomingDates?.dates
-						?.map((date) => ({
-							raw: date,
-							value: new Date(`${date}T00:00:00`),
-						}))
-						.filter((date) => date.value >= today)
-						.sort((a, b) => a.value.getTime() - b.value.getTime()) ?? [];
+						?.filter((date) => {
+							const eventDate = new Date(`${date}T00:00:00`);
 
-				if (futureDates.length === 0) {
+							return eventDate >= today;
+						})
+						.sort(
+							(a, b) =>
+								new Date(`${a}T00:00:00`).getTime() -
+								new Date(`${b}T00:00:00`).getTime(),
+						) ?? [];
+
+				if (futureWorkshopDates.length === 0) {
 					return new Response(
 						JSON.stringify({
-							error: "This master class has no upcoming dates.",
+							error: "This workshop has no upcoming dates.",
 						}),
 						{
 							status: 400,
@@ -305,7 +404,21 @@ export default {
 					);
 				}
 
-				reminderDate = futureDates[0].raw;
+				// Clean workshop object used by the email template.
+				// Past dates remain in the original JSON but are not sent.
+				workshopForEmail = {
+					...selectedWorkshop,
+
+					upcomingDates: {
+						...selectedWorkshop.upcomingDates,
+						dates: futureWorkshopDates,
+					},
+				};
+
+				// Reminder always uses the nearest upcoming date.
+				if (type === "workshop-reminder") {
+					reminderDate = futureWorkshopDates[0];
+				}
 			}
 
 			// ---------------------------------------
@@ -324,9 +437,24 @@ export default {
 			let subscribers = [];
 
 			// ---------------------------------------
+			// TEST RECIPIENT
+			// ---------------------------------------
+			if (isTest) {
+				subscribers = [
+					{
+						id: null,
+						email: String(testEmail).trim().toLowerCase(),
+						language: testLanguage,
+						interests: [],
+						isTestRecipient: true,
+					},
+				];
+			}
+
+			// ---------------------------------------
 			// ALL SUBSCRIBERS
 			// ---------------------------------------
-			if (audience === "all") {
+			if (!isTest && audience === "all") {
 				const { data, error } = await supabase
 					.from("subscribers")
 					.select("id, email, language, interests");
@@ -341,7 +469,7 @@ export default {
 			// ---------------------------------------
 			// SUBSCRIBERS BY INTEREST
 			// ---------------------------------------
-			if (audience === "interest") {
+			if (!isTest && audience === "interest") {
 				if (!Array.isArray(interests) || interests.length === 0) {
 					return new Response(
 						JSON.stringify({
@@ -372,7 +500,7 @@ export default {
 			// ---------------------------------------
 			// OTHER RECIPIENTS
 			// ---------------------------------------
-			if (audience === "other") {
+			if (!isTest && audience === "other") {
 				if (!Array.isArray(otherRecipients) || otherRecipients.length === 0) {
 					return new Response(
 						JSON.stringify({
@@ -399,7 +527,7 @@ export default {
 				subscribers = uniqueEmails.map((email) => ({
 					id: null,
 					email,
-					language: "en",
+					language: additionalRecipientsLanguage,
 					interests: [],
 					isManualRecipient: true,
 				}));
@@ -408,7 +536,7 @@ export default {
 			// ---------------------------------------
 			// EXCLUDE PEOPLE WHO ALREADY BOOKED
 			// ---------------------------------------
-			if (type === "master-class-reminder") {
+			if (!isTest && type === "workshop-reminder") {
 				const { data: bookings, error: bookingsError } = await supabase
 					.from("workshop_bookings")
 					.select("email")
@@ -450,6 +578,61 @@ export default {
 			}
 
 			// ---------------------------------------
+			// VALIDATE CUSTOM "OTHER" NEWSLETTER
+			// ---------------------------------------
+			if (type === "other") {
+				const hasEnglishRecipients = subscribers.some(
+					(subscriber) => subscriber.language !== "ua",
+				);
+
+				const hasUkrainianRecipients = subscribers.some(
+					(subscriber) => subscriber.language === "ua",
+				);
+
+				const hasEnglishContent =
+					String(subjectEN).trim() !== "" &&
+					String(titleEN).trim() !== "" &&
+					String(contentEN).trim() !== "";
+
+				const hasUkrainianContent =
+					String(subjectUA).trim() !== "" &&
+					String(titleUA).trim() !== "" &&
+					String(contentUA).trim() !== "";
+
+				if (hasEnglishRecipients && !hasEnglishContent) {
+					return new Response(
+						JSON.stringify({
+							error:
+								"English subject, title and content are required for English recipients.",
+						}),
+						{
+							status: 400,
+							headers: {
+								...corsHeaders,
+								"Content-Type": "application/json",
+							},
+						},
+					);
+				}
+
+				if (hasUkrainianRecipients && !hasUkrainianContent) {
+					return new Response(
+						JSON.stringify({
+							error:
+								"Ukrainian subject, title and content are required for Ukrainian recipients.",
+						}),
+						{
+							status: 400,
+							headers: {
+								...corsHeaders,
+								"Content-Type": "application/json",
+							},
+						},
+					);
+				}
+			}
+
+			// ---------------------------------------
 			// RESEND
 			// ---------------------------------------
 			const resendApiKey = Deno.env.get("RESEND_API_KEY");
@@ -460,6 +643,19 @@ export default {
 
 			const results = [];
 
+			const finalContentByLanguage = {
+				en: {
+					subject: "",
+					title: "",
+					content: "",
+				},
+				ua: {
+					subject: "",
+					title: "",
+					content: "",
+				},
+			};
+
 			// ---------------------------------------
 			// SEND ONE EMAIL PER RECIPIENT
 			// ---------------------------------------
@@ -468,11 +664,16 @@ export default {
 
 				let html = "";
 				let subject = "";
+				let finalTitle = "";
+				let finalContent = "";
 
 				const customSubject =
 					language === "ua"
 						? String(subjectUA).trim()
 						: String(subjectEN).trim();
+
+				const customTitle =
+					language === "ua" ? String(titleUA).trim() : String(titleEN).trim();
 
 				const customContent =
 					language === "ua"
@@ -492,13 +693,12 @@ export default {
 					}
 
 					subject = customSubject || text.subject;
+					finalTitle = customTitle || text.title;
+					finalContent = customContent || text.message;
 
 					html = newsletterTemplate({
-						type,
-						title: text.title,
-
-						message: customContent || text.message,
-
+						title: finalTitle,
+						message: finalContent,
 						buttonText: text.buttonText,
 
 						buttonUrl:
@@ -507,41 +707,67 @@ export default {
 								: `https://littlefootcraft.art/${language}/shop`,
 
 						language,
-
 						subscriberId: subscriber.id,
-
 						products: selectedProducts,
 					});
 				}
 
 				// ---------------------------------------
-				// MASTER CLASS NEWSLETTER
+				// WORKSHOP NEWSLETTER
 				// ---------------------------------------
-				if (type === "new-master-class" || type === "master-class-reminder") {
+				if (type === "new-workshop" || type === "workshop-reminder") {
 					const defaultText =
-						type === "new-master-class"
-							? campaignContent["new-master-class"]?.[language]
+						type === "new-workshop"
+							? campaignContent["new-workshop"]?.[language]
 							: null;
+
+					const defaultReminderContent =
+						language === "ua"
+							? "Майстер-клас уже зовсім скоро ✨ Ще є час приєднатися."
+							: "This workshop is coming up soon ✨ There is still time to join us.";
+
+					const defaultReminderTitle =
+						language === "ua"
+							? `${selectedWorkshop.title.ua} — уже скоро`
+							: `${selectedWorkshop.title.en} — Coming Soon`;
+
+					const defaultWorkshopTitle =
+						language === "ua"
+							? "Запрошення на майстер-клас ✨"
+							: "Workshop Invitation ✨";
+
+					finalTitle =
+						customTitle ||
+						(type === "new-workshop"
+							? defaultWorkshopTitle
+							: defaultReminderTitle);
+
+					finalContent =
+						customContent ||
+						(type === "new-workshop"
+							? defaultText?.message || ""
+							: defaultReminderContent);
 
 					html = masterClassNewsletterTemplate({
 						type,
-						workshop: selectedWorkshop,
+						workshop: workshopForEmail,
 						language,
 						reminderDate,
 
 						subscriberId: subscriber.id,
 
-						customMessage: customContent || defaultText?.message || "",
+						customTitle: finalTitle,
+						customMessage: finalContent,
 					});
 
 					if (customSubject) {
 						subject = customSubject;
-					} else if (type === "new-master-class") {
+					} else if (type === "new-workshop") {
 						subject =
 							defaultText?.subject ||
 							(language === "ua"
 								? `Новий майстер-клас: ${selectedWorkshop.title.ua}`
-								: `New Master Class: ${selectedWorkshop.title.en}`);
+								: `New Workshop: ${selectedWorkshop.title.en}`);
 					} else {
 						subject =
 							language === "ua"
@@ -550,9 +776,39 @@ export default {
 					}
 				}
 
+				// ---------------------------------------
+				// OTHER / CUSTOM NEWSLETTER
+				// ---------------------------------------
+				if (type === "other") {
+					subject = customSubject;
+					finalTitle = customTitle;
+					finalContent = customContent;
+
+					html = newsletterTemplate({
+						title: finalTitle,
+						message: finalContent,
+
+						buttonText:
+							language === "ua"
+								? "Відвідати LittleFootCraft"
+								: "Visit LittleFootCraft",
+
+						buttonUrl: `https://littlefootcraft.art/${language}`,
+
+						language,
+						subscriberId: subscriber.id,
+						products: [],
+					});
+				}
+
 				if (!subject || !html) {
 					throw new Error("Newsletter subject or HTML could not be generated.");
 				}
+				finalContentByLanguage[language] = {
+					subject,
+					title: finalTitle,
+					content: finalContent,
+				};
 
 				const resendResponse = await fetch("https://api.resend.com/emails", {
 					method: "POST",
@@ -579,6 +835,7 @@ export default {
 
 				results.push({
 					email: subscriber.email,
+					language,
 					success: resendResponse.ok,
 					status: resendResponse.status,
 					result: resendData,
@@ -592,9 +849,84 @@ export default {
 
 			const failed = results.length - successful;
 
+			let savedCampaignId = campaignId;
+			let sendId = null;
+
+			// ---------------------------------------
+			// SAVE REAL CAMPAIGN + SEND
+			// ---------------------------------------
+			if (!isTest) {
+				const sendStatus =
+					failed === 0 ? "sent" : successful > 0 ? "partial" : "failed";
+
+				// ---------------------------------------
+				// CREATE CAMPAIGN IF NEW
+				// ---------------------------------------
+				if (!savedCampaignId) {
+					const { data: newCampaign, error: campaignError } = await supabase
+						.from("newsletter_campaigns")
+						.insert({
+							campaign_name: String(campaignName).trim(),
+						})
+						.select("id")
+						.single();
+
+					if (campaignError) {
+						throw campaignError;
+					}
+
+					savedCampaignId = newCampaign.id;
+				}
+
+				// ---------------------------------------
+				// SAVE INDIVIDUAL NEWSLETTER SEND
+				// ---------------------------------------
+				const { data: newsletterSend, error: sendError } = await supabase
+					.from("newsletter_sends")
+					.insert({
+						campaign_id: savedCampaignId,
+
+						type,
+						audience,
+						interests,
+
+						skus,
+						item_id: itemId,
+
+						subject_en: finalContentByLanguage.en.subject || null,
+						title_en: finalContentByLanguage.en.title || null,
+						content_en: finalContentByLanguage.en.content || null,
+
+						subject_ua: finalContentByLanguage.ua.subject || null,
+						title_ua: finalContentByLanguage.ua.title || null,
+						content_ua: finalContentByLanguage.ua.content || null,
+
+						status: sendStatus,
+
+						total_recipients: subscribers.length,
+						successful,
+						failed,
+
+						results,
+					})
+					.select("id")
+					.single();
+
+				if (sendError) {
+					throw sendError;
+				}
+
+				sendId = newsletterSend.id;
+			}
+
 			return new Response(
 				JSON.stringify({
 					success: failed === 0,
+
+					isTest,
+
+					campaignId: savedCampaignId,
+					sendId,
 
 					type,
 					audience,

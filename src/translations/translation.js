@@ -146,7 +146,7 @@ export const productPageEN = {
 		sku: "SKU",
 		clasp: "Clasp",
 	},
-	addToCart: "Request to order",
+	addToCart: "Add to cart",
 	related: "You may also like",
 	recentlyViewed: "Recently viewed",
 	viewCart: "View Cart",
@@ -166,7 +166,7 @@ export const productPageUA = {
 		sku: "Артикул",
 		clasp: "Застібка",
 	},
-	addToCart: "Замовити",
+	addToCart: "Додати до кошика",
 	related: "Вам також може сподобатись",
 	recentlyViewed: "Раніше переглянуті товари",
 	viewCart: "Перейти до кошика",
@@ -760,7 +760,6 @@ export const newsletterEN = {
 	emailUnsubscribeButton: "Unsubscribe",
 	interests: {
 		workshops: "Workshops",
-		"master-classes": "Master classes",
 		sales: "Sales",
 	},
 };
@@ -777,8 +776,7 @@ export const newsletterUA = {
 		"Ви отримали цей лист, тому що підписалися на новини LittleFootCraft.",
 	emailUnsubscribeButton: "Відписатися",
 	interests: {
-		workshops: "Воркшопи",
-		"master-classes": "Майстер-класи",
+		workshops: "Майстер-класи",
 		sales: "Знижки та пропозиції",
 	},
 };

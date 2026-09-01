@@ -52,7 +52,12 @@
 @use "./components/book-workshop-popup";
 @use "./components/workshop-booking-modal";
 @use "./components/order-success-modal";
+
+// CRM COMPONENTS
 @use "./components/crm/crm-send-modal";
+@use "./components/crm/crm-delete-modal";
+@use "./components/crm/crm-select";
+@use "./components/crm/crm-flag-badge";
 
 // CRM
 @use "./layout/crm/crm-layout";
@@ -62,3 +67,11 @@
 @use "../styles/pages/crm/crm-subscribers";
 @use "../styles/pages/crm/crm-campaigns";
 @use "../styles/pages/crm/crm-new-newsletter";
+@use "../styles/pages/crm/crm-send-details";
+@use "../styles/pages/crm/crm-inventory";
+@use "../styles/pages/crm/crm-inventory-details";
+@use "../styles/pages/crm/crm-orders";
+@use "../styles/pages/crm/crm-order-details";
+@use "../styles/pages/crm/crm-artists";
+@use "../styles/pages/crm/crm-artist-form";
+@use "../styles/pages/crm/crm-artist-details";

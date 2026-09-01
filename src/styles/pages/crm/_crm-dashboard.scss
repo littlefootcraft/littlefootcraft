@@ -1,64 +1,6 @@
 @use "../../base/variables" as *;
 @use "../../abstracts/mixins" as *;
 
-// // ========================================
-// // GENERAL CRM PAGE
-// // ========================================
-
-// .crm-page {
-// 	width: 100%;
-// 	max-width: 1200px;
-// 	margin-inline: auto;
-
-// 	&__header {
-// 		display: flex;
-// 		align-items: flex-start;
-// 		justify-content: space-between;
-// 		gap: 24px;
-// 	}
-
-// 	&__eyebrow {
-// 		margin: 0 0 8px;
-
-// 		font-size: 0.75rem;
-// 		font-weight: 600;
-// 		letter-spacing: $category-letter-spacing;
-// 		text-transform: uppercase;
-
-// 		color: $gold-primary;
-// 	}
-
-// 	&__title {
-// 		margin: 0;
-
-// 		font-size: 2rem;
-// 		font-weight: 600;
-// 		line-height: 1.2;
-
-// 		color: $primary-text;
-// 	}
-
-// 	&__description {
-// 		margin: 10px 0 0;
-// 		max-width: 650px;
-
-// 		font-size: 0.95rem;
-// 		line-height: 1.6;
-
-// 		color: $secondary-text;
-// 	}
-
-// 	@include mobile {
-// 		&__header {
-// 			flex-direction: column;
-// 		}
-
-// 		&__title {
-// 			font-size: 1.7rem;
-// 		}
-// 	}
-// }
-
 // ========================================
 // CRM DASHBOARD
 // ========================================
@@ -77,6 +19,7 @@
 		padding: 28px;
 
 		background-color: $white;
+
 		border: 1px solid $card-borders;
 		border-radius: $border-radius;
 
@@ -99,8 +42,9 @@
 	&__card-label {
 		margin: 0 0 12px;
 
-		font-size: 0.7rem;
+		font-size: 1rem;
 		font-weight: 600;
+		line-height: 1.4;
 		letter-spacing: $category-letter-spacing;
 		text-transform: uppercase;
 
@@ -110,7 +54,7 @@
 	&__card-title {
 		margin: 0;
 
-		font-size: 1.15rem;
+		font-size: 1.25rem;
 		font-weight: 600;
 		line-height: 1.4;
 
@@ -120,11 +64,13 @@
 	&__card-text {
 		margin: 12px 0 0;
 
-		font-size: 0.9rem;
+		font-size: 1rem;
 		line-height: 1.65;
 
 		color: $secondary-text;
 	}
+
+	// RESPONSIVE
 
 	@include tablet {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
