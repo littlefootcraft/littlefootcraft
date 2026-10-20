@@ -49,7 +49,7 @@
 		color: $primary-text;
 		font-family: var(--title-font);
 		font-size: var(--login-title-size);
-		line-height: 2rem;
+		line-height: 2.2rem;
 		font-weight: 700;
 		text-align: center;
 	}
@@ -145,14 +145,27 @@
 	}
 
 	&__continue-link {
-		color: $light-gray-text;
-		font-size: 0.875rem;
-		cursor: pointer;
+		margin-bottom: 12px;
+		color: $secondary-text;
+		font-size: 1rem;
+		font-weight: 500;
+		text-decoration: underline;
+		text-decoration-color: rgba($secondary-text, 0.4);
+		text-underline-offset: 5px;
+		text-decoration-thickness: 1px;
+		transition:
+			color 0.2s ease,
+			text-decoration-color 0.2s ease;
 
 		&:hover {
-			text-decoration: underline;
-			text-underline-offset: 4px;
-			text-decoration-thickness: 1px;
+			color: $gold-accent;
+			text-decoration-color: $gold-accent;
+		}
+
+		&:focus-visible {
+			outline: 2px solid $gold-accent;
+			outline-offset: 4px;
+			border-radius: 2px;
 		}
 	}
 
@@ -160,6 +173,18 @@
 		&__block {
 			margin-block: 44px;
 			padding: 32px 22px;
+		}
+	}
+
+	&__forgot-password-link {
+		color: $light-gray-text;
+		font-size: 1rem;
+		cursor: pointer;
+
+		&:hover {
+			text-decoration: underline;
+			text-underline-offset: 4px;
+			text-decoration-thickness: 1px;
 		}
 	}
 }
