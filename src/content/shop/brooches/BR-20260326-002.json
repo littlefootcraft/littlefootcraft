@@ -50,6 +50,10 @@
 	},
 	"price": 100,
 	"oldPrice": 150,
+	"shipping": {
+		"weight": 85,
+		"format": "packet"
+	},
 
 	"badges": {
 		"isTop": false,

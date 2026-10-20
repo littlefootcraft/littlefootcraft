@@ -39,5 +39,13 @@
 	"emptyState": {
 		"en": "No treasures match your selected filters.",
 		"ua": "Жоден скарб не відповідає обраним фільтрам."
+	},
+	"loadingState": {
+		"en": "Loading magical treasures...",
+		"ua": "Завантажуємо чарівні скарби..."
+	},
+	"errorState": {
+		"en": "We couldn't load our treasures. Please try again later.",
+		"ua": "Не вдалося завантажити наші скарби. Будь ласка, спробуйте пізніше."
 	}
 }

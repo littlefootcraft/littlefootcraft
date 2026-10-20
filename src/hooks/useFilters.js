@@ -22,34 +22,41 @@ export const useFilters = () => {
 	// Toggle one filter value on or off
 	const toggleFilter = useCallback(
 		(key, value) => {
-			const params = new URLSearchParams(searchParams);
-			const current = params.getAll(key);
+			if (!FILTERS_KEYS.includes(key)) return;
 
-			// Remove page on filter change
-			params.delete("page"); // reset to page 1 on filter change
+			setSearchParams((previous) => {
+				const params = new URLSearchParams(previous);
+				const current = params.getAll(key);
 
-			if (current.includes(value)) {
-				// It's already active → remove it
-				params.delete(key);
-				current
-					.filter((v) => v !== value)
-					.forEach((v) => params.append(key, v));
-			} else {
-				// It's not active → add it
-				params.append(key, value);
-			}
+				params.delete("page");
 
-			setSearchParams(params);
+				if (current.includes(value)) {
+					params.delete(key);
+
+					current
+						.filter((v) => v !== value)
+						.forEach((v) => params.append(key, v));
+				} else {
+					params.append(key, value);
+				}
+
+				return params;
+			});
 		},
-		[searchParams, setSearchParams],
+		[setSearchParams],
 	);
 
 	// Remove all filters and sorting at once
 	const clearFilters = useCallback(() => {
-		const params = new URLSearchParams();
-		params.delete("page");
-		setSearchParams(params);
-	}, [searchParams, setSearchParams]);
+		setSearchParams((previous) => {
+			const params = new URLSearchParams(previous);
+
+			FILTERS_KEYS.forEach((key) => params.delete(key));
+			params.delete("page");
+
+			return params;
+		});
+	}, [setSearchParams]);
 
 	// True if at least one filter has a value selected
 	const hasActiveFilters = FILTERS_KEYS.some(
@@ -62,29 +69,40 @@ export const useFilters = () => {
 
 	const setQuery = useCallback(
 		(value) => {
-			const params = new URLSearchParams(searchParams);
+			setSearchParams((previous) => {
+				const params = new URLSearchParams(previous);
 
-			if (value.trim()) {
-				params.set("search", value);
-			} else {
-				params.delete("search");
-			}
+				if (value.trim()) {
+					params.set("search", value);
+				} else {
+					params.delete("search");
+				}
 
-			params.delete("page");
-			setSearchParams(params);
+				params.delete("page");
+
+				return params;
+			});
 		},
-		[searchParams, setSearchParams],
+		[setSearchParams],
 	);
 
 	// Write a new sort value into the URL
 	const setSort = useCallback(
 		(value) => {
-			const params = new URLSearchParams(searchParams);
-			params.set("sort", value);
-			params.delete("page"); // reset to page 1 on sort change
-			setSearchParams(params);
+			setSearchParams((previous) => {
+				const params = new URLSearchParams(previous);
+
+				if (value === "newest") {
+					params.delete("sort");
+				} else {
+					params.set("sort", value);
+				}
+
+				params.delete("page");
+				return params;
+			});
 		},
-		[searchParams, setSearchParams],
+		[setSearchParams],
 	);
 
 	return {

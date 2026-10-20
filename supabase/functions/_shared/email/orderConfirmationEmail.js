@@ -1,4 +1,4 @@
-import { emailLayout } from "../_shared/email/layout.js";
+import { emailLayout } from "./layout.js";
 
 const formatMoney = (value) => {
 	return new Intl.NumberFormat("en-US", {
@@ -22,13 +22,25 @@ const getImage = (item) => {
 		return "";
 	}
 
-	return item.photo[0]?.src || "";
+	const imageSrc = item.photo[0]?.src || "";
+
+	if (!imageSrc) {
+		return "";
+	}
+
+	if (imageSrc.startsWith("http")) {
+		return imageSrc;
+	}
+
+	return `https://littlefootcraft.art${imageSrc.startsWith("/") ? "" : "/"}${imageSrc}`;
 };
 
 export const createOrderConfirmationEmail = ({
 	cartProducts,
 	currentLang,
 	totalWithExtras,
+	shippingTotal = 0,
+	shippingDetails = [],
 	orderNumber,
 	giftPostcard = false,
 	giftMessage = "",
@@ -64,6 +76,7 @@ export const createOrderConfirmationEmail = ({
 					"Дякуємо, що підтримуєте ручну роботу та маленький творчий бізнес.",
 				signature: "З любов’ю,",
 				team: "LittleFootCraft",
+				shipping: "Доставка",
 			}
 		: {
 				title: "We received your order request",
@@ -89,6 +102,7 @@ export const createOrderConfirmationEmail = ({
 					"Thank you for supporting handmade art and a small creative business.",
 				signature: "With love,",
 				team: "LittleFootCraft",
+				shipping: "Shipping",
 			};
 
 	const itemsHtml = cartProducts
@@ -218,6 +232,7 @@ export const createOrderConfirmationEmail = ({
 				background: #faf9f6;
 				border: 1px solid rgba(212, 175, 55, 0.25);
 				border-radius: 12px;
+        text-align: center;
 			"
 		>
 			<div
@@ -295,100 +310,140 @@ export const createOrderConfirmationEmail = ({
 			${itemsHtml}
 		</table>
 
-<table
-	width="100%"
-	cellpadding="0"
-	cellspacing="0"
-	role="presentation"
-	style="
-		margin-top: 24px;
-		font-size: 15px;
-		color: #4a5568;
-	"
->
-	<tr>
-		<td style="padding: 6px 0;">
-			${currentLang === "ua" ? "Товари" : "Items"}
-		</td>
-
-		<td
+		<table
+			width="100%"
+			cellpadding="0"
+			cellspacing="0"
+			role="presentation"
 			style="
-				padding: 6px 0;
-				text-align: right;
+				margin-top: 24px;
+				margin-bottom: 24px;
+				font-size: 15px;
+				color: #4a5568;
 			"
 		>
-			€${itemsSubtotal.toFixed(2)}
-		</td>
-	</tr>
+			<tr>
+				<td style="padding: 6px 0;">
+					${text.subtotal}
+				</td>
 
-${
-	giftPostcard
-		? `
-			<div
-				style="
-					margin-top: 22px;
-					padding: 16px 18px;
-					background: rgba(79, 122, 93, 0.08);
-					border: 1px solid rgba(79, 122, 93, 0.18);
-					border-radius: 10px;
-				"
-			>
-				<strong style="color: #4f7a5d;">
-					${
-						currentLang === "ua"
-							? "Подарункова листівка додана"
-							: "Gift postcard included"
-					}
-				</strong>
+				<td
+					style="
+						padding: 6px 0;
+						text-align: right;
+					"
+				>
+					${formatMoney(itemsSubtotal)}
+				</td>
+			</tr>
 
-				${
-					giftMessage
-						? `
-							<p
+			${
+				giftPostcard
+					? `
+						<tr>
+							<td style="padding: 6px 0;">
+								${text.giftPostcard}
+							</td>
+
+							<td
 								style="
-									margin: 8px 0 0;
-									color: #4a5568;
-									line-height: 1.6;
+									padding: 6px 0;
+									text-align: right;
 								"
 							>
-								${currentLang === "ua" ? "Ваш текст:" : "Your message:"}
-								“${giftMessage}”
-							</p>
+								${formatMoney(giftPostcardPrice)}
+							</td>
+						</tr>
+					`
+					: ""
+			}
+
+			${
+				shippingDetails.length > 0
+					? shippingDetails
+							.map(
+								(shipment) => `
+									<tr>
+										<td
+											style="
+												padding: 6px 0;
+												vertical-align: top;
+											"
+										>
+											${text.shipping}
+
+											<div
+												style="
+													margin-top: 2px;
+													font-size: 13px;
+													color: #718096;
+												"
+											>
+												${shipment.carrier || ""}
+												${shipment.service ? ` · ${shipment.service}` : ""}
+											</div>
+										</td>
+
+										<td
+											style="
+												padding: 6px 0;
+												text-align: right;
+												vertical-align: top;
+											"
+										>
+											${formatMoney(shipment.amount)}
+										</td>
+									</tr>
+								`,
+							)
+							.join("")
+					: Number(shippingTotal) > 0
+						? `
+							<tr>
+								<td style="padding: 6px 0;">
+									${text.shipping}
+								</td>
+
+								<td
+									style="
+										padding: 6px 0;
+										text-align: right;
+									"
+								>
+									${formatMoney(shippingTotal)}
+								</td>
+							</tr>
 						`
 						: ""
-				}
-			</div>
-		`
-		: ""
-}
+			}
 
-	<tr>
-		<td
-			style="
-				padding: 14px 0 0;
-				border-top: 1px solid rgba(212, 175, 55, 0.3);
-				color: #1a2b4c;
-				font-size: 18px;
-				font-weight: 700;
-			"
-		>
-			${currentLang === "ua" ? "Разом" : "Total"}
-		</td>
+			<tr>
+				<td
+					style="
+						padding: 14px 0 0;
+						border-top: 1px solid rgba(212, 175, 55, 0.3);
+						color: #1a2b4c;
+						font-size: 18px;
+						font-weight: 700;
+					"
+				>
+					${text.total}
+				</td>
 
-		<td
-			style="
-				padding: 14px 0 0;
-				border-top: 1px solid rgba(212, 175, 55, 0.3);
-				text-align: right;
-				color: #1a2b4c;
-				font-size: 18px;
-				font-weight: 700;
-			"
-		>
-			€${Number(totalWithExtras).toFixed(2)}
-		</td>
-	</tr>
-</table>
+				<td
+					style="
+						padding: 14px 0 0;
+						border-top: 1px solid rgba(212, 175, 55, 0.3);
+						text-align: right;
+						color: #1a2b4c;
+						font-size: 18px;
+						font-weight: 700;
+					"
+				>
+					${formatMoney(totalWithExtras)}
+				</td>
+			</tr>
+		</table>
 
 		${
 			giftPostcard

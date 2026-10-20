@@ -1,15 +1,45 @@
 // layouts/ShopLayout.jsx
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { useMemo, useState } from "react";
+
+// COMPONENTS
 import { PageTopTitle } from "../components/PageTopTitle";
-// import { useCatalogPagination } from "../hooks/useCatalogPagination";
-// import { PaginationBar } from "../components/Pagination";
-import { useProducts } from "../context/ProductsContext";
 import { ShopToolbar } from "../components/ShopToolbar";
 import { FiltersDrawer } from "../components/FiltersDrawer";
+
+// HOKS
 import { useFilters } from "../hooks/useFilters";
+
+// CONSTANS
 import { COLOR_BY_CODE } from "../constants/color_shades_system";
-import { useLanguage } from "../context/LanguageContext";
+
+// CONTEXT
+import { useProducts, useProductsStatus } from "../context/ProductsContext";
+
+// Get date out of SKU
+const getProductDate = (sku = "") => {
+	const datePart = sku.split("-")[1];
+
+	if (!/^\d{8}$/.test(datePart ?? "")) return 0;
+
+	const year = Number(datePart.slice(0, 4));
+	const month = Number(datePart.slice(4, 6));
+	const day = Number(datePart.slice(6, 8));
+
+	const timestamp = Date.UTC(year, month - 1, day);
+	const date = new Date(timestamp);
+
+	// Reject invalid dates rather than allowing JS to normalize them.
+	if (
+		date.getUTCFullYear() !== year ||
+		date.getUTCMonth() !== month - 1 ||
+		date.getUTCDate() !== day
+	) {
+		return 0;
+	}
+
+	return timestamp;
+};
 
 const normalizeSku = (value = "") =>
 	String(value).toLowerCase().replaceAll("-", "").trim();
@@ -62,10 +92,11 @@ function applyFilters(products, activeFilters) {
 const ShopLayout = () => {
 	// 1. Raw products from context
 	const products = useProducts();
-	const { currentLang } = useLanguage();
+	const { loading, error } = useProductsStatus();
 
-	// Display count
-	const [displayCount, setDisplayCount] = useState(null);
+	const { pathname } = useLocation();
+
+	const isSalePage = pathname.endsWith("/sale");
 
 	const {
 		activeFilters,
@@ -114,7 +145,15 @@ const ShopLayout = () => {
 		const sorted = [...filteredProducts]; // copy — never mutate the original
 		switch (sortKey) {
 			case "newest":
-				sorted.sort((a, b) => new Date(b.date) - new Date(a.date));
+				sorted.sort((a, b) => {
+					const dateDifference = getProductDate(b.sku) - getProductDate(a.sku);
+
+					if (dateDifference !== 0) {
+						return dateDifference;
+					}
+
+					return String(b.sku ?? "").localeCompare(String(a.sku ?? ""));
+				});
 				break;
 			case "price-asc":
 				sorted.sort((a, b) => a.price - b.price);
@@ -128,6 +167,17 @@ const ShopLayout = () => {
 		return sorted;
 	}, [filteredProducts, sortKey]);
 
+	// Step 4: Select products for the current page
+	const pageProducts = useMemo(() => {
+		if (!isSalePage) return sortedProducts;
+
+		return sortedProducts.filter(
+			(product) =>
+				product.oldPrice != null &&
+				Number(product.oldPrice) > Number(product.price),
+		);
+	}, [sortedProducts, isSalePage]);
+
 	return (
 		<div className="shop-layout">
 			{/* 1. title */}
@@ -139,12 +189,10 @@ const ShopLayout = () => {
 			{/* 2. toolbar */}
 			<ShopToolbar
 				query={query}
-				onQueryChange={setQuery}
 				sortKey={sortKey}
 				onSortChange={setSort}
 				onFiltersOpen={() => setIsFiltersOpen(true)}
-				count={displayCount ?? sortedProducts.length}
-				currentLang={currentLang}
+				count={loading || error ? null : pageProducts.length}
 				activeFilters={activeFilters}
 				toggleFilter={toggleFilter}
 				clearFilters={clearFilters}
@@ -165,9 +213,7 @@ const ShopLayout = () => {
 			<Outlet
 				context={{
 					setPageTitle,
-					sortedProducts,
-					setDisplayCount,
-					// To let child pages read filter state if needed
+					sortedProducts: pageProducts,
 					activeFilters,
 					toggleFilter,
 					clearFilters,

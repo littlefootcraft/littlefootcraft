@@ -1037,7 +1037,7 @@ collections:
         hint:
           "SKU format: BRMMDD-001. BR = Brooch. Example: BR0326-004 means brooch
           made on March 26, item number 4."
-        pattern: ["^[A-Z]{2}[0-9]{4}-[0-9]{3}$", "Example: BR0326-001"]
+        pattern: ["^[A-Z]{2}-[0-9]{8}-[0-9]{3}$", "Example: BR-20260326-001"]
       - label: "SEO"
         name: "seo"
         widget: "object"
@@ -1316,7 +1316,7 @@ collections:
         hint:
           "SKU format: PAMMDD-001. PA = Painting. Example: PA0326-004 means
           painting made on March 26, item number 4."
-        pattern: ["^[A-Z]{2}[0-9]{4}-[0-9]{3}$", "Example: BR0326-001"]
+        pattern: ["^[A-Z]{2}-[0-9]{8}-[0-9]{3}$", "Example: BR-20260326-001"]
       - label: "SEO"
         name: "seo"
         widget: "object"
@@ -1551,7 +1551,7 @@ collections:
         hint:
           "SKU format: NEMMDD-001. NE = Necklace. Example: NE0326-004 means
           necklace made on March 26, item number 4."
-        pattern: ["^[A-Z]{2}[0-9]{4}-[0-9]{3}$", "Example: BR0326-001"]
+        pattern: ["^[A-Z]{2}-[0-9]{8}-[0-9]{3}$", "Example: B-20260326-001"]
       - label: "SEO"
         name: "seo"
         widget: "object"
@@ -1785,7 +1785,7 @@ collections:
         hint:
           "SKU format: POMMDD-001. PO = Postcard. Example: PO0326-004 means
           postcard made on March 26, item number 4."
-        pattern: ["^[A-Z]{2}[0-9]{4}-[0-9]{3}$", "Example: BR0326-001"]
+        pattern: ["^[A-Z]{2}-[0-9]{8}-[0-9]{3}$", "Example: B-20260326-001"]
       - label: "SEO"
         name: "seo"
         widget: "object"
@@ -2019,7 +2019,7 @@ collections:
         hint:
           "SKU format: BAMMDD-001. BA = Bag. Example: BA0326-004 means bag made
           on March 26, item number 4."
-        pattern: ["^[A-Z]{2}[0-9]{4}-[0-9]{3}$", "Example: BR0326-001"]
+        pattern: ["^[A-Z]{2}-[0-9]{8}-[0-9]{3}$", "Example: B-20260326-001"]
       - label: "SEO"
         name: "seo"
         widget: "object"
@@ -2625,3 +2625,143 @@ collections:
             fields:
               - { label: "English", name: "en", widget: "string" }
               - { label: "Ukrainian", name: "ua", widget: "string" }
+
+  #SHIPPING
+  - name: "shipping"
+    label: "Shipping Settings"
+    files:
+      #AN POST ZONES
+      - file: "src/data/shipping/anPostZones.json"
+        name: "an_post_zones"
+        label: "An Post Shipping Zones"
+        format: "json"
+        fields:
+          - label: "Countries"
+            name: "countries"
+            widget: "list"
+            summary:
+              "{{fields.name}} ({{fields.countryCode}}) — Zone {{fields.zone}}"
+            fields:
+              - label: "Country Name"
+                name: "name"
+                widget: "string"
+
+              - label: "Country Code"
+                name: "countryCode"
+                widget: "string"
+                pattern:
+                  - "^[A-Z]{2}$"
+                  - "Enter a two-letter country code."
+
+              - label: "Shipping Zone"
+                name: "zone"
+                widget: "select"
+                options:
+                  - { label: "Zone 1", value: 1 }
+                  - { label: "Zone 2", value: 2 }
+                  - { label: "Zone 3", value: 3 }
+                  - { label: "Zone 4", value: 4 }
+                  - { label: "Zone 5", value: 5 }
+      #AN POST EXPRESS RATES
+      - file: "src/data/shipping/anPostExpressRates.json"
+        name: "an_post_express_rates"
+        label: "An Post Express Rates"
+        format: "json"
+        fields:
+          - label: "Zone 2"
+            name: "2"
+            widget: "object"
+            fields: &express_rate_fields
+              - label: "Packet Rates"
+                name: "packet"
+                widget: "list"
+                summary: "Up to {{fields.maxWeight}}g — €{{fields.price}}"
+                fields:
+                  - label: "Maximum Weight (g)"
+                    name: "maxWeight"
+                    widget: "number"
+                    value_type: "int"
+                    min: 1
+
+                  - label: "Price (€)"
+                    name: "price"
+                    widget: "number"
+                    value_type: "float"
+                    min: 0
+                    step: 0.01
+
+              - label: "Parcel Rates"
+                name: "parcel"
+                widget: "list"
+                required: false
+                summary: "Up to {{fields.maxWeight}}g — €{{fields.price}}"
+                fields:
+                  - label: "Maximum Weight (g)"
+                    name: "maxWeight"
+                    widget: "number"
+                    value_type: "int"
+                    min: 1
+
+                  - label: "Price (€)"
+                    name: "price"
+                    widget: "number"
+                    value_type: "float"
+                    min: 0
+                    step: 0.01
+
+          - label: "Zone 3"
+            name: "3"
+            widget: "object"
+            fields: *express_rate_fields
+
+          - label: "Zone 4"
+            name: "4"
+            widget: "object"
+            fields: *express_rate_fields
+
+          - label: "Zone 5"
+            name: "5"
+            widget: "object"
+            fields: *express_rate_fields
+
+      #AN POST REGISTER RATES
+      - file: "src/data/shipping/anPostRegisteredRates.json"
+        name: "an_post_registered_rates"
+        label: "An Post Registered Rates"
+        format: "json"
+        fields:
+          - label: "Packet Rates"
+            name: "packet"
+            widget: "list"
+            summary: "Up to {{fields.maxWeight}}g — €{{fields.price}}"
+            fields:
+              - label: "Maximum Weight (g)"
+                name: "maxWeight"
+                widget: "number"
+                value_type: "int"
+                min: 1
+
+              - label: "Price (€)"
+                name: "price"
+                widget: "number"
+                value_type: "float"
+                min: 0
+                step: 0.01
+
+          - label: "Parcel Rates"
+            name: "parcel"
+            widget: "list"
+            summary: "Up to {{fields.maxWeight}}g — €{{fields.price}}"
+            fields:
+              - label: "Maximum Weight (g)"
+                name: "maxWeight"
+                widget: "number"
+                value_type: "int"
+                min: 1
+
+              - label: "Price (€)"
+                name: "price"
+                widget: "number"
+                value_type: "float"
+                min: 0
+                step: 0.01

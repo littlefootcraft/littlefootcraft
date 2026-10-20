@@ -1,5 +1,5 @@
 //main.jsx
-import { StrictMode } from "react";
+import { StrictMode, lazy, Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import {
 	createBrowserRouter,
@@ -8,122 +8,178 @@ import {
 } from "react-router-dom";
 
 import "./styles/index.scss";
+// SHARED LAYOUTS
 import { Layout } from "./layouts/Layout";
-import HomePage from "./pages/HomePage";
-import AboutPage from "./pages/AboutPage";
-import ShopPage from "./pages/ShopPage";
-import FAQPage from "./pages/FAQPage";
-import ProductPage from "./pages/ProductPage";
-// import ContactPage from "./pages/ContactPage";
-import WorkshopsPage from "./pages/WorkshopsPage";
 import ShopLayout from "./layouts/ShopLayout";
-import WishlistPage from "./pages/WishlistPage";
-import LoginPage from "./pages/LoginPage";
-import RegistrationPage from "./pages/RegistrationPage";
-import CartPage from "./pages/CartPage";
-import SalePage from "./pages/SalePage";
-import OrderPage from "./pages/OrderPage";
-import NotFoundPage from "./pages/NotFoundPage";
-import ServerErrorPage from "./pages/ServerErrorPage";
-import NetworkErrorPage from "./pages/NetworkErrorPage";
-import UnsubscribePage from "./pages/UnsubscribePage";
-import CancelWorkshopPage from "./pages/CancelWorkshopPage";
 
 // PROVIDERS
 import { WorkshopsProvider } from "./context/WorkshopsContext";
 import { ProductsProvider } from "./context/ProductsContext";
-
 // CRM AUTH
-import { CrmAuthProvider } from "./context/CrmAuthContext";
+// import { CrmAuthProvider } from "./context/CrmAuthContext";
 
-// CRM
-import CrmLayout from "./layouts/CrmLayout";
+// CRM AUTH AND LAYOUT
+// import CrmLayout from "./layouts/CrmLayout";
+// import ProtectedCrmRoute from "./components/crm/ProtectedCrmRoute";
+const CrmRootLayout = lazy(() => import("./layouts/CrmRootLayout"));
+const CrmLayout = lazy(() => import("./layouts/CrmLayout"));
+const ProtectedCrmRoute = lazy(
+	() => import("./components/crm/ProtectedCrmRoute"),
+);
 
-import CrmLoginPage from "./pages/crm/CrmLoginPage";
+// STOREFRONT PAGES
+const HomePage = lazy(() => import("./pages/HomePage"));
+const AboutPage = lazy(() => import("./pages/AboutPage"));
+const ShopPage = lazy(() => import("./pages/ShopPage"));
+const FAQPage = lazy(() => import("./pages/FAQPage"));
+const ProductPage = lazy(() => import("./pages/ProductPage"));
+const WorkshopsPage = lazy(() => import("./pages/WorkshopsPage"));
+const WishlistPage = lazy(() => import("./pages/WishlistPage"));
+const LoginPage = lazy(() => import("./pages/LoginPage"));
+const RegistrationPage = lazy(() => import("./pages/RegistrationPage"));
+const CartPage = lazy(() => import("./pages/CartPage"));
+const SalePage = lazy(() => import("./pages/SalePage"));
+const OrderPage = lazy(() => import("./pages/OrderPage"));
+import NotFoundPage from "./pages/NotFoundPage";
+const ServerErrorPage = lazy(() => import("./pages/ServerErrorPage"));
+const NetworkErrorPage = lazy(() => import("./pages/NetworkErrorPage"));
+const UnsubscribePage = lazy(() => import("./pages/UnsubscribePage"));
+const CancelWorkshopPage = lazy(() => import("./pages/CancelWorkshopPage"));
 
-import CrmDashboardPage from "./pages/crm/CrmDashboardPage";
-import CrmNewsletterPage from "./pages/crm/newsletter/CrmNewsletterPage";
-import CrmSubscribersPage from "./pages/crm/newsletter/CrmSubscribersPage";
-import ProtectedCrmRoute from "./components/crm/ProtectedCrmRoute";
-import CrmCampaignsPage from "./pages/crm/campaigns/CrmCampaignsPage";
-import CrmNewNewsletterPage from "./pages/crm/newsletter/CrmNewNewsletterPage";
-import CrmSendDetailsPage from "./pages/crm/sends/CrmSendDetailsPage";
-import CrmInventoryPage from "./pages/crm/catalog/inventory/CrmInventoryPage";
-import CrmInventoryDetailsPage from "./pages/crm/catalog/inventory/CrmInventoryDetailsPage";
-import CrmOrdersPage from "./pages/crm/orders/CrmOrdersPage";
-import CrmOrderDetailsPage from "./pages/crm/orders/CrmOrderDetailsPage";
-import CrmArtistsPage from "./pages/crm/catalog/artists/CrmArtistsPage";
-import CrmArtistFormPage from "./pages/crm/catalog/artists/CrmArtistFormPage";
-import CrmArtistDetailsPage from "./pages/crm/catalog/artists/CrmArtistDetailsPage";
+// CRM PAGES
+const CrmLoginPage = lazy(() => import("./pages/crm/CrmLoginPage"));
+const CrmDashboardPage = lazy(() => import("./pages/crm/CrmDashboardPage"));
+
+const CrmNewsletterPage = lazy(
+	() => import("./pages/crm/newsletter/CrmNewsletterPage"),
+);
+const CrmSubscribersPage = lazy(
+	() => import("./pages/crm/newsletter/CrmSubscribersPage"),
+);
+const CrmCampaignsPage = lazy(
+	() => import("./pages/crm/campaigns/CrmCampaignsPage"),
+);
+const CrmNewNewsletterPage = lazy(
+	() => import("./pages/crm/newsletter/CrmNewNewsletterPage"),
+);
+const CrmSendDetailsPage = lazy(
+	() => import("./pages/crm/sends/CrmSendDetailsPage"),
+);
+const CrmInventoryPage = lazy(
+	() => import("./pages/crm/catalog/inventory/CrmInventoryPage"),
+);
+const CrmInventoryDetailsPage = lazy(
+	() => import("./pages/crm/catalog/inventory/CrmInventoryDetailsPage"),
+);
+const CrmActiveOrdersPage = lazy(
+	() => import("./pages/crm/orders/CrmActiveOrdersPage"),
+);
+const CrmOrderDetailsPage = lazy(
+	() => import("./pages/crm/orders/CrmOrderDetailsPage"),
+);
+const CrmArtistsPage = lazy(
+	() => import("./pages/crm/catalog/artists/CrmArtistsPage"),
+);
+const CrmArtistFormPage = lazy(
+	() => import("./pages/crm/catalog/artists/CrmArtistFormPage"),
+);
+const CrmArtistDetailsPage = lazy(
+	() => import("./pages/crm/catalog/artists/CrmArtistDetailsPage"),
+);
+const CrmCompletedOrdersPage = lazy(
+	() => import("./pages/crm/orders/CrmCompletedOrdersPage"),
+);
+const CrmCancelledOrdersPage = lazy(
+	() => import("./pages/crm/orders/CrmCancelledOrdersPage"),
+);
+const CrmArchivedOrdersPage = lazy(
+	() => import("./pages/crm/orders/CrmArchivedOrdersPage"),
+);
 
 const router = createBrowserRouter([
 	{
-		path: "/crm/login",
-		element: <CrmLoginPage />,
-	},
-	{
 		path: "/crm",
-		element: (
-			<ProtectedCrmRoute>
-				<CrmLayout />
-			</ProtectedCrmRoute>
-		),
+		element: <CrmRootLayout />,
 		children: [
-			{
-				index: true,
-				element: <CrmDashboardPage />,
-			},
-			{
-				path: "orders",
-				element: <CrmOrdersPage />,
-			},
-			{
-				path: "orders/:orderId",
-				element: <CrmOrderDetailsPage />,
-			},
-			{
-				path: "newsletter",
-				element: <CrmNewsletterPage />,
-			},
-			{
-				path: "newsletter/subscribers",
-				element: <CrmSubscribersPage />,
-			},
-			{
-				path: "newsletter/campaigns",
-				element: <CrmCampaignsPage />,
-			},
-			{
-				path: "newsletter/new",
-				element: <CrmNewNewsletterPage />,
-			},
-			{
-				path: "newsletter/sends/:sendId",
-				element: <CrmSendDetailsPage />,
-			},
-			{
-				path: "inventory",
-				element: <CrmInventoryPage />,
-			},
-			{
-				path: "inventory/:sku",
-				element: <CrmInventoryDetailsPage />,
-			},
+			{ path: "login", element: <CrmLoginPage /> },
 
 			{
-				path: "artists",
-				element: <CrmArtistsPage />,
-			},
-			{
-				path: "artists/new",
-				element: <CrmArtistFormPage />,
-			},
-			{
-				path: "artists/:artistId",
-				element: <CrmArtistDetailsPage />,
+				element: (
+					<ProtectedCrmRoute>
+						<CrmLayout />
+					</ProtectedCrmRoute>
+				),
+				children: [
+					{
+						index: true,
+						element: <CrmDashboardPage />,
+					},
+					{
+						path: "orders",
+						element: <CrmActiveOrdersPage />,
+					},
+					{
+						path: "orders/completed",
+						element: <CrmCompletedOrdersPage />,
+					},
+					{
+						path: "orders/cancelled",
+						element: <CrmCancelledOrdersPage />,
+					},
+					{
+						path: "orders/archive",
+						element: <CrmArchivedOrdersPage />,
+					},
+					{
+						path: "orders/:orderId",
+						element: <CrmOrderDetailsPage />,
+					},
+					{
+						path: "newsletter",
+						element: <CrmNewsletterPage />,
+					},
+					{
+						path: "newsletter/subscribers",
+						element: <CrmSubscribersPage />,
+					},
+					{
+						path: "newsletter/campaigns",
+						element: <CrmCampaignsPage />,
+					},
+					{
+						path: "newsletter/new",
+						element: <CrmNewNewsletterPage />,
+					},
+					{
+						path: "newsletter/sends/:sendId",
+						element: <CrmSendDetailsPage />,
+					},
+					{
+						path: "inventory",
+						element: <CrmInventoryPage />,
+					},
+					{
+						path: "inventory/:sku",
+						element: <CrmInventoryDetailsPage />,
+					},
+
+					{
+						path: "artists",
+						element: <CrmArtistsPage />,
+					},
+					{
+						path: "artists/new",
+						element: <CrmArtistFormPage />,
+					},
+					{
+						path: "artists/:artistId",
+						element: <CrmArtistDetailsPage />,
+					},
+				],
 			},
 		],
 	},
+
 	{
 		path: "/",
 		element: (
@@ -190,9 +246,9 @@ createRoot(document.getElementById("root")).render(
 	<StrictMode>
 		<ProductsProvider>
 			<WorkshopsProvider>
-				<CrmAuthProvider>
+				<Suspense fallback={<div role="status">Loading...</div>}>
 					<RouterProvider router={router} />
-				</CrmAuthProvider>
+				</Suspense>
 			</WorkshopsProvider>
 		</ProductsProvider>
 	</StrictMode>,

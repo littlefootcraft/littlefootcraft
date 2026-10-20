@@ -603,11 +603,10 @@ export const orderPageEN = {
 	// Summary
 	total: "Total",
 	shippingNote:
-		"Shipping price will be confirmed after we check the item location and destination country.",
+		"Shipping cost is an estimate and will be confirmed with your order confirmation.",
 
 	// Notice
-	paymentNotice:
-		"Payment is not taken now. The owner will confirm your order first.",
+	paymentNotice: "Payment is not taken now. We will confirm your order first.",
 
 	// Errors
 	nameError: "Please enter your name.",
@@ -660,11 +659,11 @@ export const orderPageUA = {
 	// Summary
 	total: "Разом",
 	shippingNote:
-		"Вартість доставки буде підтверджена після перевірки місця знаходження товару та країни доставки.",
+		"Вартість доставки є орієнтовною та буде підтверджена разом із підтвердженням замовлення.",
 
 	// Notice
 	paymentNotice:
-		"Оплата зараз не стягується. Власник магазину спочатку підтвердить ваше замовлення.",
+		"Оплата зараз не стягується. Ми спочатку підтвердимо ваше замовлення.",
 
 	// Errors
 	nameError: "Будь ласка, введіть ім’я.",

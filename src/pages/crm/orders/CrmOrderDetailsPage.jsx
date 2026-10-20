@@ -1,12 +1,39 @@
 // src/pages/crm/orders/CrmOrderDetailsPage.jsx
 
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import { ArrowLeft, Gift, Mail, MapPin, Package, Phone } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
+// ICONS
+import { Link, useParams } from "react-router-dom";
+import {
+	ArrowLeft,
+	Gift,
+	Mail,
+	MapPin,
+	Package,
+	Phone,
+	Archive,
+	ArchiveRestore,
+	CircleX,
+} from "lucide-react";
+
+// SUPABASE
 import { supabase } from "../../../lib/supabaseClient";
 
+import countries from "i18n-iso-countries";
+import enLocale from "i18n-iso-countries/langs/en.json";
+
+// COMPONENTS
+import { CrmConfirmModal } from "../../../components/crm/CrmConfirmModal";
 import { CrmFlagBadge } from "../../../components/crm/CrmFlagBadge";
+
+countries.registerLocale(enLocale);
+
+const getCountryName = (countryCode) => {
+	if (!countryCode) return "—";
+
+	return countries.getName(countryCode, "en") || countryCode;
+};
 
 const formatStatus = (status) => {
 	if (!status) return "—";
@@ -57,20 +84,6 @@ const getItemName = (item) => {
 	return "Product";
 };
 
-// const getItemImage = (item) => {
-// 	if (!item) return null;
-
-// 	if (typeof item.image === "string") {
-// 		return item.image;
-// 	}
-
-// 	if (Array.isArray(item.images) && item.images.length > 0) {
-// 		return item.images[0];
-// 	}
-
-// 	return null;
-// };
-
 const getItemImage = (item) => {
 	if (!item) return null;
 
@@ -95,10 +108,18 @@ const getItemImage = (item) => {
 
 const CrmOrderDetailsPage = () => {
 	const { orderId } = useParams();
+	const navigate = useNavigate();
+
+	const [isArchiving, setIsArchiving] = useState(false);
+	const [archiveError, setArchiveError] = useState("");
 
 	const [order, setOrder] = useState(null);
 	const [status, setStatus] = useState("loading");
 	const [errorMessage, setErrorMessage] = useState("");
+
+	const [isCancelling, setIsCancelling] = useState(false);
+	const [cancelError, setCancelError] = useState("");
+	const [isCancelOpen, setIsCancelOpen] = useState(false);
 
 	useEffect(() => {
 		const fetchOrder = async () => {
@@ -109,7 +130,7 @@ const CrmOrderDetailsPage = () => {
 				.from("orders")
 				.select("*")
 				.eq("id", orderId)
-				.single();
+				.maybeSingle();
 
 			if (error) {
 				console.error("Error fetching order:", error);
@@ -160,6 +181,112 @@ const CrmOrderDetailsPage = () => {
 
 	const paymentStatus = order.payment_status || "not_requested";
 
+	// ARCHIVE
+	const handleArchiveOrder = async () => {
+		if (!order?.id) return;
+
+		setIsArchiving(true);
+		setArchiveError("");
+
+		const archivedAt = new Date().toISOString();
+
+		const { data, error } = await supabase
+			.from("orders")
+			.update({
+				archived_at: archivedAt,
+			})
+			.eq("id", order.id)
+			.select("id, status, archived_at")
+			.single();
+
+		if (error) {
+			console.error("Error archiving order:", error);
+
+			setArchiveError("Unable to archive order.");
+			setIsArchiving(false);
+			return;
+		}
+
+		console.log("ARCHIVED ORDER:", data);
+
+		if (!data?.archived_at) {
+			console.error("Order was not archived:", data);
+
+			setArchiveError("Order was not archived.");
+			setIsArchiving(false);
+			return;
+		}
+
+		navigate("/crm/orders/archive");
+	};
+
+	// CANCEL ORDER
+	const handleCancelOrder = async () => {
+		if (!order?.id) return;
+
+		setIsCancelling(true);
+		setCancelError("");
+
+		const { error } = await supabase.rpc("cancel_order_and_release_inventory", {
+			p_order_id: order.id,
+		});
+
+		if (error) {
+			console.error("Error cancelling order:", error);
+
+			setCancelError("Unable to cancel order.");
+			setIsCancelling(false);
+			return;
+		}
+
+		setIsCancelOpen(false);
+
+		navigate("/crm/orders/cancelled");
+	};
+
+	// UNARCHIVE
+	const handleUnarchiveOrder = async () => {
+		if (!order?.id) return;
+
+		setIsArchiving(true);
+		setArchiveError("");
+
+		const { data, error } = await supabase
+			.from("orders")
+			.update({
+				archived_at: null,
+			})
+			.eq("id", order.id)
+			.select("id, status, archived_at")
+			.single();
+
+		if (error) {
+			console.error("Error unarchiving order:", error);
+
+			setArchiveError("Unable to unarchive order.");
+			setIsArchiving(false);
+			return;
+		}
+
+		if (data?.archived_at !== null) {
+			setArchiveError("Order was not unarchived.");
+			setIsArchiving(false);
+			return;
+		}
+
+		if (order.status === "completed") {
+			navigate("/crm/orders/completed");
+			return;
+		}
+
+		if (order.status === "cancelled") {
+			navigate("/crm/orders/cancelled");
+			return;
+		}
+
+		navigate("/crm/orders");
+	};
+
 	return (
 		<section className="crm-order-details">
 			<Link
@@ -206,62 +333,6 @@ const CrmOrderDetailsPage = () => {
 
 			<div className="crm-order-details__layout">
 				<div className="crm-order-details__main">
-					{/* CUSTOMER */}
-					<section className="crm-order-details__card">
-						<div className="crm-order-details__card-header">
-							<h2 className="crm-order-details__card-title">Customer</h2>
-						</div>
-
-						<div className="crm-order-details__customer">
-							<p className="crm-order-details__customer-name">
-								{order.customer_name || "—"}
-							</p>
-
-							{order.email && (
-								<a
-									href={`mailto:${order.email}`}
-									className="crm-order-details__contact"
-								>
-									<Mail size={18} />
-									<span>{order.email}</span>
-								</a>
-							)}
-
-							{order.phone && (
-								<a
-									href={`tel:${order.phone}`}
-									className="crm-order-details__contact"
-								>
-									<Phone size={18} />
-									<span>{order.phone}</span>
-								</a>
-							)}
-						</div>
-					</section>
-
-					{/* SHIPPING */}
-					<section className="crm-order-details__card">
-						<div className="crm-order-details__card-header">
-							<MapPin size={20} />
-
-							<h2 className="crm-order-details__card-title">
-								Shipping address
-							</h2>
-						</div>
-
-						<address className="crm-order-details__address">
-							{order.street && <span>{order.street}</span>}
-
-							{order.apartment && <span>{order.apartment}</span>}
-
-							<span>
-								{[order.city, order.zip_code].filter(Boolean).join(", ")}
-							</span>
-
-							{order.country && <span>{order.country}</span>}
-						</address>
-					</section>
-
 					{/* ITEMS */}
 					<section className="crm-order-details__card">
 						<div className="crm-order-details__card-header">
@@ -377,9 +448,65 @@ const CrmOrderDetailsPage = () => {
 							<p className="crm-order-details__comment">{order.comment}</p>
 						</section>
 					)}
+
+					{/* CUSTOMER */}
+					<section className="crm-order-details__card">
+						<div className="crm-order-details__card-header">
+							<h2 className="crm-order-details__card-title">Customer</h2>
+						</div>
+
+						<div className="crm-order-details__customer">
+							<p className="crm-order-details__customer-name">
+								{order.customer_name || "—"}
+							</p>
+
+							{order.email && (
+								<a
+									href={`mailto:${order.email}`}
+									className="crm-order-details__contact"
+								>
+									<Mail size={18} />
+									<span>{order.email}</span>
+								</a>
+							)}
+
+							{order.phone && (
+								<a
+									href={`tel:${order.phone}`}
+									className="crm-order-details__contact"
+								>
+									<Phone size={18} />
+									<span>{order.phone}</span>
+								</a>
+							)}
+						</div>
+					</section>
+
+					{/* SHIPPING */}
+					<section className="crm-order-details__card">
+						<div className="crm-order-details__card-header">
+							<MapPin size={20} />
+
+							<h2 className="crm-order-details__card-title">
+								Shipping address
+							</h2>
+						</div>
+
+						<address className="crm-order-details__address">
+							{order.street && <span>{order.street}</span>}
+
+							{order.apartment && <span>{order.apartment}</span>}
+
+							<span>
+								{[order.city, order.zip_code].filter(Boolean).join(", ")}
+							</span>
+
+							{order.country && <span>{getCountryName(order.country)}</span>}
+						</address>
+					</section>
 				</div>
 
-				{/* SUMMARY */}
+				{/* SUMMARY SIDEBAR */}
 				<aside className="crm-order-details__sidebar">
 					<section className="crm-order-details__card crm-order-details__summary">
 						<h2 className="crm-order-details__card-title">Order summary</h2>
@@ -400,6 +527,27 @@ const CrmOrderDetailsPage = () => {
 							</strong>
 						</div>
 
+						<div className="crm-order-details__summary-row">
+							<span>Shipping</span>
+
+							<strong>
+								{formatCurrency(order.shipping_total, order.currency || "EUR")}
+							</strong>
+						</div>
+
+						{order.gift_postcard && (
+							<div className="crm-order-details__summary-row">
+								<span>Gift postcard</span>
+
+								<strong>
+									{formatCurrency(
+										order.gift_postcard_price,
+										order.currency || "EUR",
+									)}
+								</strong>
+							</div>
+						)}
+
 						<div className="crm-order-details__summary-total">
 							<span>Total</span>
 
@@ -408,8 +556,158 @@ const CrmOrderDetailsPage = () => {
 							</strong>
 						</div>
 					</section>
+
+					{/* SHIPPING DETAILS */}
+					{order.shipping_details?.shipments?.length > 0 && (
+						<section className="crm-order-details__card">
+							<div className="crm-order-details__card-header">
+								<Package size={20} />
+
+								<h2 className="crm-order-details__card-title">
+									Shipping details
+								</h2>
+							</div>
+
+							<div className="crm-order-details__shipping-details">
+								{order.shipping_details.shipments.map((shipment, index) => (
+									<div
+										key={`${shipment.carrier}-${shipment.service}-${index}`}
+										className="crm-order-details__shipping-item"
+									>
+										<div className="crm-order-details__field">
+											<span className="crm-order-details__field-label">
+												Service
+											</span>
+
+											<strong>
+												{shipment.carrier} · {shipment.service}
+											</strong>
+										</div>
+
+										<div className="crm-order-details__field">
+											<span className="crm-order-details__field-label">
+												Weight
+											</span>
+
+											<strong>{shipment.weightG} g</strong>
+										</div>
+
+										<div className="crm-order-details__field">
+											<span className="crm-order-details__field-label">
+												Shipping cost
+											</span>
+
+											<strong>
+												{formatCurrency(
+													shipment.amount,
+													shipment.currency || "EUR",
+												)}
+											</strong>
+										</div>
+
+										<div className="crm-order-details__field">
+											<span className="crm-order-details__field-label">
+												Tracking
+											</span>
+
+											<CrmFlagBadge variant={shipment.tracked ? "yes" : "no"}>
+												{shipment.tracked ? "Included" : "Not included"}
+											</CrmFlagBadge>
+										</div>
+									</div>
+								))}
+							</div>
+						</section>
+					)}
+					{/* CANCEL ORDER */}
+					{["new", "confirmed", "preparing"].includes(order.status) && (
+						<div className="crm-order-details__cancel">
+							<button
+								type="button"
+								className="crm-order-details__cancel-btn"
+								onClick={() => setIsCancelOpen(true)}
+								disabled={isCancelling}
+							>
+								Cancel order
+							</button>
+
+							{cancelError && (
+								<p className="crm-order-details__cancel-error">{cancelError}</p>
+							)}
+						</div>
+					)}
+
+					{/* ARCHIVE ORDER */}
+					{["completed", "cancelled"].includes(order.status) &&
+						!order.archived_at && (
+							<div className="crm-order-details__archive">
+								<button
+									type="button"
+									className="crm-order-details__archive-btn"
+									onClick={handleArchiveOrder}
+									disabled={isArchiving}
+								>
+									<Archive size={18} />
+
+									<span>{isArchiving ? "Archiving..." : "Archive order"}</span>
+								</button>
+
+								{archiveError && (
+									<p className="crm-order-details__archive-error">
+										{archiveError}
+									</p>
+								)}
+							</div>
+						)}
+
+					{/* UNARCHIVE ORDER */}
+					{order.archived_at && (
+						<div className="crm-order-details__archive">
+							<button
+								type="button"
+								className="crm-order-details__archive-btn"
+								onClick={handleUnarchiveOrder}
+								disabled={isArchiving}
+							>
+								<ArchiveRestore size={18} />
+
+								<span>{isArchiving ? "Restoring..." : "Unarchive order"}</span>
+							</button>
+
+							{archiveError && (
+								<p className="crm-order-details__archive-error">
+									{archiveError}
+								</p>
+							)}
+						</div>
+					)}
 				</aside>
 			</div>
+
+			{/* MODAL */}
+			{isCancelOpen && (
+				<CrmConfirmModal
+					icon={CircleX}
+					title="Cancel order?"
+					text="This will cancel the order and release its reserved inventory."
+					details={[
+						{
+							label: "Order",
+							value: order.order_number,
+						},
+						{
+							label: "Customer",
+							value: order.customer_name,
+						},
+					]}
+					cancelText="Keep order"
+					confirmText="Cancel Order"
+					loadingText="Cancelling..."
+					isLoading={isCancelling}
+					onClose={() => setIsCancelOpen(false)}
+					onConfirm={handleCancelOrder}
+				/>
+			)}
 		</section>
 	);
 };

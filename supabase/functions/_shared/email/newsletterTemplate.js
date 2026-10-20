@@ -151,29 +151,64 @@ export const newsletterTemplate = ({
 
 	const footer = subscriberId
 		? `
-			<p
+		<p
+			style="
+				color: #9ca3af;
+				font-size: 12px;
+				margin-top: 28px;
+				text-align: center;
+        line-height: 1.6;
+			"
+		>
+			${footerText}
+			<br />
+
+			<a
+				href="https://littlefootcraft.art/${language}/unsubscribe?id=${subscriberId}"
 				style="
 					color: #9ca3af;
-					font-size: 12px;
-					margin-top: 28px;
-					text-align: center;
+					text-decoration: underline;
 				"
 			>
-				${footerText}
-				<br />
-
-				<a
-					href="https://littlefootcraft.art/${language}/unsubscribe?id=${subscriberId}"
-					style="
-						color: #9ca3af;
-						text-decoration: underline;
-					"
-				>
-					${manageSubscriptionText}
-				</a>
-			</p>
-		`
-		: "";
+				${manageSubscriptionText}
+			</a>
+		</p>
+	`
+		: `
+		<p
+			style="
+				color: #9ca3af;
+				font-size: 12px;
+				line-height: 1.6;
+				margin-top: 28px;
+				text-align: center;
+			"
+		>
+			${
+				language === "ua"
+					? `Також запрошуємо вас відкрити для себе чарівні речі ручної роботи в магазині
+					<a
+						href="https://littlefootcraft.art/${language}/shop"
+						style="
+							color: #9ca3af;
+							text-decoration: underline;
+						"
+					>
+						LittleFootCraft
+					</a>.`
+					: `We also invite you to discover the magical handmade pieces in our
+					<a
+						href="https://littlefootcraft.art/${language}/shop"
+						style="
+							color: #9ca3af;
+							text-decoration: underline;
+						"
+					>
+						LittleFootCraft shop
+					</a>.`
+			}
+		</p>
+	`;
 
 	return emailLayout({
 		title,

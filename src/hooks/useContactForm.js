@@ -1,6 +1,5 @@
 //useContactForm.js
 import { useState } from "react";
-import { supabase } from "../lib/supabaseClient";
 
 export const useContactForm = (dict, currentLang) => {
 	const [name, setName] = useState("");
@@ -54,28 +53,34 @@ export const useContactForm = (dict, currentLang) => {
 		setStatus("loading");
 		setFeedbackMessage(dict.sendingMessage);
 
-		const { error } = await supabase.from("contact_messages").insert({
-			name: trimmedName,
-			email: trimmedEmail,
-			message: trimmedMessage,
-			language: currentLang,
-			status: "new",
-		});
+		try {
+			const { supabase } = await import("../lib/supabaseClient");
 
-		if (error) {
-			// console.log("Supabase contact error:", error);
+			const { error } = await supabase.from("contact_messages").insert({
+				name: trimmedName,
+				email: trimmedEmail,
+				message: trimmedMessage,
+				language: currentLang,
+				status: "new",
+			});
 
+			if (error) {
+				setStatus("error");
+				setFeedbackMessage(dict.errorMessage);
+				return;
+			}
+
+			setStatus("success");
+			setFeedbackMessage(dict.successMessage);
+
+			setName("");
+			setEmail("");
+			setMessage("");
+		} catch (error) {
+			console.error("Contact submission failed:", error);
 			setStatus("error");
 			setFeedbackMessage(dict.errorMessage);
-			return;
 		}
-
-		setStatus("success");
-		setFeedbackMessage(dict.successMessage);
-
-		setName("");
-		setEmail("");
-		setMessage("");
 	};
 
 	return {

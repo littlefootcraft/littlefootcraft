@@ -7,44 +7,52 @@ export const useCatalogPagination = (
 ) => {
 	const [searchParams, setSearchParams] = useSearchParams();
 
-	// safe page (not exceeding max)
 	const safeItems = items ?? [];
 
-	// Gets current page from URL
-	// const page = Number(searchParams.get("page")) || 1;
-	const rawPage = Number(searchParams.get(pageKey)) || 1;
-	const normalizedPage = Math.max(rawPage, 1);
+	// Read and validate the requested page
+	const requestedPage = Number(searchParams.get(pageKey));
 
-	// Calculates how many pages exist.
-	const totalPages = Math.ceil((safeItems.length ?? 0) / itemsPerPage);
+	const normalizedPage =
+		Number.isSafeInteger(requestedPage) && requestedPage > 0
+			? requestedPage
+			: 1;
 
-	// If user manually types ?page=999, it falls back to the last real page
-	// const safePage = totalPages > 0 ? Math.men(page, totalPages) : 1;
+	// Calculate total pages
+	const totalPages = Math.ceil(safeItems.length / itemsPerPage);
+
+	// Keep page within available results
 	const safePage = totalPages > 0 ? Math.min(normalizedPage, totalPages) : 1;
 
+	// Paginate
 	const start = (safePage - 1) * itemsPerPage;
-	const end = start + itemsPerPage;
 
-	// Returns only items for current page
-	const paginatedItems = safeItems.slice(start, end);
+	const paginatedItems = safeItems.slice(start, start + itemsPerPage);
 
-	const setParams = ({ page, ...filters }) => {
-		const params = new URLSearchParams(searchParams);
+	// Update page without removing other URL parameters
+	const setParams = ({ page }) => {
+		const nextPage = Number(page);
 
-		// if filters changed, reset page
-		params.delete(pageKey);
-
-		if (page && page > 1) {
-			params.set(pageKey, String(page));
+		if (!Number.isSafeInteger(nextPage) || nextPage < 1) {
+			return;
 		}
-		setSearchParams(params);
+
+		setSearchParams((previous) => {
+			const params = new URLSearchParams(previous);
+
+			if (nextPage === 1) {
+				params.delete(pageKey);
+			} else {
+				params.set(pageKey, String(nextPage));
+			}
+
+			return params;
+		});
 	};
 
-	return { page: safePage, totalPages, paginatedItems, setParams };
+	return {
+		page: safePage,
+		totalPages,
+		paginatedItems,
+		setParams,
+	};
 };
-
-// // ShopPage.jsx
-// useCatalogPagination(allProducts, 20, "page");
-
-// // SalePage.jsx
-// useCatalogPagination(saleProducts, 20, "salePage");

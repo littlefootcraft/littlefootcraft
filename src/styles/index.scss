@@ -54,10 +54,11 @@
 @use "./components/order-success-modal";
 
 // CRM COMPONENTS
-@use "./components/crm/crm-send-modal";
+@use "./components/crm/crm-confirm-modal";
 @use "./components/crm/crm-delete-modal";
 @use "./components/crm/crm-select";
 @use "./components/crm/crm-flag-badge";
+@use "./components/crm/crm-orders-table";
 
 // CRM
 @use "./layout/crm/crm-layout";

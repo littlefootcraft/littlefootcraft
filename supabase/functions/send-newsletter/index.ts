@@ -2,7 +2,7 @@ import { createClient } from "npm:@supabase/supabase-js@2";
 import { corsHeaders } from "npm:@supabase/supabase-js@2/cors";
 
 import { newsletterTemplate } from "../_shared/email/newsletterTemplate.js";
-import { masterClassNewsletterTemplate } from "../_shared/email/masterClassNewsletterTemplate.js";
+import { workshopNewsletterTemplate } from "../_shared/email/workshopNewsletterTemplate.js";
 
 // ---------------------------------------
 // NEWSLETTER TYPE → DEFAULT INTEREST
@@ -748,7 +748,7 @@ export default {
 							? defaultText?.message || ""
 							: defaultReminderContent);
 
-					html = masterClassNewsletterTemplate({
+					html = workshopNewsletterTemplate({
 						type,
 						workshop: workshopForEmail,
 						language,

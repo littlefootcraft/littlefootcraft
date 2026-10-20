@@ -1,20 +1,30 @@
 //SalePage.jsx
 
-import { useEffect, useMemo } from "react";
-import { useLanguage } from "../context/LanguageContext";
-import { useCartDetails } from "../hooks/useCartDetails";
+import { useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
+
+// CONTEXT
+import { useLanguage } from "../context/LanguageContext";
+import { useProductsStatus } from "../context/ProductsContext";
+
+// COMPONENTS
 import { ProductCard } from "../components/ProductCard";
-import salePage from "../content/pages/sale-page.json";
-import { useCatalogPagination } from "../hooks/useCatalogPagination";
-import Seo from "../components/Seo";
 import { PaginationBar } from "../components/Pagination";
 
+// CONTENT
+import salePage from "../content/pages/sale-page.json";
+
+// HOOKS
+import { useCatalogPagination } from "../hooks/useCatalogPagination";
+
+// SEO
+import Seo from "../components/Seo";
+
 const SalePage = () => {
-	const { sortedProducts, setPageTitle, setDisplayCount } = useOutletContext();
+	const { sortedProducts, setPageTitle } = useOutletContext();
 	const { currentLang } = useLanguage();
-	const { cartProducts, totalAmount, totalDiscount, originalTotal } =
-		useCartDetails();
+	const { loading, error } = useProductsStatus();
+
 	const t = (field) => field?.[currentLang] ?? field?.en ?? "";
 
 	// Tell ShopLayout what title to show
@@ -25,39 +35,12 @@ const SalePage = () => {
 		});
 	}, [currentLang, setPageTitle]); // ← needed to sync title up to ShopLayout on language change
 
-	// Calculate sale items from what ShopLayout already filtered/sorted
-	const saleItems = useMemo(
-		() =>
-			sortedProducts.filter(
-				(product) =>
-					product.oldPrice != null &&
-					Number(product.oldPrice) > Number(product.price),
-			),
-		[sortedProducts],
-	);
-
 	// Pagination
 	const { page, totalPages, paginatedItems, setParams } = useCatalogPagination(
-		saleItems, // ← paginate sale items only
-		4,
+		sortedProducts, // ← paginate sale items only
+		16,
 	);
 
-	// Tell ShopLayout how many sale items there are
-	useEffect(() => {
-		setDisplayCount(saleItems.length);
-		return () => setDisplayCount(null); // reset on unmount
-	}, [saleItems.length, setDisplayCount]);
-
-	// Empty state — filters returned nothing
-	if (paginatedItems.length === 0) {
-		return (
-			<section className="sale-page">
-				<div className="sale-page__empty">
-					<p>{t(salePage.emptyState)}</p>
-				</div>
-			</section>
-		);
-	}
 	return (
 		<section className="sale-page">
 			<Seo
@@ -67,7 +50,25 @@ const SalePage = () => {
 				imageAlt={t(salePage.seo.imageAlt)}
 				url={`/${currentLang}/sale`}
 			/>
-			{paginatedItems.length === 0 ? (
+			{loading ? (
+				<div
+					className="sale-page__empty container"
+					role="status"
+				>
+					<p>{currentLang === "ua" ? "Завантаження..." : "Loading..."}</p>
+				</div>
+			) : error ? (
+				<div
+					className="sale-page__empty container"
+					role="alert"
+				>
+					<p>
+						{currentLang === "ua"
+							? "Не вдалося завантажити товари."
+							: "Unable to load products."}
+					</p>
+				</div>
+			) : paginatedItems.length === 0 ? (
 				<div className="sale-page__empty container">
 					<p>{t(salePage.emptyState)}</p>
 				</div>
@@ -83,13 +84,15 @@ const SalePage = () => {
 					</div>
 				</div>
 			)}
-			<div className="shop-page__pagination-slot">
-				<PaginationBar
-					page={page}
-					totalPages={totalPages}
-					setParams={setParams}
-				/>
-			</div>
+			{!loading && !error && totalPages > 1 && (
+				<div className="shop-page__pagination-slot">
+					<PaginationBar
+						page={page}
+						totalPages={totalPages}
+						setParams={setParams}
+					/>
+				</div>
+			)}
 		</section>
 	);
 };

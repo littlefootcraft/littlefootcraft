@@ -8,7 +8,7 @@ const formatDate = (date, language) => {
 	}).format(new Date(`${date}T00:00:00`));
 };
 
-export const masterClassNewsletterTemplate = ({
+export const workshopNewsletterTemplate = ({
 	type,
 	workshop,
 	language,
@@ -156,34 +156,69 @@ export const masterClassNewsletterTemplate = ({
 
 	const footer = subscriberId
 		? `
-			<p
+		<p
+			style="
+				color: #9ca3af;
+				font-size: 12px;
+				margin-top: 28px;
+				text-align: center;
+        line-height: 1.6;
+			"
+		>
+			${
+				isUA
+					? "Ви отримали цей лист, тому що підписалися на новини LittleFootCraft."
+					: "You received this email because you subscribed to LittleFootCraft updates."
+			}
+
+			<br />
+
+			<a
+				href="https://littlefootcraft.art/${language}/unsubscribe?id=${subscriberId}"
 				style="
 					color: #9ca3af;
-					font-size: 12px;
-					margin-top: 28px;
-					text-align: center;
+					text-decoration: underline;
 				"
 			>
-				${
-					isUA
-						? "Ви отримали цей лист, тому що підписалися на новини LittleFootCraft."
-						: "You received this email because you subscribed to LittleFootCraft updates."
-				}
-
-				<br />
-
-				<a
-					href="https://littlefootcraft.art/${language}/unsubscribe?id=${subscriberId}"
-					style="
-						color: #9ca3af;
-						text-decoration: underline;
-					"
-				>
-					${isUA ? "Керувати підпискою" : "Manage subscription"}
-				</a>
-			</p>
-		`
-		: "";
+				${isUA ? "Керувати підпискою" : "Manage subscription"}
+			</a>
+		</p>
+	`
+		: `
+		<p
+			style="
+				color: #9ca3af;
+				font-size: 12px;
+				line-height: 1.6;
+				margin-top: 28px;
+				text-align: center;
+			"
+		>
+			${
+				isUA
+					? `Також запрошуємо вас відкрити для себе чарівні речі ручної роботи в магазині
+					<a
+						href="https://littlefootcraft.art/${language}/shop"
+						style="
+							color: #9ca3af;
+							text-decoration: underline;
+						"
+					>
+						LittleFootCraft
+					</a>.`
+					: `We also invite you to discover the magical handmade pieces in our
+					<a
+						href="https://littlefootcraft.art/${language}/shop"
+						style="
+							color: #9ca3af;
+							text-decoration: underline;
+						"
+					>
+						LittleFootCraft shop
+					</a>.`
+			}
+		</p>
+	`;
 
 	let emailTitle = customTitle.trim() || title;
 

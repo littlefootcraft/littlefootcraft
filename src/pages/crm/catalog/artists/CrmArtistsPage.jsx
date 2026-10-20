@@ -196,9 +196,7 @@ const CrmArtistsPage = () => {
 						<tr>
 							<th>Artist</th>
 							<th>Location</th>
-							{/* <th>Email</th>
-							<th>Website</th>
-							<th>Instagram</th> */}
+
 							<th>Status</th>
 							<th>Added</th>
 							<th>Actions</th>
@@ -227,52 +225,6 @@ const CrmArtistsPage = () => {
 									</td>
 
 									<td>{location || "—"}</td>
-
-									{/* <td>
-										{artist.email ? (
-											<a
-												href={`mailto:${artist.email}`}
-												className="crm-artists__link"
-											>
-												<Mail size={16} />
-												<span>{artist.email}</span>
-											</a>
-										) : (
-											"—"
-										)}
-									</td> */}
-
-									{/* <td>
-										{artist.website ? (
-											<a
-												href={artist.website}
-												target="_blank"
-												rel="noreferrer"
-												className="crm-artists__link"
-											>
-												<span>Website</span>
-												<ExternalLink size={15} />
-											</a>
-										) : (
-											"—"
-										)}
-									</td> */}
-
-									{/* <td>
-										{artist.instagram ? (
-											<a
-												href={artist.instagram}
-												target="_blank"
-												rel="noreferrer"
-												className="crm-artists__link"
-											>
-												<span>Instagram</span>
-												<ExternalLink size={15} />
-											</a>
-										) : (
-											"—"
-										)}
-									</td> */}
 
 									<td>
 										<span

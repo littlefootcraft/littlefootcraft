@@ -10,6 +10,9 @@ import {
 	Package,
 	ShoppingBag,
 	Palette,
+	CircleCheck,
+	CircleX,
+	Archive,
 } from "lucide-react";
 
 // SUPABASE
@@ -55,10 +58,35 @@ const CrmLayout = () => {
 
 						<NavLink
 							to="/crm/orders"
+							end
 							className={getNavLinkClass}
 						>
 							<ShoppingBag size={19} />
-							<span>Orders</span>
+							<span>Active Orders</span>
+						</NavLink>
+
+						<NavLink
+							to="/crm/orders/completed"
+							className={getNavLinkClass}
+						>
+							<CircleCheck size={19} />
+							<span>Completed</span>
+						</NavLink>
+
+						<NavLink
+							to="/crm/orders/cancelled"
+							className={getNavLinkClass}
+						>
+							<CircleX size={19} />
+							<span>Cancelled</span>
+						</NavLink>
+
+						<NavLink
+							to="/crm/orders/archive"
+							className={getNavLinkClass}
+						>
+							<Archive size={19} />
+							<span>Archive</span>
 						</NavLink>
 					</div>
 

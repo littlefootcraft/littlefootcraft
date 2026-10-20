@@ -57,7 +57,10 @@ const FAQPage = () => {
 				{Object.entries(faqQuestions.sections).map(([sectionKey, section]) => {
 					const Icon = SECTION_ICONS[sectionKey];
 					return (
-						<section className="faq-page__section">
+						<section
+							key={sectionKey}
+							className="faq-page__section"
+						>
 							<div className="faq-page__section-header">
 								<div className="faq-page__section-icon-wrap">
 									{Icon && <Icon className="faq-page__section-icon" />}

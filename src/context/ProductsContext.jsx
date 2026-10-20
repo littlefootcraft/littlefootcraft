@@ -1,68 +1,69 @@
 //src/context/ProductsContext.js
-import { createContext, useContext, useMemo } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 export const ProductsContext = createContext([]);
 
-export const ProductsProvider = ({ children }) => {
-	// **/* -is for collecting all together from all folders of content folder
-	// creates an object.
-	const modules = import.meta.glob("../content/shop/**/*.json", {
-		eager: true,
-	});
+const ProductsStatusContext = createContext({
+	loading: true,
+	error: null,
+});
 
-	const products = useMemo(() => {
-		return Object.values(modules).map((m) => m.default ?? m);
-	}, [modules]);
+export const ProductsProvider = ({ children }) => {
+	const [products, setProducts] = useState([]);
+	const [loading, setLoading] = useState(true);
+	const [error, setError] = useState(null);
+
+	useEffect(() => {
+		const controller = new AbortController();
+
+		const loadProducts = async () => {
+			try {
+				const response = await fetch("/data/products.json", {
+					signal: controller.signal,
+				});
+
+				if (!response.ok) {
+					throw new Error(`Failed to load catalog: ${response.status}`);
+				}
+
+				const data = await response.json();
+
+				if (
+					!Array.isArray(data) ||
+					!data.every((product) => product && typeof product.sku === "string")
+				) {
+					throw new Error("Invalid product catalog.");
+				}
+
+				if (!controller.signal.aborted) {
+					setProducts(data);
+				}
+			} catch (err) {
+				if (!controller.signal.aborted) {
+					console.error("Catalog loading failed:", err);
+					setError(err);
+				}
+			} finally {
+				if (!controller.signal.aborted) {
+					setLoading(false);
+				}
+			}
+		};
+
+		loadProducts();
+
+		return () => controller.abort();
+	}, []);
 
 	return (
 		<ProductsContext.Provider value={products}>
-			{children}
+			<ProductsStatusContext.Provider value={{ loading, error }}>
+				{children}
+			</ProductsStatusContext.Provider>
 		</ProductsContext.Provider>
 	);
 };
 
-export const useProducts = () => {
-	return useContext(ProductsContext);
-};
+export const useProducts = () => useContext(ProductsContext);
 
-// import { createContext, useContext, useEffect, useState } from "react";
-
-// export const ProductsContext = createContext([]);
-
-// export const ProductsProvider = ({ children }) => {
-// 	const [products, setProducts] = useState([]);
-
-// 	useEffect(() => {
-// 		const loadProducts = async () => {
-// 			try {
-// 				const indexResponse = await fetch("/data/shop/products.json");
-
-// 				const productPaths = await indexResponse.json();
-
-// 				const productResponses = await Promise.all(
-// 					productPaths.map((path) => fetch(path)),
-// 				);
-
-// 				const productData = await Promise.all(
-// 					productResponses.map((response) => response.json()),
-// 				);
-
-// 				setProducts(productData);
-// 			} catch (error) {
-// 				console.error("Failed to load products:", error);
-// 			}
-// 		};
-
-// 		loadProducts();
-// 	}, []);
-
-// 	return (
-// 		<ProductsContext.Provider value={products}>
-// 			{children}
-// 		</ProductsContext.Provider>
-// 	);
-// };
-
-// export const useProducts = () => {
-// 	return useContext(ProductsContext);
-// };
+export const useProductsStatus = () => useContext(ProductsStatusContext);

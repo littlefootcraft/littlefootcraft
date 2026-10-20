@@ -20,7 +20,7 @@ export const emailLayout = ({
 					background: #ffffff;
 					border: 1px solid rgba(212, 175, 55, 0.35);
 					border-radius: 18px;
-					padding: 32px;
+					padding: 22px;
 				"
 			>
 				<div style="text-align: center; margin-bottom: 12px;">

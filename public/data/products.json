@@ -67,6 +67,10 @@
     },
     "price": 120,
     "oldPrice": null,
+    "shipping": {
+      "weight": 85,
+      "format": "packet"
+    },
     "badges": {
       "isTop": false,
       "isNew": false
@@ -160,6 +164,10 @@
     },
     "price": 100,
     "oldPrice": 150,
+    "shipping": {
+      "weight": 85,
+      "format": "packet"
+    },
     "badges": {
       "isTop": false,
       "isNew": false
@@ -242,6 +250,10 @@
     },
     "price": 90,
     "oldPrice": 180,
+    "shipping": {
+      "weight": 85,
+      "format": "packet"
+    },
     "badges": {
       "isTop": false,
       "isNew": false
@@ -327,6 +339,10 @@
     },
     "price": 150,
     "oldPrice": null,
+    "shipping": {
+      "weight": 85,
+      "format": "packet"
+    },
     "badges": {
       "isTop": false,
       "isNew": false
@@ -412,6 +428,10 @@
     },
     "price": 150,
     "oldPrice": 200,
+    "shipping": {
+      "weight": 85,
+      "format": "packet"
+    },
     "badges": {
       "isTop": false,
       "isNew": false
@@ -498,6 +518,10 @@
     },
     "price": 150,
     "oldPrice": null,
+    "shipping": {
+      "weight": 85,
+      "format": "packet"
+    },
     "badges": {
       "isTop": false,
       "isNew": true
@@ -584,6 +608,10 @@
     },
     "price": 150,
     "oldPrice": null,
+    "shipping": {
+      "weight": 85,
+      "format": "packet"
+    },
     "badges": {
       "isTop": false,
       "isNew": true
@@ -674,6 +702,10 @@
     },
     "price": 150,
     "oldPrice": null,
+    "shipping": {
+      "weight": 85,
+      "format": "packet"
+    },
     "badges": {
       "isTop": false,
       "isNew": true
@@ -762,6 +794,10 @@
     },
     "price": 150,
     "oldPrice": null,
+    "shipping": {
+      "weight": 85,
+      "format": "packet"
+    },
     "badges": {
       "isTop": false,
       "isNew": true
@@ -848,6 +884,10 @@
     },
     "price": 150,
     "oldPrice": null,
+    "shipping": {
+      "weight": 85,
+      "format": "packet"
+    },
     "badges": {
       "isTop": false,
       "isNew": true

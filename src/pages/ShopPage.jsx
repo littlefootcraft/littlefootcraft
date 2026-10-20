@@ -1,6 +1,6 @@
 //ShopPage.jsx
 import { useOutletContext } from "react-router-dom";
-import { useEffect, useMemo } from "react";
+import { useEffect } from "react";
 
 // COMPONENTS
 import { ProductCard } from "../components/ProductCard";
@@ -8,7 +8,7 @@ import Seo from "../components/Seo";
 import { PaginationBar } from "../components/Pagination";
 
 // CONTEXTS
-import { useProducts } from "../context/ProductsContext";
+import { useProductsStatus } from "../context/ProductsContext";
 import { useLanguage } from "../context/LanguageContext";
 import shopPage from "../content/pages/shop-page.json";
 
@@ -28,32 +28,15 @@ const ShopPage = () => {
 			title: t(shopPage.title),
 			subtitle: t(shopPage.subtitle),
 		});
-	}, [currentLang]); // ← needed to sync title up to ShopLayout on language change
-
-	const newestFirstProducts = useMemo(() => {
-		return [...sortedProducts].sort((a, b) => {
-			if (a.badges?.isNew && !b.badges?.isNew) return -1;
-			if (!a.badges?.isNew && b.badges?.isNew) return 1;
-			return 0;
-		});
-	}, [sortedProducts]);
+	}, [currentLang, setPageTitle]); // ← needed to sync title up to ShopLayout on language change
 
 	// Pagination
 	const { page, totalPages, paginatedItems, setParams } = useCatalogPagination(
-		newestFirstProducts,
+		sortedProducts,
 		16,
 	);
 
-	// // Empty state — filters returned nothing
-	// if (paginatedItems.length === 0) {
-	// 	return (
-	// 		<section className="shop-page">
-	// 			<div className="shop-page__empty">
-	// 				<p>{t(shopPage.emptyState)}</p>
-	// 			</div>
-	// 		</section>
-	// 	);
-	// }
+	const { loading, error } = useProductsStatus();
 
 	return (
 		<section className="shop-page">
@@ -65,7 +48,21 @@ const ShopPage = () => {
 				url={`/${currentLang}/shop`}
 			/>
 
-			{paginatedItems.length === 0 ? (
+			{loading ? (
+				<div
+					className="shop-page__empty container"
+					role="status"
+				>
+					<p>{t(shopPage.loadingState)}</p>
+				</div>
+			) : error ? (
+				<div
+					className="shop-page__empty container"
+					role="alert"
+				>
+					<p>{t(shopPage.errorState)}</p>
+				</div>
+			) : paginatedItems.length === 0 ? (
 				<div className="shop-page__empty container">
 					<p>{t(shopPage.emptyState)}</p>
 				</div>
@@ -81,13 +78,15 @@ const ShopPage = () => {
 					</div>
 				</div>
 			)}
-			<div className="shop-page__pagination-slot">
-				<PaginationBar
-					page={page}
-					totalPages={totalPages}
-					setParams={setParams}
-				/>
-			</div>
+			{!loading && !error && totalPages > 1 && (
+				<div className="shop-page__pagination-slot">
+					<PaginationBar
+						page={page}
+						totalPages={totalPages}
+						setParams={setParams}
+					/>
+				</div>
+			)}
 		</section>
 	);
 };

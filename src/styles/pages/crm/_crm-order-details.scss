@@ -172,26 +172,26 @@
 
 		border: 1px solid $card-borders;
 		border-radius: $border-radius;
-	}
 
-	&__card-header {
-		display: flex;
-		align-items: center;
-		gap: 10px;
+		&-header {
+			display: flex;
+			align-items: center;
+			gap: 10px;
 
-		margin-bottom: 20px;
+			margin-bottom: 20px;
 
-		color: $primary-text;
-	}
+			color: $primary-text;
+		}
 
-	&__card-title {
-		margin: 0;
+		&-title {
+			margin: 0;
 
-		font-size: 1.15rem;
-		font-weight: 600;
-		line-height: 1.4;
+			font-size: 1.15rem;
+			font-weight: 600;
+			line-height: 1.4;
 
-		color: $primary-text;
+			color: $primary-text;
+		}
 	}
 
 	// ========================================
@@ -234,7 +234,7 @@
 	}
 
 	// ========================================
-	// SHIPPING
+	// SHIPPING INFO
 	// ========================================
 
 	&__address {
@@ -429,55 +429,67 @@
 		display: flex;
 		flex-direction: column;
 		gap: 18px;
+		margin-bottom: 20px;
 
 		.crm-order-details__card-title {
 			padding-bottom: 16px;
 
 			border-bottom: 1px solid $light-blue-borders;
 		}
-	}
 
-	&__summary-row {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		gap: 16px;
+		&-row {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 16px;
 
-		font-size: 1rem;
-
-		color: $secondary-text;
-
-		strong {
 			font-size: 1rem;
+
+			color: $secondary-text;
+
+			strong {
+				font-size: 1rem;
+				font-weight: 600;
+
+				color: $primary-text;
+			}
+		}
+
+		&-total {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 16px;
+
+			padding-top: 18px;
+
+			font-size: 1.1rem;
 			font-weight: 600;
 
 			color: $primary-text;
+
+			border-top: 1px solid $card-borders;
+
+			strong {
+				font-size: 1.25rem;
+				font-weight: 700;
+
+				color: $primary-text;
+			}
 		}
 	}
-
-	&__summary-total {
+	// ========================================
+	// SHIPPING
+	// ========================================
+	&__shipping-item {
 		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		gap: 16px;
-
-		padding-top: 18px;
-
-		font-size: 1.1rem;
-		font-weight: 600;
-
-		color: $primary-text;
-
-		border-top: 1px solid $card-borders;
+		flex-direction: column;
+		gap: 10px;
 
 		strong {
-			font-size: 1.25rem;
-			font-weight: 700;
-
 			color: $primary-text;
 		}
 	}
-
 	// ========================================
 	// STATES
 	// ========================================
@@ -505,6 +517,115 @@
 
 	&__empty {
 		margin: 0;
+	}
+
+	// ========================================
+	// ARCHIVE
+	// ========================================
+	&__archive {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 10px;
+
+		&-btn {
+			margin-top: 20px;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			gap: 8px;
+
+			min-height: 42px;
+			padding: 10px 16px;
+
+			font-family: inherit;
+			font-size: 1rem;
+			font-weight: 600;
+
+			color: $primary-text;
+			background-color: $white;
+
+			border: 1px solid $card-borders;
+			border-radius: $border-radius-sm;
+
+			cursor: pointer;
+
+			transition:
+				background-color 0.2s ease,
+				border-color 0.2s ease;
+
+			&:hover:not(:disabled) {
+				background-color: $parchment;
+				border-color: $gold-accent;
+			}
+
+			&:disabled {
+				cursor: default;
+				opacity: 0.6;
+			}
+		}
+
+		&-error {
+			margin: 0;
+
+			font-size: 1rem;
+
+			color: $error-message;
+		}
+	}
+
+	// ========================================
+	// CANCEL ORDER
+	// ========================================
+	&__cancel {
+		margin-top: 20px;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 10px;
+
+		&-btn {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+
+			min-height: 42px;
+			padding: 10px 16px;
+
+			font-family: inherit;
+			font-size: 1rem;
+			font-weight: 600;
+
+			color: $error-message;
+			background-color: $white;
+
+			border: 1px solid rgba($error-message, 0.35);
+			border-radius: $border-radius-sm;
+
+			cursor: pointer;
+
+			transition:
+				background-color 0.2s ease,
+				border-color 0.2s ease;
+
+			&:hover:not(:disabled) {
+				background-color: rgba($error-message, 0.06);
+				border-color: $error-message;
+			}
+
+			&:disabled {
+				cursor: default;
+				opacity: 0.6;
+			}
+		}
+
+		&-error {
+			margin: 0;
+
+			font-size: 1rem;
+
+			color: $error-message;
+		}
 	}
 
 	// ========================================

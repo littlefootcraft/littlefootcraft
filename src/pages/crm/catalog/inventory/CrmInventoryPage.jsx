@@ -47,6 +47,7 @@ const CrmInventoryPage = () => {
 	const [category, setCategory] = useState("all");
 	const [status, setStatus] = useState("all");
 	const [productFlag, setProductFlag] = useState("all");
+	const [sortBy, setSortBy] = useState("updated_desc");
 
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState("");
@@ -317,11 +318,9 @@ const CrmInventoryPage = () => {
 	const filteredProducts = useMemo(() => {
 		const normalizedSearch = search.trim().toLowerCase();
 
-		return inventoryProducts.filter((product) => {
+		const filtered = inventoryProducts.filter((product) => {
 			const productName = product.name?.en?.toLowerCase() ?? "";
-
 			const sku = product.sku?.toLowerCase() ?? "";
-
 			const productCategory = product.specifications?.category?.en ?? "";
 
 			const matchesSearch =
@@ -349,7 +348,37 @@ const CrmInventoryPage = () => {
 				matchesSearch && matchesCategory && matchesStatus && matchesProductFlag
 			);
 		});
-	}, [inventoryProducts, search, category, status, productFlag]);
+
+		return [...filtered].sort((a, b) => {
+			switch (sortBy) {
+				case "location_asc": {
+					const locationA =
+						a.inventory.location?.city || a.inventory.location?.name || "";
+
+					const locationB =
+						b.inventory.location?.city || b.inventory.location?.name || "";
+
+					return locationA.localeCompare(locationB);
+				}
+
+				case "location_desc": {
+					const locationA =
+						a.inventory.location?.city || a.inventory.location?.name || "";
+
+					const locationB =
+						b.inventory.location?.city || b.inventory.location?.name || "";
+
+					return locationB.localeCompare(locationA);
+				}
+
+				case "updated_desc":
+				default:
+					return (
+						new Date(b.inventory.updated_at) - new Date(a.inventory.updated_at)
+					);
+			}
+		});
+	}, [inventoryProducts, search, category, status, productFlag, sortBy]);
 
 	// Inventory summary calculations
 	const showingSummary = useMemo(() => {
@@ -586,6 +615,27 @@ const CrmInventoryPage = () => {
 								{
 									value: "sale",
 									label: "Sale",
+								},
+							]}
+						/>
+					</div>
+					<div className="crm-inventory__select">
+						<CrmSelect
+							value={sortBy}
+							onChange={setSortBy}
+							ariaLabel="Sort inventory"
+							options={[
+								{
+									value: "updated_desc",
+									label: "Recently updated",
+								},
+								{
+									value: "location_asc",
+									label: "Location A–Z",
+								},
+								{
+									value: "location_desc",
+									label: "Location Z–A",
 								},
 							]}
 						/>

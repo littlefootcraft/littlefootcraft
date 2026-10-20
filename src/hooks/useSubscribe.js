@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { supabase } from "../lib/supabaseClient";
 
 import { useLanguage } from "../context/LanguageContext";
 
@@ -62,51 +61,61 @@ export const useSubscribe = (dict) => {
 
 		setStatus("loading");
 
-		// Save subscriber in Supabase
-		const { data, error } = await supabase
-			.from("subscribers")
-			.insert({
-				email: trimmedEmail,
-				interests,
-				language: currentLang,
-			})
-			.select()
-			.single();
+		try {
+			const { supabase } = await import("../lib/supabaseClient");
 
-		// Handle database errors
-		if (error) {
-			setStatus("error");
+			const { data, error } = await supabase
+				.from("subscribers")
+				.insert({
+					email: trimmedEmail,
+					interests,
+					language: currentLang,
+				})
+				.select()
+				.single();
 
-			if (error.code === "23505") {
-				setMessage(dict.alreadySubscribedMessage);
-			} else {
-				setMessage(dict.errorMessage);
+			if (error) {
+				setStatus("error");
+
+				if (error.code === "23505") {
+					setMessage(dict.alreadySubscribedMessage);
+				} else {
+					setMessage(dict.errorMessage);
+				}
+
+				return;
 			}
 
-			return;
+			// Email failure should not undo a successful subscription.
+			try {
+				const { error: emailError } = await supabase.functions.invoke(
+					"resend-email",
+					{
+						body: {
+							type: "subscription",
+							email: trimmedEmail,
+							language: currentLang,
+							interests,
+							subscriberId: data.id,
+						},
+					},
+				);
+
+				if (emailError) {
+					console.error("Confirmation email error:", emailError);
+				}
+			} catch (emailError) {
+				console.error("Confirmation email failed:", emailError);
+			}
+
+			setEmail("");
+			setStatus("success");
+			setMessage(dict.successMessage);
+		} catch (error) {
+			console.error("Subscription failed:", error);
+			setStatus("error");
+			setMessage(dict.errorMessage);
 		}
-
-		// Send confirmation email
-		const { error: emailError } = await supabase.functions.invoke(
-			"resend-email",
-			{
-				body: {
-					type: "subscription",
-					email: trimmedEmail,
-					language: currentLang,
-					interests,
-					subscriberId: data.id,
-				},
-			},
-		);
-
-		if (emailError) {
-			console.log("Confirmation email error:", emailError);
-		}
-
-		setEmail("");
-		setStatus("success");
-		setMessage(dict.successMessage);
 	};
 
 	return {

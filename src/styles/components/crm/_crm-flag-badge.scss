@@ -38,6 +38,12 @@
 		color: $success-message;
 	}
 
+	&--cancelled {
+		color: $error-message;
+		background-color: #fff0f0;
+		border-color: #e6bcbc;
+	}
+
 	// &--no {
 	// 	border-radius: 5px;
 	// 	border: 1px solid $light-blue-borders;

@@ -1,0 +1,46 @@
+{
+	"2": {
+		"packet": [
+			{ "maxWeight": 100, "price": 13 },
+			{ "maxWeight": 250, "price": 14 },
+			{ "maxWeight": 500, "price": 15 },
+			{ "maxWeight": 1000, "price": 18 },
+			{ "maxWeight": 1500, "price": 21 },
+			{ "maxWeight": 2000, "price": 21 }
+		],
+		"parcel": []
+	},
+	"3": {
+		"packet": [
+			{ "maxWeight": 100, "price": 14 },
+			{ "maxWeight": 250, "price": 15 },
+			{ "maxWeight": 500, "price": 17 },
+			{ "maxWeight": 1000, "price": 20 },
+			{ "maxWeight": 1500, "price": 24 },
+			{ "maxWeight": 2000, "price": 24 }
+		],
+		"parcel": []
+	},
+	"4": {
+		"packet": [
+			{ "maxWeight": 100, "price": 20 },
+			{ "maxWeight": 250, "price": 20 },
+			{ "maxWeight": 500, "price": 20 },
+			{ "maxWeight": 1000, "price": 25 },
+			{ "maxWeight": 1500, "price": 30 },
+			{ "maxWeight": 2000, "price": 35 }
+		],
+		"parcel": []
+	},
+	"5": {
+		"packet": [
+			{ "maxWeight": 100, "price": 21 },
+			{ "maxWeight": 250, "price": 24 },
+			{ "maxWeight": 500, "price": 28 },
+			{ "maxWeight": 1000, "price": 33 },
+			{ "maxWeight": 1500, "price": 42 },
+			{ "maxWeight": 2000, "price": 50 }
+		],
+		"parcel": []
+	}
+}

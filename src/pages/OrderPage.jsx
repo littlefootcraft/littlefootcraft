@@ -2,6 +2,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
+// CONFIG
+import { calculateShipping } from "../config/shipping/calculateShipping";
+import { STORE_CONFIG } from "../config/storeConfig";
+
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import countries from "i18n-iso-countries";
@@ -31,11 +35,11 @@ import { orderPageUA, orderPageEN } from "../translations/translation";
 import { supabase } from "../lib/supabaseClient";
 
 // CONFIRMATION EMAIL
-import { createOrderConfirmationEmail } from "../emails/orderConfirmationEmail";
+import { createOrderConfirmationEmail } from "../../supabase/functions/_shared/email/orderConfirmationEmail.js";
 
 import { OrderSuccessModal } from "../components/OrderSuccessModal";
 
-const GIFT_POSTCARD_PRICE = 2;
+const GIFT_POSTCARD_PRICE = STORE_CONFIG.giftPostcard.price;
 
 const OrderPage = () => {
 	const { currentLang } = useLanguage();
@@ -87,10 +91,79 @@ const OrderPage = () => {
 		})
 		.filter(Boolean);
 
+	const shipmentsByOrigin = cartProducts.reduce((groups, product) => {
+		const originCode = product.inventoryLocation;
+
+		if (!originCode) {
+			return groups;
+		}
+
+		if (!groups[originCode]) {
+			groups[originCode] = [];
+		}
+
+		groups[originCode].push(product);
+
+		return groups;
+	}, {});
+
 	const total = cartProducts.reduce(
 		(sum, product) => sum + product.price * product.quantity,
 		0,
 	);
+
+	let shippingTotal = 0;
+	let shippingDetails = [];
+	let shippingError = "";
+
+	if (form.country) {
+		try {
+			shippingDetails = Object.entries(shipmentsByOrigin).map(
+				([originCode, shipmentProducts]) => {
+					const weightG = shipmentProducts.reduce(
+						(sum, product) =>
+							sum + (product.shipping?.weight || 0) * product.quantity,
+						0,
+					);
+
+					const formats = [
+						...new Set(
+							shipmentProducts
+								.map((product) => product.shipping?.format)
+								.filter(Boolean),
+						),
+					];
+
+					if (formats.length !== 1) {
+						throw new Error(
+							`Products from ${originCode} have incompatible shipping formats.`,
+						);
+					}
+
+					return calculateShipping({
+						originCode,
+						countryCode: form.country,
+						weightG,
+						format: formats[0],
+					});
+				},
+			);
+
+			shippingTotal = shippingDetails.reduce(
+				(sum, shipment) => sum + shipment.amount,
+				0,
+			);
+		} catch (error) {
+			console.error("Shipping calculation error:", error);
+
+			const destinationName = countryNames[form.country] || form.country;
+
+			shippingError =
+				currentLang === "ua"
+					? `На жаль, ми не можемо доставити цей товар до країни ${destinationName}. Будь ласка, оберіть іншу країну доставки.`
+					: `Sorry, we are unable to ship this item to ${destinationName}. Please select another destination country.`;
+		}
+	}
 
 	const t = (field) => field?.[currentLang] ?? field?.en ?? "";
 
@@ -106,6 +179,22 @@ const OrderPage = () => {
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 
+		if (!form.country) {
+			setMessage(
+				currentLang === "ua"
+					? "Будь ласка, оберіть країну доставки."
+					: "Please select a shipping country.",
+			);
+
+			setStatus("error");
+			return;
+		}
+
+		if (shippingError) {
+			setMessage(shippingError);
+			setStatus("error");
+			return;
+		}
 		setMessage("");
 
 		const newErrors = {};
@@ -172,12 +261,19 @@ const OrderPage = () => {
 				p_comment: form.message.trim() || null,
 
 				p_gift_postcard: form.giftPostcard,
+				p_gift_postcard_price: giftPostcardPrice,
 				p_gift_note: form.giftPostcard ? form.giftMessage.trim() || null : null,
 
 				p_items: cartProducts,
 
 				p_subtotal: total,
 				p_discount: 0,
+				p_shipping_total: shippingTotal,
+				p_shipping_details: {
+					currency: "EUR",
+					shipments: shippingDetails,
+				},
+
 				p_total: totalWithExtras,
 			},
 		);
@@ -211,13 +307,16 @@ const OrderPage = () => {
 		const { subject, html } = createOrderConfirmationEmail({
 			cartProducts,
 			currentLang,
-			totalWithExtras,
+			totalWithExtras: data.total,
+			shippingTotal: data.shipping_total,
+			shippingDetails,
 			orderNumber: data.order_number,
-			giftPostcard: form.giftPostcard,
-			giftMessage: form.giftMessage.trim(),
-			t,
+			giftPostcard: data.gift_postcard,
+			giftPostcardPrice: data.gift_postcard_price,
+			giftMessage: form.giftPostcard ? form.giftMessage.trim() : "",
 		});
 
+		// CUSTOMER EMAIL
 		const { error: emailError } = await supabase.functions.invoke(
 			"send-order-email",
 			{
@@ -228,9 +327,47 @@ const OrderPage = () => {
 				},
 			},
 		);
-
 		if (emailError) {
 			console.log("Order confirmation email error:", emailError);
+		}
+
+		const ownerCountryName =
+			countries.getName(form.country, "en") || form.country;
+
+		// OWNER NOTIFICATION
+		const { error: ownerEmailError } = await supabase.functions.invoke(
+			"send-new-order-notification",
+			{
+				body: {
+					orderId: data.id,
+					orderNumber: data.order_number,
+
+					customerName: `${form.name} ${form.lastName}`.trim(),
+					email: form.email,
+					phone: form.phone,
+
+					country: ownerCountryName,
+					city: form.city,
+					street: form.street,
+					apartment: form.apartment || "",
+					zipCode: form.postalCode,
+
+					comment: form.message.trim(),
+
+					items: cartProducts,
+
+					total: data.total,
+					shippingTotal: data.shipping_total,
+
+					giftPostcard: data.gift_postcard,
+					giftPostcardPrice: data.gift_postcard_price,
+					giftNote: data.gift_note || "",
+				},
+			},
+		);
+
+		if (ownerEmailError) {
+			console.error("Owner order notification failed:", ownerEmailError);
 		}
 
 		setStatus("success");
@@ -246,7 +383,7 @@ const OrderPage = () => {
 
 	// Gift card
 	const giftPostcardPrice = form.giftPostcard ? GIFT_POSTCARD_PRICE : 0;
-	const totalWithExtras = total + giftPostcardPrice;
+	const totalWithExtras = total + giftPostcardPrice + shippingTotal;
 
 	// For name do not accept numbers
 	const handleNameChange = (event) => {
@@ -309,6 +446,8 @@ const OrderPage = () => {
 						<span className="order-page__breadcrumbs-separator">/</span>
 						<span className="order-page__breadcrumbs-current">Checkout</span>
 					</nav>
+
+					{/* SHIPPING FORM */}
 					<form
 						className="order-page__form"
 						onSubmit={handleSubmit}
@@ -454,7 +593,7 @@ const OrderPage = () => {
 										{countryOptions.map(([code, name]) => (
 											<option
 												key={code}
-												value={name}
+												value={code}
 											>
 												{name}
 											</option>
@@ -483,7 +622,7 @@ const OrderPage = () => {
 									}
 								/>
 								<span>{dict.giftPostcard}</span>
-								<strong>+ €2</strong>
+								<strong>+ {formatPrice(GIFT_POSTCARD_PRICE)}</strong>
 							</label>
 
 							{form.giftPostcard && (
@@ -520,7 +659,9 @@ const OrderPage = () => {
 						<PrimaryBtn
 							variant="order"
 							type="submit"
-							disabled={status === "loading"}
+							disabled={
+								status === "loading" || Boolean(shippingError) || !form.country
+							}
 						>
 							{status === "loading"
 								? currentLang === "ua"
@@ -531,6 +672,7 @@ const OrderPage = () => {
 					</form>
 				</div>
 
+				{/* SUMMARY */}
 				<aside className="order-page__summary">
 					<h2 className="order-page__section-title">{dict.summaryTitle}</h2>
 
@@ -556,12 +698,32 @@ const OrderPage = () => {
 							</div>
 						))}
 					</div>
+
 					{form.giftPostcard && (
 						<div className="order-page__extra">
 							<span>Gift postcard</span>
 							<strong>{formatPrice(GIFT_POSTCARD_PRICE)}</strong>
 						</div>
 					)}
+
+					{shippingDetails.map((shipment) => (
+						<div
+							key={`${shipment.carrier}-${shipment.zone}`}
+							className="order-page__extra"
+						>
+							<span>Shipping</span>
+							<span>
+								{shipment.carrier} {shipment.service}
+							</span>
+
+							<strong>{formatPrice(shipment.amount)}</strong>
+						</div>
+					))}
+
+					{shippingError && (
+						<p className="order-page__error">{shippingError}</p>
+					)}
+
 					<div className="order-page__total">
 						<span>Total</span>
 						<strong>{formatPrice(totalWithExtras)}</strong>

@@ -1,23 +1,21 @@
 import { useEffect, useMemo, useState } from "react";
-import { Link } from "react-router-dom";
 
 // ICONS
-import { ChevronDown, Eye, Search, ShoppingBag } from "lucide-react";
+import { ChevronDown, Search, ShoppingBag } from "lucide-react";
 
 // COMPONENT
-import { CrmFlagBadge } from "../../../components/crm/CrmFlagBadge";
+
+import { CrmOrdersTable } from "../../../components/crm/CrmOrdersTable";
 
 // SUPABASE
 import { supabase } from "../../../lib/supabaseClient";
 
 const ORDER_STATUS_OPTIONS = [
-	{ value: "all", label: "All order statuses" },
+	{ value: "all", label: "All active statuses" },
 	{ value: "new", label: "New" },
 	{ value: "confirmed", label: "Confirmed" },
 	{ value: "preparing", label: "Preparing" },
 	{ value: "shipped", label: "Shipped" },
-	{ value: "completed", label: "Completed" },
-	{ value: "cancelled", label: "Cancelled" },
 ];
 
 const PAYMENT_STATUS_OPTIONS = [
@@ -34,40 +32,7 @@ const SORT_OPTIONS = [
 	{ value: "total-low", label: "Total: low to high" },
 ];
 
-const formatStatus = (status) => {
-	if (!status) return "—";
-
-	return status
-		.replaceAll("_", " ")
-		.replace(/\b\w/g, (letter) => letter.toUpperCase());
-};
-
-const formatDate = (date) => {
-	if (!date) return "—";
-
-	return new Intl.DateTimeFormat("en-US", {
-		month: "short",
-		day: "numeric",
-		year: "numeric",
-	}).format(new Date(date));
-};
-
-const formatCurrency = (amount, currency = "EUR") => {
-	return new Intl.NumberFormat("en-US", {
-		style: "currency",
-		currency,
-	}).format(Number(amount || 0));
-};
-
-const getItemsCount = (items) => {
-	if (!Array.isArray(items)) return 0;
-
-	return items.reduce((total, item) => {
-		return total + Number(item.quantity || 1);
-	}, 0);
-};
-
-const CrmOrdersPage = () => {
+const CrmActiveOrdersPage = () => {
 	const [orders, setOrders] = useState([]);
 
 	const [search, setSearch] = useState("");
@@ -86,6 +51,7 @@ const CrmOrdersPage = () => {
 			const { data, error } = await supabase
 				.from("orders")
 				.select("*")
+				.in("status", ["new", "confirmed", "preparing", "shipped"])
 				.order("created_at", { ascending: false });
 
 			if (error) {
@@ -140,24 +106,54 @@ const CrmOrdersPage = () => {
 		});
 	}, [orders, search, orderStatus, paymentStatus, sort]);
 
+	const paymentCounts = useMemo(() => {
+		return {
+			notRequested: orders.filter(
+				(order) =>
+					(order.payment_status || "not_requested") === "not_requested",
+			).length,
+
+			pending: orders.filter((order) => order.payment_status === "pending")
+				.length,
+
+			paid: orders.filter((order) => order.payment_status === "paid").length,
+		};
+	}, [orders]);
+
 	return (
 		<section className="crm-orders">
 			<div className="crm-orders__header">
 				<div>
-					<h1 className="crm-orders__title">Orders</h1>
+					<h1 className="crm-orders__title">Active Orders</h1>
 
 					<p className="crm-orders__subtitle">
-						Review customer orders, payment status, and fulfillment.
+						Review orders that still need payment or fulfillment.
 					</p>
 				</div>
 
-				<div className="crm-orders__count">
-					<ShoppingBag size={18} />
+				<div className="crm-orders__stats">
+					<div className="crm-orders__count">
+						<ShoppingBag size={18} />
 
-					<span>
-						{filteredOrders.length}{" "}
-						{filteredOrders.length === 1 ? "order" : "orders"}
-					</span>
+						<span>
+							{orders.length} {orders.length === 1 ? "order" : "orders"}
+						</span>
+					</div>
+
+					<div className="crm-orders__payment-stat crm-orders__payment-stat--not-requested">
+						<span>Not requested</span>
+						<strong>{paymentCounts.notRequested}</strong>
+					</div>
+
+					<div className="crm-orders__payment-stat crm-orders__payment-stat--pending">
+						<span>Pending</span>
+						<strong>{paymentCounts.pending}</strong>
+					</div>
+
+					<div className="crm-orders__payment-stat crm-orders__payment-stat--paid">
+						<span>Paid</span>
+						<strong>{paymentCounts.paid}</strong>
+					</div>
 				</div>
 			</div>
 
@@ -256,126 +252,9 @@ const CrmOrdersPage = () => {
 				</div>
 			)}
 
-			{status === "success" && (
-				<div className="crm-orders__table-wrapper">
-					<table className="crm-orders__table">
-						<thead>
-							<tr>
-								<th>Order</th>
-								<th>Customer</th>
-								<th>Items</th>
-								<th>Order status</th>
-								<th>Gift postcard</th>
-								<th>Payment</th>
-								<th>Total</th>
-								<th>Date</th>
-								<th>
-									<span className="sr-only">Actions</span>
-								</th>
-							</tr>
-						</thead>
-
-						<tbody>
-							{filteredOrders.length > 0 ? (
-								filteredOrders.map((order) => {
-									const itemCount = getItemsCount(order.items);
-
-									return (
-										<tr key={order.id}>
-											<td>
-												<Link
-													to={`/crm/orders/${order.id}`}
-													className="crm-orders__order-number"
-												>
-													{order.order_number}
-												</Link>
-											</td>
-
-											<td>
-												<div className="crm-orders__customer">
-													<span className="crm-orders__customer-name">
-														{order.customer_name || "—"}
-													</span>
-
-													<span className="crm-orders__customer-email">
-														{order.email}
-													</span>
-												</div>
-											</td>
-
-											<td>
-												<span className="crm-orders__items-count">
-													{itemCount}
-												</span>
-											</td>
-
-											<td>
-												<CrmFlagBadge variant={order.status}>
-													{formatStatus(order.status)}
-												</CrmFlagBadge>
-											</td>
-
-											<td>
-												<CrmFlagBadge
-													variant={order.gift_postcard ? "yes" : "no"}
-												>
-													{order.gift_postcard ? "Yes" : "No"}
-												</CrmFlagBadge>
-											</td>
-
-											<td>
-												<span
-													className={`crm-orders__payment crm-orders__payment--${
-														order.payment_status || "not_requested"
-													}`}
-												>
-													{formatStatus(
-														order.payment_status || "not_requested",
-													)}
-												</span>
-											</td>
-
-											<td>
-												<span className="crm-orders__total">
-													{formatCurrency(order.total, order.currency || "EUR")}
-												</span>
-											</td>
-
-											<td>
-												<span className="crm-orders__date">
-													{formatDate(order.created_at)}
-												</span>
-											</td>
-
-											<td>
-												<Link
-													to={`/crm/orders/${order.id}`}
-													className="crm-orders__view-btn"
-													aria-label={`View order ${order.order_number}`}
-												>
-													<Eye size={17} />
-													<span>View</span>
-												</Link>
-											</td>
-										</tr>
-									);
-								})
-							) : (
-								<tr>
-									<td
-										colSpan="9"
-										className="crm-orders__empty"
-									>
-										No orders found.
-									</td>
-								</tr>
-							)}
-						</tbody>
-					</table>
-				</div>
-			)}
+			{status === "success" && <CrmOrdersTable orders={filteredOrders} />}
 		</section>
 	);
 };
 
-export default CrmOrdersPage;
+export default CrmActiveOrdersPage;

@@ -1,5 +1,5 @@
 //ShopToolbar.jsx
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 // COMPONENTS
 import { SecondaryBtn } from "../components/SecondaryBtn";
@@ -12,7 +12,6 @@ import { COLORS } from "../constants/filterOptions";
 
 // CONTENT
 import categories from "../content/categories/categories.json";
-// import collections from "../content/collections/collections.json";
 
 import {
 	sortOptionsUA,
@@ -33,7 +32,6 @@ const collections = Object.values(collectionModules).map(
 
 export const ShopToolbar = ({
 	query,
-	onQueryChange,
 	sortKey,
 	onSortChange,
 	onFiltersOpen,
@@ -50,6 +48,34 @@ export const ShopToolbar = ({
 	const tField = (field) => field?.[currentLang] ?? field?.en ?? "";
 	//Dropdown sort menu
 	const [isSortOpen, setIsSortOpen] = useState(false);
+
+	const sortRef = useRef(null);
+	const sortButtonRef = useRef(null);
+
+	useEffect(() => {
+		if (!isSortOpen) return;
+
+		const handleOutsideClick = (event) => {
+			if (sortRef.current && !sortRef.current.contains(event.target)) {
+				setIsSortOpen(false);
+			}
+		};
+
+		const handleKeyDown = (event) => {
+			if (event.key === "Escape") {
+				setIsSortOpen(false);
+				sortButtonRef.current?.focus();
+			}
+		};
+
+		document.addEventListener("pointerdown", handleOutsideClick);
+		document.addEventListener("keydown", handleKeyDown);
+
+		return () => {
+			document.removeEventListener("pointerdown", handleOutsideClick);
+			document.removeEventListener("keydown", handleKeyDown);
+		};
+	}, [isSortOpen]);
 	const current = SORT_OPTIONS.find((o) => o.id === sortKey) || SORT_OPTIONS[0];
 
 	// Turns { key: "color", value: "pink" } → "Pink"
@@ -81,14 +107,17 @@ export const ShopToolbar = ({
 						{t.filters}
 					</SecondaryBtn>
 
-					<div className="shop-toolbar__sort">
+					<div
+						className="shop-toolbar__sort"
+						ref={sortRef}
+					>
 						<button
+							ref={sortButtonRef}
 							type="button"
 							className={`shop-toolbar__sort-btn ${
 								isSortOpen ? "shop-toolbar__sort-btn--open" : ""
 							}`}
 							onClick={() => setIsSortOpen((v) => !v)}
-							aria-haspopup="listbox"
 							aria-expanded={isSortOpen}
 						>
 							{current.label}
@@ -98,10 +127,7 @@ export const ShopToolbar = ({
 							/>
 						</button>
 						{isSortOpen && (
-							<ul
-								className="shop-toolbar__sort-menu"
-								role="listbox"
-							>
+							<ul className="shop-toolbar__sort-menu">
 								{SORT_OPTIONS.map((o) => (
 									<li
 										key={o.id}
@@ -114,7 +140,7 @@ export const ShopToolbar = ({
 												onSortChange(o.id);
 												setIsSortOpen(false);
 											}}
-											aria-selected={o.id === sortKey}
+											aria-pressed={o.id === sortKey}
 										>
 											<span>{o.label}</span>
 											{o.id === sortKey && (
@@ -175,7 +201,10 @@ export const ShopToolbar = ({
 						</div>
 					)}
 				</div>
-				<span className="shop-toolbar__count">{t.itemsFound(count)}</span>
+
+				{count != null && (
+					<span className="shop-toolbar__count">{t.itemsFound(count)}</span>
+				)}
 			</div>
 		</div>
 	);

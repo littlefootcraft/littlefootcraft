@@ -8,7 +8,7 @@ import { ChevronRight, Send, MailCheck } from "lucide-react";
 import { useWorkshops } from "../../../context/WorkshopsContext";
 
 // COMPONENTS
-import { CrmSendModal } from "../../../components/crm/CrmSendModal";
+import { CrmConfirmModal } from "../../../components/crm/CrmConfirmModal";
 
 // SUPABASE
 import { supabase } from "../../../lib/supabaseClient";
@@ -449,6 +449,47 @@ const CrmNewNewsletterPage = () => {
 			setTestMessage("Test email could not be sent.");
 		}
 	};
+
+	// FOR MODAL
+
+	const confirmDetails = [
+		{
+			label: "Newsletter type",
+			value:
+				contentType === "new-items"
+					? "New items"
+					: contentType === "workshop"
+						? "Workshop"
+						: contentType === "workshop-reminder"
+							? "Workshop reminder"
+							: "Other",
+		},
+		{
+			label: "Audience",
+			value:
+				audience === "all"
+					? "All subscribers"
+					: audience === "interest"
+						? "By interest"
+						: "Other recipients",
+		},
+	];
+
+	if (audience === "interest") {
+		confirmDetails.push({
+			label:
+				interests.length === 1 ? "Selected interest" : "Selected interests",
+
+			value: interests
+				.map((interest) => {
+					if (interest === "workshops") return "Workshops";
+					if (interest === "sales") return "Sales";
+
+					return interest;
+				})
+				.join(", "),
+		});
+	}
 
 	return (
 		<section className="crm-page crm-new-newsletter">
@@ -1139,10 +1180,13 @@ const CrmNewNewsletterPage = () => {
 				</div>
 			</form>
 			{isConfirmOpen && (
-				<CrmSendModal
-					contentType={contentType}
-					audience={audience}
-					interests={interests}
+				<CrmConfirmModal
+					icon={Send}
+					title="Send newsletter?"
+					text="Please check the newsletter carefully before sending. Once sent, it cannot be recalled."
+					details={confirmDetails}
+					cancelText="Cancel"
+					confirmText="Confirm Send"
 					onClose={() => setIsConfirmOpen(false)}
 					onConfirm={handleConfirmSend}
 				/>
