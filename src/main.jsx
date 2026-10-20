@@ -96,6 +96,8 @@ const CrmArchivedOrdersPage = lazy(
 	() => import("./pages/crm/orders/CrmArchivedOrdersPage"),
 );
 
+const ForgotPasswordPage = lazy(() => import("./pages/ForgotPasswordPage"));
+
 const router = createBrowserRouter([
 	{
 		path: "/crm",
@@ -233,6 +235,7 @@ const router = createBrowserRouter([
 			{ path: "wishlist", element: <WishlistPage /> },
 			{ path: "login", element: <LoginPage /> },
 			{ path: "registration", element: <RegistrationPage /> },
+			{ path: "forgot-password", element: <ForgotPasswordPage /> },
 			{ path: "cart", element: <CartPage /> },
 			{
 				path: "order",

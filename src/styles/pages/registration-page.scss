@@ -47,7 +47,7 @@
 	&__title {
 		color: $primary-text;
 		font-size: var(--login-title-size);
-		line-height: 2rem;
+		line-height: 2.2rem;
 		font-weight: 700;
 		font-family: var(--title-font);
 	}
@@ -78,6 +78,21 @@
 
 	&__input {
 		@include input-soft;
+
+		&--error {
+			border-color: $error-message;
+			box-shadow: 0 0 0 3px rgba($error-message, 0.12);
+		}
+	}
+
+	&__field-message {
+		width: 100%;
+		min-height: 18px;
+		margin: -2px 0 0;
+		color: $error-message;
+		font-size: 0.8125rem;
+		line-height: 1.35;
+		text-align: left;
 	}
 
 	&__input-wrap {

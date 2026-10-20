@@ -232,6 +232,7 @@ export const loginPageEN = {
 	emptyPasswordMessage: "Please enter your password.",
 	hidePasswordAriaLabel: "Hide password",
 	showPasswordAriaLabel: "Show password",
+	forgotPassword: "Forgot password?",
 };
 
 export const loginPageUA = {
@@ -248,6 +249,7 @@ export const loginPageUA = {
 	emptyPasswordMessage: "Будь ласка, введіть пароль.",
 	hidePasswordAriaLabel: "Сховати пароль",
 	showPasswordAriaLabel: "Показати пароль",
+	forgotPassword: "Забули пароль?",
 };
 
 // REGISTRATION PAGE---------------------------------------
@@ -778,4 +780,45 @@ export const newsletterUA = {
 		workshops: "Майстер-класи",
 		sales: "Знижки та пропозиції",
 	},
+};
+
+// FORGOT PASSWORD PAGE-----------------------------------
+
+export const forgotPasswordPageEN = {
+	seoTitle: "Forgot Password | LittleFootCraft",
+	seoDescription: "Reset your LittleFootCraft account password.",
+
+	title: "Forgot your password?",
+	subtitle:
+		"Enter your email address to receive instructions for resetting your password.",
+
+	emailLabel: "Email address",
+	emptyEmailMessage: "Please enter your email address.",
+	invalidEmailMessage: "Please enter a valid email address.",
+
+	submitBtn: "Send Reset Link",
+	backToLogin: "Back to Login",
+
+	notConnectedMessage:
+		"Password recovery is temporarily unavailable. Please try again later.",
+};
+
+export const forgotPasswordPageUA = {
+	seoTitle: "Відновлення пароля | LittleFootCraft",
+	seoDescription:
+		"Відновіть пароль до свого облікового запису LittleFootCraft.",
+
+	title: "Забули пароль?",
+	subtitle:
+		"Введіть електронну адресу, щоб отримати інструкції для відновлення пароля.",
+
+	emailLabel: "Електронна адреса",
+	emptyEmailMessage: "Будь ласка, введіть електронну адресу.",
+	invalidEmailMessage: "Введіть правильну електронну адресу.",
+
+	submitBtn: "Надіслати посилання",
+	backToLogin: "Повернутися до входу",
+
+	notConnectedMessage:
+		"Відновлення пароля тимчасово недоступне. Спробуйте пізніше.",
 };
